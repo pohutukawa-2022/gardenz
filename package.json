@@ -40,7 +40,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "eda"
+      "eda/react"
     ],
     "ignorePatterns": [
       "bundle.js"
@@ -121,8 +121,14 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
-    "eslint": "^7.9.0",
-    "eslint-config-eda": "^0.1.4",
+    "eslint": "^8.9.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "jest": "^27.0.6",
     "jest-playwright-preset": "^1.6.1",
     "leaflet": "^1.7.1",
@@ -132,6 +138,7 @@
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.12.3",
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.0",
@@ -147,5 +154,9 @@
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^4.5.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
