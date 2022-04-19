@@ -41,7 +41,9 @@ describe('events list', () => {
     const eventItems = screen.getAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(2)
     expect(events[0].title).toMatch('Weeding worker Bee')
-    expect(events[0].description).toMatch('Its time to get these weeds under control.')
+    expect(events[0].description).toMatch(
+      'Its time to get these weeds under control.'
+    )
     expect(events[0].date).toMatch('2020-08-27')
     expect(events[0].id).toBe(1)
     expect(events[0].volunteersNeeded).toBe(8)
@@ -62,7 +64,9 @@ describe('display no-event message', () => {
   it('displays correct message', () => {
     const events = []
     renderWithRedux(<Events events={events} />)
-    const eventItems = screen.getByText('Sorry no events found, please come back later!')
+    const eventItems = screen.getByText(
+      'Sorry no events found, please come back later!'
+    )
     expect(eventItems).toBeInTheDocument()
   })
 })
