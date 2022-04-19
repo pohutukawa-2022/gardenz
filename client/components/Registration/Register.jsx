@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
@@ -23,8 +23,8 @@ const registerSchema = Yup.object().shape({
 
 export default function Register() {
   const authUser = useAuth0().user
-  const history = useHistory()
-  const isAdmin = useSelector((globalState) => globalState.user?.isAdmin)
+  const navigate = useNavigate()
+  const isAdmin = useSelector(globalState => globalState.user?.isAdmin)
 
   const formik = useFormik({
     initialValues: {
@@ -32,8 +32,8 @@ export default function Register() {
       lastName: '',
       gardenId: null,
     },
-    onSubmit: (values) => {
-      registerUser(values, isAdmin, authUser, history.push)
+    onSubmit: values => {
+      registerUser(values, isAdmin, authUser, navigate)
     },
     validationSchema: registerSchema,
   })
@@ -46,15 +46,10 @@ export default function Register() {
   return (
     <>
       <h2>Register to view garden events</h2>
-      <section className="flex-container centre-flex">
-        <form
-          className="flex-container__register-form"
-          onSubmit={formik.handleSubmit}
-        >
+      <section className='flex-container centre-flex'>
+        <form onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor="firstName" className="label profile-label">
-              First Name
-            </label>
+            <label htmlFor='firstName' className='label'>First Name</label>
             {showAnyErrors('firstName')}
             <input
               className="form-box"
@@ -63,9 +58,7 @@ export default function Register() {
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor="lastName" className="label profile-label">
-              Last Name
-            </label>
+            <label htmlFor='lastName' className='label'>Last Name</label>
             {showAnyErrors('lastName')}
             <input
               className="form-box"
@@ -74,9 +67,7 @@ export default function Register() {
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor="garden" className="label profile-label">
-              My Garden
-            </label>
+            <label htmlFor='garden' className='label'>My Garden</label>
             {showAnyErrors('garden')}
             <select
               className="form-box"
