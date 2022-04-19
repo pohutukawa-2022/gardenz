@@ -79,15 +79,17 @@ Response (200):
   "lat": -36.86011508905973,
   "lon": 174.7330772002716,
   "url": "http://www.kelmarnagardens.nz",
-  "events": [{
-    "id": 1,
-    "volunteersNeeded": 8,
-    "title": "Weeding Worker Bee",
-    "date": "2020-12-31",
-    "description": "It's time to get these weeds under control.",
-    "totalVolunteers": 13,
-    "isVolunteer": false
-  }]
+  "events": [
+    {
+      "id": 1,
+      "volunteersNeeded": 8,
+      "title": "Weeding Worker Bee",
+      "date": "2020-12-31",
+      "description": "It's time to get these weeds under control.",
+      "totalVolunteers": 13,
+      "isVolunteer": false
+    }
+  ]
 }
 ```
 
@@ -134,6 +136,7 @@ Response for GUEST (200):
   "description": "It's time to get these weeds under control."
 }
 ```
+
 Response for MEMBER (200):
 
 ```json
@@ -149,6 +152,7 @@ Response for MEMBER (200):
   "isVolunteer": true
 }
 ```
+
 Response for ADMIN (200):
 
 ```json
@@ -161,11 +165,13 @@ Response for ADMIN (200):
   "title": "Weeding Worker Bee",
   "date": "2020-12-31",
   "description": "It's time to get these weeds under control.",
-  "volunteers": [{
-    "userId": 3,
-    "firstName": "Johnny",
-    "lastName": "Dawg"
-  }]
+  "volunteers": [
+    {
+      "userId": 3,
+      "firstName": "Johnny",
+      "lastName": "Dawg"
+    }
+  ]
 }
 ```
 
@@ -209,7 +215,6 @@ Request:
 
 Response (201)
 
-
 ## `DELETE /api/v1/volunteers`
 
 Request:
@@ -222,4 +227,3 @@ Request:
 ```
 
 Response (200)
-

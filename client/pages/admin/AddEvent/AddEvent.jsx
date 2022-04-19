@@ -6,10 +6,10 @@ import { motion } from 'framer-motion'
 import EventForm from '../../../components/events/EventForm/EventForm'
 import { addEventVariants } from '../../animationVariants'
 
-export default function AddEvent () {
+export default function AddEvent() {
   const navigate = useNavigate()
 
-  function submitEvent (event) {
+  function submitEvent(event) {
     addEvent(event)
     navigate()
   }

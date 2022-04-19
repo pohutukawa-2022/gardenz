@@ -3,7 +3,11 @@ import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
-export function addVolunteer (volunteer, addExtraVolunteer, consume = requestor) {
+export function addVolunteer(
+  volunteer,
+  addExtraVolunteer,
+  consume = requestor
+) {
   const { token } = getState().user
   dispatch(setWaiting())
 

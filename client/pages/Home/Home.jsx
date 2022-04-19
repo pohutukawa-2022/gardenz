@@ -43,16 +43,22 @@ export default function Home() {
   }, [])
 
   return (
-    <section className='flex-container'>
-      <motion.article className='column-6 hero-card'
+    <section className="flex-container">
+      <motion.article
+        className="column-6 hero-card"
         variants={leftVariant}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <h1 className="hero-title">Empowering <span>Community Gardens</span> in New Zealand</h1>
-        <p className='hero-tagline'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link to='/gardens'>
+        <h1 className="hero-title">
+          Empowering <span>Community Gardens</span> in New Zealand
+        </h1>
+        <p className="hero-tagline">
+          Help your community get the most out of your garden with events and
+          reporting and become eligible for government subsidies
+        </p>
+        <Link to="/gardens">
           <motion.button
             className="button-primary button-width"
             variants={getStartButtonVariants}
@@ -63,13 +69,13 @@ export default function Home() {
         </Link>
       </motion.article>
       <motion.img
-        className='hero-image'
-        src='/images/comGardenPlant.png'
+        className="hero-image"
+        src="/images/comGardenPlant.png"
         alt=""
         variants={rightVariant}
-        initial='hidden'
-        animate='visible'
-        exit='exit'
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       />
     </section>
   )

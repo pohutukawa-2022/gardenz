@@ -29,7 +29,9 @@ describe('Volunteer button', () => {
   })
 
   it('does not display for an admin', () => {
-    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: true }} />)
+    renderWithRouter(
+      <EventItem isAdmin={false} event={{ isVolunteer: true }} />
+    )
     const volunteerButton = screen.queryByRole('link', { name: 'Volunteer' })
     expect(volunteerButton).toBeNull()
   })

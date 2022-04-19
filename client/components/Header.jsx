@@ -9,7 +9,11 @@ export default function Header() {
     <header className="header">
       <div className="flex-container container">
         <Link to="/">
-          <img src='/images/gardenzLogoNew.svg' alt="gardenzlogo" className='logo' />
+          <img
+            src="/images/gardenzLogoNew.svg"
+            alt="gardenzlogo"
+            className="logo"
+          />
         </Link>
         <WaitIndicator />
         <Nav />

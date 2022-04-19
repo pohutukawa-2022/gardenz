@@ -39,7 +39,9 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
   })
 
   it('responds with 500 and error message during DB error', () => {
-    db.addVolunteer.mockImplementation(() => Promise.reject(new Error('mock addVolunteer error')))
+    db.addVolunteer.mockImplementation(() =>
+      Promise.reject(new Error('mock addVolunteer error'))
+    )
 
     decode.mockImplementation(() => ({ userId: 1 }))
     return request(server)
@@ -57,7 +59,7 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
       return request(server)
         .post('/api/v1/volunteers')
         .send({ userId: 1, eventId: 1 })
-        .then(res => {
+        .then((res) => {
           expect(db.addVolunteer).toHaveBeenCalledWith({ gardenId: 3 })
           expect(res.status).toBe(401)
           return null
@@ -70,16 +72,16 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .post('/api/v1/volunteers')
         .set(mockNonAdminAuthHeader)
         .send({ userId: 1, eventId: 1 })
-        .then(res => {
+        .then((res) => {
           expect(res.status).toBe(201)
           return null
         })
     })
 
     it('responds with 500 and correct error object on DB error', () => {
-      db.addVolunteer.mockImplementation(() => Promise.reject(
-        new Error('mock addVolunteer error')
-      ))
+      db.addVolunteer.mockImplementation(() =>
+        Promise.reject(new Error('mock addVolunteer error'))
+      )
       return request(server)
         .post('/api/v1/volunteers')
 
@@ -87,9 +89,11 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .send({ userId: 1, eventId: 1 })
         .expect('Content-Type', /json/)
         .expect(500)
-        .then(res => {
+        .then((res) => {
           expect(log).toHaveBeenCalledWith('mock addVolunteer error')
-          expect(res.body.error.title).toBe('Unable to register volunteer status')
+          expect(res.body.error.title).toBe(
+            'Unable to register volunteer status'
+          )
           return null
         })
     })

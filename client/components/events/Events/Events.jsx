@@ -20,15 +20,20 @@ export default function Events({ gardenid, events }) {
       </div>
 
       <div>
-        {
-          (events.length === 0)
-            ? <p>Sorry no events found, please come back later! </p>
-            : <section className='events-list'>
-              {events.map((event) =>
-                <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
-              )}
-            </section>
-        }
+        {events.length === 0 ? (
+          <p>Sorry no events found, please come back later! </p>
+        ) : (
+          <section className="events-list">
+            {events.map((event) => (
+              <EventItem
+                key={event.id}
+                gardenid={gardenid}
+                event={event}
+                isAdmin={isAdmin}
+              />
+            ))}
+          </section>
+        )}
       </div>
     </>
   )

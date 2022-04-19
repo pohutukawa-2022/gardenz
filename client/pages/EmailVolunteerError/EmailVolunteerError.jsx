@@ -43,7 +43,7 @@ export default function EmailVolunteerError() {
     navigate('/signin')
   }
 
-  function redirectToEvent () {
+  function redirectToEvent() {
     navigate(`/events/${eventId}`)
   }
 

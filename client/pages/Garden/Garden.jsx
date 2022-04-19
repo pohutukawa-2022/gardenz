@@ -51,7 +51,9 @@ export default function Garden() {
             addresses={[address]}
             names={[name]}
           />
-          {user.isAdmin && events.length > 0 ? <BarGraph events={events}/> : null}
+          {user.isAdmin && events.length > 0 ? (
+            <BarGraph events={events} />
+          ) : null}
         </section>
       </motion.div>
     </section>

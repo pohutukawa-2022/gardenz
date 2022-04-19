@@ -46,24 +46,24 @@
       "bundle.js"
     ]
   },
-  "eslint.validate":[  
-    {  
-        "language":"vue",
-        "autoFix":true
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
     },
-    {  
-        "language":"html",
-        "autoFix":true
+    {
+      "language": "html",
+      "autoFix": true
     },
-    {  
-        "language":"javascript",
-        "autoFix":true
+    {
+      "language": "javascript",
+      "autoFix": true
     },
-    {  
-        "language":"typescript",
-        "autoFix":true
+    {
+      "language": "typescript",
+      "autoFix": true
     }
-],
+  ],
   "jest": {
     "verbose": true,
     "projects": [
@@ -140,6 +140,7 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
+    "css-minimizer-webpack-plugin": "^3.4.1",
     "eslint": "^8.9.0",
     "eslint-config-eda": "^0.3.5",
     "eslint-plugin-import": "^2.25.4",

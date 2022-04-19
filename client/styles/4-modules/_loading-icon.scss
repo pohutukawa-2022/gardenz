@@ -1,8 +1,8 @@
 @use '../1-helpers/mixins';
 
 .waitIndicator {
-  position: fixed;  
-  margin:0px;
+  position: fixed;
+  margin: 0px;
   padding: 0px;
   right: 0px;
   width: 100%;
@@ -21,28 +21,43 @@
 
 @keyframes rotation {
   0% {
-    @include mixins.prefix((
-      transform: rotate(0deg)
-    ), webkit moz);
+    @include mixins.prefix(
+      (
+        transform: rotate(0deg),
+      ),
+      webkit moz
+    );
   }
   25% {
-    @include mixins.prefix((
-      transform: rotate(40deg)
-    ), webkit moz);
+    @include mixins.prefix(
+      (
+        transform: rotate(40deg),
+      ),
+      webkit moz
+    );
   }
   50% {
-    @include mixins.prefix((
-      transform: rotate(0deg)
-    ), webkit moz);
+    @include mixins.prefix(
+      (
+        transform: rotate(0deg),
+      ),
+      webkit moz
+    );
   }
   75% {
-    @include mixins.prefix((
-      transform: rotate(-40deg)
-    ), webkit moz);
+    @include mixins.prefix(
+      (
+        transform: rotate(-40deg),
+      ),
+      webkit moz
+    );
   }
   100% {
-    @include mixins.prefix((
-      transform: rotate(0deg)
-    ), webkit moz);
+    @include mixins.prefix(
+      (
+        transform: rotate(0deg),
+      ),
+      webkit moz
+    );
   }
 }

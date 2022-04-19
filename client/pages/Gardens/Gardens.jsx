@@ -23,17 +23,21 @@ export default function Gardens() {
   }, [])
 
   return (
-    <ul className='card-container'>
+    <ul className="card-container">
       {gardenList.map((garden) => {
         return (
           <motion.li
-            className='card'
+            className="card"
             key={garden.id}
             variants={cardVariant1}
-            initial='hidden'
-            animate='visible'
-            whileHover={{ scale: 1.1, transition: { duration: 0.4, yoyo: Infinity } }}>
-            <h2 className='card-header'>
+            initial="hidden"
+            animate="visible"
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.4, yoyo: Infinity },
+            }}
+          >
+            <h2 className="card-header">
               <Link to={`/gardens/${garden.id}`}>{garden.name}</Link>
             </h2>
             <p>Address: {garden.address}</p>

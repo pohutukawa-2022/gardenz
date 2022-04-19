@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [ dev, main ]
+    branches: [dev, main]
   pull_request:
-    branches: [ dev, main ]
+    branches: [dev, main]
 
 env:
   PORT: 3000
@@ -34,11 +34,11 @@ env:
   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
   AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
   AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
-      
+
     steps:
       - uses: actions/checkout@v2
       - uses: microsoft/playwright-github-action@v1
@@ -53,41 +53,41 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      
+
       - name: Install Dependencies
         run: npm ci
-        
+
       - name: Linting
         run: "npm run lint -- --rule 'no-console: 2'"
-        
+
       - name: Test
         run: npm run test
-        
+
       ### the below is for E2E testing ###
       # - name: Build
       #   run: npm run build
-        
+
       # - name: Seed data
       #   run: npm run db:seed
 
       # - name: Start test server
       #   run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
-        
+
       # - name: Skipping E2E Tests!
       #   run: npm run test:e2e
-      
+
   ### the below is for deployment to Heroku ###
 #   deploy-dev:
 #     runs-on: ubuntu-latest
 #     # this prevents deployment for pull requests and works only for push in dev
 #     if: ${{ github.ref == 'refs/heads/dev' }} # this should be dev
 #     needs: build
-#     # Each environment can have different evn vars which includes different Auth0 secrets 
+#     # Each environment can have different evn vars which includes different Auth0 secrets
 #     # Those secrets can be different than the repository secrets
 #     environment: development
 #     steps:
 #     - uses: actions/checkout@v2
-     
+
 #     - uses: akhileshns/heroku-deploy@master
 #       with:
 #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -100,24 +100,24 @@ jobs:
 #         HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
 #         HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
 #         HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
-        
-  # deploy-prod:
-  #   runs-on: ubuntu-latest
-  #   # this prevents deployment for pull requests and works for push in main
-  #   if: ${{ github.ref == 'refs/heads/main' }}
-  #   needs: build
-  #   environment: production
-  #   steps:
-  #   - uses: actions/checkout@v2
-     
-  #   - uses: akhileshns/heroku-deploy@master
-  #     with:
-  #       heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #       heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-  #       heroku_email: ${{secrets.HEROKU_EMAIL}}
-  #     env:
-  #       HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
-  #       HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
-  #       HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-  #       HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
-  #       HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
+
+# deploy-prod:
+#   runs-on: ubuntu-latest
+#   # this prevents deployment for pull requests and works for push in main
+#   if: ${{ github.ref == 'refs/heads/main' }}
+#   needs: build
+#   environment: production
+#   steps:
+#   - uses: actions/checkout@v2
+
+#   - uses: akhileshns/heroku-deploy@master
+#     with:
+#       heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#       heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+#       heroku_email: ${{secrets.HEROKU_EMAIL}}
+#     env:
+#       HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
+#       HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+#       HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+#       HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+#       HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}

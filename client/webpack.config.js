@@ -12,9 +12,11 @@ module.exports = {
     path: path.join(__dirname, '../server/public'),
     filename: 'bundle.js',
   },
-  plugins: [new MiniCssExtractPlugin({
-    filename: 'styles.min.css'
-  })],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.min.css',
+    }),
+  ],
   mode: 'development',
   module: {
     rules: [
@@ -28,16 +30,14 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
   optimization: {
     minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin()
-    ]
+    minimizer: [new CssMinimizerPlugin()],
   },
   resolve: {
     extensions: ['.js', '.jsx'],

@@ -45,12 +45,12 @@ describe('bar graphs', () => {
   const mockEvents = [
     {
       id: 1,
-      title: 'test Event 1'
+      title: 'test Event 1',
     },
     {
       id: 2,
-      title: 'test Event 2'
-    }
+      title: 'test Event 2',
+    },
   ]
   it('bar graphs shows when events array has at least one event', () => {
     render(<BarGraph events={mockEvents} />)
