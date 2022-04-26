@@ -14,38 +14,40 @@ jest.mock('../notifications/notifications')
 jest.mock('../notifications/emailTokens')
 
 const mockNonAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken()}`
+  Authorization: `Bearer ${getMockToken()}`,
 }
 
 const mockAuthAdminHeader = {
-  Authorization: `Bearer ${getAdminToken()}`
+  Authorization: `Bearer ${getAdminToken()}`,
 }
 
 describe('GET /api/v1/volunteer/emailsignup', () => {
-  it('responds with 302 and then rediercts to user\'s garden page', () => {
+  it("responds with 302 and then rediercts to user's garden page", () => {
     const mockToken = 'foobar'
     const mockVolunteer = {
-      gardenId: 3
+      gardenId: 3,
     }
     db.addVolunteer.mockImplementation(() => Promise.resolve())
     decode.mockImplementation(() => mockVolunteer)
     return request(server)
       .get(`/api/v1/volunteers/emailsignup?token=${mockToken}`)
       .expect(302)
-      .then(res => {
+      .then((res) => {
         expect(res.header.location).toBe('/gardens/3')
         return null
       })
   })
 
   it('responds with 500 and error message during DB error', () => {
-    db.addVolunteer.mockImplementation(() => Promise.reject(new Error('mock addVolunteer error')))
+    db.addVolunteer.mockImplementation(() =>
+      Promise.reject(new Error('mock addVolunteer error'))
+    )
 
     decode.mockImplementation(() => ({ userId: 1 }))
     return request(server)
       .get('/api/v1/volunteers/emailsignup?token=foobar')
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(log).toHaveBeenCalledWith('mock addVolunteer error')
         expect(res.body.error.title).toBe('Unable to register from email')
         return null
@@ -57,7 +59,7 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
       return request(server)
         .post('/api/v1/volunteers')
         .send({ userId: 1, eventId: 1 })
-        .then(res => {
+        .then((res) => {
           expect(db.addVolunteer).toHaveBeenCalledWith({ gardenId: 3 })
           expect(res.status).toBe(401)
           return null
@@ -70,16 +72,16 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .post('/api/v1/volunteers')
         .set(mockNonAdminAuthHeader)
         .send({ userId: 1, eventId: 1 })
-        .then(res => {
+        .then((res) => {
           expect(res.status).toBe(201)
           return null
         })
     })
 
     it('responds with 500 and correct error object on DB error', () => {
-      db.addVolunteer.mockImplementation(() => Promise.reject(
-        new Error('mock addVolunteer error')
-      ))
+      db.addVolunteer.mockImplementation(() =>
+        Promise.reject(new Error('mock addVolunteer error'))
+      )
       return request(server)
         .post('/api/v1/volunteers')
 
@@ -87,9 +89,11 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .send({ userId: 1, eventId: 1 })
         .expect('Content-Type', /json/)
         .expect(500)
-        .then(res => {
+        .then((res) => {
           expect(log).toHaveBeenCalledWith('mock addVolunteer error')
-          expect(res.body.error.title).toBe('Unable to register volunteer status')
+          expect(res.body.error.title).toBe(
+            'Unable to register volunteer status'
+          )
           return null
         })
     })
@@ -101,7 +105,7 @@ describe('DELETE /api/v1/volunteers', () => {
     return request(server)
       .delete('/api/v1/volunteers')
       .send({ userId: 1, eventId: 1 })
-      .then(res => {
+      .then((res) => {
         expect(res.status).toBe(401)
         return null
       })
@@ -113,23 +117,23 @@ describe('DELETE /api/v1/volunteers', () => {
       .delete('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
-      .then(res => {
+      .then((res) => {
         expect(res.status).toBe(200)
         return null
       })
   })
 
   it('responds with 500 and error object during DB error', () => {
-    db.deleteVolunteer.mockImplementation(() => Promise.reject(
-      new Error('mock deleteVolunteer error')
-    ))
+    db.deleteVolunteer.mockImplementation(() =>
+      Promise.reject(new Error('mock deleteVolunteer error'))
+    )
     return request(server)
       .delete('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(log).toHaveBeenCalledWith('mock deleteVolunteer error')
         expect(res.body.error.title).toBe('Unable to remove volunteer status')
         return null
@@ -144,7 +148,7 @@ describe('POST /api/v1/volunteers/extras', () => {
       .post('/api/v1/volunteers/extras')
       .set(mockAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
-      .then(res => {
+      .then((res) => {
         expect(res.status).toBe(500)
         expect(res.body.error.title).toBe('Unable to add extra volunteer')
         return null
@@ -157,7 +161,7 @@ describe('POST /api/v1/volunteers/extras', () => {
       .post('/api/v1/volunteers/extras')
       .set(mockAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
-      .then(res => {
+      .then((res) => {
         expect(res.status).toBe(201)
         expect(res.body.extraVolId).toBe(4)
         return null
@@ -167,7 +171,7 @@ describe('POST /api/v1/volunteers/extras', () => {
   it('responds with status 401 when unauthorised token is passed', () => {
     return request(server)
       .post('/api/v1/volunteers/extras')
-      .then(response => {
+      .then((response) => {
         expect(response.status).toBe(401)
         return null
       })
@@ -182,8 +186,8 @@ describe('PATCH /api/v1/volunteers', () => {
   it('Test for unauthorized accesss: no token', () => {
     return request(server)
       .patch('/api/v1/volunteers')
-      .then(res => {
-        expect(res.status).toEqual(401)
+      .then((res) => {
+        expect(res.status).toBe(401)
         return null
       })
   })
@@ -192,8 +196,8 @@ describe('PATCH /api/v1/volunteers', () => {
     return request(server)
       .patch('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
-      .then(res => {
-        expect(res.status).toEqual(403)
+      .then((res) => {
+        expect(res.status).toBe(403)
         return null
       })
   })
@@ -203,20 +207,22 @@ describe('PATCH /api/v1/volunteers', () => {
       .patch('/api/v1/volunteers')
       .send({ hasAttended: true, userId: 1, eventId: 1 })
       .set(mockAuthAdminHeader)
-      .then(res => {
-        expect(res.status).toEqual(200)
+      .then((res) => {
+        expect(res.status).toBe(200)
         return null
       })
   })
 
   it('Test for 500 response and expect a json error object during db error', () => {
-    db.setVolunteerAttendance.mockImplementation(() => Promise.reject(new Error('Db operation error')))
+    db.setVolunteerAttendance.mockImplementation(() =>
+      Promise.reject(new Error('Db operation error'))
+    )
     return request(server)
       .patch('/api/v1/volunteers')
       .set(mockAuthAdminHeader)
       .expect('Content-Type', /json/)
-      .then(res => {
-        expect(res.status).toEqual(500)
+      .then((res) => {
+        expect(res.status).toBe(500)
         return null
       })
   })

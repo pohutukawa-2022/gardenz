@@ -59,13 +59,13 @@
   text-align: center;
 
   button {
-  margin: vars.$base-size * 0.5;
-  align-content: center;
-  align-items: center;
-  min-width: vars.$base-size * 8;
-  text-align: center;
+    margin: vars.$base-size * 0.5;
+    align-content: center;
+    align-items: center;
+    min-width: vars.$base-size * 8;
+    text-align: center;
 
-  @include mixins.media-queries(mobile, min) {
+    @include mixins.media-queries(mobile, min) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -78,6 +78,6 @@
 }
 
 .form-content {
-  margin-left: vars.$base-size; 
-  margin-right: vars.$base-size; 
+  margin-left: vars.$base-size;
+  margin-right: vars.$base-size;
 }

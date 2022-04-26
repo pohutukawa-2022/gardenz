@@ -4,31 +4,40 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
-  entry: [path.join(__dirname, 'index.js'), path.join(__dirname, 'styles/main.scss')],
+  entry: [
+    path.join(__dirname, 'index.js'),
+    path.join(__dirname, 'styles/main.scss'),
+  ],
   output: {
     path: path.join(__dirname, '../server/public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
-  plugins: [new MiniCssExtractPlugin({
-    filename: 'styles.min.css'
-  })],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.min.css',
+    }),
+  ],
   mode: 'development',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
   },
   optimization: {
     minimize: true,
@@ -37,7 +46,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 }

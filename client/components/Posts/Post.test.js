@@ -5,13 +5,11 @@ import '@testing-library/jest-dom'
 import Post from './Post'
 
 describe('Post', () => {
-  const createdOn = new Date((new Date()).getTime() - (1 * 86400000)).toLocaleDateString('en-NZ')
   const fakePost = {
     title: 'Lettuce Picking Season',
     createdOn: createdOn,
-    content: 'test content',
     firstName: 'FirstName',
-    lastName: 'LastName'
+    lastName: 'LastName',
   }
 
   it('Print needed List of items amount', () => {

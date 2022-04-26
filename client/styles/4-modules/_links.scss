@@ -2,7 +2,7 @@
 @use '../1-helpers/vars';
 
 .page__link {
-  @include mixins.word-wrap()
+  @include mixins.word-wrap();
 }
 
 .title-link {

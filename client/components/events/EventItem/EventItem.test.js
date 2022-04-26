@@ -21,13 +21,17 @@ describe('Edit Event button', () => {
 
 describe('Volunteer button', () => {
   it('displays for a member', () => {
-    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: false }} />)
+    renderWithRouter(
+      <EventItem isAdmin={false} event={{ isVolunteer: false }} />
+    )
     const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
     expect(volunteerButton).toHaveTextContent('Volunteer')
   })
 
   it('does not display for an admin', () => {
-    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: true }} />)
+    renderWithRouter(
+      <EventItem isAdmin={false} event={{ isVolunteer: true }} />
+    )
     const volunteerButton = screen.queryByRole('link', { name: 'Volunteer' })
     expect(volunteerButton).toBeNull()
   })

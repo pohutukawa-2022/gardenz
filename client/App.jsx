@@ -18,7 +18,7 @@ import Verification from './pages/Verification/Verification'
 
 import { cacheUser } from './auth-utils'
 
-export default function App () {
+export default function App() {
   const navigate = useNavigate()
   cacheUser(useAuth0, navigate)
 
@@ -26,19 +26,19 @@ export default function App () {
     <>
       <Error />
       <Header />
-      <main className='container margin-container flex-container centre-flex'>
+      <main className="container margin-container flex-container centre-flex">
         <AnimatePresence exitBeforeEnter>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/gardens' element={<Gardens />} />
-            <Route path='/gardens/:id' element={<Garden />} />
-            <Route path='/gardens/:id/posts' element={<Posts />} />
-            <Route path='/gardens/:id/events/:eventId' element={<Event />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/event/new' element={<AddEvent />} />
-            <Route path='/events/:id/edit' element={<EditEvent />} />
-            <Route path='/events/:id/volunteers' element={<Volunteers />} />
-            <Route path='/verification' element={<Verification />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/gardens" element={<Gardens />} />
+            <Route path="/gardens/:id" element={<Garden />} />
+            <Route path="/gardens/:id/posts" element={<Posts />} />
+            <Route path="/gardens/:id/events/:eventId" element={<Event />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/event/new" element={<AddEvent />} />
+            <Route path="/events/:id/edit" element={<EditEvent />} />
+            <Route path="/events/:id/volunteers" element={<Volunteers />} />
+            <Route path="/verification" element={<Verification />} />
           </Routes>
         </AnimatePresence>
       </main>

@@ -15,11 +15,11 @@
 }
 
 .graph-map {
-  padding: vars.$base-size *3;
+  padding: vars.$base-size * 3;
   width: 90%;
   width: functions.colWidth(12);
   text-align: left;
-  
+
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(6);
     padding: 10px 10px;

@@ -8,34 +8,32 @@ describe('verified email', () => {
     const useAuth0 = () => ({
       isAuthenticated: true,
       getAccessTokenSilently: () => Promise.resolve('token'),
-      user: { email_verified: false }
+      user: { email_verified: false },
     })
 
     const navigate = jest.fn()
     consume.mockImplementation(() => Promise.resolve({ body: { id: 1 } }))
 
-    return cacheUser(useAuth0, navigate)
-      .then(() => {
-        expect(navigate).toHaveBeenCalledWith('/verification')
-        return null
-      })
+    return cacheUser(useAuth0, navigate).then(() => {
+      expect(navigate).toHaveBeenCalledWith('/verification')
+      return null
+    })
   })
 
   test('when a logged in user has a verified email, navigate not should be called', () => {
     const useAuth0 = () => ({
       isAuthenticated: true,
       getAccessTokenSilently: () => Promise.resolve('token'),
-      user: { email_verified: true }
+      user: { email_verified: true },
     })
 
     const navigate = jest.fn()
     consume.mockImplementation(() => Promise.resolve({ body: { id: 1 } }))
 
-    return cacheUser(useAuth0, navigate)
-      .then(() => {
-        expect(navigate).toHaveBeenCalledTimes(0)
-        return null
-      })
+    return cacheUser(useAuth0, navigate).then(() => {
+      expect(navigate).toHaveBeenCalledTimes(0)
+      return null
+    })
   })
 })
 
@@ -44,34 +42,33 @@ describe('user registration', () => {
     const useAuth0 = () => ({
       isAuthenticated: true,
       getAccessTokenSilently: () => Promise.resolve('token'),
-      user: { id: undefined }
+      user: { id: undefined },
     })
 
     const navigate = jest.fn()
-    consume.mockImplementation(() => Promise.resolve({ body: { id: undefined } }))
+    consume.mockImplementation(() =>
+      Promise.resolve({ body: { id: undefined } })
+    )
 
-    return cacheUser(useAuth0, navigate)
-      .then(() => {
-        expect(navigate).toHaveBeenCalledWith('/profile')
-        return null
-      })
+    return cacheUser(useAuth0, navigate).then(() => {
+      expect(navigate).toHaveBeenCalledWith('/profile')
+      return null
+    })
   })
 
   test('if user is registered,navigate is not called', () => {
     const useAuth0 = () => ({
       isAuthenticated: true,
-      getAccessTokenSilently: () => Promise.resolve('token')
-
+      getAccessTokenSilently: () => Promise.resolve('token'),
     })
 
     const navigate = jest.fn()
     consume.mockImplementation(() => Promise.resolve({ body: { id: 1 } }))
 
-    return cacheUser(useAuth0, navigate)
-      .then(() => {
-        expect(navigate).toHaveBeenCalledTimes(0)
-        return null
-      })
+    return cacheUser(useAuth0, navigate).then(() => {
+      expect(navigate).toHaveBeenCalledTimes(0)
+      return null
+    })
   })
 })
 
@@ -80,26 +77,24 @@ describe('isAuthenticated', () => {
     const getAccessTokenSilently = jest.fn()
     const useAuth0 = () => ({
       isAuthenticated: false,
-      getAccessTokenSilently
+      getAccessTokenSilently,
     })
-    return cacheUser(useAuth0)
-      .then(() => {
-        expect(getAccessTokenSilently).toHaveBeenCalledTimes(0)
-        return null
-      })
+    return cacheUser(useAuth0).then(() => {
+      expect(getAccessTokenSilently).toHaveBeenCalledTimes(0)
+      return null
+    })
   })
 
   test('if isAuthenticated is true, getAccessTokenSilently is called', () => {
     const getAccessTokenSilently = jest.fn()
     const useAuth0 = () => ({
       isAuthenticated: true,
-      getAccessTokenSilently
+      getAccessTokenSilently,
     })
 
-    return cacheUser(useAuth0)
-      .then(() => {
-        expect(getAccessTokenSilently).toHaveBeenCalledTimes(1)
-        return null
-      })
+    return cacheUser(useAuth0).then(() => {
+      expect(getAccessTokenSilently).toHaveBeenCalledTimes(1)
+      return null
+    })
   })
 })

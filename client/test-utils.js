@@ -6,12 +6,9 @@ import { render } from '@testing-library/react'
 
 import reducer from './reducers'
 
-export function renderWithRouter (
+export function renderWithRouter(
   ui,
-  {
-    initialEntries = ['/'],
-    route = '/'
-  } = {}
+  { initialEntries = ['/'], route = '/' } = {}
 ) {
   return {
     ...render(
@@ -20,17 +17,17 @@ export function renderWithRouter (
           <Route path={route} element={ui} />
         </Routes>
       </Router>
-    )
+    ),
   }
 }
 
-export function renderWithRedux (
+export function renderWithRedux(
   ui,
   {
     initialEntries = ['/'],
     route = '/',
     initialState,
-    store = createStore(reducer, initialState)
+    store = createStore(reducer, initialState),
   } = {}
 ) {
   return {
@@ -43,6 +40,6 @@ export function renderWithRedux (
         </Router>
       </Provider>
     ),
-    store
+    store,
   }
 }

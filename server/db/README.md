@@ -3,8 +3,8 @@
 ![Gardenz Entity Relationship Diagram](../../docs/erd.jpg)
 [Gardenz ERD on dbdiagram.io](https://dbdiagram.io/d/5f61c9407da1ea736e2e0bda)
 
-
 Updated code for ERD:
+
 ```
  // Creating tables
 Table users  {

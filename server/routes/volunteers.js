@@ -14,7 +14,7 @@ const { decode } = require('../notifications/emailTokens')
 const router = express.Router()
 
 const checkAdmin = jwtAuthz(['update:event_volunteers'], {
-  customScopeKey: 'permissions'
+  customScopeKey: 'permissions',
 })
 
 module.exports = router
@@ -23,17 +23,18 @@ router.get('/emailsignup', (req, res) => {
   const { token } = req.query
   const volunteer = decode(token)
 
-  dbVolunteers.addVolunteer(volunteer)
+  dbVolunteers
+    .addVolunteer(volunteer)
     .then(() => {
       res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to register from email'
-        }
+          title: 'Unable to register from email',
+        },
       })
     })
 })
@@ -52,8 +53,8 @@ router.post('/', checkJwt, async (req, res) => {
     log(error.message)
     res.status(500).json({
       error: {
-        title: 'Unable to register volunteer status'
-      }
+        title: 'Unable to register volunteer status',
+      },
     })
   }
 })
@@ -61,7 +62,8 @@ router.post('/', checkJwt, async (req, res) => {
 // Verifies the data being modified belongs to the user that added it.
 router.delete('/', checkJwt, (req, res) => {
   const { userId, eventId } = req.body
-  dbVolunteers.deleteVolunteer({ userId, eventId })
+  dbVolunteers
+    .deleteVolunteer({ userId, eventId })
     .then(() => {
       res.sendStatus(200)
       return null
@@ -70,8 +72,8 @@ router.delete('/', checkJwt, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to remove volunteer status'
-        }
+          title: 'Unable to remove volunteer status',
+        },
       })
     })
 })
@@ -79,17 +81,18 @@ router.delete('/', checkJwt, (req, res) => {
 router.patch('/', checkJwt, checkAdmin, (req, res) => {
   const { hasAttended, userId, eventId } = req.body
 
-  dbVolunteers.setVolunteerAttendance({ hasAttended, userId, eventId })
+  dbVolunteers
+    .setVolunteerAttendance({ hasAttended, userId, eventId })
     .then(() => {
       res.sendStatus(200)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to set attendance for this volunteer/event'
-        }
+          title: 'Unable to set attendance for this volunteer/event',
+        },
       })
     })
 })
@@ -97,7 +100,8 @@ router.patch('/', checkJwt, checkAdmin, (req, res) => {
 router.post('/extras', checkJwt, (req, res) => {
   const { eventId, firstName, lastName } = req.body
 
-  dbVolunteers.addExtraVolunteer({ eventId, firstName, lastName })
+  dbVolunteers
+    .addExtraVolunteer({ eventId, firstName, lastName })
     .then((result) => {
       res.status(201).json({ extraVolId: result[0] })
       return null
@@ -106,8 +110,8 @@ router.post('/extras', checkJwt, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to add extra volunteer'
-        }
+          title: 'Unable to add extra volunteer',
+        },
       })
     })
 })
