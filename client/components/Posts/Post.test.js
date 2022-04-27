@@ -7,7 +7,7 @@ import Post from './Post'
 describe('Post', () => {
   const fakePost = {
     title: 'Lettuce Picking Season',
-    createdOn: createdOn,
+    createdOn: '01/01/1200',
     firstName: 'FirstName',
     lastName: 'LastName',
   }
