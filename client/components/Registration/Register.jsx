@@ -1,8 +1,8 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
-import { registerUser } from './registerHelper'
+import { registerUser, getAllGardens } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
 import { formButtonVariants } from '../../pages/animationVariants'
@@ -25,6 +25,12 @@ export default function Register() {
   const authUser = useAuth0().user
   const navigate = useNavigate()
   const isAdmin = useSelector((globalState) => globalState.user?.isAdmin)
+  const [getGardens, setGetGardens] = useState([])
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllGardens())
+  }, [])
 
   const formik = useFormik({
     initialValues: {
