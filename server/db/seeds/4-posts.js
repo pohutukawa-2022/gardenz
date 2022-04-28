@@ -1,3 +1,4 @@
+
 exports.seed = function (knex) {
   const todayDate = new Date().toLocaleDateString('en-NZ')
   const diffDate = (days) => {
