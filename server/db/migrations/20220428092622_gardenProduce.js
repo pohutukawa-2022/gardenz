@@ -7,6 +7,7 @@ exports.up = function (knex) {
     table.increments('id')
     table.integer('produce_id').references('produce.id')
     table.integer('garden_id').references('gardens.id')
+    table.boolean('status')
   })
 }
 
