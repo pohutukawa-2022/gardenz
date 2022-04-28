@@ -14,7 +14,7 @@ function getAllNews(db = connection) {
   return db('news').select()
 }
 
-function getnewssByGardenId(id, db = connection) {
+function getNewsByGardenId(id, db = connection) {
   return db('news')
     .join('users', 'news.author', 'users.id')
     .where('news.garden_id', id)
@@ -30,7 +30,7 @@ function getnewssByGardenId(id, db = connection) {
     )
 }
 
-function getnewsById(id, db = connection) {
+function getNewsById(id, db = connection) {
   return db('news')
     .join('users', 'news.author', 'users.id')
     .where('news.id', id)
