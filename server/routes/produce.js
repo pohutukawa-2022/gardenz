@@ -22,3 +22,21 @@ router.get('/', (req, res) => {
       })
     })
 })
+
+router.post('/', (req, res) => {
+  const { name, status } = req.body
+  const newProduce = { name, status }
+  db.addProduce(newProduce)
+    .then((produce) => {
+      res.status(201).json({ produce })
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to add garden',
+        },
+      })
+    })
+})
