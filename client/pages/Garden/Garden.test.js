@@ -67,30 +67,3 @@ describe('empty events array', () => {
     expect(graph).toBeVisible(false)
   })
 })
-
-describe('bar graphs', () => {
-  const mockEvents = [
-    {
-      id: 1,
-      title: 'test Event 1'
-    },
-    {
-      id: 2,
-      title: 'test Event 2'
-    }
-  ]
-  it('bar graphs shows when events array has at least one event', () => {
-    render(<BarGraph events={mockEvents} />)
-    const graph = screen.getByTestId('bar-graph')
-    expect(graph).toBeVisible()
-  })
-})
-
-describe('empty events array', () => {
-  const mockEvents = []
-  it('bar graphs does not show when events array is empty', () => {
-    render(<BarGraph events={mockEvents} />)
-    const graph = screen.queryByTestId('bar-graph')
-    expect(graph).toBeVisible(false)
-  })
-})
