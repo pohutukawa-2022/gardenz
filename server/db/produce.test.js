@@ -18,11 +18,27 @@ afterAll(() => {
   return testDb.destroy()
 })
 
-describe('getProduce', () => {
-  it('returns the correct number of produce', () => {
-    return db.getGardens(testDb).then((gardens) => {
-      // set expect to actual length
-      expect(gardens).toHaveLength(5)
+describe('getAllProduce', () => {
+  it('gets all produce', () => {
+    return db.getAllProduce(testDb).then((produce) => {
+      expect(produce).toHaveLength(12)
+      expect(produce[0].name).toMatch('Strawberry')
+      expect(produce[1].name).toMatch('Celery')
+      return null
+    })
+  })
+})
+
+describe('addProduce', () => {
+  it('adds a new produce to the db', () => {
+    const newProduce = {
+      name: 'Pineapple',
+      produce_type_id: 2,
+    }
+    return db.addProduce(newProduce, testDb).then((produce) => {
+      expect(produce.id).toBe(13)
+      expect(produce.name).toMatch('Pineapple')
+      expect(produce.produceTypeId).toBe(2)
       return null
     })
   })
