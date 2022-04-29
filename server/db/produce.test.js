@@ -33,13 +33,16 @@ describe('addProduce', () => {
   it('adds a new produce to the db', () => {
     const newProduce = {
       name: 'Pineapple',
-      produce_type_id: 2,
+      produceTypeId: 2,
     }
-    return db.addProduce(newProduce, testDb).then((produce) => {
-      expect(produce.id).toBe(13)
-      expect(produce.name).toMatch('Pineapple')
-      expect(produce.produceTypeId).toBe(2)
-      return null
-    })
+
+    return db
+      .addProduce(newProduce, testDb)
+      .then((id) => db.findProduceById(id, testDb))
+      .then((produce) => {
+        expect(produce.name).toMatch('Pineapple')
+        expect(produce.produceTypeId).toBe(2)
+        return null
+      })
   })
 })

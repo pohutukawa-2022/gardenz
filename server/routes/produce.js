@@ -14,7 +14,7 @@ const checkAdmin = jwtAuthz(['create:produce'], {
 module.exports = router
 
 router.get('/', (req, res) => {
-  db.getProduce()
+  db.getAllProduce()
     .then((produce) => {
       res.json({ produce })
       return null
