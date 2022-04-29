@@ -115,6 +115,7 @@ export default function EventForm(props) {
           </div>
 
           <div className="button-group">
+
             {props.action === 'Update Event' ? (
               <motion.button
                 className="submit form-box"

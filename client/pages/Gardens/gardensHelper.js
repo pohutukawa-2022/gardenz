@@ -16,18 +16,3 @@ export function getAllGardens(consume = requestor) {
       dispatch(showError(error.message))
     })
 }
-
-//create a post api function to post to the server-side-route
-
-export function addNewGarden(token, data, consume = requestor) {
-  dispatch(setWaiting())
-
-  return consume('/gardens', token, 'post', data)
-    .then(() => {
-      dispatch(clearWaiting())
-      return null
-    })
-    .catch((error) => {
-      dispatch(showError(error.message))
-    })
-}
