@@ -81,16 +81,14 @@ test('Admin can login & edit an event', async () => {
 
   await page.fill('[type=date]', '2000-01-01')
   await page.fill('[type=number]', '1')
- 
-  await Promise.all([page.waitForNavigation(),  page.click('text=Submit')])
+
+  await Promise.all([page.waitForNavigation(), page.click('text=Submit')])
 
   await page.click('text=Hanging out')
   await page.waitForSelector('text=Edit Event')
 
   expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
-  expect(await page.$eval('ul', (el) => el.textContent)).toMatch(
-    '01/01/2000'
-  )
+  expect(await page.$eval('ul', (el) => el.textContent)).toMatch('01/01/2000')
   expect(await page.$eval('ul', (el) => el.textContent)).toMatch(
     '1 of 1 volunteers still needed'
   )
