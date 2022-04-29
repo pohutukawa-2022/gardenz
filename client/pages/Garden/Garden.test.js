@@ -72,12 +72,12 @@ describe('bar graphs', () => {
   const mockEvents = [
     {
       id: 1,
-      title: 'test Event 1'
+      title: 'test Event 1',
     },
     {
       id: 2,
-      title: 'test Event 2'
-    }
+      title: 'test Event 2',
+    },
   ]
   it('bar graphs shows when events array has at least one event', () => {
     render(<BarGraph events={mockEvents} />)
@@ -92,5 +92,14 @@ describe('empty events array', () => {
     render(<BarGraph events={mockEvents} />)
     const graph = screen.queryByTestId('bar-graph')
     expect(graph).toBeVisible(false)
+  })
+})
+
+describe('Gallery', () => {
+  test('Gallery displays image', () => {
+    renderWithRedux(<Garden />)
+    const gallery = screen.getAllByRole('img')
+    expect(gallery[0]).toHaveAttribute('src')
+    expect(gallery[0]).toHaveAttribute('alt')
   })
 })
