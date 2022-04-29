@@ -4,7 +4,7 @@ import { clearWaiting, setWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
 //create a post api function to post to the server-side-route
-export function addNewGarden(data, consume = requestor) {
+export function addGarden(data, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
 
