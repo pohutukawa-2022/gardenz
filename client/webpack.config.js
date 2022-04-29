@@ -39,12 +39,6 @@ module.exports = {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
   },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin()
-    ]
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
