@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
-import { registerUser, getAllGardens } from './registerHelper'
+import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
 import { formButtonVariants } from '../../pages/animationVariants'
 import { showError } from '../../actions/error'
+import { getAllGardens } from '../../pages/Gardens/gardensHelper'
 
 import * as Yup from 'yup'
 

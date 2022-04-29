@@ -6,9 +6,9 @@ import { act } from 'react-dom/test-utils'
 import { renderWithRedux } from '../../test-utils'
 import Register from './Register'
 
-import { getAllGardens } from './registerHelper'
+import { getAllGardens } from '../../pages/Gardens/gardensHelper'
 
-jest.mock('./registerHelper')
+jest.mock('../../pages/Gardens/gardensHelper')
 afterEach(() => {
   getAllGardens.mockClear()
 })
@@ -132,12 +132,9 @@ describe('Register form field', () => {
     expect(element[0]).toBeInTheDocument()
   })
   it('The dropdown selection dynamically displays all the garden names', () => {
-    //ARRANGE
-    //ACT
     act(() => {
       renderWithRedux(<Register />)
     })
-    //ASSERT
     return screen.findAllByRole('option').then((options) => {
       expect(options).toHaveLength(2)
       expect(options[0].textContent).toMatch('Kelmarna Gardens')
