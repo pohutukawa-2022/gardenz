@@ -32,7 +32,7 @@ const mockNewsForGarden = [
 
 describe('GET /api/v1/news/:gardenid', () => {
   it('responds with blog news for the specific garden', () => {
-    db.getNewssByGardenId.mockImplementation(() =>
+    db.getNewsByGardenId.mockImplementation(() =>
       Promise.resolve(mockNewsForGarden)
     )
     return request(server)
@@ -53,7 +53,7 @@ describe('GET /api/v1/news/:gardenid', () => {
   })
 
   it('responds with 500 and correct error object on DB error', () => {
-    db.getNewssByGardenId.mockImplementation(() =>
+    db.getNewsByGardenId.mockImplementation(() =>
       Promise.reject(new Error('mock getNewsByGardenId error'))
     )
     return request(server)
