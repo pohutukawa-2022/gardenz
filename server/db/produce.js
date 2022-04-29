@@ -1,23 +1,22 @@
 const connection = require('./connection')
 
 module.exports = {
-  getProduce,
+  getAllProduce,
   getProduceTypes,
   addProduce,
   addGardenProduce,
   listGardenProduce,
 }
 
-function getProduce(db = connection) {
+function getAllProduce(db = connection) {
   return db('produce').select()
 }
 
 function addProduce(newProduce, db = connection) {
-  const { name, produceTypeId, status } = newProduce
+  const { name, produceTypeId } = newProduce
   return db('produce').insert({
     name,
     produce_type_id: produceTypeId,
-    status,
   })
 }
 
@@ -44,6 +43,8 @@ function addGardenProduce(produceId, gardenId, db = connection) {
     garden_id: gardenId,
   })
 }
+
+function updateGardenProduce(status, db = connection)
 
 // add and update garden_produce to change the status flag
 // produce status moved to garden_produce
