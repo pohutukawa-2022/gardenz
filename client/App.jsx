@@ -12,7 +12,7 @@ import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
-import Posts from './pages/Posts/Posts'
+import News from './pages/News/News'
 import Volunteers from './pages/Volunteers/Volunteers'
 
 import { cacheUser } from './auth-utils'
@@ -30,7 +30,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/gardens" element={<Gardens />} />
             <Route path="/gardens/:id" element={<Garden />} />
-            <Route path="/gardens/:id/posts" element={<Posts />} />
+            <Route path="/gardens/:id/news" element={<News />} />
             <Route path="/gardens/:id/events/:eventId" element={<Event />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/event/new" element={<AddEvent />} />

@@ -16,14 +16,14 @@ exports.seed = function (knex) {
       return knex('comments').insert([
         {
           id: 1,
-          post_id: 1,
+          news_id: 1,
           author: 2,
           created_on: diffDate(1),
           content: 'Twas a wonderful day for lettuce picking!',
         },
         {
           id: 2,
-          post_id: 2,
+          news_id: 2,
           author: 1,
           created_on: todayDate,
           content:

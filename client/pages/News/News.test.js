@@ -1,16 +1,16 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import PostList from '../../components/Posts/PostList'
-import { getPosts } from './postsHelper'
+import NewsList from '../../components/News/NewsList'
+import { getNews } from './newsHelper'
 
-jest.mock('./postsHelper')
+jest.mock('./newsHelper')
 
 afterEach(() => {
-  getPosts.mockClear()
+  getNews.mockClear()
 })
 
-describe('List of posts', () => {
-  const fakePost = [
+describe('List of news', () => {
+  const fakeNews = [
     {
       id: 1,
       gardenId: 1,
@@ -34,7 +34,7 @@ describe('List of posts', () => {
   ]
 
   it('props send correct data', () => {
-    const { getByText } = render(<PostList posts={fakePost} />)
+    const { getByText } = render(<NewsList news={fakeNews} />)
     expect(getByText(/By test1 firstName/)).toBeInTheDocument()
     expect(screen.getByRole('list')).toBeTruthy()
     return screen
