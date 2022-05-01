@@ -12,3 +12,21 @@ const checkAdmin = jwtAuthz(['create:produce'], {
 })
 
 module.exports = router
+
+router.post('/', checkJwt, checkAdmin, (req, res) => {
+  const { produceId, gardenId, status } = req.body
+  const newGardenProduce = { produceId, gardenId, status }
+  db.addGardenProduce(newGardenProduce)
+    .then((gardenProduce) => {
+      res.status(201).json({ gardenProduce })
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to add garden produce',
+        },
+      })
+    })
+})
