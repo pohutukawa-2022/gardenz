@@ -38,6 +38,9 @@ export default function Garden() {
           </article>
           <Events gardenid={id} events={events} />
         </div>
+        <section className="flex-column flex-container">
+          <Gallery />
+        </section>
       </motion.div>
       <motion.div
         variants={rightVariant}
@@ -57,7 +60,6 @@ export default function Garden() {
           ) : null}
         </section>
       </motion.div>
-      <Gallery />
     </section>
   )
 }
