@@ -37,7 +37,6 @@ function listGardenProduce(db = connection) {
     .select(
       'produce.id as produceId',
       'produce.name',
-      'produce.status',
       'produce_types.id as produceTypeId',
       'produce_types.name as produceTypeName'
     )

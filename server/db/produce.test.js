@@ -46,3 +46,14 @@ describe('addProduce', () => {
       })
   })
 })
+
+describe('findProduceById', () => {
+  it('returns the correct produce', () => {
+    return db.findProduceById(4, testDb).then((produce) => {
+      expect(produce.name).toMatch('Lemon')
+      expect(produce.produceTypeId).toBe(2)
+
+      return null
+    })
+  })
+})
