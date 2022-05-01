@@ -9,6 +9,7 @@ const volunteerRoutes = require('./routes/volunteers')
 const users = require('./routes/users')
 const posts = require('./routes/posts')
 const produce = require('./routes/produce')
+const gardenProduce = require('./routes/gardenProduce')
 
 const server = express()
 
@@ -23,7 +24,7 @@ server.use('/api/v1/volunteers', volunteerRoutes)
 server.use('/api/v1/users', users)
 server.use('/api/v1/posts', posts)
 server.use('/api/v1/produce', produce)
-
+server.use('/api/v1/garden_produce', gardenProduce)
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
   res.sendFile(appPath)
