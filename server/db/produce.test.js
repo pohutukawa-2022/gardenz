@@ -57,3 +57,14 @@ describe('findProduceById', () => {
     })
   })
 })
+
+// describe('listGardenProduce', () => {
+// //   it('gets all produce within a garden', () => {
+// //     return db.listGardenProduce(testDb).then((produce) => {
+// //       expect(produce).toHaveLength(12)
+// //       expect(produce[0].name).toMatch('Strawberry')
+// //       expect(produce[1].name).toMatch('Celery')
+// //       return null
+// //     })
+// //   })
+// // })
