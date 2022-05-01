@@ -19,7 +19,6 @@ describe('addGarden', () => {
       description: 'really rad garden',
       address: 'test address',
     }
-    const navigateTo = jest.fn()
     function consume(url, token, method, newGarden) {
       expect(method).toBe('post')
       expect(newGarden.name).toBe('test garden')

@@ -11,7 +11,7 @@ export default function AddGarden() {
 
   function submitGarden(garden) {
     addGarden(garden)
-    navigate()
+    navigate('/gardens')
   }
 
   const initialState = {

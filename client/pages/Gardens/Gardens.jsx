@@ -45,6 +45,23 @@ export default function Gardens() {
           </motion.li>
         )
       })}
+      <motion.li
+            className="card"
+            key='add'
+            variants={cardVariant1}
+            initial="hidden"
+            animate="visible"
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.4, yoyo: Infinity },
+            }}
+          >
+            <Link to={`/gardens/new`}>
+            <h2 className="card-header">
+              Add a garden
+            </h2>
+          </Link>
+          </motion.li>
     </ul>
   )
 }
