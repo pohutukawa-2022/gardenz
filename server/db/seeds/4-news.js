@@ -7,11 +7,11 @@ exports.seed = function (knex) {
     return newDate
   }
   // Deletes ALL existing entries
-  return knex('posts')
+  return knex('news')
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex('posts').insert([
+      return knex('news').insert([
         {
           id: 1,
           garden_id: 1,
