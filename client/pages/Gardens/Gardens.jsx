@@ -23,6 +23,7 @@ export default function Gardens() {
   }, [])
 
   return (
+    <>
     <ul className="card-container">
       {gardenList.map((garden) => {
         return (
@@ -45,7 +46,8 @@ export default function Gardens() {
           </motion.li>
         )
       })}
-      <motion.li
+      </ul>
+      <motion.div
             className="card"
             key='add'
             variants={cardVariant1}
@@ -61,7 +63,7 @@ export default function Gardens() {
               Add a garden
             </h2>
           </Link>
-          </motion.li>
-    </ul>
+          </motion.div>
+    </>
   )
 }
