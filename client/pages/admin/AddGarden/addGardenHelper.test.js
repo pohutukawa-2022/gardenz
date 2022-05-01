@@ -16,19 +16,18 @@ describe('addGarden', () => {
     }))
     const garden = {
       name: 'test garden',
-      description: 'really rad event',
+      description: 'really rad garden',
       address: 'test address',
     }
     const navigateTo = jest.fn()
-    function consume(url, token, method, garden) {
+    function consume(url, token, method, newGarden) {
       expect(method).toBe('post')
-      expect(garden).not.toBe(garden)
-      expect(garden.title).toBe('test garden')
+      expect(newGarden.name).toBe('test garden')
       return Promise.resolve()
     }
-    return addGarden(garden, navigateTo, consume).then(() => {
+    return addGarden(garden, consume).then(() => {
+      console.log('garden: ', garden, 'consume: ', consume)
       expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
-      expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
       return null
     })
   })
@@ -41,7 +40,7 @@ describe('addGarden', () => {
     function consume() {
       return Promise.reject(new Error('mock error'))
     }
-    return addGarden({}, navigateTo, consume).then(() => {
+    return addGarden({}, consume).then(() => {
       expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
       expect(navigateTo).not.toHaveBeenCalled()
       return null
