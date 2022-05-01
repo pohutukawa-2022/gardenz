@@ -2,10 +2,10 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import PostList from './PostList'
+import NewsList from './NewsList'
 
-describe('PostList', () => {
-  const fakePost = [
+describe('NewsList', () => {
+  const fakeNews = [
     {
       title: 'Lettuce Picking Season',
       createdOn: '01/01/2222',
@@ -23,12 +23,12 @@ describe('PostList', () => {
   ]
 
   it('Print needed List of items amount', () => {
-    render(<PostList posts={fakePost} />)
+    render(<NewsList news={fakeNews} />)
     expect(screen.getAllByRole('listitem')).toHaveLength(6)
   })
 
-  it('renders post data', async () => {
-    render(<PostList posts={fakePost} />)
+  it('renders news data', async () => {
+    render(<NewsList news={fakeNews} />)
     expect(screen.getByText(/Test LastName2/)).toBeInTheDocument()
     expect(await screen.queryByText('Lettuce Picking Season')).toBeNull()
   })
