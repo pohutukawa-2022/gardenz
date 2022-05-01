@@ -56,14 +56,14 @@ function sendNotification(userdata, eventdata) {
         },
       ],
       from: {
-        email: 'admin@gardenz.eda.nz',
+        email: 'gardenzSendgrid@gmail.com',
         name: 'Gardenz',
       },
       reply_to: {
-        email: 'reply@gardenz.eda.nz',
+        email: 'gardenzSendgrid@gmail.com',
         name: 'Gardenz',
       },
-      template_id: 'd-5f8909decdc94fa08d818b740e47a025',
+      template_id: 'd-4181a363f6b34e578143a28b72f9a09b',
     })
   )
   req.end()
