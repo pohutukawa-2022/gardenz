@@ -3,15 +3,10 @@ const request = require('supertest')
 const server = require('../server')
 const db = require('../db/produce')
 const log = require('../logger')
-const { getAdminToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/produce')
 jest.mock('../db/users')
-
-const testAuthAdminHeader = {
-  Authorization: `Bearer ${getAdminToken()}`,
-}
 
 describe('GET /api/v1/producetypes', () => {
   it('responds with the correct produce types', () => {
