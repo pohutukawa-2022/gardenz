@@ -8,6 +8,7 @@ import { getGarden } from './gardenHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 import { motion } from 'framer-motion'
 import { leftVariant, rightVariant } from '../animationVariants'
+import ProduceList from '../../components/produce/ProduceList/ProduceList'
 
 export default function Garden() {
   const { id } = useParams()
@@ -36,6 +37,8 @@ export default function Garden() {
             <a href={url}>{url}</a>
           </article>
           <Events gardenid={id} events={events} />
+
+          <ProduceList gardenid={id} />
         </div>
       </motion.div>
       <motion.div
