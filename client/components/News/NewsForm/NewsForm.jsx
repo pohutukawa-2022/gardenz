@@ -1,21 +1,18 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import moment from 'moment'
 import { motion } from 'framer-motion'
 
 import { formButtonVariants } from '../../../pages/animationVariants'
+
+const createdDate = () => new Date().toLocaleDateString('en-NZ')
 
 const newsSchema = Yup.object({
   title: Yup.string().required('Required'),
   content: Yup.string().required('Required'),
 })
 
-function getDate(){
-  return new Date().toLocaleDateString('en-nz', {day:"numeric", month:"numeric", year:"numeric" }) 
-}
-
-export default function newsForm(props) {
+export default function NewsForm(props) {
   const news = props.formData
   const { title, content } = news
   const formik = useFormik({
@@ -25,17 +22,12 @@ export default function newsForm(props) {
     },
     onSubmit: (values) => {
       props.submitNews({
+        createdOn: createdDate(),
         ...values,
-        date: getDate(),
       })
     },
     validationSchema: newsSchema,
   })
-
-  function handleCancel(e) {
-    e.preventDefault()
-    props.cancelSubmit()
-  }
 
   return (
     <>
@@ -54,10 +46,11 @@ export default function newsForm(props) {
               id="title"
               name="title"
               type="text"
-              placeholder="news title"
+              placeholder="event title"
               onChange={formik.handleChange}
               value={formik.values.title}
             />
+
             <label htmlFor="content" className="label">
               Content
             </label>
@@ -70,8 +63,8 @@ export default function newsForm(props) {
               name="content"
               placeholder="news content"
               onChange={formik.handleChange}
-              value={formik.values.description}
-             />
+              value={formik.values.content}
+            />
           </div>
 
           <div className="button-group">

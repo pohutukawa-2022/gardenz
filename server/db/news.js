@@ -5,9 +5,9 @@ module.exports = {
   getAllNews,
   getNewsByGardenId,
   getNewsById,
-  addBlogNews,
-  updateBlogNews,
-  deleteBlogNews,
+  addNews,
+  updateNews,
+  deleteNews,
 }
 
 function getAllNews(db = connection) {
@@ -47,7 +47,7 @@ function getNewsById(id, db = connection) {
     .first()
 }
 
-function addBlogNews(newNews, db = connection) {
+function addNews(newNews, db = connection) {
   const { gardenId, author, title, createdOn, content } = newNews
   return db('news').insert({
     garden_id: gardenId,
@@ -58,7 +58,7 @@ function addBlogNews(newNews, db = connection) {
   })
 }
 
-function updateBlogNews(updatedNews, db = connection) {
+function updateNews(updatedNews, db = connection) {
   const { id, gardenId, author, title, createdOn, content } = updatedNews
   return db('News')
     .where('id', id)
@@ -72,7 +72,7 @@ function updateBlogNews(updatedNews, db = connection) {
     .then(() => getNewsById(id, db))
 }
 
-function deleteBlogNews(id, db = connection) {
+function deleteNews(id, db = connection) {
   return db('news')
     .where('news.id', id)
     .del()
