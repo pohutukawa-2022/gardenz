@@ -4,6 +4,7 @@ const jwtAuthz = require('express-jwt-authz')
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/news')
+const { getUsersByAuth } = require('../db/users')
 
 const router = express.Router()
 module.exports = router
@@ -31,20 +32,19 @@ router.get('/:gardenid', (req, res) => {
 
 // Remove author from body req.user.id??
 // POST /api/v1/news/:gardenid
-router.post('/:gardenid', checkJwt, checkAdmin, (req, res) => {
-  const { gardenId, author, title, createdOn, content } = req.body
-  const newNews = { gardenId, author, title, createdOn, content }
-  db.addNews(newNews)
-    .then((response) => {
-      res.status(201).json(response)
-      return null
+router.post('/:gardenid', checkJwt, checkAdmin, async (req, res) => {
+  try {
+    const { gardenId, title, createdOn, content } = req.body
+    const { id: author } = await getUsersByAuth(req.user?.sub)
+    const newNews = { gardenId, author, title, createdOn, content }
+    await db.addNews(newNews)
+    res.sendStatus(201)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to add news',
+      },
     })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to add news',
-        },
-      })
-    })
+  }
 })

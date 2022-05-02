@@ -5,10 +5,9 @@ import requestor from '../../../consume'
 
 export function addNews(news, navigateTo, consume = requestor) {
   const storeState = getState()
-  const { gardenId, token, id } = storeState.user
+  const { gardenId, token } = storeState.user
   const newEvent = {
     gardenId,
-    author: id, //can we get this from token on the backend??
     ...news,
   }
   dispatch(setWaiting())
