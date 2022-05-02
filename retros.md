@@ -47,3 +47,13 @@
 |                                           | got support                            |                                        |
 |                                           | 3 PR accepted                          |                                        |
 |                                           | pair programming                       |                                        |
+
+## Day 3
+ **didn't go well** | **did go well**                                         | **future **                                           
+--------------------|---------------------------------------------------------|-------------------------------------------------------
+ complex features   | clementine broke down bigger tasks (divide and conquer) | eat more fermented chilli                             
+ unclear tickets    | Kang reused exisiting components                        | more wireframes                                       
+ large team size    | pair programming                                        | communication between teams working on same features  
+ not in the mood    | learned patterns from existing large codebase           | researching and planning                              
+ planning tickets   |                                                         |                                                       
+ missing wireframes |                                                         |                                                       
