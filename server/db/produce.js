@@ -11,7 +11,7 @@ module.exports = {
 }
 
 function getAllProduce(db = connection) {
-  return db('produce').select()
+  return db('produce').select('id', 'name', 'produce_type_id as produceTypeId')
 }
 
 function addProduce(newProduce, db = connection) {
