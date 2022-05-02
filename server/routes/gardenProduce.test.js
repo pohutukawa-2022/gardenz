@@ -57,3 +57,42 @@ describe('POST /api/v1/gardenproduce', () => {
       })
   })
 })
+
+describe('GET /api/v1/gardenproduce/:id', () => {
+  it('responds with the correct garden produce for a given garden', () => {
+    db.getProduceByGardenId.mockImplementation((gardenId) => {
+      expect(gardenId).toBe('1')
+      return Promise.resolve([
+        { id: 1, name: 'apple', produceType: 'fruits' },
+        { id: 2, name: 'orange', produceType: 'veggies' },
+      ])
+    })
+
+    return request(server)
+      .get('/api/v1/gardenproduce/1')
+      .then((res) => {
+        expect(res.status).toBe(200)
+        expect(res.body.produce[0].id).toBe(1)
+        expect(res.body.produce[0].name).toBe('apple')
+        expect(res.body.produce[0].produceType).toBe('fruits')
+        expect(res.body.produce).toHaveLength(2)
+        return null
+      })
+  })
+
+  it('responds with status 500 and an error during a DB error', () => {
+    db.addGardenProduce.mockImplementation(() =>
+      Promise.reject(new Error('mock addGardenProduce error'))
+    )
+    return request(server)
+      .post('/api/v1/gardenproduce')
+      .set(testAuthAdminHeader)
+      .expect('Content-Type', /json/)
+      .expect(500)
+      .then((res) => {
+        expect(log).toHaveBeenCalledWith('mock addGardenProduce error')
+        expect(res.body.error.title).toBe('Unable to add garden produce')
+        return null
+      })
+  })
+})
