@@ -1,177 +1,136 @@
-import React from 'react'
-import { useFormik, Field } from 'formik'
+import React, { useEffect, useState } from 'react'
+import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import moment from 'moment'
 import { motion } from 'framer-motion'
-
 import { formButtonVariants } from '../../../pages/animationVariants'
+import { getAllGardens } from '../../../pages/Gardens/gardensHelper'
+import { getProduceTypes } from './ProduceFormHelper'
+import { useDispatch } from 'react-redux'
+import { showError } from '../../../actions/error'
 
 const eventSchema = Yup.object({
   name: Yup.string().required('Required'),
-  //required here
+  gardenIds: Yup.array().min(1, 'At least one garden should be selected'),
+  produceType: Yup.string().required('Required'),
 })
 
 export default function ProduceForm(props) {
-  const event = props.formData
-  const { name } = event
-  const formik = useFormik({
-    initialValues: {
-      name,
-    },
-    onSubmit: (values) => {
-      props.submitEvent({
-        ...values,
-      })
-    },
-    validationSchema: eventSchema,
-  })
+  const dispatch = useDispatch()
+  const [gardens, setGardens] = useState([])
+  const [produceTypes, setProduceTypes] = useState([])
 
-  function handleCancel(e) {
-    e.preventDefault()
-    props.cancelSubmit()
-  }
-  const options = [
-    { value: 'legumes', label: 'Legumes' },
-    { value: 'leafy-greens', label: 'Leafy Greens' },
-    { value: 'vegetables', label: 'Root Vegetables' },
-  ]
+  useEffect(() => {
+    getProduceTypes()
+      .then((types) => {
+        setProduceTypes(types)
+        return null
+      })
+      .catch((error) => {
+        dispatch(showError(error))
+      })
+    getAllGardens()
+      .then((gardens) => {
+        setGardens(gardens.map((garden) => ({ ...garden, checked: false })))
+        return null
+      })
+      .catch((error) => {
+        dispatch(showError(error))
+      })
+  }, [])
+
+  const produceItem = props.formData
+  const { name, produceType, gardenIds } = produceItem
 
   return (
     <>
       <div>
         <h2 className="form-title">{props.action}</h2>
-        <form className="form-content" onSubmit={formik.handleSubmit}>
-          <div className="field">
-            <label htmlFor="name" className="label">
-              Produce Name
-            </label>
-            {formik.errors.name && formik.touched.name ? (
-              <p className="inputError">{formik.errors.name}</p>
-            ) : null}
-            <input
-              className="form-box"
-              id="name"
-              name="name"
-              type="text"
-              placeholder="produce name"
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-            <label htmlFor="garden" className="label">
-              Produce Family
-            </label>
-            {/* {showAnyErrors('garden')} */}
-            <select
-              className="form-box"
-              name="gardenId"
-              id="produceType"
-              onChange={formik.handleChange}
-            >
-              <option hidden>Select from this list</option>
-              {options.map((option) => {
-                console.log(option)
-                return (
-                  <option key={option.id} value={option.value}>
-                    {option.label}
-                  </option>
-                )
-              })}
-            </select>
-            {/* <label>
-              <Field type="checkbox" name="checked" value="One" />
-              Auckland Teaching
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Two" />
-              Devonport Community
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Three" />
-              Owairaka Community
-            </label>{' '}
-            <label>
-              <Field type="checkbox" name="checked" value="Two" />
-              Kingsland Community
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Three" />
-              Kelmarna Gardens
-            </label> */}
-            {/* <div id="my-radio-group">Picked</div>
-            <div role="group" aria-labelledby="my-radio-group">
-              <label>
-                <Field type="radio" name="picked" value="One" />
-                One
-              </label>
-              <label>
-                <Field type="radio" name="picked" value="Two" />
-                Two
-              </label>
-              <div>Picked: {values.picked}</div>
-            </div>
-          </div> */}
+        <Formik
+          initialValues={{
+            name,
+            produceType,
+            gardenIds,
+          }}
+          validationSchema={eventSchema}
+          onSubmit={async (values) => {
+            console.log(values)
+            alert(JSON.stringify(values, null, 2))
+          }}
+        >
+          {({ errors, touched }) => (
+            <Form className="form-content">
+              <div className="field">
+                <label htmlFor="name" className="label">
+                  Produce Name
+                </label>
+                <Field
+                  className="form-box"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="produce name"
+                />
+                {errors.name && touched.name ? <div>{errors.name}</div> : null}
+                <label htmlFor="garden" className="label">
+                  Produce Family
+                </label>
+                {errors.produceType && touched.produceType ? (
+                  <div>{errors.produceType}</div>
+                ) : null}
+                <Field
+                  id="produceType"
+                  name="produceType"
+                  placeholder="produce name"
+                >
+                  {({ field }) => (
+                    <select {...field}>
+                      <option value=""></option>
+                      {produceTypes.map(({ id, name }) => (
+                        <option key={id} value={id}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                </Field>
+              </div>
 
-            <div className="button-group">
-              {props.action === 'Update Event' ? (
+              <ul role="gardenList">
+                {gardens?.length ? (
+                  gardens.map((garden) => {
+                    return (
+                      <li key={garden.id}>
+                        <Field
+                          value={garden.id.toString()}
+                          type="checkbox"
+                          name="gardenIds"
+                        />
+                        {errors.gardenIds && touched.gardenIds ? (
+                          <div>{errors.gardenIds}</div>
+                        ) : null}
+                        {garden.name}
+                      </li>
+                    )
+                  })
+                ) : (
+                  <p>No produce yet</p>
+                )}
+              </ul>
+
+              <div className="button-group">
                 <motion.button
                   className="submit form-box"
-                  onClick={handleCancel}
+                  type="submit"
                   variants={formButtonVariants}
                   whileHover="hover"
                 >
-                  Cancel Event
+                  Submit
                 </motion.button>
-              ) : null}
-
-              <motion.button
-                className="submit form-box"
-                type="submit"
-                variants={formButtonVariants}
-                whileHover="hover"
-              >
-                Submit
-              </motion.button>
-            </div>
-          </div>
-        </form>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </>
   )
-}
-
-{
-  /* <div id="checkbox-group">Checked</div>
-          <div role="group" aria-labelledby="checkbox-group">
-            <label>
-              <Field type="checkbox" name="checked" value="One" />
-              One
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Two" />
-              Two
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Three" />
-              Three
-            </label>
-          </div> */
-}
-
-{
-  /* //   <Form>
-//   <div id="my-radio-group">Picked</div>
-//   <div role="group" aria-labelledby="my-radio-group">
-//     <label>
-//       <Field type="radio" name="picked" value="One" />
-//       One
-//     </label>
-//     <label>
-//       <Field type="radio" name="picked" value="Two" />
-//       Two
-//     </label>
-//     <div>Picked: {values.picked}</div>
-//   </div>
-
-//   <button type="submit">Submit</button>
-// </Form> */
 }

@@ -15,9 +15,9 @@ export default function AddProduce() {
   }
   const initialState = {
     name: '',
-    // date: '',
-    // volunteersNeeded: 0,
-    // description: '',
+    produceType: 0,
+    gardenIds: [],
+    inSeason: false,
   }
   return (
     <motion.div
