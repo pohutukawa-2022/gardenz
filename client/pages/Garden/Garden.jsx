@@ -43,6 +43,7 @@ export default function Garden() {
         initial="hidden"
         animate="visible"
         exit="exit"
+        className="garden-side-bar"
       >
         <Map
           userCoordinates={location}
