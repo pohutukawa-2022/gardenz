@@ -97,8 +97,7 @@ export default function Register() {
               id="garden"
               onChange={formik.handleChange}
               value={formik.values.gardenId}
-
->
+            >
               <option hidden>Select from this list</option>
               {gardenList.map((garden) => {
                 return (
