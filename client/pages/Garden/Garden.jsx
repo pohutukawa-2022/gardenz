@@ -38,23 +38,23 @@ export default function Garden() {
           <Events gardenid={id} events={events} />
         </div>
       </motion.div>
-      <motion.div
-        variants={rightVariant}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="garden-side-bar"
-      >
-        <Map
-          userCoordinates={location}
-          coordinates={[{ lat: lat, lon: lon }]}
-          addresses={[address]}
-          names={[name]}
-        />
-        {user.isAdmin && events.length > 0 ? (
-          <BarGraph events={events} />
-        ) : null}
-      </motion.div>
+      { lat && lon ? (
+        <motion.div
+          variants={rightVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="garden-side-bar"
+        >
+          <Map
+            userCoordinates={location}
+            coordinates={[{ lat: lat, lon: lon }]}
+            addresses={[address]}
+            names={[name]}
+          />
+          {user.isAdmin ? <BarGraph events={events} /> : null}
+        </motion.div>
+      ) : null}
     </section>
   )
 }
