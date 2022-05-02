@@ -13,6 +13,7 @@ const checkAdmin = jwtAuthz(['create:produce'], {
 
 module.exports = router
 
+// GET /api/v1/gardenproduce/1
 router.get('/:gardenId', (req, res) => {
   const gardenId = req.params.gardenId
   db.getProduceByGardenId(gardenId)
@@ -30,6 +31,7 @@ router.get('/:gardenId', (req, res) => {
     })
 })
 
+// POST /api/v1/gardenproduce
 router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { produceId, gardens } = req.body
   const newGardenProduce = { produceId, gardens }

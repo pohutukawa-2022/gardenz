@@ -5,6 +5,7 @@ const router = express.Router()
 
 module.exports = router
 
+// GET /api/v1/producetypes
 router.get('/', (req, res) => {
   db.getProduceTypes()
     .then((produceTypes) => {
