@@ -14,9 +14,9 @@ const upload = multer({
   storage: memStorage,
 })
 
-router.get('/gardens/:id', (req, res) => {
-  const photoName = req.params.name
-  db.getPhotoByName(photoName)
+router.get('/:gardenid', (req, res) => {
+  const galleryId = req.params.gardenid
+  db.getImages(galleryId)
     .then((photos) => {
       res.json(
         photos.map((photo) => ({
@@ -38,21 +38,21 @@ router.get('/gardens/:id', (req, res) => {
     })
 })
 
-router.post('/gardens/:id', upload.single('image'), async (req, res) => {
+router.post('/:gardenid', upload.single('image'), async (req, res) => {
   const image = {
     name: req.body.name,
     mimetype: req.file.mimetype,
     image: req.file.buffer,
-    garden_id: req.params.id,
+    garden_id: req.params.gardenid,
   }
   try {
-    await db.addPhoto(image)
+    await db.addImage(image)
     res.sendStatus(201)
   } catch (err) {
     log(err.message)
     res.status(500).json({
       error: {
-        title: 'Unable to retrieve gallery images',
+        title: 'Unable to add gallery images',
       },
     })
   }
