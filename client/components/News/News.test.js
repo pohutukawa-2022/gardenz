@@ -2,10 +2,10 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import Post from './Post'
+import News from './News'
 
-describe('Post', () => {
-  const fakePost = {
+describe('News', () => {
+  const fakeNews = {
     title: 'Lettuce Picking Season',
     createdOn: '01/01/1200',
     firstName: 'FirstName',
@@ -13,22 +13,22 @@ describe('Post', () => {
   }
 
   it('Print needed List of items amount', () => {
-    render(<Post post={fakePost} />)
-    const post = screen.getAllByRole('listitem')
-    expect(post).toHaveLength(3)
-    expect(post[0].textContent).toBe('By FirstName LastName:')
+    render(<News news={fakeNews} />)
+    const news = screen.getAllByRole('listitem')
+    expect(news).toHaveLength(3)
+    expect(news[0].textContent).toBe('By FirstName LastName:')
   })
 
-  it('renders post data', async () => {
-    render(<Post post={fakePost} />)
-    const post = screen.getByText(/LastName/)
+  it('renders news data', async () => {
+    render(<News news={fakeNews} />)
+    const news = screen.getByText(/LastName/)
     const title = await screen.queryByText('Lettuce Picking Season')
-    expect(post).toBeInTheDocument()
+    expect(news).toBeInTheDocument()
     expect(title).toBeNull()
   })
 
   it('Render correct relative time format', async () => {
-    render(<Post post={fakePost} />)
+    render(<News news={fakeNews} />)
     const createdOn = screen.getByText(/ago/)
     expect(createdOn).toBeInTheDocument()
   })
