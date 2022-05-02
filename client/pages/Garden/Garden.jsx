@@ -42,7 +42,7 @@ export default function Garden() {
           <Gallery />
         </section>
       </motion.div>
-      { lat && lon ? (
+      {lat && lon ? (
         <motion.div
           variants={rightVariant}
           initial="hidden"
