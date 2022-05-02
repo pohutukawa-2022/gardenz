@@ -1,22 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik, Field } from 'formik'
 import * as Yup from 'yup'
 import moment from 'moment'
 import { motion } from 'framer-motion'
-
 import { formButtonVariants } from '../../../pages/animationVariants'
+import { getAllGardens } from '../../../pages/Gardens/gardensHelper'
+
+const gardens = getAllGardens()
+console.log(gardens)
 
 const eventSchema = Yup.object({
   name: Yup.string().required('Required'),
+  gardenIds: Yup.array().required('Required'),
   //required here
 })
 
 export default function ProduceForm(props) {
-  const event = props.formData
-  const { name } = event
+  const [gardens, setGardens] = useState([])
+
+  useEffect(() => {
+    getAllGardens()
+      .then((gardens) => {
+        setGardens(gardens.map((garden) => ({ ...garden, checked: false })))
+        return null
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
+
+  function handleChecked(gardenId, isChecked) {
+    setGardens(
+      gardens.map((garden) =>
+        garden.id === gardenId ? { ...garden, checked: !isChecked } : garden
+      )
+    )
+  }
+  const produceItem = props.formData
+  const { name, produceType, gardenIds, inSeason } = produceItem
   const formik = useFormik({
     initialValues: {
       name,
+      produceType,
+      gardenIds,
+      inSeason,
     },
     onSubmit: (values) => {
       props.submitEvent({
@@ -26,16 +53,13 @@ export default function ProduceForm(props) {
     validationSchema: eventSchema,
   })
 
-  function handleCancel(e) {
-    e.preventDefault()
-    props.cancelSubmit()
-  }
   const options = [
     { value: 'legumes', label: 'Legumes' },
     { value: 'leafy-greens', label: 'Leafy Greens' },
     { value: 'vegetables', label: 'Root Vegetables' },
   ]
-
+  console.log('gardenState', gardens)
+  console.log('formik.values', formik.values)
   return (
     <>
       <div>
@@ -78,28 +102,26 @@ export default function ProduceForm(props) {
               })}
             </select>
           </div>
-          {/* <div className="checkbox-group">
-            <label>
-              <Field type="checkbox" name="checked" value="One" />
-              Auckland Teaching
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Two" />
-              Devonport Community
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Three" />
-              Owairaka Community
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Two" />
-              Kingsland Community
-            </label>
-            <label>
-              <Field type="checkbox" name="checked" value="Three" />
-              Kelmarna Gardens
-            </label>
-          </div> */}
+
+          <ul role="gardenList">
+            {gardens?.length ? (
+              gardens.map((garden) => {
+                return (
+                  <li key={garden.id}>
+                    <input
+                      value={garden.id}
+                      type="checkbox"
+                      checked={garden.checked}
+                      onChange={() => handleChecked(garden.id, garden.checked)}
+                    />
+                    {garden.name}
+                  </li>
+                )
+              })
+            ) : (
+              <p>No produce yet</p>
+            )}
+          </ul>
 
           {/* <div id="my-radio-group">
             Picked
@@ -112,7 +134,7 @@ export default function ProduceForm(props) {
                 <Field type="radio" name="picked" value="Two" />
                 Two
               </label>
-              <div>Picked: {values.picked}</div>
+              <div>In season: {formik.values.inSeason}</div>
             </div>
           </div> */}
 
@@ -120,7 +142,7 @@ export default function ProduceForm(props) {
             {props.action === 'Update Event' ? (
               <motion.button
                 className="submit form-box"
-                onClick={handleCancel}
+                // onClick={handleCancel}
                 variants={formButtonVariants}
                 whileHover="hover"
               >

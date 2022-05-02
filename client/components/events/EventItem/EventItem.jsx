@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Collapsible from 'react-collapsible'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
+
 export default function EventItem({ gardenid, event, isAdmin }) {
   const [open, setOpen] = useState(false)
   const {
