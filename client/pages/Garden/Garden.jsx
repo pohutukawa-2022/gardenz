@@ -44,17 +44,15 @@ export default function Garden() {
         animate="visible"
         exit="exit"
       >
-        <section>
-          <Map
-            userCoordinates={location}
-            coordinates={[{ lat: lat, lon: lon }]}
-            addresses={[address]}
-            names={[name]}
-          />
-          {user.isAdmin && events.length > 0 ? (
-            <BarGraph events={events} />
-          ) : null}
-        </section>
+        <Map
+          userCoordinates={location}
+          coordinates={[{ lat: lat, lon: lon }]}
+          addresses={[address]}
+          names={[name]}
+        />
+        {user.isAdmin && events.length > 0 ? (
+          <BarGraph events={events} />
+        ) : null}
       </motion.div>
     </section>
   )
