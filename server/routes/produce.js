@@ -33,8 +33,8 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { name, produceTypeId } = req.body
   const newProduce = { name, produceTypeId }
   db.addProduce(newProduce)
-    .then((produce) => {
-      res.status(201).json({ produce })
+    .then(() => {
+      res.sendStatus(201)
       return null
     })
     .catch((err) => {

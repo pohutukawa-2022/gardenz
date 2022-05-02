@@ -28,13 +28,21 @@ describe('POST /api/v1/produce', () => {
       })
   })
 
-  it('responds with the correct produce', () => {
+  it('responds with the status 201', () => {
     db.addProduce.mockImplementation((newProduce) => {
-      expect(newProduce.id).toBe(2)
-      expect(newProduce.name).toMatch('Melon')
+      expect(newProduce.name).toMatch('banana')
       expect(newProduce.produceTypeId).toBe(2)
-      return Promise.resolve(mockProduce)
+      return Promise.resolve()
     })
+
+    return request(server)
+      .post('/api/v1/produce')
+      .set(testAuthAdminHeader)
+      .send({ name: 'banana', produceTypeId: 2 })
+      .then((res) => {
+        expect(res.status).toBe(201)
+        return null
+      })
   })
 
   it('responds with status 500 and an error during a DB error', () => {
