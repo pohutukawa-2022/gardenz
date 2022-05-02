@@ -42,24 +42,23 @@ export default function Garden() {
           <Gallery />
         </section>
       </motion.div>
-      <motion.div
-        variants={rightVariant}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <section>
+      {lat && lon ? (
+        <motion.div
+          variants={rightVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="garden-side-bar"
+        >
           <Map
             userCoordinates={location}
             coordinates={[{ lat: lat, lon: lon }]}
             addresses={[address]}
             names={[name]}
           />
-          {user.isAdmin && events.length > 0 ? (
-            <BarGraph events={events} />
-          ) : null}
-        </section>
-      </motion.div>
+          {user.isAdmin ? <BarGraph events={events} /> : null}
+        </motion.div>
+      ) : null}
     </section>
   )
 }
