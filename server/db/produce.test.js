@@ -58,6 +58,18 @@ describe('findProduceById', () => {
   })
 })
 
+describe('getProduceByGardenId', () => {
+  it('return an array of produce', () => {
+    return db.getProduceByGardenId(1, testDb).then((produce) => {
+      expect(produce[0].id).toBe(1)
+      expect(produce[0].name).toBe('Strawberry')
+      expect(produce[0].produceType).toBe('fruits')
+      expect(produce).toHaveLength(3)
+      return null
+    })
+  })
+})
+
 // describe('addGardenProduce', () => {
 //   it.only('adds a new garden produce to the db', () => {
 //     const produceId = 1
