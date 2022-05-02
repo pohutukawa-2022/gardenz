@@ -1,5 +1,5 @@
 const { checkJwt } = require('./auth')
-// const jwtAuthz = require('express-jwt-authz')
+const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 const log = require('../logger')
@@ -8,10 +8,9 @@ const db = require('../db/news')
 const router = express.Router()
 module.exports = router
 
-// !!! NOT USED
-// const checkAdmin = jwtAuthz(['create:news'], {
-//   customScopeKey: 'permissions',
-// })
+const checkAdmin = jwtAuthz(['create:news'], {
+  customScopeKey: 'permissions',
+})
 
 // GET /api/v1/news/:gardenid
 router.get('/:gardenid', (req, res) => {
@@ -30,9 +29,9 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
-// !!! Check use had permission and Auth0id matches author (or get author using token?)
+// Remove author from body req.user.id??
 // POST /api/v1/news/:gardenid
-router.post('/:gardenid', checkJwt, (req, res) => {
+router.post('/:gardenid', checkJwt, checkAdmin, (req, res) => {
   const { gardenId, author, title, createdOn, content } = req.body
   const newNews = { gardenId, author, title, createdOn, content }
   db.addNews(newNews)
