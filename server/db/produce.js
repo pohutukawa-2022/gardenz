@@ -8,6 +8,7 @@ module.exports = {
   listGardenProduce,
   findProduceById,
   findGardenProduceById,
+  getProduceByGardenId,
 }
 
 function getAllProduce(db = connection) {
@@ -29,6 +30,18 @@ function findProduceById(id, db = connection) {
     .where('id', id)
     .select('name', 'produce_type_id as produceTypeId')
     .first()
+}
+
+function getProduceByGardenId(gardenId, db = connection) {
+  return db('garden_produce')
+    .join('produce', 'garden_produce.produce_id', 'produce.id')
+    .join('produce_types', 'produce.produce_type_id', 'produce_types.id')
+    .where('garden_produce.garden_id', gardenId)
+    .select(
+      'produce.id as id',
+      'produce.name as name',
+      'produce_types.name as produceType'
+    )
 }
 
 function listGardenProduce(db = connection) {
