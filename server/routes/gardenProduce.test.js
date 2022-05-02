@@ -32,10 +32,19 @@ describe('POST /api/v1/garden_produce', () => {
   it('responds with the correct garden produce', () => {
     db.addGardenProduce.mockImplementation((newGardenProduce) => {
       expect(newGardenProduce.produceId).toBe(1)
-      expect(newGardenProduce.gardenId).toBe(1)
-      expect(newGardenProduce.status).toBeTruthy()
-      return Promise.resolve(mockGardenProduce)
+      expect(newGardenProduce.gardens).toContain(1)
+      expect(newGardenProduce.gardens).toContain(2)
+      return Promise.resolve()
     })
+
+    return request(server)
+      .post('/api/v1/garden_produce')
+      .set(testAuthAdminHeader)
+      .send({ produceId: 1, gardens: [1, 2] })
+      .then((res) => {
+        expect(res.status).toBe(201)
+        return null
+      })
   })
 
   it('responds with status 500 and an error during a DB error', () => {

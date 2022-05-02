@@ -17,8 +17,8 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { produceId, gardens } = req.body
   const newGardenProduce = { produceId, gardens }
   db.addGardenProduce(newGardenProduce)
-    .then((gardenProduce) => {
-      res.status(201).json({ gardenProduce })
+    .then(() => {
+      res.sendStatus(201)
       return null
     })
     .catch((err) => {
