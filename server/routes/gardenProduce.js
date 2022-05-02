@@ -13,6 +13,23 @@ const checkAdmin = jwtAuthz(['create:produce'], {
 
 module.exports = router
 
+router.get('/:gardenId', (req, res) => {
+  const gardenId = req.params.gardenId
+  db.getProduceByGardenId(gardenId)
+    .then((produce) => {
+      res.json({ produce })
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve garden produce',
+        },
+      })
+    })
+})
+
 router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { produceId, gardens } = req.body
   const newGardenProduce = { produceId, gardens }
