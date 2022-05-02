@@ -14,6 +14,7 @@ import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
 import News from './pages/News/News'
 import Volunteers from './pages/Volunteers/Volunteers'
+import AddProduce from './pages/admin/produce/AddProduce'
 
 import { cacheUser } from './auth-utils'
 
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="/event/new" element={<AddEvent />} />
             <Route path="/events/:id/edit" element={<EditEvent />} />
             <Route path="/events/:id/volunteers" element={<Volunteers />} />
+            <Route path="/produce/new" element={<AddProduce />} />
           </Routes>
         </AnimatePresence>
       </main>

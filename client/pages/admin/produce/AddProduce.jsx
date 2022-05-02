@@ -1,16 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addEvent } from './addEventHelper'
+import { addProduce } from './addProduceHelper'
 import { motion } from 'framer-motion'
 
-import ProduceForm from '../../../components/produce/ProduceForm'
+import ProduceForm from '../../../components/produce/ProduceForm/ProduceForm'
 import { addEventVariants } from '../../animationVariants'
 
-export default function AddEvent() {
+export default function AddProduce() {
   const navigate = useNavigate()
 
   function submitEvent(event) {
-    addEvent(event)
+    addProduce(event)
     navigate()
   }
   const initialState = {
@@ -26,7 +26,7 @@ export default function AddEvent() {
       animate="visible"
       exit="exit"
     >
-      <EventForm
+      <ProduceForm
         formData={initialState}
         action="Create Event"
         submitEvent={submitEvent}
