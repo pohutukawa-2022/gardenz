@@ -8,6 +8,7 @@ const eventRoutes = require('./routes/events')
 const volunteerRoutes = require('./routes/volunteers')
 const users = require('./routes/users')
 const news = require('./routes/news')
+const gallery = require('./routes/gallery')
 
 const server = express()
 
@@ -21,6 +22,7 @@ server.use('/api/v1/events', eventRoutes)
 server.use('/api/v1/volunteers', volunteerRoutes)
 server.use('/api/v1/users', users)
 server.use('/api/v1/news', news)
+server.use('/api/v1/gallery', gallery)
 
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
