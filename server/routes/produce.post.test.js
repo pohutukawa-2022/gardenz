@@ -9,11 +9,6 @@ jest.mock('../logger')
 jest.mock('../db/produce')
 jest.mock('../db/users')
 
-const mockProduce = {
-  name: 'Melon',
-  produceTypeId: 2,
-}
-
 const testAuthAdminHeader = {
   Authorization: `Bearer ${getAdminToken()}`,
 }
