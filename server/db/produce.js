@@ -12,7 +12,9 @@ module.exports = {
 }
 
 function getAllProduce(db = connection) {
-  return db('produce').select('id', 'name', 'produce_type_id as produceTypeId')
+  return db('produce')
+    .join('produce_types', 'produce.produce_type_id', 'produce_types.id')
+    .select('produce.id', 'produce.name', 'produce_types.name as produceType')
 }
 
 function addProduce(newProduce, db = connection) {
