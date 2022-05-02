@@ -46,7 +46,7 @@ export default function NewsForm(props) {
               id="title"
               name="title"
               type="text"
-              placeholder="event title"
+              placeholder="news title"
               onChange={formik.handleChange}
               value={formik.values.title}
             />
