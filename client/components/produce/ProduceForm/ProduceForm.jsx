@@ -77,7 +77,7 @@ export default function ProduceForm(props) {
                 )
               })}
             </select>
-            <label>
+            {/* <label>
               <Field type="checkbox" name="checked" value="One" />
               Auckland Teaching
             </label>
@@ -96,8 +96,8 @@ export default function ProduceForm(props) {
             <label>
               <Field type="checkbox" name="checked" value="Three" />
               Kelmarna Gardens
-            </label>
-            <div id="my-radio-group">Picked</div>
+            </label> */}
+            {/* <div id="my-radio-group">Picked</div>
             <div role="group" aria-labelledby="my-radio-group">
               <label>
                 <Field type="radio" name="picked" value="One" />
@@ -109,7 +109,7 @@ export default function ProduceForm(props) {
               </label>
               <div>Picked: {values.picked}</div>
             </div>
-          </div>
+          </div> */}
 
             <div className="button-group">
               {props.action === 'Update Event' ? (
