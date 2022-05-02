@@ -8,6 +8,7 @@ import { getGarden } from './gardenHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 import { motion } from 'framer-motion'
 import { leftVariant, rightVariant } from '../animationVariants'
+import Gallery from '../../components/Gallery/Gallery'
 
 export default function Garden() {
   const { id } = useParams()
@@ -37,6 +38,9 @@ export default function Garden() {
           </article>
           <Events gardenid={id} events={events} />
         </div>
+        <section className="flex-column flex-container">
+          <Gallery />
+        </section>
       </motion.div>
       <motion.div
         variants={rightVariant}
