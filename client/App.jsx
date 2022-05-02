@@ -9,6 +9,7 @@ import Garden from './pages/Garden/Garden'
 import Home from './pages/Home/Home'
 import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
+import AddGarden from './pages/admin/AddGarden/AddGarden'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
@@ -30,6 +31,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gardens" element={<Gardens />} />
+            <Route path="/gardens/new" element={<AddGarden />} />
             <Route path="/gardens/:id" element={<Garden />} />
             <Route path="/gardens/:id/news" element={<News />} />
             <Route path="/gardens/:id/events/:eventId" element={<Event />} />

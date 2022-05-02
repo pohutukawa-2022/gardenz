@@ -1,5 +1,11 @@
 const { encode } = require('./emailTokens')
 const log = require('../logger')
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '../.env') })
+
+const SENDGRID_EMAIL_FROM = process.env.SENDGRID_EMAIL_FROM
+const SENDGRID_EMAIL_REPLY = process.env.SENDGRID_EMAIL_REPLY
+const SENDGRID_TEMPLATE_ID = process.env.SENDGRID_TEMPLATE_ID
 
 function sendNotification(userdata, eventdata) {
   const token = encode({
@@ -56,14 +62,14 @@ function sendNotification(userdata, eventdata) {
         },
       ],
       from: {
-        email: 'admin@gardenz.eda.nz',
+        email: SENDGRID_EMAIL_FROM,
         name: 'Gardenz',
       },
       reply_to: {
-        email: 'reply@gardenz.eda.nz',
+        email: SENDGRID_EMAIL_REPLY,
         name: 'Gardenz',
       },
-      template_id: 'd-5f8909decdc94fa08d818b740e47a025',
+      template_id: SENDGRID_TEMPLATE_ID,
     })
   )
   req.end()

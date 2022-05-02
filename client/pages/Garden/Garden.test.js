@@ -67,3 +67,12 @@ describe('empty events array', () => {
     expect(graph).toBeVisible(false)
   })
 })
+
+describe('Gallery', () => {
+  test('Gallery displays image', () => {
+    renderWithRedux(<Garden />)
+    const gallery = screen.getAllByRole('img')
+    expect(gallery[0]).toHaveAttribute('src')
+    expect(gallery[0]).toHaveAttribute('alt')
+  })
+})
