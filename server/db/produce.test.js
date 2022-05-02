@@ -58,13 +58,34 @@ describe('findProduceById', () => {
   })
 })
 
+// describe('addGardenProduce', () => {
+//   it.only('adds a new garden produce to the db', () => {
+//     const produceId = 1
+//     const gardens = [1, 2]
+
+//     return db
+//       .addGardenProduce(produceId, gardens, testDb)
+//       .then((ids) => {
+//         console.log(ids)
+//         return db.findGardenProduceById(ids, testDb)
+//       })
+//       .then((newGardenProduce) => {
+//         expect(newGardenProduce.produceId).toBe(1)
+//         expect(newGardenProduce.gardenId).toBe(2)
+//         return null
+//       })
+//   })
+// })
+
 // describe('listGardenProduce', () => {
-// //   it('gets all produce within a garden', () => {
-// //     return db.listGardenProduce(testDb).then((produce) => {
-// //       expect(produce).toHaveLength(12)
-// //       expect(produce[0].name).toMatch('Strawberry')
-// //       expect(produce[1].name).toMatch('Celery')
-// //       return null
-// //     })
-// //   })
-// // })
+//   it('gets all produce within a garden', () => {
+//     return db.listGardenProduce(testDb).then((produce) => {
+//       console.log(produce)
+//       expect(produce).toHaveLength(16)
+//       expect(produce[0].produceId).toBe(1)
+//       expect(produce[0].gardenId).toBe(1)
+//       expect(produce[0].status).toBeTruthy()
+//       return null
+//     })
+//   })
+// })

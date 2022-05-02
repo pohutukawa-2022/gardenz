@@ -14,8 +14,8 @@ const checkAdmin = jwtAuthz(['create:produce'], {
 module.exports = router
 
 router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { produceId, gardenId, status } = req.body
-  const newGardenProduce = { produceId, gardenId, status }
+  const { produceId, gardens } = req.body
+  const newGardenProduce = { produceId, gardens }
   db.addGardenProduce(newGardenProduce)
     .then((gardenProduce) => {
       res.status(201).json({ gardenProduce })

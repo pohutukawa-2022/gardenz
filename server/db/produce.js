@@ -7,6 +7,7 @@ module.exports = {
   addGardenProduce,
   listGardenProduce,
   findProduceById,
+  findGardenProduceById,
 }
 
 function getAllProduce(db = connection) {
@@ -46,13 +47,26 @@ function getProduceTypes(db = connection) {
   return db('produce_types').select()
 }
 
-function addGardenProduce(produceId, gardenId, status, db = connection) {
-  return db('garden_produce').insert({
-    produce_id: produceId,
-    garden_id: gardenId,
-    status,
-  })
+function addGardenProduce(produceId, gardens, db = connection) {
+  return Promise.all(
+    gardens.map((gardenId) =>
+      db('garden_produce').insert({
+        produce_id: produceId,
+        garden_id: gardenId,
+        status: true,
+      })
+    )
+  )
 }
 
+/**
+ * @param {any} id
+ */
+function findGardenProduceById(id, db = connection) {
+  return db('garden_produce')
+    .where('id', id)
+    .select('garden_id as gardenId', 'produce_id as produceId', 'status')
+    .first()
+}
 // add and update garden_produce to change the status flag
 // produce status moved to garden_produce
