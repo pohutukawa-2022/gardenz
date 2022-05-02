@@ -275,6 +275,57 @@ Request:
 
 Response (200)
 
+### `GET /api/v1/producetypes`
+
+Response:
+```json
+{
+  "produceTypes": [
+    {"id": 1, "name": "Veggie"},
+    {"id": 2, "name": "Fruits"},
+  ]
+}
+```
+
+### `GET /api/v1/produce`
+
+Response:
+```json
+{
+  "produce": [
+    {"id": 1, "name": "Spinach", "produceType": 1},
+    {"id": 2, "name": "Apple", "produceType": 2},
+  ]
+}
+```
+
+### `POST /api/v1/produce`
+
+Request:
+```json
+{
+  "name": "Pinapple",
+  "produceTypeId": 2
+}
+```
+
+Response (201)
+
+### `POST /api/v1/gardenproduce`
+
+Request:
+```json
+{
+  "produceId": 1,
+  "gardens": [
+    1,
+    2,
+    3
+  ]
+}
+```
+
+Response (201)
 ## Database schema (proposal)
 
 ![Gardenz Entity Relationship Diagram](docs/erd.png)
