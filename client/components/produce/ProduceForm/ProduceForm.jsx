@@ -77,6 +77,8 @@ export default function ProduceForm(props) {
                 )
               })}
             </select>
+          </div>
+          {/* <div className="checkbox-group">
             <label>
               <Field type="checkbox" name="checked" value="One" />
               Auckland Teaching
@@ -88,7 +90,7 @@ export default function ProduceForm(props) {
             <label>
               <Field type="checkbox" name="checked" value="Three" />
               Owairaka Community
-            </label>{' '}
+            </label>
             <label>
               <Field type="checkbox" name="checked" value="Two" />
               Kingsland Community
@@ -97,7 +99,10 @@ export default function ProduceForm(props) {
               <Field type="checkbox" name="checked" value="Three" />
               Kelmarna Gardens
             </label>
-            <div id="my-radio-group">Picked</div>
+          </div> */}
+
+          {/* <div id="my-radio-group">
+            Picked
             <div role="group" aria-labelledby="my-radio-group">
               <label>
                 <Field type="radio" name="picked" value="One" />
@@ -109,29 +114,28 @@ export default function ProduceForm(props) {
               </label>
               <div>Picked: {values.picked}</div>
             </div>
-          </div>
+          </div> */}
 
-            <div className="button-group">
-              {props.action === 'Update Event' ? (
-                <motion.button
-                  className="submit form-box"
-                  onClick={handleCancel}
-                  variants={formButtonVariants}
-                  whileHover="hover"
-                >
-                  Cancel Event
-                </motion.button>
-              ) : null}
-
+          <div className="button-group">
+            {props.action === 'Update Event' ? (
               <motion.button
                 className="submit form-box"
-                type="submit"
+                onClick={handleCancel}
                 variants={formButtonVariants}
                 whileHover="hover"
               >
-                Submit
+                Cancel Event
               </motion.button>
-            </div>
+            ) : null}
+
+            <motion.button
+              className="submit form-box"
+              type="submit"
+              variants={formButtonVariants}
+              whileHover="hover"
+            >
+              Submit
+            </motion.button>
           </div>
         </form>
       </div>
