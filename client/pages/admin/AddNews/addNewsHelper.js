@@ -6,12 +6,12 @@ import requestor from '../../../consume'
 export function addNews(news, navigateTo, consume = requestor) {
   const storeState = getState()
   const { gardenId, token } = storeState.user
-  const newEvent = {
+  const newNews = {
     gardenId,
     ...news,
   }
   dispatch(setWaiting())
-  return consume(`/news/${gardenId}`, token, 'post', newEvent)
+  return consume(`/news/${gardenId}`, token, 'post', newNews)
     .then(() => {
       navigateTo(`/gardens/${gardenId}/news`)
       return null
