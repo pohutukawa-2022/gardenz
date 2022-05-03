@@ -14,6 +14,7 @@ const upload = multer({
   storage: memStorage,
 })
 
+// GET /api/v1/gallery/1
 router.get('/:gardenid', (req, res) => {
   const galleryId = req.params.gardenid
   db.getImages(galleryId)
@@ -36,7 +37,8 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
-router.post('/:gardenid', upload.single('image'), async (req, res) => {
+// POST /api/v1/gallery/1
+router.post('/:gardenId', upload.single('image'), async (req, res) => {
   const image = {
     name: req.body.name,
     mimetype: req.file.mimetype,
