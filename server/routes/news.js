@@ -30,7 +30,6 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
-// Remove author from body req.user.id??
 // POST /api/v1/news/:gardenid
 router.post('/:gardenid', checkJwt, checkAdmin, async (req, res) => {
   try {
