@@ -53,7 +53,6 @@ export default function ProduceForm(props) {
           }}
           validationSchema={eventSchema}
           onSubmit={async (values) => {
-            console.log(values)
             alert(JSON.stringify(values, null, 2))
           }}
         >
