@@ -47,3 +47,8 @@ describe('GET /api/v1/gallery/:id', () => {
       })
   })
 })
+
+describe('POST /api/v1/:gardenId', () => {
+  it.todo('responds with the correct gallery')
+  it.todo('responds with the status 500')
+})
