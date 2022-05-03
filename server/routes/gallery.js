@@ -20,9 +20,7 @@ router.get('/:gardenid', (req, res) => {
     .then((photos) => {
       res.json(
         photos.map((photo) => ({
-          id: photo.id,
-          name: photo.name,
-          mimetype: photo.mimetype,
+          ...photo,
           image: photo.image.toString('base64'),
         }))
       )
