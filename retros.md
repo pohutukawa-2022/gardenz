@@ -57,3 +57,14 @@
  not in the mood    | learned patterns from existing large codebase           | researching and planning                              
  planning tickets   |                                                         |                                                       
  missing wireframes |                                                         |                                                       
+
+## Day 4
+| **didn’t go well**                            | **did go well**                                                 | **future **                                               |
+|-----------------------------------------------|-----------------------------------------------------------------|-----------------------------------------------------------|
+| testing is complex                            | learning new things                                             | wireframing                                               |
+| repetitive patterns in other component        | experimenting and being brave breaking code                     | more planning to the smallest detail possible             |
+| planning ahead before starting the multi-days | Gen and Katie learning Formik (yaaay)                           | isolating a big feature into smaller and managebale ones  |
+| team size is large                            | better understanding for testing                                | less team members working on bigger features              |
+| missing data contracts                        | understanding ticket requirements                               |                                                           |
+|                                               | experiencing the power of packages                              |                                                           |
+|                                               | treating large codebase as a black box and foucs on the feature |                                                           |
