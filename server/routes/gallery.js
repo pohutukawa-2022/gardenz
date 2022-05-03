@@ -41,7 +41,7 @@ router.post('/:gardenid', upload.single('image'), async (req, res) => {
     name: req.body.name,
     mimetype: req.file.mimetype,
     image: req.file.buffer,
-    garden_id: req.params.gardenid,
+    garden_id: req.params.gardenId,
   }
   try {
     await db.addImage(image)
