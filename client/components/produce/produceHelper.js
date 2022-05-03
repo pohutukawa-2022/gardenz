@@ -1,6 +1,6 @@
 import requestor from '../../consume'
 import { dispatch } from '../../store'
-import { setWaiting, clearWaiting } from '../../actions/waiting'
+import { SET_WAITING, CLEAR_WAITING } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 
 export function getProduce(gardenid, consume = requestor) {
@@ -15,10 +15,10 @@ export function getProduce(gardenid, consume = requestor) {
       ],
     })
 
-      // dispatch(setWaiting())
+      // dispatch(SET_WAITING())
       // return consume(`/gardenproduce/${gardenid}`)
       //   .then((res) => {
-      // dispatch(clearWaiting())
+      // dispatch(CLEAR_WAITING())
       // const { data } = res.body
       // return data
       // })
