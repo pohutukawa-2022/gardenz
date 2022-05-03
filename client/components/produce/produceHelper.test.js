@@ -1,6 +1,6 @@
 import { getProduce } from './produceHelper'
 import { dispatch } from '../../store'
-import { SET_WAITING, CLEAR_WAITING } from '../../actions/waiting'
+import { setWaiting, clearWaiting } from '../../actions/waiting'
 
 jest.mock('../../store')
 

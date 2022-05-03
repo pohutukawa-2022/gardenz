@@ -6,6 +6,7 @@ export default function ProduceList({ gardenid }) {
 
   useEffect(() => {
     getProduce(gardenid).then((data) => {
+      console.log('data:', data)
       setProduce(data.produce)
       return null
     })
