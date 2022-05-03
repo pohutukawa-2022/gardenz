@@ -22,7 +22,7 @@ export default function GardenForm(props) {
     },
     onSubmit: (values) => {
       props.submitGarden({
-        ...values
+        ...values,
       })
     },
     validationSchema: gardenSchema,
@@ -86,7 +86,6 @@ export default function GardenForm(props) {
               onChange={formik.handleChange}
               value={formik.values.address}
             />
-
           </div>
 
           <div className="button-group">

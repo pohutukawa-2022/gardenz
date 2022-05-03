@@ -25,7 +25,6 @@ describe('addGarden', () => {
       return Promise.resolve()
     }
     return addGarden(garden, consume).then(() => {
-      console.log('garden: ', garden, 'consume: ', consume)
       expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
       return null
     })
