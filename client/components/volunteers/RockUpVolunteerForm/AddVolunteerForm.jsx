@@ -30,60 +30,57 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
   }
 
   return (
-    <>
-      <div>
-        <h2 className="form-title">Add Rock-Up Attendee</h2>
+    <div>
+      <h2 className="form-title">Add Rock-Up Attendee</h2>
+      <form className="form-container" onSubmit={formik.handleSubmit}>
+        <div>
+          <label className="label" htmlFor="firstname">
+            First Name
+          </label>
 
-        <form className="form-container" onSubmit={formik.handleSubmit}>
-          <div>
-            <label className="label" htmlFor="firstname">
-              First Name
-            </label>
+          {showAnyErrors('firstName')}
 
-            {showAnyErrors('firstName')}
+          <input
+            className="form-box"
+            id="firstName"
+            name="firstName"
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
+            placeholder="First Name"
+            aria-label="firstName"
+            type="text"
+          />
+        </div>
 
-            <input
-              className="form-box"
-              id="firstName"
-              name="firstName"
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
-              placeholder="First Name"
-              aria-label="firstName"
-              type="text"
-            />
-          </div>
+        <div>
+          <label className="label" htmlFor="lastname">
+            Last Name
+          </label>
 
-          <div>
-            <label className="label" htmlFor="lastname">
-              Last Name
-            </label>
+          {showAnyErrors('lastName')}
 
-            {showAnyErrors('lastName')}
-
-            <input
-              className="form-box"
-              id="lastName"
-              name="lastName"
-              value={formik.values.lastName}
-              onChange={formik.handleChange}
-              placeholder="Last Name"
-              aria-label="lastName"
-              type="text"
-            />
-          </div>
-          <div className="button-group">
-            <motion.button
-              className="submit form-box"
-              data-testid="submit-button"
-              type="submit"
-              whileHover="hover"
-            >
-              Add
-            </motion.button>
-          </div>
-        </form>
-      </div>
-    </>
+          <input
+            className="form-box"
+            id="lastName"
+            name="lastName"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            placeholder="Last Name"
+            aria-label="lastName"
+            type="text"
+          />
+        </div>
+        <div className="button-group">
+          <motion.button
+            className="submit form-box"
+            data-testid="submit-button"
+            type="submit"
+            whileHover="hover"
+          >
+            Add
+          </motion.button>
+        </div>
+      </form>
+    </div>
   )
 }

@@ -8,15 +8,13 @@ export default function VolunteerList({ volunteers, eventId }) {
       <div className="volunteers-list">
         <ul role="volunteerList">
           {volunteers?.length ? (
-            volunteers.map((volunteer) => {
-              return (
-                <VolunteerListItem
-                  key={volunteer.userId}
-                  volunteer={volunteer}
-                  eventId={eventId}
-                />
-              )
-            })
+            volunteers.map((volunteer) => (
+              <VolunteerListItem
+                key={volunteer.userId}
+                volunteer={volunteer}
+                eventId={eventId}
+              />
+            ))
           ) : (
             <p>No volunteers yet</p>
           )}
