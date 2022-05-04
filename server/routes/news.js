@@ -1,6 +1,7 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/news')
+const { checkJwt } = require('./auth')
 
 const router = express.Router()
 module.exports = router
@@ -21,7 +22,9 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', checkJwt, (req, res) => {
+  // req.user is populated by the access token
+  // const author = req.user.sub
   // const { gardenId, title, content } = req.body
   // TODO: get the current date here (tip: use moment package)
   // TODO: call db functin here to insert a newsItem
