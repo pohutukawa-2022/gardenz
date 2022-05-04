@@ -27,11 +27,6 @@ export default function NewsForm(props) {
     validationSchema: newsSchema,
   })
 
-  function handleCancel(e) {
-    e.preventDefault()
-    props.cancelSubmit()
-  }
-
   return (
     <>
       <div>
