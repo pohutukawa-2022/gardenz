@@ -1,8 +1,9 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import NewsList from './NewsList'
+import { renderWithRedux } from '../../test-utils'
 
 describe('NewsList', () => {
   const fakeNews = [
@@ -25,12 +26,20 @@ describe('NewsList', () => {
   ]
 
   it('Print needed List of items amount', () => {
-    render(<NewsList news={fakeNews} />)
+    renderWithRedux(<NewsList news={fakeNews} />, {
+      initialState: { user: { isAdmin: true } },
+      initialEntries: ['/gardens/1/news'],
+      route: '/gardens/:id/news',
+    })
     expect(screen.getAllByRole('listitem')).toHaveLength(6)
   })
 
   it('renders news data', async () => {
-    render(<NewsList news={fakeNews} />)
+    renderWithRedux(<NewsList news={fakeNews} />, {
+      initialState: { user: { isAdmin: true } },
+      initialEntries: ['/gardens/1/news'],
+      route: '/gardens/:id/news',
+    })
     expect(screen.getByText(/Test LastName2/)).toBeInTheDocument()
     expect(await screen.queryByText('Lettuce Picking Season')).toBeNull()
   })
