@@ -11,11 +11,7 @@ const newsSchema = Yup.object({
   content: Yup.string().required('Required'),
 })
 
-function getDate(){
-  return new Date().toLocaleDateString('en-nz', {day:"numeric", month:"numeric", year:"numeric" }) 
-}
-
-export default function newsForm(props) {
+export default function NewsForm(props) {
   const news = props.formData
   const { title, content } = news
   const formik = useFormik({
@@ -26,7 +22,6 @@ export default function newsForm(props) {
     onSubmit: (values) => {
       props.submitNews({
         ...values,
-        date: getDate(),
       })
     },
     validationSchema: newsSchema,
