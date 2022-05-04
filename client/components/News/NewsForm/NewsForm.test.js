@@ -41,7 +41,7 @@ describe('event form field', () => {
 
     const ele = await screen.findAllByText('Required')
 
-    expect(ele.length).toBe(2)
+    expect(ele).toHaveLength(2)
     expect(ele[0]).toBeInTheDocument()
   })
 })
