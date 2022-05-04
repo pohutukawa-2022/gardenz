@@ -6,6 +6,8 @@ import { motion } from 'framer-motion'
 import Conditional from '../../Conditional'
 import { formButtonVariants } from '../../../pages/animationVariants'
 
+const createdDate = () => new Date().toLocaleDateString('en-NZ')
+
 const newsSchema = Yup.object({
   title: Yup.string().required('Required'),
   content: Yup.string().required('Required'),
@@ -21,6 +23,7 @@ export default function NewsForm(props) {
     },
     onSubmit: (values) => {
       props.submitNews({
+        createdOn: createdDate(),
         ...values,
       })
     },
@@ -50,6 +53,7 @@ export default function NewsForm(props) {
               onChange={formik.handleChange}
               value={formik.values.title}
             />
+
             <label htmlFor="content" className="label">
               Content
             </label>
@@ -65,7 +69,7 @@ export default function NewsForm(props) {
               name="content"
               placeholder="news content"
               onChange={formik.handleChange}
-              value={formik.values.description}
+              value={formik.values.content}
             />
           </div>
 

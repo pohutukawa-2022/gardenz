@@ -46,7 +46,7 @@ export default function Register() {
     initialValues: {
       firstName: '',
       lastName: '',
-      gardenId: null,
+      gardenId: '',
     },
     onSubmit: (values) => {
       registerUser(values, isAdmin, authUser, navigate)
@@ -96,6 +96,7 @@ export default function Register() {
               name="gardenId"
               id="garden"
               onChange={formik.handleChange}
+              value={formik.values.gardenId}
             >
               <option hidden>Select from this list</option>
               {gardenList.map((garden) => {

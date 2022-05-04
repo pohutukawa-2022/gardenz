@@ -22,12 +22,13 @@ describe('when user is authenticated', () => {
       },
     })
     const links = screen.getAllByRole('link')
-    expect(links).toHaveLength(4)
+    expect(links).toHaveLength(5)
     expect(links[0]).toHaveTextContent('Home')
     expect(links[1]).toHaveTextContent('My Garden')
     expect(links[1].href).toMatch('/gardens/1')
-    expect(links[2]).toHaveTextContent('My Profile')
-    expect(links[3]).toHaveTextContent('Log out')
+    expect(links[2]).toHaveTextContent('News')
+    expect(links[3]).toHaveTextContent('My Profile')
+    expect(links[4]).toHaveTextContent('Log out')
   })
 })
 

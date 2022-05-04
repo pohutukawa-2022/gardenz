@@ -95,6 +95,9 @@ const getAdminToken = () => {
       'create:event',
       'update:event_volunteers',
       'create:garden',
+      'create:news',
+      'create:produce',
+      'create:garden_produce',
     ],
   }
 

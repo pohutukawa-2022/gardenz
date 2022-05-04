@@ -8,6 +8,7 @@ import { getGarden } from './gardenHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 import { motion } from 'framer-motion'
 import { leftVariant, rightVariant } from '../animationVariants'
+import Gallery from '../../components/Gallery/Gallery'
 
 export default function Garden() {
   const { id } = useParams()
@@ -37,25 +38,27 @@ export default function Garden() {
           </article>
           <Events gardenid={id} events={events} />
         </div>
+        <section className="flex-column flex-container">
+          <Gallery />
+        </section>
       </motion.div>
-      <motion.div
-        variants={rightVariant}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <section>
+      {lat && lon ? (
+        <motion.div
+          variants={rightVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="garden-side-bar"
+        >
           <Map
             userCoordinates={location}
             coordinates={[{ lat: lat, lon: lon }]}
             addresses={[address]}
             names={[name]}
           />
-          {user.isAdmin && events.length > 0 ? (
-            <BarGraph events={events} />
-          ) : null}
-        </section>
-      </motion.div>
+          {user.isAdmin ? <BarGraph events={events} /> : null}
+        </motion.div>
+      ) : null}
     </section>
   )
 }
