@@ -10,7 +10,9 @@ export function addNews(news, navigateTo, consume = requestor) {
     gardenId,
     ...news,
   }
+
   dispatch(setWaiting())
+
   return consume(`/news/${gardenId}`, token, 'post', newNews)
     .then(() => {
       navigateTo(`/gardens/${gardenId}/news`)
