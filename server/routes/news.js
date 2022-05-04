@@ -20,3 +20,10 @@ router.get('/:gardenid', (req, res) => {
       })
     })
 })
+
+router.post('/', (req, res) => {
+  // const { gardenId, title, content } = req.body
+  // TODO: get the current date here (tip: use moment package)
+  // TODO: call db functin here to insert a newsItem
+  res.sendStatus(201)
+})
