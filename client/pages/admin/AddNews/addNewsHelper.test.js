@@ -1,8 +1,9 @@
 import { addNews } from './addNewsHelper'
-import { CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting } from '../../../actions/waiting'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
+jest.mock('../../../actions/waiting')
 
 // resets the store.dispatch calls between tests
 afterEach(() => {
@@ -29,7 +30,7 @@ describe('testing the helper function addNews', () => {
     }
 
     return addNews(news, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+      expect(clearWaiting).toHaveBeenCalled()
       expect(navigateTo).toHaveBeenCalledWith('/gardens/1/news')
       return null
     })
