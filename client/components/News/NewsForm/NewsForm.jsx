@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { motion } from 'framer-motion'
 
+import Conditional from '../../Conditional'
 import { formButtonVariants } from '../../../pages/animationVariants'
 
 const newsSchema = Yup.object({
@@ -35,9 +36,11 @@ export default function NewsForm(props) {
             <label htmlFor="title" className="label">
               News Title
             </label>
-            {formik.errors.title && formik.touched.title ? (
+            <Conditional
+              condition={formik.errors.title && formik.touched.title}
+            >
               <p className="inputError">{formik.errors.title}</p>
-            ) : null}
+            </Conditional>
             <input
               className="form-box"
               id="title"
@@ -50,9 +53,12 @@ export default function NewsForm(props) {
             <label htmlFor="content" className="label">
               Content
             </label>
-            {formik.errors.content && formik.touched.content ? (
+            <Conditional
+              condition={formik.errors.content && formik.touched.content}
+            >
               <p className="inputError">{formik.errors.content}</p>
-            ) : null}
+            </Conditional>
+
             <textarea
               className="content-box"
               id="content"
@@ -60,7 +66,7 @@ export default function NewsForm(props) {
               placeholder="news content"
               onChange={formik.handleChange}
               value={formik.values.description}
-             />
+            />
           </div>
 
           <div className="button-group">
