@@ -5,6 +5,7 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/news')
 const { getUsersByAuth } = require('../db/users')
+const moment = require('moment')
 
 const router = express.Router()
 module.exports = router
@@ -33,8 +34,9 @@ router.get('/:gardenid', (req, res) => {
 // POST /api/v1/news/:gardenid
 router.post('/:gardenid', checkJwt, checkAdmin, async (req, res) => {
   try {
-    const { gardenId, title, createdOn, content } = req.body
+    const { gardenId, title, content } = req.body
     const { id: author } = await getUsersByAuth(req.user?.sub)
+    const createdOn = moment().format('DD/MM/YYYY')
     const newNews = { gardenId, author, title, createdOn, content }
     await db.addNews(newNews)
     res.sendStatus(201)
