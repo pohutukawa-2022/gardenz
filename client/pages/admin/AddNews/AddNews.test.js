@@ -30,19 +30,19 @@ describe('submit button', () => {
       expect(news.title).toBe('test title')
       expect(typeof navigateTo).toBe('function')
     })
-    
+
     renderWithRouter(<AddNews />)
-    
+
     const titleInput = screen.getByRole('textbox', { name: 'News Title' })
     const contentInput = screen.getByRole('textbox', {
       name: 'Content',
     })
     const addButton = screen.getByRole('button')
-    
+
     userEvent.type(titleInput, 'test title')
     userEvent.type(contentInput, 'content')
     userEvent.click(addButton)
-    
+
     await waitFor(() => {
       expect(addNews).toHaveBeenCalled()
     })
