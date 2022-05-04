@@ -3,17 +3,23 @@ import { useParams } from 'react-router-dom'
 import { getNews } from './newsHelper'
 
 import NewsList from '../../components/News/NewsList'
+import { useDispatch } from 'react-redux'
+import { showError } from '../../actions/error'
 
 export default function News() {
   const { id } = useParams()
   const [news, setNews] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
-    getNews(id).then((news) => {
-      setNews(news)
-      return null
-    })
+    getNews(id)
+      .then((news) => {
+        setNews(news)
+        return null
+      })
+      .catch((error) => {
+        dispatch(showError(error))
+      })
   }, [])
 
   return <NewsList news={news} />
