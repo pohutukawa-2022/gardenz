@@ -7,6 +7,7 @@ import NewsList from './NewsList'
 describe('NewsList', () => {
   const fakeNews = [
     {
+      id: 1,
       title: 'Lettuce Picking Season',
       createdOn: '01/01/2222',
       content: 'test content',
@@ -14,6 +15,7 @@ describe('NewsList', () => {
       lastName: 'Test LastName',
     },
     {
+      id: 2,
       title: 'cat jumping',
       createdOn: '01/01/2222',
       content: 'test content2',
