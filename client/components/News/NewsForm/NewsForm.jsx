@@ -1,7 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import moment from 'moment'
 import { motion } from 'framer-motion'
 
 import { formButtonVariants } from '../../../pages/animationVariants'
