@@ -53,6 +53,9 @@ export default function Nav() {
             <Link to={`/gardens/${gardenId}`} className="nav-link">
               My Garden
             </Link>
+            <Link to={`/gardens/${gardenId}/news`} className="nav-link">
+              News
+            </Link>
             <Link to="/profile" className="nav-link">
               My Profile
             </Link>
@@ -84,6 +87,9 @@ export default function Nav() {
           <IfAuthenticated>
             <Link to={`/gardens/${gardenId}`} className="nav-link">
               My Garden
+            </Link>
+            <Link to={`/gardens/${gardenId}/news`} className="nav-link">
+              News
             </Link>
             <Link to="/profile" className="nav-link">
               My Profile

@@ -24,8 +24,13 @@ export default function Volunteers() {
 
   return (
     <>
-      <VolunteerList volunteers={volunteers} eventId={id} />
-      <AddVolunteerForm id={id} addExtraVolunteer={addExtraVolunteerHandler} />
+      <div>
+        <VolunteerList volunteers={volunteers} eventId={id} />
+        <AddVolunteerForm
+          id={id}
+          addExtraVolunteer={addExtraVolunteerHandler}
+        />
+      </div>
     </>
   )
 }
