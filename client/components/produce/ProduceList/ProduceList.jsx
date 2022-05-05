@@ -6,8 +6,8 @@ export default function ProduceList({ gardenid }) {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getProduce(gardenid).then((data) => {
-      setProduce(data.produce)
+    getProduce(gardenid).then(({ produce }) => {
+      setProduce(produce)
       return null
     })
   }, [gardenid])
