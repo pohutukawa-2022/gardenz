@@ -76,3 +76,7 @@ describe('Gallery', () => {
     expect(gallery[0]).toHaveAttribute('alt')
   })
 })
+
+describe('produce list', () => {
+  it.todo('produceList component is rendered', () => {})
+})
