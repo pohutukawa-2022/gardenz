@@ -22,7 +22,7 @@ export default function ProduceList({ gardenid }) {
         <section className="events-list">
           <ul>
             {produce.map((item) => (
-              <li>{item.name}</li>
+              <li key={item.id}>{item.name}</li>
             ))}
           </ul>
         </section>
