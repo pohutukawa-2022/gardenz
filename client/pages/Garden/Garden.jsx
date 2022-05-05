@@ -38,7 +38,6 @@ export default function Garden() {
             <a href={url}>{url}</a>
           </article>
           <Events gardenid={id} events={events} />
-
           <ProduceList gardenid={id} />
         </div>
         <section className="flex-column flex-container">
