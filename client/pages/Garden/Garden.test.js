@@ -69,7 +69,7 @@ describe('empty events array', () => {
 })
 
 describe('Gallery', () => {
-  test('Gallery displays image', () => {
+  it('Gallery displays image', () => {
     renderWithRedux(<Garden />)
     const gallery = screen.getAllByRole('img')
     expect(gallery[0]).toHaveAttribute('src')
