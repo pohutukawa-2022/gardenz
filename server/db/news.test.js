@@ -20,7 +20,7 @@ afterAll(() => {
 })
 
 describe('getAllNews', () => {
-  it('gets all blog news', () => {
+  it('gets all news', () => {
     return db.getAllNews(testDb).then((news) => {
       expect(news).toHaveLength(2)
       expect(news[0].title).toMatch('Lettuce Picking Season')
@@ -59,8 +59,8 @@ describe('getNewsById', () => {
   })
 })
 
-describe('addBlogNews', () => {
-  it('adds the new blog news to the db', () => {
+describe('addNews', () => {
+  it('adds the new news to the db', () => {
     const newNews = {
       gardenId: 7,
       author: 1,
@@ -69,7 +69,7 @@ describe('addBlogNews', () => {
       content: 'This is just a test',
     }
     return db
-      .addBlogNews(newNews, testDb)
+      .addNews(newNews, testDb)
       .then(([id]) => {
         return db.getNewsById(id, testDb)
       })
@@ -83,10 +83,10 @@ describe('addBlogNews', () => {
   })
 })
 
-describe('deleteBlogNews', () => {
-  it('deletes the blog news from the db by id', () => {
+describe('deleteNews', () => {
+  it('deletes the news from the db by id', () => {
     return db
-      .deleteBlogNews(1, testDb)
+      .deleteNews(1, testDb)
       .then(() => db.getAllNews(testDb))
       .then((news) => {
         const filtered = news.filter((element) => element.id === 1)
@@ -98,7 +98,7 @@ describe('deleteBlogNews', () => {
   it.todo('deletes all child comments')
 })
 
-describe('updateBlogNews', () => {
+describe('updateNews', () => {
   it('returns updated news', () => {
     const updatedNews = {
       id: 1,
@@ -108,7 +108,7 @@ describe('updateBlogNews', () => {
       created_on: '2021-10-10',
       content: 'This is a cool update',
     }
-    return db.updateBlogNews(updatedNews, testDb).then((news) => {
+    return db.updateNews(updatedNews, testDb).then((news) => {
       expect(news.title).toMatch('Woohoo! I was updated!')
       expect(news.content).toMatch('This is a cool update')
       return null
