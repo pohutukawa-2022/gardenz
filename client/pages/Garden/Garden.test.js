@@ -78,5 +78,5 @@ describe('Gallery', () => {
 })
 
 describe('produce list', () => {
-  it.todo('produceList component is rendered', () => {})
+  it.todo('produceList component is rendered')
 })
