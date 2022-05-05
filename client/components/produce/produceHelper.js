@@ -8,8 +8,7 @@ export function getProduce(gardenid, consume = requestor) {
   return consume(`/gardenproduce/${gardenid}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const data = res.body
-      return data
+      return res.body
     })
     .catch((error) => {
       dispatch(showError(error.message))
