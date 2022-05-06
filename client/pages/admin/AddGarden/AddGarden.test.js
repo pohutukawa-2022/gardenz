@@ -12,7 +12,7 @@ jest.mock('./addGardenHelper')
 
 describe('form', () => {
   it('is empty', () => {
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
 
     const descriptionInput = screen.getByRole('textbox', {
       name: 'Description',
@@ -23,7 +23,7 @@ describe('form', () => {
 
 describe('submit button', () => {
   it('has "Create Garden" name from props', () => {
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
     const addButton = screen.getByRole('button')
     expect(addButton).toHaveTextContent('Submit')
   })
@@ -32,8 +32,7 @@ describe('submit button', () => {
     addGarden.mockImplementation((garden) => {
       expect(garden.name).toBe('test name')
     })
-
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
 
     const nameInput = screen.getByRole('textbox', { name: 'Garden name' })
     const descriptionInput = screen.getByRole('textbox', {
