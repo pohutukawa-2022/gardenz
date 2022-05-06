@@ -47,7 +47,6 @@ describe('submit button', () => {
     userEvent.type(descriptionInput, 'description')
     userEvent.type(addressInput, 'address')
     userEvent.click(addButton)
-    // })
 
     await waitFor(() => {
       expect(addGarden).toHaveBeenCalled()
