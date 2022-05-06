@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../test-utils'
 
@@ -35,7 +35,7 @@ describe('List of signed up volunteers', () => {
     })
   })
 
-  it('does not display if not an admin', () => {
+  it('does not display if not an admin', async () => {
     getEvent.mockImplementation(() =>
       Promise.resolve({
         gardenId: 1,
@@ -51,7 +51,11 @@ describe('List of signed up volunteers', () => {
       route: '/events/:id/edit',
     })
 
-    const error = screen.queryByRole('heading', { name: 'List of Volunteers' })
-    expect(error).toBeNull()
+    await waitFor(() => {
+      const error = screen.queryByRole('heading', {
+        name: 'List of Volunteers',
+      })
+      expect(error).toBeNull()
+    })
   })
 })
