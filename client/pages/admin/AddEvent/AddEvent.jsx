@@ -19,6 +19,7 @@ export default function AddEvent() {
     volunteersNeeded: 0,
     description: '',
   }
+
   return (
     <motion.div
       variants={addEventVariants}
