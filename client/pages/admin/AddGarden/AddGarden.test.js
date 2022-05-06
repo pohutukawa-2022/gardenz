@@ -3,8 +3,6 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { waitFor } from '@testing-library/dom'
 
-import { renderWithRouter } from '../../../test-utils'
-
 import AddGarden from './AddGarden'
 import { addGarden } from './addGardenHelper'
 
