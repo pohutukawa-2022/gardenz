@@ -3,6 +3,7 @@ import React from 'react'
 import { getNews } from './newsHelper'
 import { renderWithRedux } from '../../test-utils'
 import News from './News'
+import { waitFor } from '@testing-library/react'
 
 jest.mock('./newsHelper')
 
@@ -30,7 +31,7 @@ describe('List of news', () => {
     },
   ]
 
-  it('props send correct data', () => {
+  it('props send correct data', async () => {
     getNews.mockImplementation(() => Promise.resolve(fakeNews))
 
     renderWithRedux(<News news={fakeNews} />, {
@@ -39,7 +40,9 @@ describe('List of news', () => {
       route: '/gardens/:id/news',
     })
 
-    expect(getNews).toHaveBeenCalledWith('1')
+    await waitFor(() => {
+      expect(getNews).toHaveBeenCalledWith('1')
+    })
 
     // TODO: assert that NewsList component is rendered
   })
