@@ -1,18 +1,22 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { waitFor } from '@testing-library/dom'
-
-import { renderWithRouter } from '../../../test-utils'
 
 import AddGarden from './AddGarden'
 import { addGarden } from './addGardenHelper'
 
 jest.mock('./addGardenHelper')
 
+const mockedUsedNavigate = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}))
+
 describe('form', () => {
   it('is empty', () => {
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
 
     const descriptionInput = screen.getByRole('textbox', {
       name: 'Description',
@@ -23,7 +27,7 @@ describe('form', () => {
 
 describe('submit button', () => {
   it('has "Create Garden" name from props', () => {
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
     const addButton = screen.getByRole('button')
     expect(addButton).toHaveTextContent('Submit')
   })
@@ -32,8 +36,7 @@ describe('submit button', () => {
     addGarden.mockImplementation((garden) => {
       expect(garden.name).toBe('test name')
     })
-
-    renderWithRouter(<AddGarden />)
+    render(<AddGarden />)
 
     const nameInput = screen.getByRole('textbox', { name: 'Garden name' })
     const descriptionInput = screen.getByRole('textbox', {
@@ -48,10 +51,10 @@ describe('submit button', () => {
     userEvent.type(descriptionInput, 'description')
     userEvent.type(addressInput, 'address')
     userEvent.click(addButton)
-    // })
 
     await waitFor(() => {
       expect(addGarden).toHaveBeenCalled()
+      expect(mockedUsedNavigate).toHaveBeenCalled()
     })
   })
 })

@@ -1,23 +1,21 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addEvent } from './addEventHelper'
+import { addNews } from './addNewsHelper'
 import { motion } from 'framer-motion'
 
-import EventForm from '../../../components/events/EventForm/EventForm'
+import NewsForm from '../../../components/News/NewsForm/NewsForm' //Change
 import { addEventVariants } from '../../animationVariants'
 
-export default function AddEvent() {
+export default function AddNews() {
   const navigate = useNavigate()
 
-  function submitEvent(event) {
-    addEvent(event, navigate)
+  function submitNews(news) {
+    addNews(news, navigate)
   }
 
   const initialState = {
     title: '',
-    date: '',
-    volunteersNeeded: 0,
-    description: '',
+    content: '',
   }
 
   return (
@@ -27,10 +25,10 @@ export default function AddEvent() {
       animate="visible"
       exit="exit"
     >
-      <EventForm
+      <NewsForm
         formData={initialState}
-        action="Create Event"
-        submitEvent={submitEvent}
+        action="Create News"
+        submitNews={submitNews}
       />
     </motion.div>
   )

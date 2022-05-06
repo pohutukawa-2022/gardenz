@@ -8,6 +8,7 @@ import { getGarden } from './gardenHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 import { motion } from 'framer-motion'
 import { leftVariant, rightVariant } from '../animationVariants'
+import ProduceList from '../../components/produce/ProduceList/ProduceList'
 import Gallery from '../../components/Gallery/Gallery'
 
 export default function Garden() {
@@ -37,6 +38,7 @@ export default function Garden() {
             <a href={url}>{url}</a>
           </article>
           <Events gardenid={id} events={events} />
+          <ProduceList gardenid={id} />
         </div>
         <section className="flex-column flex-container">
           <Gallery />

@@ -14,6 +14,7 @@ import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
 import News from './pages/News/News'
+import AddNews from './pages/admin/AddNews/AddNews'
 import Volunteers from './pages/Volunteers/Volunteers'
 import AddProduce from './pages/admin/produce/AddProduce'
 
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/gardens/new" element={<AddGarden />} />
             <Route path="/gardens/:id" element={<Garden />} />
             <Route path="/gardens/:id/news" element={<News />} />
+            <Route path="/gardens/:id/news/new" element={<AddNews />} />
             <Route path="/gardens/:id/events/:eventId" element={<Event />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/event/new" element={<AddEvent />} />

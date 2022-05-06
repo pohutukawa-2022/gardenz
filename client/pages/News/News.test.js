@@ -1,13 +1,11 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import NewsList from '../../components/News/NewsList'
+
 import { getNews } from './newsHelper'
+import { renderWithRedux } from '../../test-utils'
+import News from './News'
+import { waitFor } from '@testing-library/react'
 
 jest.mock('./newsHelper')
-
-afterEach(() => {
-  getNews.mockClear()
-})
 
 describe('List of news', () => {
   const fakeNews = [
@@ -33,12 +31,19 @@ describe('List of news', () => {
     },
   ]
 
-  it('props send correct data', () => {
-    const { getByText } = render(<NewsList news={fakeNews} />)
-    expect(getByText(/By test1 firstName/)).toBeInTheDocument()
-    expect(screen.getByRole('list')).toBeTruthy()
-    return screen
-      .findAllByRole('list')
-      .then((listItem) => expect(listItem).toHaveLength(1))
+  it('props send correct data', async () => {
+    getNews.mockImplementation(() => Promise.resolve(fakeNews))
+
+    renderWithRedux(<News news={fakeNews} />, {
+      initialState: { user: { isAdmin: true } },
+      initialEntries: ['/gardens/1/news'],
+      route: '/gardens/:id/news',
+    })
+
+    await waitFor(() => {
+      expect(getNews).toHaveBeenCalledWith('1')
+    })
+
+    // TODO: assert that NewsList component is rendered
   })
 })

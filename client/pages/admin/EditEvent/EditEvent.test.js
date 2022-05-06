@@ -48,6 +48,9 @@ describe('submit button', () => {
     renderWithRedux(<EditEvent />, {
       initialEntries: ['/events/23/edit'],
       route: '/events/:id/edit',
+      initialState: {
+        user: {},
+      },
     })
 
     const titleInput = await screen.findByRole('textbox', {
