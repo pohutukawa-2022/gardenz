@@ -7,7 +7,6 @@ import { getEvent } from './eventHelper'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
-// import EventDetail from '../../components/events/EventDetail/EventDetail'
 
 export default function Event() {
   const { id } = useParams()
@@ -42,7 +41,6 @@ export default function Event() {
           </section>
         </>
       ) : null}
-      {/* <EventDetail eventId={eventId} user={user} /> */}
     </>
   )
 }
