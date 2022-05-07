@@ -88,7 +88,8 @@ export const getStartButtonVariants = {
     boxShadow: '5px 5px #ADC2A9, 10px 10px #D3E4CD, 15px 15px #77D970',
     transition: {
       duration: 0.3,
-      yoyo: Infinity,
+      repeat: Infinity,
+      repeatType: 'reverse',
     },
   },
 }
@@ -99,7 +100,8 @@ export const formButtonVariants = {
     textShadow: '0px 0px 8px rgb(255,255,255)',
     transition: {
       duration: 0.3,
-      yoyo: Infinity,
+      repeat: Infinity,
+      repeatType: 'reverse',
     },
   },
 }

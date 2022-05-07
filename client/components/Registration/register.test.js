@@ -1,11 +1,31 @@
 import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { act } from 'react-dom/test-utils'
 
 import { renderWithRedux } from '../../test-utils'
 import Register from './Register'
 
+import { getAllGardens } from '../../pages/Gardens/gardensHelper'
+
+jest.mock('../../pages/Gardens/gardensHelper')
+afterEach(() => {
+  getAllGardens.mockClear()
+})
+
 describe('Register form field', () => {
+  getAllGardens.mockImplementation(() => {
+    return Promise.resolve([
+      {
+        id: 1,
+        name: 'Kelmarna Gardens',
+      },
+      {
+        id: 2,
+        name: 'Kingsland Community Orchard',
+      },
+    ])
+  })
   it('updates correctly on user input', async () => {
     renderWithRedux(<Register location={{ pathname: '/profile' }} />, {
       initialState: {
@@ -98,5 +118,16 @@ describe('Register form field', () => {
       'Sorry, this must be under 15 characters long'
     )
     expect(element[0]).toBeInTheDocument()
+  })
+  it('The dropdown selection dynamically displays all the garden names', () => {
+    act(() => {
+      renderWithRedux(<Register />)
+    })
+    return screen.findAllByRole('option').then((options) => {
+      expect(options).toHaveLength(2)
+      expect(options[0].textContent).toMatch('Kelmarna Gardens')
+      expect(options[1].textContent).toMatch('Kingsland Community Orchard')
+      return null
+    })
   })
 })

@@ -89,22 +89,20 @@ export default function BarGraph({ events }) {
             const barY = yMax - barHeight
             const id = d.id
             return (
-              <>
-                <Bar
-                  key={`bar-${id}`}
-                  x={barX}
-                  y={barY}
-                  width={barWidth}
-                  height={barHeight}
-                  fill="rgba(23, 233, 217, .5)"
-                  onClick={() => {
-                    if (clickAlert)
-                      alert(
-                        `clicked: ${d.title} \nVolunteers: ${d.totalVolunteers}/${d.volunteersNeeded}`
-                      )
-                  }}
-                />
-              </>
+              <Bar
+                key={`bar-${id}`}
+                x={barX}
+                y={barY}
+                width={barWidth}
+                height={barHeight}
+                fill="rgba(23, 233, 217, .5)"
+                onClick={() => {
+                  if (clickAlert)
+                    alert(
+                      `clicked: ${d.title} \nVolunteers: ${d.totalVolunteers}/${d.volunteersNeeded}`
+                    )
+                }}
+              />
             )
           })}
 

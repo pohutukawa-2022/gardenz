@@ -19,23 +19,23 @@ afterAll(() => {
   return testDb.destroy()
 })
 
-describe('getCommentsByPostId', () => {
-  it('returns all comments for a specific post', () => {
-    return db.getCommentsByPostId(1, testDb).then((comments) => {
+describe('getCommentsByNewsId', () => {
+  it('returns all comments for a specific news', () => {
+    return db.getCommentsByNewsId(1, testDb).then((comments) => {
       expect(comments).toHaveLength(1)
       expect(comments[0].content).toMatch(
         'Twas a wonderful day for lettuce picking!'
       )
-      expect(comments[0].post_id).toBe(1)
+      expect(comments[0].news_id).toBe(1)
       return null
     })
   })
 })
 
-describe('deleteAllCommentsByPostId', () => {
-  it('deletes all comments with specified post id', () => {
+describe('deleteAllCommentsByNewsId', () => {
+  it('deletes all comments with specified news id', () => {
     return db
-      .deleteAllCommentsByPostId(1, testDb)
+      .deleteAllCommentsByNewsId(1, testDb)
       .then(() => {
         return db.getAllComments(testDb)
       })
@@ -47,22 +47,22 @@ describe('deleteAllCommentsByPostId', () => {
   })
 })
 
-describe('postComment', () => {
+describe('newsComment', () => {
   it('posts a new comment', () => {
     const newComment = {
-      postId: 1,
+      newsId: 1,
       author: 1,
       createdOn: '10/10',
       content: 'wow, cool gardens!',
     }
     return db
-      .postComment(newComment, testDb)
+      .newsComment(newComment, testDb)
       .then((comment) => {
         const id = comment[0]
         return db.getCommentById(id, testDb)
       })
       .then((comment) => {
-        expect(comment.post_id).toBe(1)
+        expect(comment.news_id).toBe(1)
         expect(comment.author).toBe(1)
         expect(comment.content).toMatch('wow, cool gardens!')
         return null
@@ -87,7 +87,7 @@ describe('updateCommentById', () => {
   it('returns an updated comment', () => {
     const updatedComment = {
       id: 1,
-      postId: 1,
+      newsId: 1,
       author: 2,
       createdOn: '10-24-12',
       content: 'Hah! I changed my comment!',
