@@ -1,17 +1,23 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../test-utils'
-
 import Garden from './Garden'
 import { getGarden } from './gardenHelper'
-
+import { getProduce } from '../../components/produce/ProduceList/produceHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 
 jest.mock('./gardenHelper')
+jest.mock('../../components/produce/ProduceList/produceHelper')
+
+getProduce.mockImplementation(() =>
+  Promise.resolve({
+    produce: [{ id: 1, name: 'banana' }],
+  })
+)
 
 describe('Garden', () => {
-  it('calls getGarden helper and displays garden data on mount', () => {
+  it('calls getGarden helper and displays garden data on mount', async () => {
     renderWithRedux(<Garden />, {
       initialState: {
         garden: {
@@ -31,12 +37,14 @@ describe('Garden', () => {
 
     // we need renderWithRedux even though Garden isn't connecting to the store
     // because it's child component (Events) does
-    return screen.findByRole('heading', { name: 'test garden' }).then(() => {
-      const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
-      expect(getGarden).toHaveBeenCalled()
-      expect(url).toBeInTheDocument()
-      expect(url.href).toMatch('cooltestgarden.com')
-      return null
+    await waitFor(() => {
+      return screen.findByRole('heading', { name: 'test garden' }).then(() => {
+        const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
+        expect(getGarden).toHaveBeenCalled()
+        expect(url).toBeInTheDocument()
+        expect(url.href).toMatch('cooltestgarden.com')
+        return null
+      })
     })
   })
 })
@@ -68,29 +76,17 @@ describe('empty events array', () => {
   })
 })
 
-describe('bar graphs', () => {
-  const mockEvents = [
-    {
-      id: 1,
-      title: 'test Event 1'
-    },
-    {
-      id: 2,
-      title: 'test Event 2'
-    }
-  ]
-  it('bar graphs shows when events array has at least one event', () => {
-    render(<BarGraph events={mockEvents} />)
-    const graph = screen.getByTestId('bar-graph')
-    expect(graph).toBeVisible()
+describe('Gallery', () => {
+  it('Gallery displays image', async () => {
+    renderWithRedux(<Garden />)
+    await waitFor(() => {
+      const gallery = screen.getAllByRole('img')
+      expect(gallery[0]).toHaveAttribute('src')
+      expect(gallery[0]).toHaveAttribute('alt')
+    })
   })
 })
 
-describe('empty events array', () => {
-  const mockEvents = []
-  it('bar graphs does not show when events array is empty', () => {
-    render(<BarGraph events={mockEvents} />)
-    const graph = screen.queryByTestId('bar-graph')
-    expect(graph).toBeVisible(false)
-  })
+describe('produce list', () => {
+  it.todo('produceList component is rendered')
 })

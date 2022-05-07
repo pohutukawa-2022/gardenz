@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { motion } from 'framer-motion'
 
 import { addVolunteer } from './AddVolunteerFormHelper'
 
@@ -29,9 +30,8 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
   }
 
   return (
-    <>
+    <div>
       <h2 className="form-title">Add Rock-Up Attendee</h2>
-
       <form className="form-container" onSubmit={formik.handleSubmit}>
         <div>
           <label className="label" htmlFor="firstname">
@@ -70,15 +70,17 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
             type="text"
           />
         </div>
-
-        <button
-          className="edit-event-button"
-          data-testid="submit-button"
-          type="submit"
-        >
-          Add
-        </button>
+        <div className="button-group">
+          <motion.button
+            className="submit form-box"
+            data-testid="submit-button"
+            type="submit"
+            whileHover="hover"
+          >
+            Add
+          </motion.button>
+        </div>
       </form>
-    </>
+    </div>
   )
 }

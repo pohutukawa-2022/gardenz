@@ -9,10 +9,12 @@ export function getAllGardens(consume = requestor) {
   return consume('/gardens')
     .then((res) => {
       dispatch(clearWaiting())
-      const { gardens } = res.body
-      return gardens
+      return res.body.gardens
     })
-    .catch((error) => {
-      dispatch(showError(error.message))
+    .catch((err) => {
+      dispatch(showError(err))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
     })
 }

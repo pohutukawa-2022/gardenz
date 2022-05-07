@@ -11,6 +11,7 @@ export default function consume(
 ) {
   const payLoadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'
 
+  // If token === false
   if (!token) {
     return request[method](baseUrl + endpoint)
       .set(headers)
