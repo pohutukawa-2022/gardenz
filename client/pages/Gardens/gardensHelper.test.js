@@ -76,7 +76,7 @@ describe('getAllGardens', () => {
   describe('-> on GET /gardens api call rejection', () => {
     it('dispatches error correctly', () => {
       function consume() {
-        return Promise.reject(new Error('mock error'))
+        return Promise.reject('mock error')
       }
       return getAllGardens(consume).then(() => {
         expect(dispatch).toHaveBeenCalledWith({

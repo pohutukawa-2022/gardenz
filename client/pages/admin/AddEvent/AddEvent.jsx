@@ -10,15 +10,16 @@ export default function AddEvent() {
   const navigate = useNavigate()
 
   function submitEvent(event) {
-    addEvent(event)
-    navigate()
+    addEvent(event, navigate)
   }
+
   const initialState = {
     title: '',
     date: '',
     volunteersNeeded: 0,
     description: '',
   }
+
   return (
     <motion.div
       variants={addEventVariants}

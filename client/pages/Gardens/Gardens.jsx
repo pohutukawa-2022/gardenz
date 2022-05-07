@@ -23,28 +23,45 @@ export default function Gardens() {
   }, [])
 
   return (
-    <ul className="card-container">
-      {gardenList.map((garden) => {
-        return (
-          <motion.li
-            className="card"
-            key={garden.id}
-            variants={cardVariant1}
-            initial="hidden"
-            animate="visible"
-            whileHover={{
-              scale: 1.1,
-              transition: { duration: 0.4, yoyo: Infinity },
-            }}
-          >
-            <h2 className="card-header">
-              <Link to={`/gardens/${garden.id}`}>{garden.name}</Link>
-            </h2>
-            <p>Address: {garden.address}</p>
-            <p>{garden.description}</p>
-          </motion.li>
-        )
-      })}
-    </ul>
+    <>
+      <ul className="card-container">
+        {gardenList.map((garden) => {
+          return (
+            <motion.li
+              className="card"
+              key={garden.id}
+              variants={cardVariant1}
+              initial="hidden"
+              animate="visible"
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.4, yoyo: Infinity },
+              }}
+            >
+              <h2 className="card-header">
+                <Link to={`/gardens/${garden.id}`}>{garden.name}</Link>
+              </h2>
+              <p>Address: {garden.address}</p>
+              <p>{garden.description}</p>
+            </motion.li>
+          )
+        })}
+      </ul>
+      <motion.div
+        className="card"
+        key="add"
+        variants={cardVariant1}
+        initial="hidden"
+        animate="visible"
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.4, yoyo: Infinity },
+        }}
+      >
+        <Link to={`/gardens/new`}>
+          <h2 className="card-header">Add a garden</h2>
+        </Link>
+      </motion.div>
+    </>
   )
 }

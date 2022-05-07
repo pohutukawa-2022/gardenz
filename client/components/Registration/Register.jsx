@@ -1,11 +1,13 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
 import { formButtonVariants } from '../../pages/animationVariants'
+import { showError } from '../../actions/error'
+import { getAllGardens } from '../../pages/Gardens/gardensHelper'
 
 import * as Yup from 'yup'
 
@@ -25,12 +27,26 @@ export default function Register() {
   const authUser = useAuth0().user
   const navigate = useNavigate()
   const isAdmin = useSelector((globalState) => globalState.user?.isAdmin)
+  const [gardenList, setGardenList] = useState([])
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getAllGardens()
+      .then((gardens) => {
+        setGardenList(gardens)
+        return null
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+        return false
+      })
+  }, [])
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
-      gardenId: null,
+      gardenId: '',
     },
     onSubmit: (values) => {
       registerUser(values, isAdmin, authUser, navigate)
@@ -80,11 +96,16 @@ export default function Register() {
               name="gardenId"
               id="garden"
               onChange={formik.handleChange}
+              value={formik.values.gardenId}
             >
               <option hidden>Select from this list</option>
-              <option value={1}>Kelmarna Gardens</option>
-              <option value={2}>Kingsland Community Orchard</option>
-              <option value={3}>Devonport Community Garden</option>
+              {gardenList.map((garden) => {
+                return (
+                  <option key={garden.id} value={garden.id}>
+                    {garden.name}
+                  </option>
+                )
+              })}
             </select>
           </div>
           <motion.button

@@ -12,7 +12,7 @@ export default function Volunteers() {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getVolunteers(id, user).then((volunteers) => {
+    getVolunteers(id).then((volunteers) => {
       setVolunteers(volunteers)
       return null
     })
@@ -24,8 +24,13 @@ export default function Volunteers() {
 
   return (
     <>
-      <VolunteerList volunteers={volunteers} eventId={id} />
-      <AddVolunteerForm id={id} addExtraVolunteer={addExtraVolunteerHandler} />
+      <div>
+        <VolunteerList volunteers={volunteers} eventId={id} />
+        <AddVolunteerForm
+          id={id}
+          addExtraVolunteer={addExtraVolunteerHandler}
+        />
+      </div>
     </>
   )
 }
