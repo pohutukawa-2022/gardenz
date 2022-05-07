@@ -2,14 +2,13 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../test-utils'
-
 import Garden from './Garden'
 import { getGarden } from './gardenHelper'
-import { getProduce } from '../../components/produce/produceHelper'
+import { getProduce } from '../../components/produce/ProduceList/produceHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 
 jest.mock('./gardenHelper')
-jest.mock('../../components/produce/produceHelper')
+jest.mock('../../components/produce/ProduceList/produceHelper')
 
 getProduce.mockImplementation(() =>
   Promise.resolve({
