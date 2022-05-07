@@ -6,9 +6,15 @@ import { showError } from '../../actions/error'
 export function getAllGardens(consume = requestor) {
   dispatch(setWaiting())
 
-  return consume('/gardens').then((res) => {
-    dispatch(clearWaiting())
-    const { gardens } = res.body
-    return gardens
-  })
+  return consume('/gardens')
+    .then((res) => {
+      dispatch(clearWaiting())
+      return res.body.gardens
+    })
+    .catch((err) => {
+      dispatch(showError(err))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
+    })
 }
