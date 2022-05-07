@@ -1,7 +1,6 @@
-# Retros
+# Harakeke 2022
 
-## Harakeke-2022
-## Day 2 (Friday)
+## Day 2 
 
 | What didn't go well          | What went well           | Try next                  |     |
 | ---------------------------- | ------------------------ | ------------------------- | --- |
@@ -10,7 +9,7 @@
 | little knowledge about rr-v5 | 3 PRs merged             | keep up the good momentum |     |
 | less experience in testing   | all tests passing        | time boxing               |     |
 
-## Day 3 (Monday)
+## Day 3 
 
 | What didn't go well                              | What went well                                                      | Try next                                    |     |
 | ------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------- | --- |
@@ -19,7 +18,7 @@
 | more work                                        | working on large codebase and diving through layers of abstractions |                                             |     |
 |                                                  | seeing others work and outcomes                                     |                                             |     |
 
-## Day 4 (Tuesday)
+## Day 4 
 
 | what did not go well                         | what went well               | future                                       |     |
 | -------------------------------------------- | ---------------------------- | -------------------------------------------- | --- |
@@ -28,4 +27,28 @@
 | eslint problems                              | working together in-person   | writing tests (maybe TDD)                    |     |
 | hardware cooling problems                    | all tests are passing        |                                              |     |
 
-## Kahikatea-2022
+# Kahikatea 2021
+
+## Day 2
+| **didn't go well**                        | **did go well**                        | **future**                            |
+|-------------------------------------------|----------------------------------------|----------------------------------------|
+| slow computer with Maria                  | Gen and Katie working together (yaay)  | pay more attention for writing tests   |
+| writing concrete steps/tasks and planning | easier comms when working in-person    | better communication with other teams  |
+| git errors (rebase errors)                | Planning went well for (Katie and Gen) | taking more breaks                     |
+| too many spelling errors (Katie)          | End-to-end tests aren't so scary       |                                        |
+| prettier issues formatting .env file      | writing more tests is cool             |                                        |
+| more comments in codebase                 | not giving up and being positive       |                                        |
+|                                           | problem solving                        |                                        |
+|                                           | got support                            |                                        |
+|                                           | 3 PR accepted                          |                                        |
+|                                           | pair programming                       |                                        |
+
+## Day 3
+ **didn't go well** | **did go well**                                         | **future **                                           
+--------------------|---------------------------------------------------------|-------------------------------------------------------
+ complex features   | clementine broke down bigger tasks (divide and conquer) | eat more fermented chilli                             
+ unclear tickets    | Kang reused exisiting components                        | more wireframes                                       
+ large team size    | pair programming                                        | communication between teams working on same features  
+ not in the mood    | learned patterns from existing large codebase           | researching and planning                              
+ planning tickets   |                                                         |                                                       
+ missing wireframes |                                                         |                                                       
