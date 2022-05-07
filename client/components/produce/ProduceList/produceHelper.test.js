@@ -1,8 +1,8 @@
 import { getProduce } from './produceHelper'
-import { dispatch } from '../../store'
-import { CLEAR_WAITING, SET_WAITING } from '../../actions/waiting'
+import { dispatch } from '../../../store'
+import { CLEAR_WAITING, SET_WAITING } from '../../../actions/waiting'
 
-jest.mock('../../store')
+jest.mock('../../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()
