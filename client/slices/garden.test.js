@@ -1,8 +1,7 @@
-import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
-import gardenReducer from './garden'
-import { updateVolCount } from '../reducers/gardenReducerHelper'
+import gardenReducer, { setGarden, updateEventVols } from './garden'
+import { updateVolCount } from '../slices/gardenReducerHelper'
 
-jest.mock('../reducers/gardenReducerHelper')
+jest.mock('../slices/gardenReducerHelper')
 
 describe('garden reducer', () => {
   it('returns new garden object on "SET_GARDEN"', () => {
@@ -12,8 +11,8 @@ describe('garden reducer', () => {
     }
 
     const action = {
-      type: SET_GARDEN,
-      garden: {
+      type: setGarden.type,
+      payload: {
         id: 2,
         name: 'very cool garden',
       },
@@ -48,8 +47,8 @@ describe('garden reducer', () => {
     }
 
     const action = {
-      type: UPDATE_EVENT_VOLS,
-      eventId: 10,
+      type: updateEventVols.type,
+      payload: 10,
     }
 
     updateVolCount.mockImplementation((garden, eventId) => {

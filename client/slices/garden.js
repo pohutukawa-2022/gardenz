@@ -1,4 +1,4 @@
-import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
+import { createSlice } from '@reduxjs/toolkit'
 import { updateVolCount } from './gardenReducerHelper'
 
 const initialState = {
@@ -11,13 +11,14 @@ const initialState = {
   lon: 0,
 }
 
-export default function garden(state = initialState, action) {
-  switch (action.type) {
-    case SET_GARDEN:
-      return action.garden
-    case UPDATE_EVENT_VOLS:
-      return updateVolCount(state, action.eventId)
-    default:
-      return state
-  }
-}
+const slice = createSlice({
+  name: 'garden',
+  initialState,
+  reducers: {
+    setGarden: (_, { payload }) => payload,
+    updateEventVols: (state, { payload }) => updateVolCount(state, payload),
+  },
+})
+
+export const { setGarden, updateEventVols } = slice.actions
+export default slice.reducer
