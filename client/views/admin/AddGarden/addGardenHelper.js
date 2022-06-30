@@ -1,7 +1,7 @@
 import requestor from '../../../consume'
 import { getState, dispatch } from '../../../store'
 import { clearWaiting, setWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
 
 //create a post api function to post to the server-side-route
 export function addGarden(data, consume = requestor) {

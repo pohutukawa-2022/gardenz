@@ -1,7 +1,7 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
 import { setWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
 import { updateEventVols } from '../../../actions/garden'
 
 export function toggleVolunteerStatus(

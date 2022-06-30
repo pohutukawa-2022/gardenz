@@ -4,7 +4,7 @@ import { getNews } from './newsHelper'
 
 import NewsList from '../../../subcomponents/News/NewsList'
 import { useDispatch } from 'react-redux'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
 
 export default function News() {
   const { id } = useParams()

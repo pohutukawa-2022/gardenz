@@ -1,6 +1,6 @@
 import consume from './consume'
 import { dispatch } from './store'
-import { showError } from './actions/error'
+import { showError } from './slices/error'
 import { setUser } from './actions/user'
 
 const emptyUser = {

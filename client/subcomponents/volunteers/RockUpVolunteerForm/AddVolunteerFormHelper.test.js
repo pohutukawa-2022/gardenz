@@ -1,9 +1,9 @@
 import { dispatch, getState } from '../../../store'
 import { addVolunteer } from './AddVolunteerFormHelper'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
 
 jest.mock('../../../store')
-jest.mock('../../../actions/error')
+jest.mock('../../../slices/error')
 
 describe('Testing AddVolunteerFormHelper', () => {
   it('Should dispatch clear waiting and call addExtraVolunteer', async () => {
