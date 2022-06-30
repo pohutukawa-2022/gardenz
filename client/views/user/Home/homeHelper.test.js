@@ -1,5 +1,5 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
 import { getState, dispatch } from '../../../store'
 
 jest.mock('../../../store')
