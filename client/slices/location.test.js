@@ -7,8 +7,8 @@ describe('location reducer', () => {
       lon: 99,
     }
     const action = {
-      type: SET_LOCATION,
-      location: {
+      type: setLocation.type,
+      payload: {
         lat: 123,
         lon: 123,
       },
