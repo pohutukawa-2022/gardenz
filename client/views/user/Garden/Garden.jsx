@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import Map from '../../components/Map/Map'
-import Events from '../../components/events/Events/Events'
+import Map from '../../../subcomponents/Map/Map'
+import Events from '../../../subcomponents/events/Events/Events'
 import { getGarden } from './gardenHelper'
-import BarGraph from '../../components/dataVis/BarGraph'
+import BarGraph from '../../../subcomponents/dataVis/BarGraph'
 import { motion } from 'framer-motion'
-import { leftVariant, rightVariant } from '../animationVariants'
-import ProduceList from '../../components/produce/ProduceList/ProduceList'
-import Gallery from '../../components/Gallery/Gallery'
+import { leftVariant, rightVariant } from '../../animationVariants'
+import ProduceList from '../../../subcomponents/produce/ProduceList/ProduceList'
+import Gallery from '../../../subcomponents/Gallery/Gallery'
 
 export default function Garden() {
   const { id } = useParams()

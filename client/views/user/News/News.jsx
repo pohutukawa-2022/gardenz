@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getNews } from './newsHelper'
 
-import NewsList from '../../components/News/NewsList'
+import NewsList from '../../../subcomponents/News/NewsList'
 import { useDispatch } from 'react-redux'
 import { showError } from '../../../actions/error'
 

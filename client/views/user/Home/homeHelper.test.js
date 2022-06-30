@@ -1,8 +1,8 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../actions/waiting'
-import { getState, dispatch } from '../../store'
+import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { getState, dispatch } from '../../../store'
 
-jest.mock('../../store')
+jest.mock('../../../store')
 
 afterEach(() => dispatch.mockClear())
 

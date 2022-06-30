@@ -6,9 +6,9 @@ import { act } from 'react-dom/test-utils'
 import { renderWithRedux } from '../../test-utils'
 import Register from './Register'
 
-import { getAllGardens } from '../../pages/Gardens/gardensHelper'
+import { getAllGardens } from '../../views/user/GardensList/gardensListHelper'
 
-jest.mock('../../pages/Gardens/gardensHelper')
+jest.mock('../../views/user/GardensList/gardensListHelper')
 afterEach(() => {
   getAllGardens.mockClear()
 })

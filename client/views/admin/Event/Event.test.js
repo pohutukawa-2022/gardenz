@@ -1,11 +1,11 @@
 import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
 
-import { renderWithRedux } from '../../test-utils'
+import { renderWithRedux } from '../../../test-utils'
 
 import Event from './Event'
-import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import { getEvent } from '../../pages/Event/eventHelper'
+import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 

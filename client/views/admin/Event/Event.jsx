@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom'
 
 import { getEvent } from './eventHelper'
 
-import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
-import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
-import Conditional from '../../components/Conditional'
+import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import RockUpVolunteerList from '../../../subcomponents/volunteers/RockUpVolunteerList/RockUpVolunteerList'
+import Conditional from '../../../subcomponents/Conditional'
 
 export default function Event() {
   const { id } = useParams()

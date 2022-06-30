@@ -1,11 +1,11 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-import { renderWithRedux } from '../../test-utils'
+import { renderWithRedux } from '../../../test-utils'
 
-import Gardens from './Gardens'
-import { getAllGardens } from './gardensHelper'
+import GardensList from './GardensList'
+import { getAllGardens } from './gardensListHelper'
 
-jest.mock('./gardensHelper')
+jest.mock('./gardensListHelper')
 
 afterEach(() => {
   getAllGardens.mockClear()
@@ -17,7 +17,7 @@ describe('list of gardens', () => {
       return Promise.resolve([])
     })
 
-    renderWithRedux(<Gardens />)
+    renderWithRedux(<GardensList />)
 
     const list = await screen.findByRole('list')
     expect(list).toBeEmptyDOMElement()
@@ -38,7 +38,7 @@ describe('list of gardens', () => {
       ])
     })
 
-    renderWithRedux(<Gardens />)
+    renderWithRedux(<GardensList />)
 
     return screen.findAllByRole('listitem').then((listItems) => {
       expect(listItems).toHaveLength(1)
@@ -76,7 +76,7 @@ describe('list of gardens', () => {
       ])
     })
 
-    renderWithRedux(<Gardens />)
+    renderWithRedux(<GardensList />)
 
     return screen.findAllByRole('listitem').then((listItems) => {
       expect(listItems).toHaveLength(2)

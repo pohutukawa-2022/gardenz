@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { addEvent } from './addEventHelper'
 import { motion } from 'framer-motion'
 
-import EventForm from '../../../components/events/EventForm/EventForm'
+import EventForm from '../../../subcomponents/events/EventForm/EventForm'
 import { addEventVariants } from '../../animationVariants'
 
 export default function AddEvent() {

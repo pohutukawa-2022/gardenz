@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import moment from 'moment'
 import { motion } from 'framer-motion'
 
-import { formButtonVariants } from '../../../pages/animationVariants'
+import { formButtonVariants } from '../../../views/animationVariants'
 
 const eventSchema = Yup.object({
   title: Yup.string().required('Required'),

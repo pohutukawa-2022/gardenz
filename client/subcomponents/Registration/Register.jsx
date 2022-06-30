@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
-import { formButtonVariants } from '../../pages/animationVariants'
+import { formButtonVariants } from '../../views/animationVariants'
 import { showError } from '../../actions/error'
-import { getAllGardens } from '../../pages/Gardens/gardensHelper'
+import { getAllGardens } from '../../views/user/GardensList/gardensListHelper'
 
 import * as Yup from 'yup'
 

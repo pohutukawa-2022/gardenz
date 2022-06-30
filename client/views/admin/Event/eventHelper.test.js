@@ -1,8 +1,8 @@
 import { getEvent } from './eventHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../actions/waiting'
-import { dispatch } from '../../store'
+import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { dispatch } from '../../../store'
 
-jest.mock('../../store')
+jest.mock('../../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

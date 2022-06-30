@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { updateEvent, cancelEvent } from './editEventHelper'
 
-import EventForm from '../../../components/events/EventForm/EventForm'
+import EventForm from '../../../subcomponents/events/EventForm/EventForm'
 import { useSelector } from 'react-redux'
-import { getEvent } from '../../Event/eventHelper'
+import { getEvent } from '../Event/eventHelper'
 import { containerVariants } from '../../animationVariants'
 import { motion } from 'framer-motion'
 

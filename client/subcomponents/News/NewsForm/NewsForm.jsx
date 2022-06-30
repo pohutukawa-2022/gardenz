@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { motion } from 'framer-motion'
 
 import Conditional from '../../Conditional'
-import { formButtonVariants } from '../../../pages/animationVariants'
+import { formButtonVariants } from '../../../views/animationVariants'
 
 const newsSchema = Yup.object({
   title: Yup.string().required('Required'),

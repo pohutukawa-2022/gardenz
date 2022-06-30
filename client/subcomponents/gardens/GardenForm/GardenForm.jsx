@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { motion } from 'framer-motion'
 
-import { formButtonVariants } from '../../../pages/animationVariants'
+import { formButtonVariants } from '../../../views/animationVariants'
 
 const gardenSchema = Yup.object({
   name: Yup.string().required('Required'),

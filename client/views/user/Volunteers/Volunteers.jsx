@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
+import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getVolunteers } from './volunteersHelper'
-import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 
 export default function Volunteers() {
   const { id } = useParams()
