@@ -2,7 +2,7 @@ import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
 import { setWaiting } from '../../../actions/waiting'
 import { showError } from '../../../slices/error'
-import { updateEventVols } from '../../../actions/garden'
+import { updateEventVols } from '../../../slices/garden'
 
 export function toggleVolunteerStatus(
   eventId,
