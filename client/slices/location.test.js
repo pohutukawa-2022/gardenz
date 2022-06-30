@@ -1,5 +1,4 @@
-import { SET_LOCATION } from '../actions/location'
-import locationReducer from './location'
+import locationReducer, { setLocation } from './location'
 
 describe('location reducer', () => {
   it('returns new location object on "SET_LOCATION"', () => {
