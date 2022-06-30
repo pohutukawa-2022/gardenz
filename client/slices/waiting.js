@@ -1,19 +1,16 @@
-import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
-import { SHOW_ERROR } from '../actions/error'
-import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
+import { createSlice } from '@reduxjs/toolkit'
 
-export default function waiting(state = false, action) {
-  switch (action.type) {
-    case SET_WAITING:
-      return true
+const slice = createSlice({
+  name: 'waiting',
+  initialState: false,
+  reducers: {
+    setWaiting: () => true,
+    setGarden: () => false,
+    clearWaiting: () => false,
+    updateEventVols: () => false,
+  },
+})
 
-    case SET_GARDEN:
-    case SHOW_ERROR:
-    case CLEAR_WAITING:
-    case UPDATE_EVENT_VOLS:
-      return false
-
-    default:
-      return state
-  }
-}
+export const { setWaiting, setGarden, clearWaiting, updateEventVols } =
+  slice.actions
+export default slice.reducer
