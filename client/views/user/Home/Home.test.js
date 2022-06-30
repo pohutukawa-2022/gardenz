@@ -1,7 +1,7 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 
-import { renderWithRouter } from '../../test-utils'
+import { renderWithRouter } from '../../../test-utils'
 
 import Home from './Home'
 import { getGardenLocations, getUserLocation } from './homeHelper'

@@ -6,7 +6,7 @@ import {
   leftVariant,
   rightVariant,
   getStartButtonVariants,
-} from '../animationVariants'
+} from '../../animationVariants'
 
 export default function Home() {
   const [, setUserCoordinates] = useState(null)
