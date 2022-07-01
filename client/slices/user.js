@@ -1,4 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions/user'
+import { createSlice } from '@reduxjs/toolkit'
 
 const emptyUser = {
   id: null,
@@ -8,15 +8,14 @@ const emptyUser = {
   token: '',
 }
 
-export default function user(state = emptyUser, action) {
-  switch (action.type) {
-    case SET_USER:
-      return action.user
+const slice = createSlice({
+  name: 'user',
+  initialState: emptyUser,
+  reducers: {
+    setUser: (_, { payload }) => payload,
+    clearUser: () => emptyUser,
+  },
+})
 
-    case CLEAR_USER:
-      return emptyUser
-
-    default:
-      return state
-  }
-}
+export const { setUser, clearUser } = slice.actions
+export default slice.reducer
