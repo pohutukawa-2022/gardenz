@@ -1,7 +1,7 @@
 import requestor from '../../consume'
 import { dispatch, getState } from '../../store'
-import { setWaiting, clearWaiting } from '../../actions/waiting'
-import { setUser } from '../../actions/user'
+import { setWaiting, clearWaiting } from '../../slices/waiting'
+import { setUser } from '../../slices/user'
 import { showError } from '../../slices/error'
 
 export function registerUser(
