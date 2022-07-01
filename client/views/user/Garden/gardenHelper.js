@@ -1,6 +1,6 @@
 import requestor from '../../../consume'
 import { dispatch } from '../../../store'
-import { setWaiting } from '../../../actions/waiting'
+import { setWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 import { setGarden } from '../../../slices/garden'
 

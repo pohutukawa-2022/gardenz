@@ -1,6 +1,6 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
-import { setWaiting } from '../../../actions/waiting'
+import { setWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 import { updateEventVols } from '../../../slices/garden'
 

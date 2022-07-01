@@ -1,5 +1,5 @@
 import { dispatch, getState } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 import requestor from '../../../consume'
 

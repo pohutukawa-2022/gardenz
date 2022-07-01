@@ -1,6 +1,6 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
 export function toggleAttendance(volunteerData, consume = requestor) {

@@ -7,10 +7,16 @@ const slice = createSlice({
     setWaiting: () => true,
     setGarden: () => false,
     clearWaiting: () => false,
+    showError: () => false,
     updateEventVols: () => false,
   },
 })
 
-export const { setWaiting, setGarden, clearWaiting, updateEventVols } =
-  slice.actions
+export const {
+  setWaiting,
+  setGarden,
+  showError,
+  clearWaiting,
+  updateEventVols,
+} = slice.actions
 export default slice.reducer

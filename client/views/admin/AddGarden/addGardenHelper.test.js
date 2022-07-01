@@ -1,5 +1,5 @@
 import { addGarden } from './addGardenHelper'
-import { CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting } from '../../../slices/waiting'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -25,7 +25,7 @@ describe('addGarden', () => {
       return Promise.resolve()
     }
     return addGarden(garden, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       return null
     })
   })
@@ -39,7 +39,7 @@ describe('addGarden', () => {
       return Promise.reject(new Error('mock error'))
     }
     return addGarden({}, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
       expect(navigateTo).not.toHaveBeenCalled()
       return null
     })

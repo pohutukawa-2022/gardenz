@@ -1,6 +1,6 @@
 import requestor from '../../../consume'
 import { getState, dispatch } from '../../../store'
-import { clearWaiting, setWaiting } from '../../../actions/waiting'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
 //create a post api function to post to the server-side-route
