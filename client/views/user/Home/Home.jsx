@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <>
       <section className="w-1/2 mt-5 px-20 py-24 rounded-l-md bg-slate-100">
-        <h1 className="text-5xl leading-tight">
+        <h1 className="text-5xl leading-tight font-serif">
           Empowering{' '}
           <span className="w-full block text-blue">Community Gardens</span> in
           New Zealand

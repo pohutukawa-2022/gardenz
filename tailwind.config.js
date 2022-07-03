@@ -14,6 +14,10 @@ module.exports = {
         darkBlue: '#172450',
         blue: '#99ddcc',
       },
+      fontFamily: {
+        serif: ['"Roboto Slab"', 'serif'],
+        sans: ['Quicksand', 'sans-serif'],
+      },
     },
   },
   variants: {
