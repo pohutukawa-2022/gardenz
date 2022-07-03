@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserLocation, getGardenLocations } from './homeHelper'
-import { motion } from 'framer-motion'
-import {
-  leftVariant,
-  rightVariant,
-  getStartButtonVariants,
-} from '../../animationVariants'
 
 export default function Home() {
   const [, setUserCoordinates] = useState(null)
@@ -43,40 +37,29 @@ export default function Home() {
   }, [])
 
   return (
-    <section className="flex-container">
-      <motion.article
-        className="column-6 hero-card"
-        variants={leftVariant}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <h1 className="hero-title">
-          Empowering <span>Community Gardens</span> in New Zealand
+    <>
+      <section className="w-1/2 mt-5 px-20 py-24 rounded-l-md bg-slate-100">
+        <h1 className="text-5xl leading-tight">
+          Empowering{' '}
+          <span className="w-full block text-blue">Community Gardens</span> in
+          New Zealand
         </h1>
-        <p className="hero-tagline">
+        <p className="text-2xl my-10">
           Help your community get the most out of your garden with events and
           reporting and become eligible for government subsidies
         </p>
-        <Link to="/gardens">
-          <motion.button
-            className="button-primary button-width"
-            variants={getStartButtonVariants}
-            whileHover="hover"
-          >
-            Get Started
-          </motion.button>
+        <Link
+          to="/gardens"
+          className="w-1/2 block p-3 text-center rounded-md text-white bg-darkGreen transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-110 hover:bg-blue duration-300"
+        >
+          Get Started
         </Link>
-      </motion.article>
-      <motion.img
-        className="hero-image"
+      </section>
+      <img
+        className="w-1/2 mt-5 rounded-r-md"
         src="/images/comGardenPlant.png"
-        alt=""
-        variants={rightVariant}
         initial="hidden"
-        animate="visible"
-        exit="exit"
       />
-    </section>
+    </>
   )
 }
