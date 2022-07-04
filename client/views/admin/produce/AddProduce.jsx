@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { addProduce } from './addProduceHelper'
 import { motion } from 'framer-motion'
 
-import ProduceForm from '../../../components/produce/ProduceForm/ProduceForm'
+import ProduceForm from '../../../subcomponents/produce/ProduceForm/ProduceForm'
 import { addEventVariants } from '../../animationVariants'
 
 export default function AddProduce() {
