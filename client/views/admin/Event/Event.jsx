@@ -7,7 +7,6 @@ import { getEvent } from './eventHelper'
 import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
 import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 import RockUpVolunteerList from '../../../subcomponents/volunteers/RockUpVolunteerList/RockUpVolunteerList'
-import Conditional from '../../../subcomponents/Conditional'
 
 export default function Event() {
   const { id } = useParams()
@@ -32,12 +31,10 @@ export default function Event() {
   }
 
   return (
-    <Conditional condition={user.isAdmin}>
-      <section>
-        <VolunteerList volunteers={event.volunteers} eventId={event.id} />
-        <RockUpVolunteerList extraVolunteers={event.extraVolunteers} />
-        <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={id} />
-      </section>
-    </Conditional>
+    <section>
+      <VolunteerList volunteers={event.volunteers} eventId={event.id} />
+      <RockUpVolunteerList extraVolunteers={event.extraVolunteers} />
+      <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={id} />
+    </section>
   )
 }
