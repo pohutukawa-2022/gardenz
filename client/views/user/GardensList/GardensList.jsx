@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensListHelper'
-import { motion } from 'framer-motion'
 import { showError } from '../../../actions/error'
-import { cardVariant1 } from '../../animationVariants'
 
 export default function GardensList() {
   const [gardenList, setGardenList] = useState([])
@@ -24,44 +22,21 @@ export default function GardensList() {
 
   return (
     <>
-      <ul className="card-container">
+      <ul className="w-full grid grid-cols-4 gap-4 mt-20">
         {gardenList.map((garden) => {
           return (
-            <motion.li
-              className="card"
+            <li
               key={garden.id}
-              variants={cardVariant1}
-              initial="hidden"
-              animate="visible"
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.4, yoyo: Infinity },
-              }}
+              className="p-6 text-center rounded-md border-2 border-blue"
             >
-              <h2 className="card-header">
-                <Link to={`/gardens/${garden.id}`}>{garden.name}</Link>
-              </h2>
-              <p>Address: {garden.address}</p>
-              <p>{garden.description}</p>
-            </motion.li>
+              <Link to={`/gardens/${garden.id}`}>
+                <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
+                <h2 className="font-sans text-2xl">{garden.name}</h2>
+              </Link>
+            </li>
           )
         })}
       </ul>
-      <motion.div
-        className="card"
-        key="add"
-        variants={cardVariant1}
-        initial="hidden"
-        animate="visible"
-        whileHover={{
-          scale: 1.1,
-          transition: { duration: 0.4, yoyo: Infinity },
-        }}
-      >
-        <Link to={`/gardens/new`}>
-          <h2 className="card-header">Add a garden</h2>
-        </Link>
-      </motion.div>
     </>
   )
 }
