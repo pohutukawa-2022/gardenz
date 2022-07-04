@@ -31,7 +31,12 @@ export default function Garden() {
       <main className="container flex mx-auto mt-5">
         <article className="w-1/2">
           <p>{description}</p>
-          <a href={url}>{url}</a>
+          <p>
+            Visit our site{' '}
+            <a className="underline hover:underline-offset-1" href={url}>
+              here
+            </a>
+          </p>
           <Events gardenid={id} events={events} />
         </article>
         <article className="w-1/2 h-96">

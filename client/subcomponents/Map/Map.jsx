@@ -26,7 +26,7 @@ export default function Map({
 
   return (
     <MapContainer
-      className="h-full rounded-md"
+      className="h-full rounded-md mb-6"
       center={[-36.86667, 174.76667]}
       zoom={11}
       scrollWheelZoom={true}
