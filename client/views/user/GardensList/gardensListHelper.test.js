@@ -1,7 +1,7 @@
 import { dispatch } from '../../../store'
 import { getAllGardens } from './gardensListHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
-import { SHOW_ERROR } from '../../../actions/error'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
+import { showError } from '../../../slices/error'
 
 jest.mock('../../../store')
 
@@ -16,8 +16,8 @@ describe('getAllGardens', () => {
         return Promise.resolve()
       }
       return getAllGardens(consume).then(() => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        expect(dispatch).toHaveBeenCalledWith(setWaiting())
+        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
         return null
       })
     })
@@ -79,11 +79,7 @@ describe('getAllGardens', () => {
         return Promise.reject('mock error')
       }
       return getAllGardens(consume).then(() => {
-        expect(dispatch).toHaveBeenCalledWith({
-          type: SHOW_ERROR,
-          errorMessage: 'mock error',
-        })
-        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(dispatch).toHaveBeenCalledWith(showError('mock error'))
         return null
       })
     })

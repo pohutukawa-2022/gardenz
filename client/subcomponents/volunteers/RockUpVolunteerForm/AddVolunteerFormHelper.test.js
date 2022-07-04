@@ -1,9 +1,13 @@
 import { dispatch, getState } from '../../../store'
 import { addVolunteer } from './AddVolunteerFormHelper'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
+import { setWaiting } from '../../../slices/waiting'
 
 jest.mock('../../../store')
-jest.mock('../../../actions/error')
+
+afterEach(() => {
+  return dispatch.mockClear()
+})
 
 describe('Testing AddVolunteerFormHelper', () => {
   it('Should dispatch clear waiting and call addExtraVolunteer', async () => {
@@ -40,7 +44,6 @@ describe('Testing AddVolunteerFormHelper', () => {
   })
 
   it('Should dispatch error action when api fails', async () => {
-    expect.assertions(1)
     const mockVolunteer = {
       id: 66,
       firstName: 'I fail',
@@ -51,6 +54,7 @@ describe('Testing AddVolunteerFormHelper', () => {
       return Promise.reject(new Error('Unable to add extra volunteer'))
     })
     await addVolunteer(mockVolunteer, mockAdd, mockConsume)
-    expect(showError).toHaveBeenCalled()
+    expect(dispatch.mock.calls[0][0].type).toBe(setWaiting.type)
+    expect(dispatch.mock.calls[1][0].type).toBe(showError.type)
   })
 })

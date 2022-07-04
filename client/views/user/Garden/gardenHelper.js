@@ -1,8 +1,8 @@
 import requestor from '../../../consume'
 import { dispatch } from '../../../store'
-import { setWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
-import { setGarden } from '../../../actions/garden'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
+import { showError } from '../../../slices/error'
+import { setGarden } from '../../../slices/garden'
 
 export function getGarden(id, user, consume = requestor) {
   dispatch(setWaiting())
@@ -25,6 +25,7 @@ export function getGarden(id, user, consume = requestor) {
           lon: garden.lon,
         })
       )
+      dispatch(clearWaiting())
       return null
     })
     .catch((error) => {

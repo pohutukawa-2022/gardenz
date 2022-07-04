@@ -1,11 +1,10 @@
-import { SHOW_ERROR, HIDE_ERROR } from '../actions/error'
-import errorReducer from './error'
+import errorReducer, { hideError, showError } from './error'
 
 describe('error reducer', () => {
   it('returns error message on "SHOW_ERROR"', () => {
     const action = {
-      type: SHOW_ERROR,
-      errorMessage: 'mock error',
+      type: showError,
+      payload: 'mock error',
     }
     const newState = errorReducer(null, action)
     expect(newState).toBe('mock error')
@@ -13,7 +12,7 @@ describe('error reducer', () => {
 
   it('returns null on "HIDE_ERROR"', () => {
     const action = {
-      type: HIDE_ERROR,
+      type: hideError,
     }
     const newState = errorReducer('error message', action)
     expect(newState).toBeNull()

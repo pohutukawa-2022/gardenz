@@ -1,5 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions/user'
-import userReducer from './user'
+import userReducer, { clearUser, setUser } from './user'
 
 jest.mock('../auth-utils')
 
@@ -20,8 +19,8 @@ describe('user reducer', () => {
     }
 
     const action = {
-      type: SET_USER,
-      user,
+      type: setUser.type,
+      payload: user,
     }
     const newState = userReducer(oldState, action)
     expect(newState.firstName).toBe('test')
@@ -36,7 +35,7 @@ describe('user reducer', () => {
       id: 5,
     }
     const action = {
-      type: CLEAR_USER,
+      type: clearUser.type,
     }
     const newState = userReducer(oldState, action)
     expect(newState.gardenId).toBeNull()

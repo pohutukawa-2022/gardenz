@@ -1,8 +1,8 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
-import { setWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
-import { updateEventVols } from '../../../actions/garden'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
+import { showError } from '../../../slices/error'
+import { updateEventVols } from '../../../slices/garden'
 
 export function toggleVolunteerStatus(
   eventId,
@@ -23,6 +23,7 @@ export function toggleVolunteerStatus(
       .then(() => {
         dispatch(updateEventVols(eventId))
         setVolunteering(willVolunteer)
+        dispatch(clearWaiting())
         return null
       })
       .catch((error) => {

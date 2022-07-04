@@ -1,5 +1,5 @@
 import { addEvent } from './addEventHelper'
-import { CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting } from '../../../slices/waiting'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -29,7 +29,7 @@ describe('addEvent', () => {
       return Promise.resolve()
     }
     return addEvent(event, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
       return null
     })
@@ -44,7 +44,7 @@ describe('addEvent', () => {
       return Promise.reject(new Error('mock error'))
     }
     return addEvent({}, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
       expect(navigateTo).not.toHaveBeenCalled()
       return null
     })

@@ -1,5 +1,5 @@
 import { getNews } from './newsHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { dispatch } from '../../../store'
 
 jest.mock('../../../store')
@@ -32,8 +32,8 @@ describe('-> GET /news/${gardenId} api call success', () => {
     }
 
     return getNews(1, consume).then((news) => {
-      expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-      expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       expect(news).toHaveLength(1)
       expect(news[0].title).toBe('Lettuce Picking Season')
       expect(news[0].createdOn).toBe('21/02/2022')

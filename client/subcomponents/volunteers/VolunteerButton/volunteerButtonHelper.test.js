@@ -1,6 +1,6 @@
 import { toggleVolunteerStatus } from './volunteerButtonHelper'
-import { SET_WAITING } from '../../../actions/waiting'
-import { UPDATE_EVENT_VOLS } from '../../../actions/garden'
+import { setWaiting } from '../../../slices/waiting'
+import { updateEventVols } from '../../../slices/garden'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -16,7 +16,7 @@ describe('toggleVolunteerStatus', () => {
     }))
 
     toggleVolunteerStatus()
-    expect(dispatch.mock.calls[0][0].errorMessage).toMatch(
+    expect(dispatch.mock.calls[0][0].payload).toMatch(
       'Please register or sign in to volunteer.'
     )
   })
@@ -71,11 +71,8 @@ describe('toggleVolunteerStatus', () => {
       setVolunteering,
       consume
     ).then(() => {
-      expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-      expect(dispatch).toHaveBeenCalledWith({
-        type: UPDATE_EVENT_VOLS,
-        eventId: eventId,
-      })
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(updateEventVols(eventId))
       expect(setVolunteering).toHaveBeenCalledWith(true)
       return null
     })
@@ -93,7 +90,7 @@ describe('toggleVolunteerStatus', () => {
 
     return toggleVolunteerStatus(null, null, setVolunteering, consume).then(
       () => {
-        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
         expect(setVolunteering).not.toHaveBeenCalled()
         return null
       }
