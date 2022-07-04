@@ -4,8 +4,6 @@ import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
-import { motion } from 'framer-motion'
-import { formButtonVariants } from '../../views/animationVariants'
 import { showError } from '../../slices/error'
 import { getAllGardens } from '../../views/user/GardensList/gardensListHelper'
 
@@ -61,42 +59,46 @@ export default function Register() {
   }
   return (
     <>
-      <h2>Register to view garden events</h2>
-      <section className="flex-container centre-flex">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="field">
-            <label htmlFor="firstName" className="label">
+      <h2 className="text-2xl">Register to view garden events</h2>
+      <section>
+        <form onSubmit={formik.handleSubmit} className="w-full">
+          <div className="flex flex-col w-full my-5">
+            <label htmlFor="firstName" className="text-gray-500 mb-2">
               First Name
             </label>
             {showAnyErrors('firstName')}
             <input
-              className="form-box"
               id="firstName"
               name="firstName"
               onChange={formik.handleChange}
               value={formik.values.firstName}
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             />
-            <label htmlFor="lastName" className="label">
+          </div>
+          <div className="flex flex-col w-full my-5">
+            <label htmlFor="lastName" className="text-gray-500 mb-2">
               Last Name
             </label>
             {showAnyErrors('lastName')}
             <input
-              className="form-box"
               id="lastName"
               name="lastName"
               onChange={formik.handleChange}
               value={formik.values.lastName}
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             />
-            <label htmlFor="garden" className="label">
+          </div>
+          <div className="flex flex-col w-full my-5">
+            <label htmlFor="garden" className="text-gray-500 mb-2">
               My Garden
             </label>
             {showAnyErrors('garden')}
             <select
-              className="form-box"
               name="gardenId"
               id="garden"
               onChange={formik.handleChange}
               value={formik.values.gardenId}
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             >
               <option hidden>Select from this list</option>
               {gardenList.map((garden) => {
@@ -108,15 +110,15 @@ export default function Register() {
               })}
             </select>
           </div>
-          <motion.button
-            className="submit profile-submit"
-            type="submit"
-            data-testid="submitButton"
-            variants={formButtonVariants}
-            whileHover="hover"
-          >
-            Register
-          </motion.button>
+          <div id="button" className="flex flex-col w-full my-5">
+            <button
+              type="submit"
+              className="w-full py-4 bg-darkGreen rounded-lg text-white"
+              data-testid="submitButton"
+            >
+              Register
+            </button>
+          </div>
         </form>
       </section>
     </>

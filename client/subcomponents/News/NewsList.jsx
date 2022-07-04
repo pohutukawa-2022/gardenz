@@ -11,14 +11,12 @@ export default function NewsList({ news }) {
   return (
     <>
       <h1>News</h1>
-      <div className="add-event">
+      <div>
         <Conditional condition={isAdmin}>
-          <Link to={`/gardens/${gardenId}/news/new`} className="inline-button">
-            Add New News
-          </Link>
+          <Link to={`/gardens/${gardenId}/news/new`}>Add New News</Link>
         </Conditional>
       </div>
-      <ul className="list-primary">
+      <ul>
         {news.map((news) => (
           <News news={news} key={news.id} />
         ))}
