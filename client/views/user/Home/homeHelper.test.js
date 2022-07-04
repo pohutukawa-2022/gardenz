@@ -1,5 +1,5 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting, setWaiting } from '../../../slices/waiting'
 import { getState, dispatch } from '../../../store'
 
 jest.mock('../../../store')
@@ -45,7 +45,7 @@ describe('getUserLocation', () => {
           () => false,
           mockNavigator
         )
-        expect(dispatch.mock.calls[0][0].location.lat).toBe(123)
+        expect(dispatch.mock.calls[0][0].payload.lat).toBe(123)
       })
 
       it('calls setCoords callback correctly if isMounted returns true', () => {
@@ -97,8 +97,8 @@ describe('getGardenLocations', () => {
         return Promise.resolve()
       }
       return getGardenLocations(consume).then(() => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        expect(dispatch).toHaveBeenCalledWith(setWaiting())
+        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
         return null
       })
     })
@@ -138,7 +138,7 @@ describe('getGardenLocations', () => {
         return Promise.reject(new Error('mock error'))
       }
       return getGardenLocations(consume).then(() => {
-        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
         return null
       })
     })

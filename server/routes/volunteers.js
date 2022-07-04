@@ -45,9 +45,9 @@ router.post('/', checkJwt, async (req, res) => {
   const volunteer = { userId, eventId }
   try {
     await dbVolunteers.addVolunteer({ volunteer })
-    const eventData = await dbEvents.getEventById(eventId)
-    const userData = await dbUsers.getUserById(userId)
-    await sendNotification(userData, eventData)
+    // const eventData = await dbEvents.getEventById(eventId)
+    // const userData = await dbUsers.getUserById(userId)
+    // await sendNotification(userData, eventData)
     res.sendStatus(201)
   } catch (error) {
     log(error.message)

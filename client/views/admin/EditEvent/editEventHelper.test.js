@@ -1,5 +1,5 @@
 import { getEvent, updateEvent } from './editEventHelper'
-import { CLEAR_WAITING } from '../../../actions/waiting'
+import { clearWaiting } from '../../../slices/waiting'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -25,7 +25,7 @@ describe('getEvent', () => {
     return getEvent(1, consume).then((event) => {
       expect(event.title).toBe('test event')
       expect(event.volunteersNeeded).toBe(14)
-      expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       return null
     })
   })
@@ -35,7 +35,7 @@ describe('getEvent', () => {
       return Promise.reject(new Error('mock error'))
     }
     return getEvent(999, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
       return null
     })
   })
@@ -63,7 +63,7 @@ describe('updateEvent', () => {
       return Promise.resolve()
     }
     return updateEvent('1', event, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
       return null
     })
@@ -75,7 +75,7 @@ describe('updateEvent', () => {
       return Promise.reject(new Error('mock error'))
     }
     return updateEvent(999, {}, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
       expect(navigateTo).not.toHaveBeenCalled()
       return null
     })

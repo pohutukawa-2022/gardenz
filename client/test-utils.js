@@ -1,10 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { MemoryRouter as Router, Route, Routes } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import reducer from './reducers'
+import reducer, { reducers } from './store'
 
 export function renderWithRouter(
   ui,
@@ -27,7 +27,7 @@ export function renderWithRedux(
     initialEntries = ['/'],
     route = '/',
     initialState,
-    store = createStore(reducer, initialState),
+    store = configureStore({ reducer: reducers, preloadedState: initialState }),
   } = {}
 ) {
   return {

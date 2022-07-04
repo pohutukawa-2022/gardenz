@@ -1,7 +1,7 @@
 import requestor from '../../../consume'
 import { dispatch } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
+import { showError } from '../../../slices/error'
 
 export function getNews(gardenId, consume = requestor) {
   dispatch(setWaiting())

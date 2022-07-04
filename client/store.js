@@ -1,11 +1,22 @@
-import { createStore } from 'redux'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import reducers from './reducers'
+import user from './slices/user'
+import location from './slices/location'
+import waiting from './slices/waiting'
+import error from './slices/error'
+import garden from './slices/garden'
 
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+export const reducers = combineReducers({
+  user,
+  location,
+  waiting,
+  error,
+  garden,
+})
+
+const store = configureStore({
+  reducer: reducers,
+})
 
 export default store
 export const dispatch = store.dispatch

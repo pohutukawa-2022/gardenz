@@ -6,7 +6,7 @@ import { formButtonVariants } from '../../../views/animationVariants'
 import { getAllGardens } from '../../../views/user/GardensList/gardensListHelper'
 import { getProduceTypes } from './ProduceFormHelper'
 import { useDispatch } from 'react-redux'
-import { showError } from '../../../actions/error'
+import { showError } from '../../../slices/error'
 
 const eventSchema = Yup.object({
   name: Yup.string().required('Required'),

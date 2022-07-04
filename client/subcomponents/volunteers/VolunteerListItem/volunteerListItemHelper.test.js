@@ -1,8 +1,8 @@
 import { toggleAttendance } from './volunteerListItemHelper'
 
 import { dispatch, getState } from '../../../store'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
-import { SHOW_ERROR } from '../../../actions/error'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
+import { showError } from '../../../slices/error'
 
 jest.mock('../../../store')
 
@@ -27,8 +27,8 @@ describe('toggleAttendance', () => {
     }
     return toggleAttendance(volunteerData, consume).then((response) => {
       expect(response).toBeTruthy()
-      expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-      expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       return null
     })
   })
@@ -47,11 +47,8 @@ describe('toggleAttendance', () => {
     }
     return toggleAttendance(volunteerData, consume).then((response) => {
       expect(response).toBeFalsy()
-      expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-      expect(dispatch).toHaveBeenCalledWith({
-        type: SHOW_ERROR,
-        errorMessage: 'mock consume error',
-      })
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(showError('mock consume error'))
       return null
     })
   })

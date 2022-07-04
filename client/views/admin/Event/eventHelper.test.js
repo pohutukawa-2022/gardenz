@@ -1,5 +1,5 @@
 import { getEvent } from './eventHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { dispatch } from '../../../store'
 
 jest.mock('../../../store')
@@ -38,10 +38,8 @@ describe('getEvent', () => {
       }
 
       return getEvent(2, mockUserAdmin, consume).then((event) => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({
-          type: CLEAR_WAITING,
-        })
+        expect(dispatch).toHaveBeenCalledWith(setWaiting())
+        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
         expect(event.title).toBe('test event')
         expect(event.volunteers).toHaveLength(1)
         expect(event.extraVolunteers).toHaveLength(1)
@@ -69,10 +67,8 @@ describe('getEvent', () => {
       }
 
       return getEvent(2, mockUserNonAdmin, consume).then((event) => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({
-          type: CLEAR_WAITING,
-        })
+        expect(dispatch).toHaveBeenCalledWith(setWaiting())
+        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
         expect(event.title).toBe('test event')
         expect(event.isVolunteer).toBe(true)
         expect(event).not.toHaveProperty('fake')
@@ -87,7 +83,7 @@ describe('getEvent', () => {
         return Promise.reject(new Error('mock error'))
       }
       return getEvent(null, mockUserAdmin, consume).then(() => {
-        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
         return null
       })
     })

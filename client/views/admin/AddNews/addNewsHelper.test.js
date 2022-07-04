@@ -1,13 +1,16 @@
 import { addNews } from './addNewsHelper'
-import { clearWaiting } from '../../../actions/waiting'
+import { clearWaiting } from '../../../slices/waiting'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
-jest.mock('../../../actions/waiting')
 
 // resets the store.dispatch calls between tests
 afterEach(() => {
   return dispatch.mockClear()
+})
+
+it('ddsfsd', () => {
+  expect(true).toBeTruthy()
 })
 
 describe('testing the helper function addNews', () => {
@@ -30,7 +33,7 @@ describe('testing the helper function addNews', () => {
     }
 
     return addNews(news, navigateTo, consume).then(() => {
-      expect(clearWaiting).toHaveBeenCalled()
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       expect(navigateTo).toHaveBeenCalledWith('/gardens/1/news')
       return null
     })
@@ -45,7 +48,7 @@ describe('testing the helper function addNews', () => {
       return Promise.reject(new Error('mock error'))
     }
     return addNews({}, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
       expect(navigateTo).not.toHaveBeenCalled()
       return null
     })

@@ -1,12 +1,15 @@
-import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
-import { SHOW_ERROR } from '../actions/error'
-import waitingReducer from './waiting'
-import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
+import waitingReducer, {
+  setWaiting,
+  clearWaiting,
+  showError,
+  setGarden,
+  updateEventVols,
+} from '../slices/waiting'
 
 describe('waiting reducer', () => {
   it('returns true on "SET_WAITING"', () => {
     const action = {
-      type: SET_WAITING,
+      type: setWaiting.type,
     }
     const newState = waitingReducer(false, action)
     expect(newState).toBeTruthy()
@@ -14,7 +17,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "SET_GARDEN"', () => {
     const action = {
-      type: SET_GARDEN,
+      type: setGarden.type,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -22,7 +25,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "CLEAR_WAITING"', () => {
     const action = {
-      type: CLEAR_WAITING,
+      type: clearWaiting.type,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -30,7 +33,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "SHOW_ERROR"', () => {
     const action = {
-      type: SHOW_ERROR,
+      type: showError.type,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -47,7 +50,7 @@ describe('waiting reducer', () => {
 
 it('returns false on "UPDATE_EVENT_VOLS"', () => {
   const action = {
-    type: UPDATE_EVENT_VOLS,
+    type: updateEventVols.type,
   }
   const newState = waitingReducer(true, action)
   expect(newState).toBeFalsy()
