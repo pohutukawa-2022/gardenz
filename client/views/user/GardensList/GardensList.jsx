@@ -21,7 +21,7 @@ export default function GardensList() {
   }, [])
 
   return (
-    <>
+    <main className="container flex mx-auto">
       <ul className="w-full grid grid-cols-4 gap-4 mt-20">
         {gardenList.map((garden) => {
           return (
@@ -37,6 +37,6 @@ export default function GardensList() {
           )
         })}
       </ul>
-    </>
+    </main>
   )
 }

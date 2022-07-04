@@ -37,7 +37,7 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <main className="container flex mx-auto">
       <section className="w-1/2 mt-5 px-20 py-24 rounded-l-md bg-slate-100">
         <h1 className="text-5xl leading-tight font-serif">
           Empowering{' '}
@@ -60,6 +60,6 @@ export default function Home() {
         src="/images/comGardenPlant.png"
         initial="hidden"
       />
-    </>
+    </main>
   )
 }

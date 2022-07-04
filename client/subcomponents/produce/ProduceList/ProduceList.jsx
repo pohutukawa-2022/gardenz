@@ -18,25 +18,19 @@ export default function ProduceList({ gardenid }) {
 
   return (
     <>
-      <div className="column-9 event-container">
-        <h1 className="events-title">Produce</h1>
-        <div className="add-event">
-          <Conditional condition={user.isAdmin}>
-            <Link to="/produce/new" className="inline-button">
-              Add Produce
-            </Link>
-          </Conditional>
-        </div>
-      </div>
       <div>
-        <section className="events-list">
-          <ul>
-            {produce.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </section>
+        <h1>Produce</h1>
+        <Conditional condition={user.isAdmin}>
+          <Link to="/produce/new">Add Produce</Link>
+        </Conditional>
       </div>
+      <section>
+        <ul>
+          {produce.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      </section>
     </>
   )
 }

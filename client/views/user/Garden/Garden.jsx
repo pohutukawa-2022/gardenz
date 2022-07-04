@@ -5,11 +5,6 @@ import { useParams } from 'react-router-dom'
 import Map from '../../../subcomponents/Map/Map'
 import Events from '../../../subcomponents/events/Events/Events'
 import { getGarden } from './gardenHelper'
-import BarGraph from '../../../subcomponents/dataVis/BarGraph'
-import { motion } from 'framer-motion'
-import { leftVariant, rightVariant } from '../../animationVariants'
-import ProduceList from '../../../subcomponents/produce/ProduceList/ProduceList'
-import Gallery from '../../../subcomponents/Gallery/Gallery'
 
 export default function Garden() {
   const { id } = useParams()
@@ -24,43 +19,33 @@ export default function Garden() {
   const { name, description, address, url, events, lat, lon } = garden
 
   return (
-    <section className="flex-container column-9 centre-flex">
-      <motion.div
-        variants={leftVariant}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <div className="column-9">
-          <article>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <a href={url}>{url}</a>
-          </article>
+    <>
+      <section className="w-full h-96 bg-[url('/images/galleryPlaceHolder04.jpg')] bg-cover bg-center flex justify-center items-end">
+        <article className="container flex">
+          <h2 className="font-sans text-white text-4xl font-bold py-6">
+            {name}
+          </h2>
+        </article>
+      </section>
+      <main className="container flex mx-auto mt-5">
+        <article className="w-1/2">
+          <p>{description}</p>
+          <a href={url}>{url}</a>
           <Events gardenid={id} events={events} />
-          <ProduceList gardenid={id} />
-        </div>
-        <section className="flex-column flex-container">
-          <Gallery />
-        </section>
-      </motion.div>
-      {lat && lon ? (
-        <motion.div
-          variants={rightVariant}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="garden-side-bar"
-        >
-          <Map
-            userCoordinates={location}
-            coordinates={[{ lat: lat, lon: lon }]}
-            addresses={[address]}
-            names={[name]}
-          />
-          {user.isAdmin ? <BarGraph events={events} /> : null}
-        </motion.div>
-      ) : null}
-    </section>
+        </article>
+        <article className="w-1/2 h-96">
+          {lat && lon ? (
+            <>
+              <Map
+                userCoordinates={location}
+                coordinates={[{ lat: lat, lon: lon }]}
+                addresses={[address]}
+                names={[name]}
+              />
+            </>
+          ) : null}
+        </article>
+      </main>
+    </>
   )
 }
