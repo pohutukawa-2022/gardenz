@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import Map from '../../../subcomponents/Map/Map'
 import Events from '../../../subcomponents/events/Events/Events'
+
 import { getGarden } from './gardenHelper'
 
 export default function Garden() {
