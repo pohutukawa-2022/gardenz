@@ -17,7 +17,8 @@ import News from './views/user/News/News'
 import AddNews from './views/admin/AddNews/AddNews'
 import Volunteers from './views/user/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
-
+import IsUser from './subcomponents/IsUser.jsx/IsUser'
+import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 
 export default function App() {
@@ -27,22 +28,40 @@ export default function App() {
     <>
       <Error />
       <Header />
+      <IsAdmin>
+        <p>this is admin</p>
+      </IsAdmin>
+      <IsUser>
+        <p>this is user</p>
+      </IsUser>
       <main className="container margin-container flex-container centre-flex">
         <AnimatePresence exitBeforeEnter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gardens" element={<Gardens />} />
-            <Route path="/gardens/new" element={<AddGarden />} />
-            <Route path="/gardens/:id" element={<Garden />} />
-            <Route path="/gardens/:id/news" element={<News />} />
-            <Route path="/gardens/:id/news/new" element={<AddNews />} />
-            <Route path="/gardens/:id/events/:eventId" element={<Event />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/event/new" element={<AddEvent />} />
-            <Route path="/events/:id/edit" element={<EditEvent />} />
-            <Route path="/events/:id/volunteers" element={<Volunteers />} />
-            <Route path="/produce/new" element={<AddProduce />} />
-          </Routes>
+          <IsAdmin>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/gardens" element={<Gardens />} />
+              <Route path="/gardens/new" element={<AddGarden />} />
+              <Route path="/gardens/:id" element={<Garden />} />
+              <Route path="/gardens/:id/news" element={<News />} />
+              <Route path="/gardens/:id/news/new" element={<AddNews />} />
+              <Route path="/gardens/:id/events/:eventId" element={<Event />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/event/new" element={<AddEvent />} />
+              <Route path="/events/:id/edit" element={<EditEvent />} />
+              <Route path="/events/:id/volunteers" element={<Volunteers />} />
+              <Route path="/produce/new" element={<AddProduce />} />
+            </Routes>
+          </IsAdmin>
+          <IsUser>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/gardens" element={<Gardens />} />
+              <Route path="/gardens/:id" element={<Garden />} />
+              <Route path="/gardens/:id/news" element={<News />} />
+              <Route path="/gardens/:id/events/:eventId" element={<Event />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </IsUser>
         </AnimatePresence>
       </main>
     </>
