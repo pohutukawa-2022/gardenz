@@ -106,7 +106,7 @@ export default function Nav() {
         </div>
       </nav>
       <div
-        className="lg:hidden z-90 fixed top-4 right-6 text-white text-4xl"
+        className="lg:hidden z-90 absolute top-4 right-6 text-white text-4xl"
         onClick={toggleMenu}
       >
         {open ? <IoClose /> : <GiHamburgerMenu />}
