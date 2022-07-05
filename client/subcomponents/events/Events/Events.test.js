@@ -5,20 +5,6 @@ import { renderWithRedux } from '../../../test-utils'
 
 import Events from './Events'
 
-describe('Add Event button', () => {
-  it('displays for admin', () => {
-    renderWithRedux(<Events events={[]} />, {
-      initialState: { user: { isAdmin: true } },
-    })
-    expect(screen.getByRole('link')).toHaveTextContent('Add New Event')
-  })
-
-  it('does not display if not an admin', () => {
-    renderWithRedux(<Events events={[]} />)
-    expect(screen.queryByRole('link')).toBeNull()
-  })
-})
-
 describe('events list', () => {
   it('displays correct number of events from props', () => {
     const events = [
