@@ -1,7 +1,7 @@
-import { dispatch, getState } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../slices/waiting'
-import { showError } from '../../../slices/error'
-import requestor from '../../../consume'
+import { dispatch, getState } from '../../../../store'
+import { setWaiting, clearWaiting } from '../../../../slices/waiting'
+import { showError } from '../../../../slices/error'
+import requestor from '../../../../consume'
 
 export function addEvent(event, navigateTo, consume = requestor) {
   const storeState = getState()
