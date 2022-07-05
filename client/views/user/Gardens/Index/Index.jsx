@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAllGardens } from './gardensListHelper'
+import { getAllGardens } from './IndexHelper'
 import { motion } from 'framer-motion'
-import { showError } from '../../../slices/error'
-import { cardVariant1 } from '../../animationVariants'
+import { showError } from '../../../../slices/error'
+import { cardVariant1 } from '../../../animationVariants'
 
 export default function GardensList() {
   const [gardenList, setGardenList] = useState([])

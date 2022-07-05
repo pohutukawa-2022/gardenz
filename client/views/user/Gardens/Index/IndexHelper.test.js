@@ -1,9 +1,9 @@
-import { dispatch } from '../../../store'
-import { getAllGardens } from './gardensListHelper'
-import { clearWaiting, setWaiting } from '../../../slices/waiting'
-import { showError } from '../../../slices/error'
+import { dispatch } from '../../../../store'
+import { getAllGardens } from './IndexHelper'
+import { clearWaiting, setWaiting } from '../../../../slices/waiting'
+import { showError } from '../../../../slices/error'
 
-jest.mock('../../../store')
+jest.mock('../../../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

@@ -7,7 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { motion } from 'framer-motion'
 import { formButtonVariants } from '../../views/animationVariants'
 import { showError } from '../../slices/error'
-import { getAllGardens } from '../../views/user/GardensList/gardensListHelper'
+import { getAllGardens } from '../../views/user/Gardens/Index/IndexHelper'
 
 import * as Yup from 'yup'
 

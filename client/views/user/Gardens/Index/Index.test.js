@@ -1,11 +1,11 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-import { renderWithRedux } from '../../../test-utils'
+import { renderWithRedux } from '../../../../test-utils'
 
-import GardensList from './GardensList'
-import { getAllGardens } from './gardensListHelper'
+import GardensList from './Index'
+import { getAllGardens } from './IndexHelper'
 
-jest.mock('./gardensListHelper')
+jest.mock('./IndexHelper')
 
 afterEach(() => {
   getAllGardens.mockClear()
