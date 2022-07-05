@@ -1,12 +1,12 @@
-const { sendNotification } = require('../notifications/notifications')
+// const { sendNotification } = require('../notifications/notifications')
 const { checkJwt } = require('./auth') // scope permissions
 const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 
 const log = require('../logger')
-const dbUsers = require('../db/users')
-const dbEvents = require('../db/event')
+// const dbUsers = require('../db/users')
+// const dbEvents = require('../db/event')
 const dbVolunteers = require('../db/volunteers')
 
 const { decode } = require('../notifications/emailTokens')

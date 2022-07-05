@@ -1,8 +1,8 @@
-import { getState, dispatch } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../slices/waiting'
-import { setLocation } from '../../../slices/location'
-import { showError } from '../../../slices/error'
-import requestor from '../../../consume'
+import { getState, dispatch } from '../../store'
+import { setWaiting, clearWaiting } from '../../slices/waiting'
+import { setLocation } from '../../slices/location'
+import { showError } from '../../slices/error'
+import requestor from '../../consume'
 
 export function getUserLocation(setCoords, isMounted, browser = navigator) {
   const storeState = getState()

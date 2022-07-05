@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Conditional from '../../Conditional'
 import { getProduce } from './produceHelper'
 
 export default function ProduceList({ gardenid }) {
   const [produce, setProduce] = useState([])
-  const user = useSelector((state) => state.user)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -20,9 +16,6 @@ export default function ProduceList({ gardenid }) {
     <>
       <div>
         <h1>Produce</h1>
-        <Conditional condition={user.isAdmin}>
-          <Link to="/produce/new">Add Produce</Link>
-        </Conditional>
       </div>
       <section>
         <ul>

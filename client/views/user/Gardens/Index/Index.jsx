@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAllGardens } from './gardensListHelper'
-import { showError } from '../../../slices/error'
+import { getAllGardens } from './IndexHelper'
+import { showError } from '../../../../slices/error'
 
 export default function GardensList() {
   const [gardenList, setGardenList] = useState([])

@@ -1,9 +1,9 @@
-import { getGarden } from './gardenHelper'
-import { setWaiting } from '../../../slices/waiting'
-import { setGarden } from '../../../slices/garden'
-import { dispatch } from '../../../store'
+import { getGarden } from './aboutHelper'
+import { setWaiting } from '../../../../slices/waiting'
+import { setGarden } from '../../../../slices/garden'
+import { dispatch } from '../../../../store'
 
-jest.mock('../../../store')
+jest.mock('../../../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

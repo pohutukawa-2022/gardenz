@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getUserLocation, getGardenLocations } from './homeHelper'
+import { getUserLocation, getGardenLocations } from './IndexHelper'
 
 export default function Home() {
   const [, setUserCoordinates] = useState(null)

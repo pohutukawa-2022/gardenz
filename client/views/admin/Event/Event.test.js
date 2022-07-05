@@ -1,11 +1,8 @@
 import React from 'react'
-import { screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../test-utils'
-
-import Event from './Event'
 import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
-import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -32,30 +29,6 @@ describe('List of signed up volunteers', () => {
     return screen.findAllByRole('listitem').then((volunteers) => {
       expect(volunteers[1]).toHaveTextContent('Test User 2')
       return null
-    })
-  })
-
-  it('does not display if not an admin', async () => {
-    getEvent.mockImplementation(() =>
-      Promise.resolve({
-        gardenId: 1,
-        title: 'title to edit',
-        date: '24/09/2001',
-        volunteersNeeded: 4,
-        description: 'truly radical event',
-      })
-    )
-    renderWithRedux(<Event />, {
-      initialState: { user: { isAdmin: false } },
-      initialEntries: ['/events/23/edit'],
-      route: '/events/:id/edit',
-    })
-
-    await waitFor(() => {
-      const error = screen.queryByRole('heading', {
-        name: 'List of Volunteers',
-      })
-      expect(error).toBeNull()
     })
   })
 })

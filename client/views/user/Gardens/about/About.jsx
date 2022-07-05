@@ -2,12 +2,11 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import Map from '../../../subcomponents/Map/Map'
-import Events from '../../../subcomponents/events/Events/Events'
+import Map from '../../../../subcomponents/Map/Map'
+import Events from '../../../../subcomponents/events/Events/Events'
+import { getGarden } from './aboutHelper'
 
-import { getGarden } from './gardenHelper'
-
-export default function Garden() {
+export default function About() {
   const { id } = useParams()
   const garden = useSelector((globalState) => globalState.garden)
   const user = useSelector((globalState) => globalState.user)

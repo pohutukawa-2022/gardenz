@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { MemoryRouter as Router, Route, Routes } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import reducer, { reducers } from './store'
+import { reducers } from './store'
 
 export function renderWithRouter(
   ui,

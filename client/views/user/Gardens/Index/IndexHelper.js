@@ -1,7 +1,7 @@
-import requestor from '../../../consume'
-import { dispatch } from '../../../store'
-import { clearWaiting, setWaiting } from '../../../slices/waiting'
-import { showError } from '../../../slices/error'
+import requestor from '../../../../consume'
+import { dispatch } from '../../../../store'
+import { clearWaiting, setWaiting } from '../../../../slices/waiting'
+import { showError } from '../../../../slices/error'
 
 export function getAllGardens(consume = requestor) {
   dispatch(setWaiting())

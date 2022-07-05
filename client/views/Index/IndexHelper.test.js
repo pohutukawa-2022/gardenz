@@ -1,8 +1,8 @@
-import { getUserLocation, getGardenLocations } from './homeHelper'
-import { clearWaiting, setWaiting } from '../../../slices/waiting'
-import { getState, dispatch } from '../../../store'
+import { getUserLocation, getGardenLocations } from './IndexHelper'
+import { clearWaiting, setWaiting } from '../../slices/waiting'
+import { getState, dispatch } from '../../store'
 
-jest.mock('../../../store')
+jest.mock('../../store')
 
 afterEach(() => dispatch.mockClear())
 

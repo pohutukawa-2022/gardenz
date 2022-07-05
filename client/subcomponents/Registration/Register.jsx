@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
 import { showError } from '../../slices/error'
-import { getAllGardens } from '../../views/user/GardensList/gardensListHelper'
+import { getAllGardens } from '../../views/user/Gardens/Index/IndexHelper'
 
 import * as Yup from 'yup'
 
