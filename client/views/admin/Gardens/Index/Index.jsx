@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { getAllGardens } from './IndexHelper'
 import { showError } from '../../../../slices/error'
 
-export default function GardensList() {
+export default function Index() {
   const [gardenList, setGardenList] = useState([])
   const dispatch = useDispatch()
 
