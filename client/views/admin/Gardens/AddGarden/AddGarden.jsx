@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { addGarden } from './addGardenHelper'
 import { motion } from 'framer-motion'
 
-import GardenForm from '../../../subcomponents/gardens/GardenForm/GardenForm'
-import { addEventVariants } from '../../animationVariants'
+import GardenForm from '../../../../subcomponents/gardens/GardenForm/GardenForm'
+import { addEventVariants } from '../../../animationVariants'
 
 export default function AddGarden() {
   const navigate = useNavigate()

@@ -8,7 +8,7 @@ import About from './views/user/Gardens/about/About'
 import Home from './views/Index/Index'
 import AddEvent from './views/admin/Events/AddEvent/AddEvent'
 import EditEvent from './views/admin/Events/EditEvent/EditEvent'
-import AddGarden from './views/admin/AddGarden/AddGarden'
+import AddGarden from './views/admin/Gardens/AddGarden/AddGarden'
 import Error from './subcomponents/Error/Error'
 import Event from './views/admin/Events/Event/Event'
 import Gardens from './views/user/Gardens/Index/Index'
@@ -45,9 +45,9 @@ export default function App() {
             <Route path="/gardens/new" element={<AddGarden />} />
             <Route path="/gardens/:id/news/new" element={<AddNews />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/events/new" element={<AddEvent />} />
-            <Route path="/events/:id" element={<Event />} />
-            <Route path="/events/:id/edit" element={<EditEvent />} />
+            <Route path="/admin/events/:id" element={<Event />} />
+            <Route path="/admin/events/new" element={<AddEvent />} />
+            <Route path="/admin/events/:id/edit" element={<EditEvent />} />
             <Route path="/events/:id/volunteers" element={<Volunteers />} />
             <Route path="/produce/new" element={<AddProduce />} />
             <Route path="*" element={<p>this page doesnt exist</p>} />
