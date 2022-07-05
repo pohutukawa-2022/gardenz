@@ -7,6 +7,7 @@ import WaitIndicator from './WaitIndicator/WaitIndicator'
 export default function Header() {
   return (
     <header className="w-full bg-lightGreen">
+      <WaitIndicator />
       <section className="container lg:flex items-center justify-between mx-auto">
         <Link to="/">
           <img
@@ -15,7 +16,6 @@ export default function Header() {
             className="w-60"
           />
         </Link>
-        <WaitIndicator />
         <Nav />
       </section>
     </header>
