@@ -37,34 +37,32 @@ export default function App() {
       <IsUser>
         <p>this is user</p>
       </IsUser>
-      <main className="container margin-container flex-container centre-flex">
-        <IsAdmin key="admin">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gardens/new" element={<AddGarden />} />
-            <Route path="/gardens/:id/news" element={<News />} />
-            <Route path="/gardens/:id/news/new" element={<AddNews />} />
-            <Route path="/gardens/:id/events/:eventId" element={<Event />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/event/new" element={<AddEvent />} />
-            <Route path="/events/:id/edit" element={<EditEvent />} />
-            <Route path="/events/:id/volunteers" element={<Volunteers />} />
-            <Route path="/produce/new" element={<AddProduce />} />
-            <Route path="*" element={<p>this page doesnt exist</p>} />
-          </Routes>
-        </IsAdmin>
-        <IsUser key="user">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gardens" element={<Gardens />} />
-            <Route path="/gardens/:id/about" element={<About />} />
-            <Route path="/gardens/:id/news" element={<News />} />
-            <Route path="/gardens/:id/events/:eventId" element={<Event />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<p>this page doesnt exist</p>} />
-          </Routes>
-        </IsUser>
-      </main>
+      <IsAdmin key="admin">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gardens/new" element={<AddGarden />} />
+          <Route path="/gardens/:id/news" element={<News />} />
+          <Route path="/gardens/:id/news/new" element={<AddNews />} />
+          <Route path="/gardens/:id/events/:eventId" element={<Event />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/event/new" element={<AddEvent />} />
+          <Route path="/events/:id/edit" element={<EditEvent />} />
+          <Route path="/events/:id/volunteers" element={<Volunteers />} />
+          <Route path="/produce/new" element={<AddProduce />} />
+          <Route path="*" element={<p>this page doesnt exist</p>} />
+        </Routes>
+      </IsAdmin>
+      <IsUser key="user">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gardens" element={<Gardens />} />
+          <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/news" element={<News />} />
+          <Route path="/gardens/:id/events/:eventId" element={<Event />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<p>this page doesnt exist</p>} />
+        </Routes>
+      </IsUser>
     </>
   )
 }
