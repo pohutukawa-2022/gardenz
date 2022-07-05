@@ -44,9 +44,9 @@ export default function App() {
             <Route path="/admin/gardens" element={<Gardens />} />
             <Route path="/gardens/new" element={<AddGarden />} />
             <Route path="/gardens/:id/news/new" element={<AddNews />} />
-            <Route path="/gardens/:id/events/:eventId" element={<Event />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/event/new" element={<AddEvent />} />
+            <Route path="/events/new" element={<AddEvent />} />
+            <Route path="/events/:id" element={<Event />} />
             <Route path="/events/:id/edit" element={<EditEvent />} />
             <Route path="/events/:id/volunteers" element={<Volunteers />} />
             <Route path="/produce/new" element={<AddProduce />} />

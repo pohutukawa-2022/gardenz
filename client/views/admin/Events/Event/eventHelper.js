@@ -1,7 +1,7 @@
-import requestor from '../../../consume'
-import { dispatch } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../slices/waiting'
-import { showError } from '../../../slices/error'
+import requestor from '../../../../consume'
+import { dispatch } from '../../../../store'
+import { setWaiting, clearWaiting } from '../../../../slices/waiting'
+import { showError } from '../../../../slices/error'
 
 export function getEvent(id, user, consume = requestor) {
   dispatch(setWaiting())
