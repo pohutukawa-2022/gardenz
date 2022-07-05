@@ -41,6 +41,7 @@ export default function App() {
         <IsAdmin key="admin">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/admin/gardens" element={<Gardens />} />
             <Route path="/gardens/new" element={<AddGarden />} />
             <Route path="/gardens/:id/news/new" element={<AddNews />} />
             <Route path="/gardens/:id/events/:eventId" element={<Event />} />
