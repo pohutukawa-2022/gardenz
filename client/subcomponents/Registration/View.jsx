@@ -6,15 +6,15 @@ export function View(props) {
 
   return (
     <>
-      <h1>Profile</h1>
-      <ul className="list-primary">
+      <h1 className="text-xl text-gray-500 mb-2">Profile</h1>
+      <ul>
         <li>
           {firstName} {lastName}
         </li>
         <li>{email}</li>
       </ul>
-      <h2>Your Garden:</h2>
-      <ul className="list-primary">
+      <h2 className="text-l text-gray-500 my-2">Your Garden:</h2>
+      <ul>
         <li>{garden.name}</li>
         <li>{garden.address}</li>
       </ul>

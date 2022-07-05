@@ -358,3 +358,15 @@ To change the volunteer button in the template, select the button and the url wi
 http://localhost:3000/api/v1/volunteer/emailsignup?token={{token}}
 
 https://gardenz-app.herokuapp.com/api/v1/volunteer/emailsignup?token={{token}}
+
+
+## Tailwind CSS
+
+Familarise yourself with Tailwinds Utility first approach: https://tailwindcss.com/docs/utility-first
+
+The styling throughout GardeNZ closely follows the Tailwind docs. Please refer to the sidebar nvaigation to find classes that fit the component that you are building: https://tailwindcss.com/docs/container
+
+You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1
+
+
+

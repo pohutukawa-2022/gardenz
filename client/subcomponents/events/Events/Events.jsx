@@ -1,40 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import EventItem from '../EventItem/EventItem'
 
 export default function Events({ gardenid, events }) {
-  const isAdmin = useSelector((globalState) => globalState.user.isAdmin)
   return (
-    <>
-      <div>
-        <h1>Events</h1>
-        <div className="add-event">
-          {isAdmin ? (
-            <Link to="/event/new" className="inline-button">
-              Add New Event
-            </Link>
-          ) : null}
-        </div>
-      </div>
+    <main className="container mx-auto">
+      <h1 className="font-sans text-2xl">Events</h1>
 
-      <div>
-        {events.length === 0 ? (
-          <p>Sorry no events found, please come back later! </p>
-        ) : (
-          <section>
-            {events.map((event) => (
-              <EventItem
-                key={event.id}
-                gardenid={gardenid}
-                event={event}
-                isAdmin={isAdmin}
-              />
-            ))}
-          </section>
-        )}
-      </div>
-    </>
+      {events.length === 0 ? (
+        <p>Sorry no events found, please come back later! </p>
+      ) : (
+        <section className="w-full grid grid-cols-3 gap-4 mt-5 pr-6">
+          {events.map((event) => (
+            <EventItem key={event.id} gardenid={gardenid} event={event} />
+          ))}
+        </section>
+      )}
+    </main>
   )
 }

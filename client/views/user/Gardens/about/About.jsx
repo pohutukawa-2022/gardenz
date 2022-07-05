@@ -27,13 +27,18 @@ export default function About() {
           </h2>
         </article>
       </section>
-      <main className="container flex mx-auto mt-5">
-        <article className="w-1/2">
+      <main className="container lg:flex mx-auto mt-5">
+        <article className="lg:w-1/2">
           <p>{description}</p>
-          <a href={url}>{url}</a>
+          <p>
+            Visit our site{' '}
+            <a className="underline hover:underline-offset-1" href={url}>
+              {url}
+            </a>
+          </p>
           <Events gardenid={id} events={events} />
         </article>
-        <article className="w-1/2 h-96">
+        <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
           {lat && lon ? (
             <>
               <Map

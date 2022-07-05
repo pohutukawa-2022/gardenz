@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Collapsible from 'react-collapsible'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
-export default function EventItem({ gardenid, event, isAdmin }) {
-  const [open, setOpen] = useState(false)
+export default function EventItem({ event }) {
   const {
     id,
     title,
@@ -22,57 +19,33 @@ export default function EventItem({ gardenid, event, isAdmin }) {
     setIsVolunteering(isVolunteer)
   }, [isVolunteer])
 
-  function handleCollapse() {
-    setOpen(!open)
-  }
-
   return (
-    <div className="collapsible__content-inner">
-      <Collapsible
-        trigger={
-          <h2 className="card-title">
-            <a href="#" to={`/gardens/${gardenid}/events/${id}`}>
-              {title}
-            </a>
-          </h2>
-        }
-        {...{ open, handleCollapse }}
-      >
-        <article className="card-primary">
-          <ul className="list-primary">
-            <li>{date}</li>
-            {remainingVolunteers > 0 ? (
-              <li>
-                {remainingVolunteers} of {volunteersNeeded} volunteers still
-                needed
-              </li>
-            ) : (
-              <li>
-                No more volunteers needed, but we can always use more hands!
-                (Currently {additionalVolunteers} extra volunteer
-                {additionalVolunteers !== 1 ? 's' : ''})
-              </li>
-            )}
-            <li>Event is {status}</li>
-          </ul>
-          {isAdmin ? (
-            <Link to={`/events/${id}/edit`} className="button-secondary">
-              Edit Event
-            </Link>
-          ) : (
-            <VolunteerButton
-              eventId={id}
-              volunteering={isVolunteering}
-              setVolunteering={setIsVolunteering}
-            />
-          )}
-          {isAdmin && (
-            <Link to={`/events/${id}/volunteers`}>
-              <button className="button-secondary">Volunteers</button>
-            </Link>
-          )}
-        </article>
-      </Collapsible>
-    </div>
+    <article className="p-6 rounded-md border-2 border-blue">
+      <h2 className="font-bold">{title}</h2>
+      <dl>
+        <dt className="font-bold my-2">Date &amp; Time</dt>
+        <dd>{date}</dd>
+        {remainingVolunteers > 0 ? (
+          <>
+            <dt className="font-bold my-2">Volunteers needed</dt>
+            <dd>
+              {remainingVolunteers} of {volunteersNeeded}
+            </dd>
+          </>
+        ) : (
+          <p>
+            No more volunteers needed, but we can always use more hands!
+            (Currently {additionalVolunteers} extra volunteer
+            {additionalVolunteers !== 1 ? 's' : ''})
+          </p>
+        )}
+      </dl>
+      <p>Event is {status}!</p>
+      <VolunteerButton
+        eventId={id}
+        volunteering={isVolunteering}
+        setVolunteering={setIsVolunteering}
+      />
+    </article>
   )
 }

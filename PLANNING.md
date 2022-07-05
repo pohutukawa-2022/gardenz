@@ -13,7 +13,6 @@ Goal: Monitor community garden engagement to determine influence on key wellbein
 #### Smaller/Lower Priority
 
 - End to end testing
-- Styling (SASS)
 - Smaller tickets (`/garden` -> `/:id`, proper loading indicator etc.)
 
 ## Process
