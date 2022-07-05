@@ -32,10 +32,10 @@ export default function App() {
       <Error />
       <Header />
       <IsAdmin>
-        <p>this is admin</p>
+        <p>Admin Nav Placeholder</p>
       </IsAdmin>
       <IsUser>
-        <p>this is user</p>
+        <p>User Nav Placeholder</p>
       </IsUser>
       <main className="container margin-container flex-container centre-flex">
         <IsAdmin key="admin">
