@@ -13,9 +13,7 @@ function saveUser(user = emptyUser) {
   dispatch(setUser(user))
 }
 
-export async function cacheUser(useAuth0) {
-  const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
-
+export async function cacheUser(isAuthenticated, getAccessTokenSilently, user) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()

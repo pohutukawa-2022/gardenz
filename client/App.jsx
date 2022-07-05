@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AnimatePresence } from 'framer-motion'
@@ -22,7 +22,11 @@ import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 
 export default function App() {
-  cacheUser(useAuth0)
+  const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
+
+  useEffect(async () => {
+    await cacheUser(isAuthenticated, getAccessTokenSilently, user)
+  })
 
   return (
     <>
