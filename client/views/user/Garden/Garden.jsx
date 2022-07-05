@@ -34,7 +34,7 @@ export default function Garden() {
           <p>
             Visit our site{' '}
             <a className="underline hover:underline-offset-1" href={url}>
-              here
+              {url}
             </a>
           </p>
           <Events gardenid={id} events={events} />
