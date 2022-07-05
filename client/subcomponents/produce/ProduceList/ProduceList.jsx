@@ -14,18 +14,16 @@ export default function ProduceList({ gardenid }) {
 
   return (
     <>
-      <div className="column-9 event-container">
-        <h1 className="events-title">Produce</h1>
-      </div>
       <div>
-        <section className="events-list">
-          <ul>
-            {produce.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </section>
+        <h1>Produce</h1>
       </div>
+      <section>
+        <ul>
+          {produce.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      </section>
     </>
   )
 }

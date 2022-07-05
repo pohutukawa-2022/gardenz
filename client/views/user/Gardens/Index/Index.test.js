@@ -43,10 +43,6 @@ describe('list of gardens', () => {
     return screen.findAllByRole('listitem').then((listItems) => {
       expect(listItems).toHaveLength(1)
       expect(listItems[0].textContent).toMatch('Test Garden')
-      expect(listItems[0].textContent).toMatch('Address: 123 Sesame St')
-      expect(listItems[0].textContent).toMatch(
-        'A test run garden for testing out gardening.'
-      )
       expect(getAllGardens).toHaveBeenCalledTimes(1)
       return null
     })
@@ -81,15 +77,7 @@ describe('list of gardens', () => {
     return screen.findAllByRole('listitem').then((listItems) => {
       expect(listItems).toHaveLength(2)
       expect(listItems[0].textContent).toMatch('Test Garden')
-      expect(listItems[0].textContent).toMatch('Address: 123 Sesame St')
-      expect(listItems[0].textContent).toMatch(
-        'A test run garden for testing out gardening.'
-      )
       expect(listItems[1].textContent).toMatch('Test Garden 2')
-      expect(listItems[1].textContent).toMatch('Address: 234 Sesame St')
-      expect(listItems[1].textContent).toMatch(
-        'A second test run garden for testing out gardening.'
-      )
       expect(getAllGardens).toHaveBeenCalledTimes(1)
       return null
     })

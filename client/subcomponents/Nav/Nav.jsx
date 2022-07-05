@@ -42,7 +42,7 @@ export default function Nav() {
   }
 
   return (
-    <nav className="nav">
+    <nav className="w-full block lg:flex lg:items-center lg:w-auto">
       {open && (
         <div className="nav-menu-toggle" onClick={toggleMenu}>
           <Link to="/" className="nav-link home-nav-link">

@@ -75,18 +75,3 @@ describe('empty events array', () => {
     expect(graph).toBeVisible(false)
   })
 })
-
-describe('Gallery', () => {
-  it('Gallery displays image', async () => {
-    renderWithRedux(<Garden />)
-    await waitFor(() => {
-      const gallery = screen.getAllByRole('img')
-      expect(gallery[0]).toHaveAttribute('src')
-      expect(gallery[0]).toHaveAttribute('alt')
-    })
-  })
-})
-
-describe('produce list', () => {
-  it.todo('produceList component is rendered')
-})

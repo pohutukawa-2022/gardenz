@@ -8,8 +8,8 @@ export default function Events({ gardenid, events }) {
   const isAdmin = useSelector((globalState) => globalState.user.isAdmin)
   return (
     <>
-      <div className="column-9 event-container">
-        <h1 className="events-title">Events</h1>
+      <div>
+        <h1>Events</h1>
         <div className="add-event">
           {isAdmin ? (
             <Link to="/event/new" className="inline-button">
@@ -23,7 +23,7 @@ export default function Events({ gardenid, events }) {
         {events.length === 0 ? (
           <p>Sorry no events found, please come back later! </p>
         ) : (
-          <section className="events-list">
+          <section>
             {events.map((event) => (
               <EventItem
                 key={event.id}

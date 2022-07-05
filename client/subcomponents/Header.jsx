@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Nav from './Nav/Nav'
-import WaitIndicator from '../subcomponents/WaitIndicator/WaitIndicator'
+import WaitIndicator from './WaitIndicator/WaitIndicator'
 
 export default function Header() {
   return (
-    <header className="header">
-      <div className="flex-container container">
+    <header className="w-full bg-lightGreen">
+      <section className="container flex items-center justify-between flex-wrap mx-auto">
         <Link to="/">
           <img
             src="/images/gardenzLogoNew.svg"
@@ -17,7 +17,7 @@ export default function Header() {
         </Link>
         <WaitIndicator />
         <Nav />
-      </div>
+      </section>
     </header>
   )
 }
