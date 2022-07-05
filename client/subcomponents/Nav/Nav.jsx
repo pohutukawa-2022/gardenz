@@ -38,63 +38,51 @@ export default function Nav() {
   }
 
   const toggleMenu = () => {
-    setOpen(!open)
+    setOpen((prev) => !prev)
   }
 
   return (
-    <nav className="w-full block lg:flex lg:items-center lg:w-auto">
-      {open && (
-        <div className="nav-menu-toggle" onClick={toggleMenu}>
-          <Link to="/" className="nav-link home-nav-link">
+    <>
+      <nav
+        className={
+          open
+            ? 'block'
+            : 'hidden ' +
+              'w-full lg:flex justify-between items-center lg:items-center lg:w-auto'
+        }
+      >
+        <div className="lg:flex text-center md:text-align">
+          <Link
+            to="/"
+            className="text-white hover:text-green block my-6 py-2 px-6"
+          >
             Home
           </Link>
 
           <IfAuthenticated>
-            <Link to={`/gardens/${gardenId}`} className="nav-link">
+            <Link
+              to={`/gardens/${gardenId}`}
+              className="text-white hover:text-green block my-6 py-2 px-6"
+            >
               My Garden
             </Link>
-            <Link to={`/gardens/${gardenId}/news`} className="nav-link">
+            <Link
+              to={`/gardens/${gardenId}/news`}
+              className="text-white hover:text-green block my-6 py-2 px-6"
+            >
               News
             </Link>
-            <Link to="/profile" className="nav-link">
+            <Link
+              to="/profile"
+              className="text-white hover:text-green block my-6 py-2 px-6"
+            >
               My Profile
             </Link>
-            <a href="/" onClick={handleLogoff} className="nav-link">
-              Log out
-            </a>
-          </IfAuthenticated>
-
-          <IfNotAuthenticated>
-            <a href="/" onClick={handleLogin} className="nav-link">
-              Sign in
-            </a>
-            <a href="/" onClick={handleRegister} className="nav-link">
-              Register
-            </a>
-          </IfNotAuthenticated>
-
-          <div className="close-btn" onClick={toggleMenu}>
-            <IoClose />
-          </div>
-        </div>
-      )}
-      {!open && (
-        <div className="nav-menu">
-          <Link to="/" className="nav-link home-nav-link">
-            Home
-          </Link>
-
-          <IfAuthenticated>
-            <Link to={`/gardens/${gardenId}`} className="nav-link">
-              My Garden
-            </Link>
-            <Link to={`/gardens/${gardenId}/news`} className="nav-link">
-              News
-            </Link>
-            <Link to="/profile" className="nav-link">
-              My Profile
-            </Link>
-            <a href="/" onClick={handleLogoff} className="nav-link">
+            <a
+              href="/"
+              onClick={handleLogoff}
+              className="text-white hover:text-green block my-6 py-2 px-6"
+            >
               Log out
             </a>
           </IfAuthenticated>
@@ -103,24 +91,26 @@ export default function Nav() {
             <a
               href="/"
               onClick={handleLogin}
-              className="nav-link home-nav-link"
+              className="text-white hover:text-green block my-6 py-2 px-6"
             >
               Sign in
             </a>
             <a
               href="/"
               onClick={handleRegister}
-              className="nav-link home-nav-link register-button"
+              className="text-white hover:text-green block my-6 py-2 px-6"
             >
               Register
             </a>
           </IfNotAuthenticated>
-
-          <div className="hamburger" onClick={toggleMenu}>
-            <GiHamburgerMenu />
-          </div>
         </div>
-      )}
-    </nav>
+      </nav>
+      <div
+        className="lg:hidden z-90 fixed top-4 right-6 text-white text-4xl"
+        onClick={toggleMenu}
+      >
+        {open ? <IoClose /> : <GiHamburgerMenu />}
+      </div>
+    </>
   )
 }
