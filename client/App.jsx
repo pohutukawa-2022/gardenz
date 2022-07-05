@@ -42,14 +42,14 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin/gardens" element={<Gardens />} />
-            <Route path="/gardens/new" element={<AddGarden />} />
-            <Route path="/gardens/:id/news/new" element={<AddNews />} />
+            <Route path="/admin/gardens/add" element={<AddGarden />} />
+            <Route path="/gardens/:id/news/add" element={<AddNews />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/admin/events/:id" element={<Event />} />
-            <Route path="/admin/events/new" element={<AddEvent />} />
+            <Route path="/admin/events/add" element={<AddEvent />} />
             <Route path="/admin/events/:id/edit" element={<EditEvent />} />
             <Route path="/events/:id/volunteers" element={<Volunteers />} />
-            <Route path="/produce/new" element={<AddProduce />} />
+            <Route path="/produce/add" element={<AddProduce />} />
             <Route path="*" element={<p>this page doesnt exist</p>} />
           </Routes>
         </IsAdmin>
