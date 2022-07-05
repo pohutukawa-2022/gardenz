@@ -1,8 +1,8 @@
 import { getNews } from './newsHelper'
-import { setWaiting, clearWaiting } from '../../../slices/waiting'
-import { dispatch } from '../../../store'
+import { setWaiting, clearWaiting } from '../../../../slices/waiting'
+import { dispatch } from '../../../../store'
 
-jest.mock('../../../store')
+jest.mock('../../../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

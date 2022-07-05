@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { getNews } from './newsHelper'
-import { renderWithRedux } from '../../../test-utils'
+import { renderWithRedux } from '../../../../test-utils'
 import News from './News'
 import { waitFor } from '@testing-library/react'
 
