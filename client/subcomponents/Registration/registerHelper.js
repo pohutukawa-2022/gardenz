@@ -29,7 +29,7 @@ export function registerUser(
       newUser.isAdmin = isAdmin
       newUser.token = token
       dispatch(setUser(newUser))
-      navigateTo(`/gardens/${user.gardenId}/about`)
+      navigateTo(`/gardens`)
       return newUser
     })
     .catch((err) => {
