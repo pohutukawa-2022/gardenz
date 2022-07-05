@@ -58,7 +58,6 @@ export default function Home() {
       <img
         className="hidden md:block w-1/2 mt-5 rounded-r-md"
         src="/images/comGardenPlant.png"
-        initial="hidden"
       />
     </main>
   )
