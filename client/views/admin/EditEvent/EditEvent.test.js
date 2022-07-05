@@ -6,11 +6,11 @@ import { renderWithRedux } from '../../../test-utils'
 
 import EditEvent from './EditEvent'
 
-import { getEvent } from '../Event/eventHelper'
+import { getEvent } from '../Events/Event/eventHelper'
 import { updateEvent } from './editEventHelper'
 
 jest.mock('./editEventHelper')
-jest.mock('../Event/eventHelper')
+jest.mock('../Events/Event/eventHelper')
 
 // defined here as used in the mounting useEffect of every render
 getEvent.mockImplementation(() =>
