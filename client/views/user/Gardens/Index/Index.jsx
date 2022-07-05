@@ -22,20 +22,21 @@ export default function GardensList() {
 
   return (
     <section className="container flex mx-auto">
-      <div className="w-full grid grid-cols-4 gap-4 mt-20">
+      <ul className="w-full grid grid-cols-4 gap-4 mt-20">
         {gardenList.map((garden) => {
           return (
-            <Link
-              key={garden.id}
-              to={`/gardens/${garden.id}`}
-              className="p-6 text-center rounded-md border-2 border-blue hover:bg-blue hover:text-white transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
-            >
-              <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
-              <h2 className="font-sans text-2xl">{garden.name}</h2>
-            </Link>
+            <li key={garden.id} className="grid">
+              <Link
+                to={`/gardens/${garden.id}`}
+                className="p-6 text-center rounded-md border-2 border-blue hover:bg-blue hover:text-white transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
+              >
+                <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
+                <h2 className="font-sans text-2xl">{garden.name}</h2>
+              </Link>
+            </li>
           )
         })}
-      </div>
+      </ul>
     </section>
   )
 }
