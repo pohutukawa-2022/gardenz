@@ -11,6 +11,7 @@ import EditEvent from './views/admin/Events/EditEvent/EditEvent'
 import AddGarden from './views/admin/Gardens/AddGarden/AddGarden'
 import Error from './subcomponents/Error/Error'
 import Event from './views/admin/Events/Event/Event'
+import Gallery from './views/user/Gardens/Gallery/Gallery'
 import Gardens from './views/user/Gardens/Index/Index'
 import News from './views/user/Gardens/News/News'
 import AddNews from './views/admin/News/AddNews/AddNews'
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="/gardens" element={<Gardens />} />
           <Route path="/gardens/:id/news" element={<News />} />
           <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/gallery" element={<Gallery />} />
           <Route
             path="/gardens/:id/events"
             element={<p>a placeholder to show a list of events</p>}
