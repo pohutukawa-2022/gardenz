@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function userNav() {
-  const gardenId = 1
+  const gardenId = useSelector((globalState) => globalState.user?.gardenId)
   return (
     <>
       <nav
