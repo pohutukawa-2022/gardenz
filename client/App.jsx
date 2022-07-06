@@ -33,12 +33,6 @@ export default function App() {
     <>
       <Error />
       <Header />
-      <IsAdmin>
-        <p>Admin Nav Placeholder</p>
-      </IsAdmin>
-      <IsUser>
-        <p>User Nav Placeholder</p>
-      </IsUser>
       <IsAdmin key="admin">
         <Routes>
           <Route path="/" element={<Home />} />
