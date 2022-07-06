@@ -19,6 +19,7 @@ import AddProduce from './views/admin/produce/AddProduce'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import Shop from './views/user/Gardens/Shop/Shop'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/gardens" element={<Gardens />} />
           <Route path="/gardens/:id/news" element={<News />} />
           <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/shop" element={<Shop />} />
           <Route
             path="/gardens/:id/events"
             element={<p>a placeholder to show a list of events</p>}
