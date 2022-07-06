@@ -14,12 +14,13 @@ import Event from './views/admin/Events/Event/Event'
 import Gallery from './views/user/Gardens/Gallery/Gallery'
 import Gardens from './views/user/Gardens/Index/Index'
 import News from './views/user/Gardens/News/News'
-import AddNews from './views/admin/AddNews/AddNews'
+import AddNews from './views/admin/News/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import PageNotFound from './views/PageNotFound/PageNotFound'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -50,7 +51,7 @@ export default function App() {
           <Route path="/admin/events/:id/edit" element={<EditEvent />} />
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
       <IsUser key="user">
@@ -65,7 +66,7 @@ export default function App() {
             element={<p>a placeholder to show a list of events</p>}
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsUser>
     </>
