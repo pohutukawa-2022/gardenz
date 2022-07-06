@@ -35,11 +35,6 @@ export default function App() {
       <IsAdmin>
         <p>Admin Nav Placeholder</p>
       </IsAdmin>
-      <IsUser>
-        <p>
-          <UserNav />
-        </p>
-      </IsUser>
       <IsAdmin key="admin">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,11 +54,51 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route path="/gardens/:id/news" element={<News />} />
-          <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/" element={<UserNav />} />
+          <Route
+            path="/gardens/:id/news"
+            element={
+              <>
+                <UserNav /> <News />
+              </>
+            }
+          />
+          {/* <Route exact path="/gardens/:id/news" element={<UserNav />} /> */}
+          <Route
+            path="/gardens/:id/about"
+            element={
+              <>
+                <UserNav />
+                <About />
+              </>
+            }
+          />
           <Route
             path="/gardens/:id/events"
-            element={<p>a placeholder to show a list of events</p>}
+            element={
+              <>
+                <UserNav />
+                <p>a placeholder to show a list of events</p>
+              </>
+            }
+          />
+          <Route
+            path="/gardens/:id/gallery"
+            element={
+              <>
+                <UserNav />
+                <p>a placeholder for the gallery</p>
+              </>
+            }
+          />
+          <Route
+            path="/gardens/:id/shop"
+            element={
+              <>
+                <UserNav />
+                <p>a placeholder for the shop</p>
+              </>
+            }
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<p>this page doesnt exist</p>} />
