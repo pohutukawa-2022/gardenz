@@ -20,6 +20,7 @@ import Orders from './views/admin/Gardens/orders/Orders.jsx'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import PageNotFound from './views/PageNotFound/PageNotFound'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="/produce/add" element={<AddProduce />} />
           <Route path="/admin/gardens/:id/orders" element={<Orders />} />
           <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
       <IsUser key="user">
@@ -65,7 +67,7 @@ export default function App() {
             element={<p>a placeholder to show a list of events</p>}
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsUser>
     </>
