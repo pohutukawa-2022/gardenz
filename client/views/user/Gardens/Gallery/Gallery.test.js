@@ -10,4 +10,9 @@ describe('Gallery', () => {
     expect(firstImage).toHaveAttribute('src', '/images/comGardenPlant.png')
     expect(firstImage).toHaveAttribute('alt', 'garden image1')
   })
+  test('Images in Gallery should be visible', () => {
+    render(<Gallery />)
+    const secondImage = screen.getAllByRole('img')[1]
+    expect(secondImage).toBeVisible(true)
+  })
 })
