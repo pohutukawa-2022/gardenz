@@ -19,6 +19,7 @@ import AddProduce from './views/admin/produce/AddProduce'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import AdminEvent from './views/admin/Gardens/Events/Index/Index'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
           <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="/admin/gardens/:id/events" element={<AdminEvent />} />
         </Routes>
       </IsAdmin>
       <IsUser key="user">
