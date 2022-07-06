@@ -19,6 +19,7 @@ import AddProduce from './views/admin/produce/AddProduce'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import UserNav from './subcomponents/userNav/UserNav'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -35,7 +36,9 @@ export default function App() {
         <p>Admin Nav Placeholder</p>
       </IsAdmin>
       <IsUser>
-        <p>User Nav Placeholder</p>
+        <p>
+          <UserNav />
+        </p>
       </IsUser>
       <IsAdmin key="admin">
         <Routes>
