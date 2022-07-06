@@ -16,6 +16,7 @@ import News from './views/user/Gardens/News/News'
 import AddNews from './views/admin/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
+import Orders from './views/admin/Gardens/orders/Orders.jsx'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/admin/events/:id/edit" element={<EditEvent />} />
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
+          <Route path="/admin/gardens/:id/orders" element={<Orders />} />
           <Route path="*" element={<p>this page doesnt exist</p>} />
         </Routes>
       </IsAdmin>
