@@ -25,23 +25,23 @@ export default function AdminEvent() {
       <section>
         <article className="container flex">
           <h2 className="font-sans text-black text-4xl font-bold py-6">
-            {name}
+            {/* {name} */}
           </h2>
         </article>
       </section>
       <main className="container lg:flex mx-auto mt-5">
         <article className="lg:w-3/4">
-          <p>{description}</p>
-          <p>
+          {/* <p>{description}</p> */}
+          {/* <p>
             Visit our site{' '}
             <a className="underline hover:underline-offset-1" href={url}>
               {url}
             </a>
-          </p>
+          </p> */}
           <AdminEvents gardenid={id} events={events} />
         </article>
         <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
-          bar graph goes here...
+          Sweet as bar graph:
           <BarGraph events={events} />
         </article>
       </main>
