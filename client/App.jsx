@@ -17,10 +17,12 @@ import News from './views/user/Gardens/News/News'
 import AddNews from './views/admin/News/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
+import Orders from './views/admin/Gardens/orders/Orders.jsx'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 import UserNav from './subcomponents/userNav/UserNav'
+import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 
 export default function App() {
@@ -46,6 +48,7 @@ export default function App() {
           <Route path="/admin/events/:id/edit" element={<EditEvent />} />
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
+          <Route path="/admin/gardens/:id/orders" element={<Orders />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
@@ -84,7 +87,7 @@ export default function App() {
             element={
               <>
                 <UserNav />
-                <p>a placeholder for the gallery</p>
+                <Gallery />
               </>
             }
           />
@@ -93,7 +96,7 @@ export default function App() {
             element={
               <>
                 <UserNav />
-                <p>a placeholder for the shop</p>
+                <Shop />
               </>
             }
           />
