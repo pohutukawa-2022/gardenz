@@ -11,14 +11,16 @@ import EditEvent from './views/admin/Events/EditEvent/EditEvent'
 import AddGarden from './views/admin/Gardens/AddGarden/AddGarden'
 import Error from './subcomponents/Error/Error'
 import Event from './views/admin/Events/Event/Event'
+import Gallery from './views/user/Gardens/Gallery/Gallery'
 import Gardens from './views/user/Gardens/Index/Index'
 import News from './views/user/Gardens/News/News'
-import AddNews from './views/admin/AddNews/AddNews'
+import AddNews from './views/admin/News/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import PageNotFound from './views/PageNotFound/PageNotFound'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -31,12 +33,6 @@ export default function App() {
     <>
       <Error />
       <Header />
-      <IsAdmin>
-        <p>Admin Nav Placeholder</p>
-      </IsAdmin>
-      <IsUser>
-        <p>User Nav Placeholder</p>
-      </IsUser>
       <IsAdmin key="admin">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,7 +45,7 @@ export default function App() {
           <Route path="/admin/events/:id/edit" element={<EditEvent />} />
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
       <IsUser key="user">
@@ -58,12 +54,13 @@ export default function App() {
           <Route path="/gardens" element={<Gardens />} />
           <Route path="/gardens/:id/news" element={<News />} />
           <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/gallery" element={<Gallery />} />
           <Route
             path="/gardens/:id/events"
             element={<p>a placeholder to show a list of events</p>}
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsUser>
     </>
