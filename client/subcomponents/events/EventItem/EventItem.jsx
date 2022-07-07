@@ -41,6 +41,7 @@ export default function EventItem({ event }) {
         )}
       </dl>
       <p>Event is {status}!</p>
+
       <VolunteerButton
         eventId={id}
         volunteering={isVolunteering}
