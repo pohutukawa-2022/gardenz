@@ -52,7 +52,6 @@ describe('List of news', () => {
       expect(listItems[0].textContent).toMatch('test1 firstName')
       expect(listItems[0].textContent).toMatch('test1 lastName')
       expect(listItems[0].textContent).toMatch('test1 content')
-
       expect(listItems[1].textContent).toMatch('test title2')
       expect(listItems[1].textContent).toMatch('test2 firstName')
       expect(listItems[1].textContent).toMatch('test2 lastName')
