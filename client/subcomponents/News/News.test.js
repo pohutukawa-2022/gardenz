@@ -12,24 +12,11 @@ describe('News', () => {
     lastName: 'LastName',
   }
 
-  it('Print needed List of items amount', () => {
+  it('News compnent renders fakeNews', () => {
     render(<News news={fakeNews} />)
-    const news = screen.getAllByRole('listitem')
-    expect(news).toHaveLength(3)
-    expect(news[0].textContent).toBe('By FirstName LastName:')
-  })
-
-  it('renders news data', async () => {
-    render(<News news={fakeNews} />)
-    const news = screen.getByText(/LastName/)
-    const title = await screen.queryByText('Lettuce Picking Season')
-    expect(news).toBeInTheDocument()
-    expect(title).toBeNull()
-  })
-
-  it('Render correct relative time format', async () => {
-    render(<News news={fakeNews} />)
-    const createdOn = screen.getByText(/ago/)
-    expect(createdOn).toBeInTheDocument()
+    const lastName = screen.getByText(/LastName/)
+    const title = screen.queryByText('Lettuce Picking Season')
+    expect(lastName).toBeInTheDocument()
+    expect(title).toBeInTheDocument()
   })
 })
