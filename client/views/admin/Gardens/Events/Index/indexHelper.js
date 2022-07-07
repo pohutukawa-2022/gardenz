@@ -4,14 +4,20 @@ import { clearWaiting, setWaiting } from '../../../../../slices/waiting'
 import { showError } from '../../../../../slices/error'
 import { setGarden } from '../../../../../slices/garden'
 
-export function getGarden(id, user, consume = requestor) {
+export function getGarden() {
   dispatch(setWaiting())
-  const headers = {
-    Accept: 'application/json',
-    userid: user.id,
-  }
 
-  return consume(`/gardens/${id}`, '', 'get', {}, headers)
+  return Promise.resolve({
+    body: {
+      name: 'test name',
+      description: 'description',
+      address: 'address',
+      url: 'url',
+      events: 'events',
+      lat: 0.5,
+      lon: 0.4,
+    },
+  })
     .then((res) => {
       const garden = res.body
       dispatch(
