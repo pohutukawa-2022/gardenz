@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './subcomponents/Header'
+import AdminNav from './subcomponents/adminNav/AdminNav'
 import Profile from './views/user/Profile/Profile'
 import About from './views/user/Gardens/about/About'
 import Home from './views/Index/Index'
@@ -34,6 +35,7 @@ export default function App() {
       <Error />
       <Header />
       <IsAdmin key="admin">
+        <AdminNav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin/gardens" element={<Gardens />} />
