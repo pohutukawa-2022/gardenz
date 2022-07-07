@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+// import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 //import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+import EditButton from '../../Buttons/EditButton'
 
 export default function EventItem({ event }) {
   const {
@@ -42,8 +43,7 @@ export default function EventItem({ event }) {
         )}
       </dl>
       <p>Event is {status}!</p>
-      // remove volunteer btn and add edit btn below
-      <VolunteerButton
+      <EditButton
         eventId={id}
         volunteering={isVolunteering}
         setVolunteering={setIsVolunteering}
