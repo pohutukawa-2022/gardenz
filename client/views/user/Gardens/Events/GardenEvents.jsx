@@ -15,7 +15,6 @@ export default function GardenEvents() {
     user.id && getGarden(id, user)
   }, [id, user])
 
-  console.log(user)
   return (
     <>
       <section className="w-full h-96 bg-[url('/images/galleryPlaceHolder04.jpg')] bg-cover bg-center flex justify-center items-end">
@@ -23,9 +22,13 @@ export default function GardenEvents() {
           <h2 className="font-sans text-white text-4xl font-bold py-6">
             {name}
           </h2>
-          <Events gardenid={id} events={events} />
         </article>
       </section>
+      <main className="container lg:flex mx-auto mt-5">
+        <article>
+          <Events gardenid={id} events={events} />
+        </article>
+      </main>
     </>
   )
 }
