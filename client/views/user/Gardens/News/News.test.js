@@ -40,9 +40,9 @@ describe('List of news', () => {
       route: '/gardens/:id/news',
     })
 
-    // await waitFor(() => {
-    //   expect(getNews).toHaveBeenCalledWith('1')
-    // })
+    await waitFor(() => {
+      expect(getNews).toHaveBeenCalledWith('1')
+    })
 
     // TODO: assert that NewsList component is rendered
     return screen.findAllByRole('listitem').then((listItems) => {
