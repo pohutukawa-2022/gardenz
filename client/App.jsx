@@ -23,7 +23,6 @@ import { cacheUser } from './auth-utils'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 
-
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 
