@@ -3,7 +3,7 @@ import React from 'react'
 import { getNews } from './newsHelper'
 import { renderWithRedux } from '../../../../test-utils'
 import News from './News'
-import { waitFor } from '@testing-library/react'
+import { waitFor, screen } from '@testing-library/react'
 
 jest.mock('./newsHelper')
 
@@ -40,10 +40,22 @@ describe('List of news', () => {
       route: '/gardens/:id/news',
     })
 
-    await waitFor(() => {
-      expect(getNews).toHaveBeenCalledWith('1')
-    })
+    // await waitFor(() => {
+    //   expect(getNews).toHaveBeenCalledWith('1')
+    // })
 
     // TODO: assert that NewsList component is rendered
+    return screen.findAllByRole('listitem').then((listItems) => {
+      console.log(listItems)
+      expect(listItems).toHaveLength(2)
+      expect(listItems[0].textContent).toMatch('test1 content')
+      expect(listItems[1].textContent).toMatch('test2 content')
+      expect(listItems[0].textContent).toMatch('test1 firstName')
+      expect(listItems[1].textContent).toMatch('test2 firstName')
+      expect(listItems[0].textContent).toMatch('test1 lastName')
+      expect(listItems[1].textContent).toMatch('test2 lastName')
+      expect(listItems[0].textContent).toMatch('test title1')
+      expect(listItems[1].textContent).toMatch('test title2')
+    })
   })
 })
