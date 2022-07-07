@@ -1,11 +1,7 @@
 import React from 'react'
 
-import { toggleEditStatus } from './EditButtonHelper'
-
-export default function EditButton({ eventId, editing, setEditing }) {
-  function handleClick() {
-    toggleEditStatus(eventId, !editing, setEditing)
-  }
+export default function EditButton({ eventId, editing }) {
+  function handleClick() {}
 
   return (
     <>

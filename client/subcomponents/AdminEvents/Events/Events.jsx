@@ -1,8 +1,8 @@
 import React from 'react'
 
-import EventItem from '../EventItem/EventItem'
+import AdminEventItem from '../EventItem/AdminEventItem'
 
-export default function Events({ gardenid, events }) {
+export default function AdminEvents({ gardenid, events }) {
   return (
     <main className="container mx-auto">
       <h1 className="font-sans text-2xl">Events</h1>
@@ -12,7 +12,7 @@ export default function Events({ gardenid, events }) {
       ) : (
         <section className="w-full grid grid-cols-3 gap-4 mt-5 pr-6">
           {events.map((event) => (
-            <EventItem key={event.id} gardenid={gardenid} event={event} />
+            <AdminEventItem key={event.id} gardenid={gardenid} event={event} />
           ))}
         </section>
       )}

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import Events from '../../../../../subcomponents/events/Events/Events'
+import AdminEvents from '../../../../../subcomponents/AdminEvents/Events/Events'
 import { getGarden } from './indexHelper'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
 
@@ -38,7 +38,7 @@ export default function AdminEvent() {
               {url}
             </a>
           </p>
-          <Events gardenid={id} events={events} />
+          <AdminEvents gardenid={id} events={events} />
         </article>
         <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
           bar graph goes here...
