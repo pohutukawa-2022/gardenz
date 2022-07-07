@@ -22,6 +22,7 @@ import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 import PageNotFound from './views/PageNotFound/PageNotFound'
+import AdminGarden from './views/admin/Gardens/Index/Index'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -35,10 +36,17 @@ export default function App() {
       <Error />
       <Header />
       <IsAdmin key="admin">
-        <AdminNav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin/gardens" element={<Gardens />} />
+          <Route
+            path="/admin/gardens/:id"
+            element={
+              <>
+                <AdminNav />
+                <AdminGarden />
+              </>
+            }
+          />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
           <Route path="/profile" element={<Profile />} />
