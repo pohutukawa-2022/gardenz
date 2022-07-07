@@ -52,7 +52,6 @@ export default function App() {
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
           <Route path="/admin/gardens/:id/orders" element={<Orders />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
