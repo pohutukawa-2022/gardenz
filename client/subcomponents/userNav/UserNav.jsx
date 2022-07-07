@@ -5,11 +5,9 @@ import { useParams, NavLink } from 'react-router-dom'
 // import { GiHamburgerMenu } from 'react-icons/gi'
 // import { IoClose } from 'react-icons/io5'
 
-export default function userNav() {
+export default function UserNav() {
   //const [open, setOpen] = useState(false)
-  const params = useParams()
-  const gardenId = params.id
-
+  const { id } = useParams()
   //const [isActive, setIsActive] = useState('text-white')
 
   //const activeLink = () => {
@@ -32,7 +30,7 @@ export default function userNav() {
       >
         <div className="lg:flex text-center md:text-align bg-lightGreen">
           <NavLink
-            to={`/gardens/${gardenId}/about`}
+            to={`/gardens/${id}/about`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
               ' hover:text-green block my-6 py-2 px-6 '
@@ -42,7 +40,7 @@ export default function userNav() {
           </NavLink>
 
           <NavLink
-            to={`/gardens/${gardenId}/events`}
+            to={`/gardens/${id}/events`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
               ' hover:text-green block my-6 py-2 px-6 '
@@ -52,7 +50,7 @@ export default function userNav() {
           </NavLink>
 
           <NavLink
-            to={`/gardens/${gardenId}/news`}
+            to={`/gardens/${id}/news`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
               ' hover:text-green block my-6 py-2 px-6 '
@@ -62,7 +60,7 @@ export default function userNav() {
           </NavLink>
 
           <NavLink
-            to={`/gardens/${gardenId}/gallery`}
+            to={`/gardens/${id}/gallery`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
               ' hover:text-green block my-6 py-2 px-6 '
@@ -71,7 +69,7 @@ export default function userNav() {
             Gallery
           </NavLink>
           <NavLink
-            to={`/gardens/${gardenId}/shop`}
+            to={`/gardens/${id}/shop`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
               ' hover:text-green block my-6 py-2 px-6 '

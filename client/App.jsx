@@ -56,7 +56,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route path="/gardens/:id/" element={<UserNav />} />
           <Route
             path="/gardens/:id/news"
             element={
@@ -65,7 +64,6 @@ export default function App() {
               </>
             }
           />
-          {/* <Route exact path="/gardens/:id/news" element={<UserNav />} /> */}
           <Route
             path="/gardens/:id/about"
             element={

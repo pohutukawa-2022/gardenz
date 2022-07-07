@@ -1,12 +1,14 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-
 import UserNav from './UserNav'
 import { renderWithRouter } from '../../test-utils'
 
 test('User Nav bar contains 5 NavLinks', () => {
   // Arrange
-  renderWithRouter(<UserNav />)
+  renderWithRouter(<UserNav />, {
+    initialEntries: ['/gardens/1/shop'],
+    route: '/gardens/:id/shop',
+  })
   // Act
   const links = screen.getAllByRole('link')
   // Assert
@@ -16,4 +18,5 @@ test('User Nav bar contains 5 NavLinks', () => {
   expect(links[2]).toHaveTextContent('News')
   expect(links[3]).toHaveTextContent('Gallery')
   expect(links[4]).toHaveTextContent('Shop')
+  expect(links[4].href).toMatch('/gardens/1/shop')
 })
