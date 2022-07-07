@@ -1,39 +1,18 @@
 import React from 'react'
 import { useParams, NavLink } from 'react-router-dom'
-//import { useSelector } from 'react-redux'
-
-// import { GiHamburgerMenu } from 'react-icons/gi'
-// import { IoClose } from 'react-icons/io5'
 
 export default function UserNav() {
-  //const [open, setOpen] = useState(false)
   const { id } = useParams()
-  //const [isActive, setIsActive] = useState('text-white')
-
-  //const activeLink = () => {
-  //   setIsActive('text-orange')
-  // }
-
-  // const toggleMenu = () => {
-  //   setOpen((prev) => !prev)
-  // }
 
   return (
     <>
-      <nav
-      // className={
-      //   open
-      //     ? 'block'
-      //     : 'hidden ' +
-      //       'w-full lg:flex justify-between items-center lg:items-center lg:w-auto'
-      // }
-      >
-        <div className="lg:flex text-center md:text-align bg-lightGreen">
+      <nav>
+        <div className="lg:flex flex-row text-center md:text-align bg-lightGreen">
           <NavLink
             to={`/gardens/${id}/about`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
-              ' hover:text-green block my-6 py-2 px-6 '
+              ' hover:text-green block my-6  py-2 px-6 basis-1/4 '
             }
           >
             About Us
@@ -43,7 +22,7 @@ export default function UserNav() {
             to={`/gardens/${id}/events`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
-              ' hover:text-green block my-6 py-2 px-6 '
+              ' hover:text-green block my-6  py-2 px-6 basis-1/4  '
             }
           >
             Events
@@ -53,7 +32,7 @@ export default function UserNav() {
             to={`/gardens/${id}/news`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
-              ' hover:text-green block my-6 py-2 px-6 '
+              ' hover:text-green block my-6 py-2 px-6 basis-1/4 '
             }
           >
             News
@@ -63,7 +42,7 @@ export default function UserNav() {
             to={`/gardens/${id}/gallery`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
-              ' hover:text-green block my-6 py-2 px-6 '
+              ' hover:text-green block my-6  py-2 px-6 basis-1/4 '
             }
           >
             Gallery
@@ -72,19 +51,13 @@ export default function UserNav() {
             to={`/gardens/${id}/shop`}
             className={({ isActive }) =>
               (isActive ? 'text-orange' : 'text-white') +
-              ' hover:text-green block my-6 py-2 px-6 '
+              ' hover:text-green block my-6  py-2 px-6 basis-1/4 '
             }
           >
             Shop
           </NavLink>
         </div>
       </nav>
-      {/* <div
-        className="lg:hidden z-90 absolute top-4 right-6 text-white text-4xl"
-        onClick={toggleMenu}
-      >
-        {open ? <IoClose /> : <GiHamburgerMenu />}
-      </div> */}
     </>
   )
 }
