@@ -34,7 +34,7 @@ describe('List of news', () => {
   it('props send correct data', async () => {
     getNews.mockImplementation(() => Promise.resolve(fakeNews))
 
-    renderWithRedux(<News news={fakeNews} />, {
+    renderWithRedux(<News />, {
       initialState: { user: { isAdmin: true } },
       initialEntries: ['/gardens/1/news'],
       route: '/gardens/:id/news',
