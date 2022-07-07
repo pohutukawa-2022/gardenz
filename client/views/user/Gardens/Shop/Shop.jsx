@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function Shop() {
-  return 'A shop will be here'
+  return <p>A shop will be here</p>
 }
