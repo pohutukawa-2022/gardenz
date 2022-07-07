@@ -15,7 +15,7 @@ describe('News', () => {
   it('Print needed List of items amount', () => {
     render(<News news={fakeNews} />)
     const news = screen.getAllByRole('listitem')
-    expect(news).toHaveLength(3)
+    expect(news).toHaveLength(1)
     expect(news[0].textContent).toBe('By FirstName LastName:')
   })
 
@@ -25,11 +25,5 @@ describe('News', () => {
     const title = await screen.queryByText('Lettuce Picking Season')
     expect(news).toBeInTheDocument()
     expect(title).toBeNull()
-  })
-
-  it('Render correct relative time format', async () => {
-    render(<News news={fakeNews} />)
-    const createdOn = screen.getByText(/ago/)
-    expect(createdOn).toBeInTheDocument()
   })
 })
