@@ -30,6 +30,10 @@ describe('getProduceTypes', () => {
         return null
       })
     })
+
+    // Although the shape of the data produced from the API is already tested on the backend,
+    // the purpose of this test is to check that getProduceTypes returns the data structure from the API unchanged.
+    // It is not strictly necesssary and creates more test debt but we have kept it in for learning purposes
     it('return correct produce type array', () => {
       getState.mockImplementation(() => {
         return {
