@@ -6,7 +6,6 @@ export default function News({ news }) {
 
   return (
     <article>
-      <br />
       <h2>{news.title}</h2>
       <h2>
         By {news.firstName} {news.lastName}:
