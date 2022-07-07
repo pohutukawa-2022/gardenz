@@ -46,7 +46,6 @@ describe('List of news', () => {
 
     // TODO: assert that NewsList component is rendered
     return screen.findAllByRole('listitem').then((listItems) => {
-      console.log(listItems)
       expect(listItems).toHaveLength(2)
       expect(listItems[0].textContent).toMatch('test1 content')
       expect(listItems[1].textContent).toMatch('test2 content')
@@ -56,6 +55,7 @@ describe('List of news', () => {
       expect(listItems[1].textContent).toMatch('test2 lastName')
       expect(listItems[0].textContent).toMatch('test title1')
       expect(listItems[1].textContent).toMatch('test title2')
+      return null
     })
   })
 })
