@@ -9,6 +9,7 @@ export default function userNav() {
   //const [open, setOpen] = useState(false)
   const params = useParams()
   const gardenId = params.id
+
   //const [isActive, setIsActive] = useState('text-white')
 
   //const activeLink = () => {
@@ -22,12 +23,12 @@ export default function userNav() {
   return (
     <>
       <nav
-        className={
-          open
-            ? 'block'
-            : 'hidden ' +
-              'w-full lg:flex justify-between items-center lg:items-center lg:w-auto'
-        }
+      // className={
+      //   open
+      //     ? 'block'
+      //     : 'hidden ' +
+      //       'w-full lg:flex justify-between items-center lg:items-center lg:w-auto'
+      // }
       >
         <div className="lg:flex text-center md:text-align bg-lightGreen">
           <NavLink
