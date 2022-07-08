@@ -16,8 +16,9 @@ export default function About() {
     user.id && getGarden(id, user)
   }, [id, user])
 
-  const { name, description, address, url, events, lat, lon } = garden
+  const { name, description, address, url, lat, lon, email, phone } = garden
 
+  //TODO: hardcode in the opening hours and programmes
   return (
     <>
       <section className="w-full h-96 bg-[url('/images/galleryPlaceHolder04.jpg')] bg-cover bg-center flex justify-center items-end">
@@ -36,20 +37,26 @@ export default function About() {
               {url}
             </a>
           </p>
-          <Events gardenid={id} events={events} />
         </article>
-        <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
-          {lat && lon ? (
-            <>
-              <Map
-                userCoordinates={location}
-                coordinates={[{ lat: lat, lon: lon }]}
-                addresses={[address]}
-                names={[name]}
-              />
-            </>
-          ) : null}
-        </article>
+
+        <div className="flex flex-col">
+          <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0 basis-1/4">
+            {lat && lon ? (
+              <>
+                <Map
+                  userCoordinates={location}
+                  coordinates={[{ lat: lat, lon: lon }]}
+                  addresses={[address]}
+                  names={[name]}
+                />
+              </>
+            ) : null}
+          </article>
+          <article className="flex flex-row rounded-md shadow-lg">
+            <h2>Email: {email}</h2>
+            <h2>Telephone: {phone}</h2>
+          </article>
+        </div>
       </main>
     </>
   )
