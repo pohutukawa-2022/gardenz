@@ -20,10 +20,11 @@ afterAll(() => {
 })
 
 describe('getImages', () => {
-  it('returns all images', () => {
-    return db.getImages(testDb).then((images) => {
-      expect(images).)
+  it('should return the image name for given garden', () => {
+    return db.getImages(1, testDb).then((images) => {
+      expect(images[0].name).toBe('image 1')
+      expect(images[0].mimetype).toBe('jpg')
       return null
     })
+  })
 })
-
