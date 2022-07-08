@@ -1,8 +1,8 @@
 import { addNews } from './addNewsHelper'
-import { clearWaiting } from '../../../slices/waiting'
-import { dispatch, getState } from '../../../store'
+import { clearWaiting } from '../../../../slices/waiting'
+import { dispatch, getState } from '../../../../store'
 
-jest.mock('../../../store')
+jest.mock('../../../../store')
 
 // resets the store.dispatch calls between tests
 afterEach(() => {
