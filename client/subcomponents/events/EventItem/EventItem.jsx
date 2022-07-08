@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
-import { useSelector } from 'react-redux'
-export default function EventItem({ event }) {
+
+export default function EventItem({ garden, event }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
     event
-  const garden = useSelector((globalState) => globalState.garden)
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
