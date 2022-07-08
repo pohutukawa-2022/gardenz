@@ -17,6 +17,7 @@ export function getGarden() {
         {
           id: 1,
           title: 'Banana forage',
+          address: 'banana farm',
           date: '6/07/22',
           volunteersNeeded: 20,
           totalVolunteers: 15,
@@ -26,6 +27,7 @@ export function getGarden() {
         {
           id: 1,
           title: 'hammock craft',
+          address: 'hammock workshop',
           date: '6/07/22',
           volunteersNeeded: 20,
           totalVolunteers: 15,
@@ -36,6 +38,7 @@ export function getGarden() {
           id: 1,
           title: 'lemonade stand',
           date: '6/07/22',
+          address: 'Daniels lawn',
           volunteersNeeded: 20,
           totalVolunteers: 15,
           isVolunteer: null,

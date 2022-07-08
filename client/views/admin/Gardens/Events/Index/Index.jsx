@@ -17,8 +17,8 @@ export default function AdminEvent() {
     user.id && getGarden(id, user)
   }, [id, user])
 
-  console.log(garden)
-  const { name, description, url, events } = garden
+  //console.log(garden)
+  const { address, events } = garden
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function AdminEvent() {
               {url}
             </a>
           </p> */}
-          <AdminEvents gardenid={id} events={events} />
+          <AdminEvents address={address} events={events} />
         </article>
         <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
           Sweet as bar graph:

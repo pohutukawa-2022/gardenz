@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 // import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 //import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import EditButton from '../../Buttons/EditButton'
-// this was created by ishmael and daniel -
-export default function EventItem({ event }) {
+// this was created by ysmael and daniel - as a seperate component copied from event item subcomponent.
+export default function EventItem({ address, event }) {
   const {
     id,
     title,
@@ -13,6 +13,7 @@ export default function EventItem({ event }) {
     isVolunteer,
     status,
   } = event
+
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
@@ -26,6 +27,7 @@ export default function EventItem({ event }) {
       <h2 className="font-bold">{title}</h2>
       <dl>
         <dt className="font-bold my-2">Date &amp; Time</dt>
+        <dt>{address}</dt>
         <dd>{date}</dd>
         {remainingVolunteers > 0 ? (
           <>
