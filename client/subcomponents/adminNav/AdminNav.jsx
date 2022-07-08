@@ -19,13 +19,13 @@ function AdminNav() {
               <Link to={`/gardens/${id}/news/add`}>Post News </Link>
             </li>
             <li>
-              <Link to={`events/${id}/volunteers`}>Update Gallery </Link>
+              <Link to={`/events/${id}/volunteers`}>Update Gallery </Link>
             </li>
             <li>
-              <Link to={`events/${id}/volunteers`}>Manage Order </Link>
+              <Link to={`/events/${id}/volunteers`}>Manage Order </Link>
             </li>
             <li className="pr-4">
-              <Link to={`admin/gardens`}>Change Garden </Link>
+              <Link to={`/admin/gardens`}>Change Garden </Link>
             </li>
           </ul>
         </nav>
