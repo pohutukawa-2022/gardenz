@@ -1,5 +1,5 @@
 import { dispatch, getState } from '../../../store'
-import { getProduceTypes } from './ProduceFormHelper'
+import { getProduceTypes } from './AddProduceHelper'
 import { clearWaiting, setWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
@@ -8,6 +8,8 @@ jest.mock('../../../store')
 afterEach(() => {
   return jest.resetAllMocks()
 })
+
+test.todo('add test for addProduce')
 
 describe('getProduceTypes', () => {
   describe('-> GET /producetypes/ api call success', () => {
