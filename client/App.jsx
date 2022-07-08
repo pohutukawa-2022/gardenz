@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './subcomponents/Header'
+import AdminNav from './subcomponents/adminNav/AdminNav'
 import Profile from './views/user/Profile/Profile'
 import About from './views/user/Gardens/about/About'
 import Home from './views/Index/Index'
@@ -25,6 +26,7 @@ import UserNav from './subcomponents/userNav/UserNav'
 import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
+import AdminGarden from './views/admin/Gardens/Index/Index'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -40,7 +42,15 @@ export default function App() {
       <IsAdmin key="admin">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin/gardens" element={<Gardens />} />
+          <Route
+            path="/admin/gardens/:id"
+            element={
+              <>
+                <AdminNav />
+                <AdminGarden />
+              </>
+            }
+          />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
           <Route path="/profile" element={<Profile />} />
