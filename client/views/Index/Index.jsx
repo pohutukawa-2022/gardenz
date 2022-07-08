@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       <img
-        className="hidden xl:block w-3/4 mt-5 rounded-r-md"
+        className="hidden xl:block w-1/2 mt-5 rounded-r-md"
         src="/images/comGardenPlant.png"
       />
     </main>
