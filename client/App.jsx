@@ -22,6 +22,7 @@ import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 import UserNav from './subcomponents/userNav/UserNav'
+import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 
@@ -78,7 +79,7 @@ export default function App() {
             element={
               <>
                 <UserNav />
-                <p>a placeholder to show a list of events</p>
+                <GardenEvents />
               </>
             }
           />
