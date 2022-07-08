@@ -34,8 +34,8 @@ export default function App() {
     <>
       <Error />
       <Header />
+      <AdminNav />
       <IsAdmin key="admin">
-        <AdminNav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin/gardens" element={<Gardens />} />
