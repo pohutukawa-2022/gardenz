@@ -1,36 +1,54 @@
-import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
-import { getProduceTypes } from './AddProduceHelper'
+import React from 'react'
 import ProduceForm from './ProduceForm.jsx'
 import { render, screen } from '@testing-library/react'
-
-jest.mock('../../../views/user/Gardens/Index/IndexHelper')
-jest.mock('./ProduceFormHelper')
-
-// form renders correctly (checkboxes and dropdown)
-// mock helpers: getAllGardens(consume), getProduceTypes
-//
+import userEvent from '@testing-library/user-event'
 
 describe('ProduceForm', () => {
-  it('renders dropdown and checkbox options correctly', () => {
-    getAllGardens.mockImplementation(() => {
-      return Promise.resolve({
-        gardens: [
-          {
-            id: 1,
-            name: 'Kelmarna Gardens',
-          },
-          {
-            id: 2,
-            name: 'Kingsland Community Orchard',
-          },
-        ],
-      })
-    })
+  it('renders dropdown options correctly', () => {
+    const produceTypes = [
+      {
+        id: 1,
+        name: 'veggies',
+      },
+      {
+        id: 2,
+        name: 'fruits',
+      },
+    ]
 
-    getProduceTypes.mockImplementation(() => {
-      return Promise.resolve(['vegetable', 'fruit'])
-    })
+    const gardens = []
 
-    render(<ProduceForm />)
+    render(<ProduceForm gardens={gardens} produceTypes={produceTypes} />)
+
+    const dropdownOptions = screen.getAllByRole('option')
+
+    expect(dropdownOptions).toHaveLength(produceTypes.length + 1)
+    expect(dropdownOptions[0].text).toBe('')
+    expect(dropdownOptions[1].text).toBe('veggies')
+    expect(dropdownOptions[2].text).toBe('fruits')
   })
+
+  it('renders checkbox options correctly', () => {
+    const gardens = [
+      {
+        id: 1,
+        name: 'Kelmarna Gardens',
+      },
+      {
+        id: 2,
+        name: 'Kingsland Community Orchard',
+      },
+    ]
+
+    const produceTypes = []
+
+    render(<ProduceForm gardens={gardens} produceTypes={produceTypes} />)
+
+    const checkboxOptions = screen.getAllByRole('listitem')
+    expect(checkboxOptions).toHaveLength(gardens.length)
+    expect(checkboxOptions[0].textContent).toBe('Kelmarna Gardens')
+    expect(checkboxOptions[1].textContent).toBe('Kingsland Community Orchard')
+  })
+
+  it.todo('Submit button calls correct handler')
 })

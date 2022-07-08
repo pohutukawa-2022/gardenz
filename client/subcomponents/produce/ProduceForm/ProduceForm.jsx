@@ -66,11 +66,11 @@ export default function ProduceForm({
                 </Field>
               </div>
 
-              <ul role="gardenList">
+              <ul>
                 {gardens?.length ? (
                   gardens.map((garden) => {
                     return (
-                      <li key={garden.id}>
+                      <li key={garden.id} value="hello">
                         <Field
                           value={garden.id.toString()}
                           type="checkbox"
