@@ -33,6 +33,8 @@ describe('getGardenById', () => {
     return db.getGardenById(2, testDb).then((garden) => {
       expect(garden.id).toBe(2)
       expect(garden.name).toBe('Kingsland Community Orchard')
+      expect(garden.phone).toBe('09 123 4567')
+      expect(garden.email).toBe('kingslandurbangarden@gmail.com')
       expect(garden.events).toHaveLength(7)
       const event = garden.events[1]
       expect(event.id).toBe(2)

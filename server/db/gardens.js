@@ -31,8 +31,8 @@ function getGardenById(id, db = connection) {
       'lat',
       'lon',
       'url',
-      'email',
-      'phone',
+      'gardens.email as email',
+      'gardens.phone as phone',
       'events.description as eventDescription',
       'events.id as eventId',
       'events.status as status',
@@ -51,7 +51,7 @@ function getGardenById(id, db = connection) {
         lat: garden.lat,
         lon: garden.lon,
         url: garden.url,
-        telephone: garden.phone,
+        phone: garden.phone,
         email: garden.email,
 
         events: !garden.eventId
