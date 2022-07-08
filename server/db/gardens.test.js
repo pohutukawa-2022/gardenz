@@ -43,12 +43,15 @@ describe('getGardenById', () => {
       return null
     })
   })
-  it('returns the chosen garden, with empty events array when no events', () => {
-    return db.getGardenById(3, testDb).then((garden) => {
-      expect(garden.id).toBe(3)
-      expect(garden.name).toBe('Devonport Community Garden')
-      expect(garden.events).toHaveLength(0)
-      return null
-    })
+})
+it('returns the chosen garden, with empty events array when no events', () => {
+  return db.getGardenById(3, testDb).then((garden) => {
+    expect(garden.id).toBe(3)
+    expect(garden.name).toBe('Devonport Community Garden')
+    expect(garden.events).toHaveLength(0)
+    expect(garden.phone).toBe('09 123 4567')
+    expect(garden.email).toBe('hello@devenportcommunitygarden.com')
+
+    return null
   })
 })
