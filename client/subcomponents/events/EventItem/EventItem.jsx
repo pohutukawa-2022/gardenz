@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+//import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
 export default function EventItem({ event }) {
   const {
