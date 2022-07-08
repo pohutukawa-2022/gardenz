@@ -6,5 +6,5 @@ exports.up = (knex) => {
 }
 
 exports.down = (knex) => {
-  return knex.schema.dropTable('gardens')
+  return knex.schema.dropColumns('email', 'phone')
 }

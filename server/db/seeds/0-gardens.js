@@ -12,6 +12,8 @@ exports.seed = (knex) => {
           lat: -36.85137418793577,
           lon: 174.73319270646485,
           url: 'http://www.kelmarnagardens.nz/',
+          email: 'hello@kelmarnagardens.nz',
+          phone: '09 376 0472',
         },
         {
           id: 2,
@@ -22,6 +24,8 @@ exports.seed = (knex) => {
           lat: -36.86983345249252,
           lon: 174.74701843955708,
           url: 'https://www.facebook.com/KCOnz',
+          email: 'kingslandurbangarden@gmail.com',
+          phone: '09 123 4567',
         },
         {
           id: 3,
@@ -32,6 +36,8 @@ exports.seed = (knex) => {
           lat: -36.82514374209753,
           lon: 174.80311208557973,
           url: 'https://sites.google.com/site/communitygardendevonportnz/home',
+          email: 'hello@devenportcommunitygarden.com',
+          phone: '09 123 4567',
         },
         {
           id: 4,
@@ -42,6 +48,8 @@ exports.seed = (knex) => {
           lat: -36.896282,
           lon: 174.722987,
           url: 'https://sites.google.com/site/communitygardendevonportnz/home',
+          email: 'hello@owairakacommunitygarden.com',
+          phone: '09 123 4567',
         },
         {
           id: 5,
@@ -53,6 +61,8 @@ exports.seed = (knex) => {
           lat: -36.977468,
           lon: 174.793402,
           url: 'https://aucklandteachinggardens.co.nz/',
+          email: 'hello@aucklandteachinggardens.co.nz',
+          phone: '09 123 4567',
         },
       ])
     })
