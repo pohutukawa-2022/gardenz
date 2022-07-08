@@ -1,15 +1,12 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { screen } from '@testing-library/react'
+
 import AdminNav from './AdminNav'
+import { renderWithRouter } from '../../test-utils'
 
 describe('AdminNav', () => {
   test('Links to have assigned text content', () => {
-    render(
-      <BrowserRouter>
-        <AdminNav />
-      </BrowserRouter>
-    )
+    renderWithRouter(<AdminNav />)
     {
       const links = screen.getAllByRole('listitem')
       expect(links).toHaveLength(6)
