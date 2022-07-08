@@ -21,6 +21,7 @@ import Orders from './views/admin/Gardens/orders/Orders.jsx'
 import IsUser from './subcomponents/IsUser.jsx/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 
@@ -57,12 +58,9 @@ export default function App() {
           <Route path="/gardens" element={<Gardens />} />
           <Route path="/gardens/:id/news" element={<News />} />
           <Route path="/gardens/:id/about" element={<About />} />
+          <Route path="/gardens/:id/events" element={<GardenEvents />} />
           <Route path="/gardens/:id/shop" element={<Shop />} />
           <Route path="/gardens/:id/gallery" element={<Gallery />} />
-          <Route
-            path="/gardens/:id/events"
-            element={<p>a placeholder to show a list of events</p>}
-          />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
