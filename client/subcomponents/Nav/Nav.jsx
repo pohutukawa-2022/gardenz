@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import {
@@ -18,7 +17,6 @@ export default function Nav() {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-  const gardenId = useSelector((globalState) => globalState.user?.gardenId)
 
   function handleRegister(event) {
     event.preventDefault()
@@ -60,24 +58,6 @@ export default function Nav() {
           </Link>
 
           <IfAuthenticated>
-            <Link
-              to={`/gardens/${gardenId}`}
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              My Garden
-            </Link>
-            <Link
-              to={`/gardens/${gardenId}/news`}
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              News
-            </Link>
-            <Link
-              to="/profile"
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              My Profile
-            </Link>
             <a
               href="/"
               onClick={handleLogoff}
