@@ -6,7 +6,7 @@ function AdminNav() {
 
   return (
     <>
-      <div>
+      <nav>
         <nav className=" py-2 text-center bg-orange">
           <ul className="lg:flex justify-between md:text-align text-white ">
             <li className="pl-4">
@@ -29,7 +29,7 @@ function AdminNav() {
             </li>
           </ul>
         </nav>
-      </div>
+      </nav>
     </>
   )
 }
