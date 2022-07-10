@@ -22,7 +22,6 @@ afterAll(() => {
 describe('getImages', () => {
   it('should return the image name for given garden', () => {
     return db.getImages(1, testDb).then((images) => {
-      console.log('getImages', images)
       expect(images[0].name).toBe('image 1')
       expect(images[0].mimetype).toBe('jpg')
       return null
