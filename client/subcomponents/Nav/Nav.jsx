@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import {
@@ -18,7 +17,6 @@ export default function Nav() {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-  const gardenId = useSelector((globalState) => globalState.user?.gardenId)
 
   function handleRegister(event) {
     event.preventDefault()
