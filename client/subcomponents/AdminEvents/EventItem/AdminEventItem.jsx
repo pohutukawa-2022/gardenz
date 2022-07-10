@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
-//import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+
 import EditButton from '../../Buttons/EditButton'
-// this was created by ysmael and daniel - as a seperate component copied from event item subcomponent.
 export default function EventItem({ address, event }) {
   const {
     id,

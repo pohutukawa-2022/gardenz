@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react'
 
 import { renderWithRouter } from '../../../test-utils'
 
-import EventItem from './EventItem'
+import EventItem from './AdminEventItem'
 
 describe('Volunteer button', () => {
   it('displays for a member', () => {
