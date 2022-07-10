@@ -15,7 +15,7 @@ function OpeningHours() {
         <span className="font-bold">Volunteer days:</span>
         <p>Fridays, 9am-1.30pm</p>
         <p>Saturdays, 9am-12pm</p>
-        <ul>
+        <ul className="list-disc list-inside">
           <li>Volunteering- by registration or sign up to join in</li>
           <li> Education Team- contact our Education Manager</li>
         </ul>
@@ -23,7 +23,7 @@ function OpeningHours() {
       <br />
       <p>
         <span className="font-bold">Visiting with us:</span>
-        <ul>
+        <ul className="list-disc list-inside">
           <li>Casual visits - 7 days a week</li>
           <li> Groups - by booking, learn more or make an enquiry</li>
           <li>
@@ -34,15 +34,15 @@ function OpeningHours() {
       </p>
       <br />
       <p>
-        <span className="font-bold">Education Programme:</span>
-        <ul>
+        <span className="font-bold ">Education Programme:</span>
+        <ul className="list-disc list-inside">
           <li>Contact our Education Manager via our email</li>
         </ul>
       </p>
       <br />
       <p>
         <span className="font-bold">Workshops Programme:</span>
-        <ul>
+        <ul className="list-disc list-inside">
           <li>Enquire about a private group workshops via email</li>
           <li>Contact our Education Manger via email</li>
         </ul>

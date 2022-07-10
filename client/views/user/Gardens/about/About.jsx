@@ -2,12 +2,11 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import Map from '../../../../subcomponents/Map/Map'
-import Events from '../../../../subcomponents/events/Events/Events'
 import { getGarden } from './aboutHelper'
 import OpeningHours from './OpeningHours'
 import Description from './Description'
 import FindUs from './FindUs'
+import MapImage from './MapImage'
 
 export default function About() {
   const { id } = useParams()
@@ -40,18 +39,7 @@ export default function About() {
         </div>
         {/* right side div */}
         <div className="flex flex-col mt-5">
-          <article className=" lg:w-full h-96 my-5 lg:my-0">
-            {lat && lon ? (
-              <>
-                <Map
-                  userCoordinates={location}
-                  coordinates={[{ lat: lat, lon: lon }]}
-                  addresses={[address]}
-                  names={[name]}
-                />
-              </>
-            ) : null}
-          </article>
+          <MapImage lat={lat} lon={lon} name={name} address={address} />
           <FindUs name={name} address={address} email={email} phone={phone} />
         </div>
       </main>
