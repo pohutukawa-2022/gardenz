@@ -30,10 +30,10 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
   }
 
   return (
-    <div>
+    <main>
       <h2 className="form-title">Add Rock-Up Attendee</h2>
       <form className="form-container" onSubmit={formik.handleSubmit}>
-        <div>
+        <section>
           <label className="label" htmlFor="firstname">
             First Name
           </label>
@@ -50,9 +50,9 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
             aria-label="firstName"
             type="text"
           />
-        </div>
+        </section>
 
-        <div>
+        <section>
           <label className="label" htmlFor="lastname">
             Last Name
           </label>
@@ -69,8 +69,8 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
             aria-label="lastName"
             type="text"
           />
-        </div>
-        <div className="button-group">
+        </section>
+        <section className="button-group">
           <motion.button
             className="submit form-box"
             data-testid="submit-button"
@@ -79,8 +79,8 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
           >
             Add
           </motion.button>
-        </div>
+        </section>
       </form>
-    </div>
+    </main>
   )
 }

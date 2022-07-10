@@ -28,10 +28,10 @@ export default function NewsForm(props) {
 
   return (
     <>
-      <div>
+      <main>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
-          <div className="field">
+          <section className="field">
             <label htmlFor="title" className="label">
               News Title
             </label>
@@ -67,9 +67,9 @@ export default function NewsForm(props) {
               onChange={formik.handleChange}
               value={formik.values.content}
             />
-          </div>
+          </section>
 
-          <div className="button-group">
+          <section className="button-group">
             <motion.button
               className="submit form-box"
               type="submit"
@@ -78,9 +78,9 @@ export default function NewsForm(props) {
             >
               Submit
             </motion.button>
-          </div>
+          </section>
         </form>
-      </div>
+      </main>
     </>
   )
 }
