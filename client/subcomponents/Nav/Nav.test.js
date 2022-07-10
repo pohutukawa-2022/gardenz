@@ -9,7 +9,7 @@ import Nav from './Nav'
 jest.mock('../../auth-utils')
 
 describe('when user is authenticated', () => {
-  it('displays "My Garden", "Log Out" and "Home" when authenticated', () => {
+  it('displays "Log Out" and "Home" when authenticated', () => {
     getIsAuthenticated.mockImplementation(() => true)
 
     renderWithRedux(<Nav location={{ pathname: '/' }} />, {
