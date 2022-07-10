@@ -33,7 +33,7 @@ export default function App() {
       <Error />
       <Header />
       <IsAdmin>
-        <p>Admin Nav Placeholder</p>
+        <p>Admin Nav </p>
       </IsAdmin>
       <IsUser>
         <p>User Nav Placeholder</p>
