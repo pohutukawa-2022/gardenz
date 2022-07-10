@@ -27,6 +27,7 @@ import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 import AdminGardens from './views/admin/Gardens/Index/Index'
+import Menu from './views/admin/Gardens/Menu/Menu'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/" element={<AdminGardens />} />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
+          <Route path="/admin/gardens/:id/menu" element={<Menu />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin/events/:id" element={<Event />} />
           <Route path="/admin/events/add" element={<AddEvent />} />
