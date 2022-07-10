@@ -69,12 +69,14 @@ export default function ProduceForm(props) {
                   type="text"
                   placeholder="produce name"
                 />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
+                {errors.name && touched.name ? (
+                  <section>{errors.name}</section>
+                ) : null}
                 <label htmlFor="garden" className="label">
                   Produce Family
                 </label>
                 {errors.produceType && touched.produceType ? (
-                  <div>{errors.produceType}</div>
+                  <section>{errors.produceType}</section>
                 ) : null}
                 <Field
                   id="produceType"
@@ -105,7 +107,7 @@ export default function ProduceForm(props) {
                           name="gardenIds"
                         />
                         {errors.gardenIds && touched.gardenIds ? (
-                          <div>{errors.gardenIds}</div>
+                          <section>{errors.gardenIds}</section>
                         ) : null}
                         {garden.name}
                       </li>
