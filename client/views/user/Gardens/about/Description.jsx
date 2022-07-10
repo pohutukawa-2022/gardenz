@@ -5,7 +5,7 @@ const Description = ({ name, description }) => {
     <article className="lg:w-full rounded-md shadow-lg p-4 pb-6">
       <p>
         <span className="font-extrabold">{name} </span>
-        is {description}
+        {description}
       </p>
       {/* <p>
   Visit our site{' '}
