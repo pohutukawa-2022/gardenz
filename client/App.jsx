@@ -26,7 +26,7 @@ import UserNav from './subcomponents/userNav/UserNav'
 import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
-import AdminGarden from './views/admin/Gardens/Index/Index'
+import AdminGardens from './views/admin/Gardens/Index/Index'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -41,16 +41,7 @@ export default function App() {
       <Header />
       <IsAdmin key="admin">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/admin/gardens/:id"
-            element={
-              <>
-                <AdminNav />
-                <AdminGarden />
-              </>
-            }
-          />
+          <Route path="/" element={<AdminGardens />} />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
           <Route path="/profile" element={<Profile />} />
