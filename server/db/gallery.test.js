@@ -39,8 +39,6 @@ describe('addImage', () => {
       garden_id: 1,
     }
     return db.addImage(newImage, testDb).then((newImageId) => {
-      console.log('newImage', newImage)
-      // console.log('images', images)
       expect(newImageId[0]).toBe(4)
       return null
     })
