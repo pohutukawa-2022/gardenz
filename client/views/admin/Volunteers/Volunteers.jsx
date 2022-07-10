@@ -24,13 +24,13 @@ export default function Volunteers() {
 
   return (
     <>
-      <div>
+      <section>
         <VolunteerList volunteers={volunteers} eventId={id} />
         <AddVolunteerForm
           id={id}
           addExtraVolunteer={addExtraVolunteerHandler}
         />
-      </div>
+      </section>
     </>
   )
 }
