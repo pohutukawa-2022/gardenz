@@ -1,4 +1,3 @@
-import requestor from '../../../../../consume'
 import { dispatch } from '../../../../../store'
 import { clearWaiting, setWaiting } from '../../../../../slices/waiting'
 import { showError } from '../../../../../slices/error'
@@ -25,7 +24,7 @@ export function getGarden() {
           status: 'on',
         },
         {
-          id: 1,
+          id: 2,
           title: 'hammock craft',
           address: 'hammock workshop',
           date: '6/07/22',
@@ -35,7 +34,7 @@ export function getGarden() {
           status: 'on',
         },
         {
-          id: 1,
+          id: 3,
           title: 'lemonade stand',
           date: '6/07/22',
           address: 'Daniels lawn',
