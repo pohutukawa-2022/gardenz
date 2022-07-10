@@ -47,12 +47,60 @@ export default function App() {
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
           <Route path="/admin/gardens/:id/menu" element={<Menu />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/events/:id" element={<Event />} />
-          <Route path="/admin/events/add" element={<AddEvent />} />
-          <Route path="/admin/events/:id/edit" element={<EditEvent />} />
-          <Route path="/events/:id/volunteers" element={<Volunteers />} />
-          <Route path="/produce/add" element={<AddProduce />} />
-          <Route path="/admin/gardens/:id/orders" element={<Orders />} />
+          <Route
+            path="/admin/events/:id"
+            element={
+              <>
+                <AdminNav />
+                <Event />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/add"
+            element={
+              <>
+                <AdminNav />
+                <AddEvent />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/:id/edit"
+            element={
+              <>
+                <AdminNav />
+                <EditEvent />
+              </>
+            }
+          />
+          <Route
+            path="/events/:id/volunteers"
+            element={
+              <>
+                <AdminNav />
+                <Volunteers />
+              </>
+            }
+          />
+          <Route
+            path="/produce/add"
+            element={
+              <>
+                <AdminNav />
+                <AddProduce />
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/orders"
+            element={
+              <>
+                <AdminNav />
+                <Orders />
+              </>
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
