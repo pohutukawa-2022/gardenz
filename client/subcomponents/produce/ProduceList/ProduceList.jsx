@@ -14,9 +14,9 @@ export default function ProduceList({ gardenid }) {
 
   return (
     <>
-      <div>
+      <header>
         <h1>Produce</h1>
-      </div>
+      </header>
       <section>
         <ul>
           {produce.map((item) => (
