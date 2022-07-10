@@ -43,7 +43,7 @@ export default function ProduceForm(props) {
 
   return (
     <>
-      <div>
+      <main>
         <h2 className="form-title">{props.action}</h2>
         <Formik
           initialValues={{
@@ -58,7 +58,7 @@ export default function ProduceForm(props) {
         >
           {({ errors, touched }) => (
             <Form className="form-content">
-              <div className="field">
+              <section className="field">
                 <label htmlFor="name" className="label">
                   Produce Name
                 </label>
@@ -92,7 +92,7 @@ export default function ProduceForm(props) {
                     </select>
                   )}
                 </Field>
-              </div>
+              </section>
 
               <ul role="gardenList">
                 {gardens?.length ? (
@@ -116,7 +116,7 @@ export default function ProduceForm(props) {
                 )}
               </ul>
 
-              <div className="button-group">
+              <section className="button-group">
                 <motion.button
                   className="submit form-box"
                   type="submit"
@@ -125,11 +125,11 @@ export default function ProduceForm(props) {
                 >
                   Submit
                 </motion.button>
-              </div>
+              </section>
             </Form>
           )}
         </Formik>
-      </div>
+      </main>
     </>
   )
 }
