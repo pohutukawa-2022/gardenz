@@ -7,7 +7,9 @@ export default function NewsList({ news }) {
       <h1>News</h1>
       <ul>
         {news.map((news) => (
-          <News news={news} key={news.id} />
+          <li key={news.id}>
+            <News news={news} />
+          </li>
         ))}
       </ul>
     </>
