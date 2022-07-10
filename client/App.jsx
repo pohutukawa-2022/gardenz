@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './subcomponents/Header'
+import AdminNav from './subcomponents/adminNav/AdminNav'
 import Profile from './views/user/Profile/Profile'
 import About from './views/user/Gardens/about/About'
 import Home from './views/Index/Index'
@@ -11,15 +12,22 @@ import EditEvent from './views/admin/Events/EditEvent/EditEvent'
 import AddGarden from './views/admin/Gardens/AddGarden/AddGarden'
 import Error from './subcomponents/Error/Error'
 import Event from './views/admin/Events/Event/Event'
+import Gallery from './views/user/Gardens/Gallery/Gallery'
 import Gardens from './views/user/Gardens/Index/Index'
 import News from './views/user/Gardens/News/News'
-import AddNews from './views/admin/AddNews/AddNews'
+import AddNews from './views/admin/News/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
-import IsUser from './subcomponents/IsUser.jsx/IsUser'
+import Orders from './views/admin/Gardens/orders/Orders.jsx'
+import IsUser from './subcomponents/IsUser/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
+import UserNav from './subcomponents/userNav/UserNav'
+import GardenEvents from './views/user/Gardens/Events/GardenEvents'
+import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
+import AdminGardens from './views/admin/Gardens/Index/Index'
+import Menu from './views/admin/Gardens/Menu/Menu'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -32,24 +40,67 @@ export default function App() {
     <>
       <Error />
       <Header />
-      <IsAdmin>
-        <p>Admin Nav Placeholder</p>
-      </IsAdmin>
-      <IsUser>
-        <p>User Nav Placeholder</p>
-      </IsUser>
       <IsAdmin key="admin">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin/gardens" element={<Gardens />} />
+          <Route path="/" element={<AdminGardens />} />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
           <Route path="/gardens/:id/news/add" element={<AddNews />} />
+          <Route path="/admin/gardens/:id/menu" element={<Menu />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/events/:id" element={<Event />} />
-          <Route path="/admin/events/add" element={<AddEvent />} />
-          <Route path="/admin/events/:id/edit" element={<EditEvent />} />
-          <Route path="/events/:id/volunteers" element={<Volunteers />} />
-          <Route path="/produce/add" element={<AddProduce />} />
+          <Route
+            path="/admin/events/:id"
+            element={
+              <>
+                <AdminNav />
+                <Event />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/add"
+            element={
+              <>
+                <AdminNav />
+                <AddEvent />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/:id/edit"
+            element={
+              <>
+                <AdminNav />
+                <EditEvent />
+              </>
+            }
+          />
+          <Route
+            path="/events/:id/volunteers"
+            element={
+              <>
+                <AdminNav />
+                <Volunteers />
+              </>
+            }
+          />
+          <Route
+            path="/produce/add"
+            element={
+              <>
+                <AdminNav />
+                <AddProduce />
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/orders"
+            element={
+              <>
+                <AdminNav />
+                <Orders />
+              </>
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
@@ -57,11 +108,49 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route path="/gardens/:id/news" element={<News />} />
-          <Route path="/gardens/:id/about" element={<About />} />
+          <Route
+            path="/gardens/:id/news"
+            element={
+              <>
+                <UserNav /> <News />
+              </>
+            }
+          />
+          <Route
+            path="/gardens/:id/about"
+            element={
+              <>
+                <UserNav />
+                <About />
+              </>
+            }
+          />
           <Route
             path="/gardens/:id/events"
-            element={<p>a placeholder to show a list of events</p>}
+            element={
+              <>
+                <UserNav />
+                <GardenEvents />
+              </>
+            }
+          />
+          <Route
+            path="/gardens/:id/gallery"
+            element={
+              <>
+                <UserNav />
+                <Gallery />
+              </>
+            }
+          />
+          <Route
+            path="/gardens/:id/shop"
+            element={
+              <>
+                <UserNav />
+                <Shop />
+              </>
+            }
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
