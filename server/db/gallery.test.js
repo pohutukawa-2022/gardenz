@@ -22,8 +22,26 @@ afterAll(() => {
 describe('getImages', () => {
   it('should return the image name for given garden', () => {
     return db.getImages(1, testDb).then((images) => {
+      console.log('getImages', images)
       expect(images[0].name).toBe('image 1')
       expect(images[0].mimetype).toBe('jpg')
+      return null
+    })
+  })
+})
+
+describe('addImage', () => {
+  it('should add an image to the list of images', () => {
+    const newImage = {
+      name: 'image 4',
+      mimetype: 'gif',
+      image: null,
+      garden_id: 1,
+    }
+    return db.addImage(newImage, testDb).then((newImageId) => {
+      console.log('newImage', newImage)
+      // console.log('images', images)
+      expect(newImageId[0]).toBe(4)
       return null
     })
   })
