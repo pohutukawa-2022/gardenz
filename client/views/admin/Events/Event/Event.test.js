@@ -1,18 +1,13 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithRedux, renderWithRouter } from '../../../../test-utils'
+import { screen, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { waitFor } from '@testing-library/dom'
+
+import { renderWithRedux } from '../../../../test-utils'
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
 import AddButton from '../../../../subcomponents/events/EventButtons/AddButton'
 
-//import Event from './Event'
-
 jest.mock('./eventHelper')
-
-// const mockedUsedNavigate = jest.fn()
-// jest.mock('react-router-dom', () => ({
-//   ...jest.requireActual('react-router-dom'),
-//   useNavigate: () => mockedUsedNavigate,
-// }))
 
 describe('List of signed up volunteers', () => {
   const mockVolunteers = [
@@ -41,31 +36,25 @@ describe('List of signed up volunteers', () => {
   })
 })
 
-test('Check Add and Edit buttons text/routes', () => {
-  //Arange
-  renderWithRouter(<AddButton />)
+const mockedUsedNavigate = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}))
 
-  {
-    //   initialEntries: ['/admin/events/add'],
-    //   router: '/admin/events/add',
-    // })
+describe('add button', () => {
+  it('has "Add Event" name from props', () => {
+    render(<AddButton />)
+    const addButton = screen.getByRole('button')
+    expect(addButton).toHaveTextContent('Add Event')
+  })
+  it('redirects to /admin/events/add on click', async () => {
+    render(<AddButton />)
+    const addButton = screen.getByRole('button')
+    userEvent.click(addButton)
 
-    //Act
-
-    const buttons = screen.findAllByRole('buttons')
-
-    //Assert
-    //expect(mockedUsedNavigate).toHaveBeenCalled()
-    //expect(links[1].href).toMatch('/admin/events/add')
-    expect(buttons[0]).toHaveTextContent('Add Event')
-  }
+    await waitFor(() => {
+      expect(mockedUsedNavigate).toHaveBeenCalledWith('/admin/events/add')
+    })
+  })
 })
-
-// describe('AddButton', () => {
-//   it('has text "Add" when when button is on page', () => {
-//     const AddButton = screen.getByRole('button')
-//     expect(AddButton).toHaveTextContent('Add')
-//   })
-// })
-
-// expect(buttons[0]).toHaveTextContent('Add Event')
