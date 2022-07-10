@@ -60,24 +60,6 @@ export default function Nav() {
           </Link>
 
           <IfAuthenticated>
-            <Link
-              to={`/gardens/${gardenId}`}
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              My Garden
-            </Link>
-            <Link
-              to={`/gardens/${gardenId}/news`}
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              News
-            </Link>
-            <Link
-              to="/profile"
-              className="text-white hover:text-green block my-6 py-2 px-6"
-            >
-              My Profile
-            </Link>
             <a
               href="/"
               onClick={handleLogoff}
