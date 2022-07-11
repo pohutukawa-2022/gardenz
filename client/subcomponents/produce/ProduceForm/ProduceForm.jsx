@@ -43,7 +43,7 @@ export default function ProduceForm(props) {
 
   return (
     <>
-      <main>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <Formik
           initialValues={{
@@ -129,7 +129,7 @@ export default function ProduceForm(props) {
             </Form>
           )}
         </Formik>
-      </main>
+      </section>
     </>
   )
 }
