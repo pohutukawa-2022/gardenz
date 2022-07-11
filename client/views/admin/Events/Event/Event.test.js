@@ -1,8 +1,10 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../../test-utils'
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+import Event from './Event'
+import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -30,5 +32,21 @@ describe('List of signed up volunteers', () => {
       expect(volunteers[1]).toHaveTextContent('Test User 2')
       return null
     })
+  })
+})
+
+test('has correct edit button', async () => {
+  getEvent.mockImplementation(() => {
+    return Promise.resolve({
+      volunteers: 10,
+      extraVolunteers: [],
+    })
+  })
+
+  renderWithRedux(<Event />)
+
+  await waitFor(() => {
+    const buttons = screen.getAllByRole('button')
+    expect(buttons[1]).toHaveTextContent('Edit Event')
   })
 })
