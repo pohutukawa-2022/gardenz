@@ -32,7 +32,7 @@ describe('Displays Event Status', () => {
     expect(listItem).toBeVisible()
   })
   it('displays the address for the event', () => {
-    renderWithRouter(<EventItem event={{ address: 'Daniels backyard' }} />)
+    renderWithRouter(<EventItem address={'Daniels backyard'} event={{}} />)
     const listItem = screen.getByText('Daniels backyard')
     expect(listItem).toBeVisible()
   })
