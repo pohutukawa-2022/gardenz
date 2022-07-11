@@ -11,15 +11,15 @@ const FindUs = ({ name, address, email, phone }) => {
         aliquip ex ea commodo consequat {address}
       </p>
       <div className="flex flex-row my-14">
-        <p className="mr-12">
+        <div className="mr-12">
           <span className="font-bold">EMAIL</span>
           <p>{email}</p>
-        </p>
+        </div>
 
-        <p>
+        <div>
           <span className="font-bold">TELEPHONE</span>
           <p>{phone}</p>
-        </p>
+        </div>
       </div>
     </article>
   )

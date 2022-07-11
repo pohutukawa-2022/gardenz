@@ -5,13 +5,13 @@ function OpeningHours() {
     <article className="lg:w-full rounded-md shadow-lg p-6 pb-14 mt-5">
       <h4 className="underline font-bold"> OPENING HOURS & PROGRAMMES</h4>
       <br />
-      <p>
+      <div>
         <span className="font-bold">Farm Shop hours:</span>
         <p>Wednesdays, 10am-4pm</p>
         <p>Saturdays, 9am-12pm</p>
-      </p>
+      </div>
       <br />
-      <p>
+      <div>
         <span className="font-bold">Volunteer days:</span>
         <p>Fridays, 9am-1.30pm</p>
         <p>Saturdays, 9am-12pm</p>
@@ -19,9 +19,9 @@ function OpeningHours() {
           <li>Volunteering- by registration or sign up to join in</li>
           <li> Education Team- contact our Education Manager</li>
         </ul>
-      </p>
+      </div>
       <br />
-      <p>
+      <div>
         <span className="font-bold">Visiting with us:</span>
         <ul className="list-disc list-inside">
           <li>Casual visits - 7 days a week</li>
@@ -31,22 +31,22 @@ function OpeningHours() {
             enquiry
           </li>
         </ul>
-      </p>
+      </div>
       <br />
-      <p>
+      <div>
         <span className="font-bold ">Education Programme:</span>
         <ul className="list-disc list-inside">
           <li>Contact our Education Manager via our email</li>
         </ul>
-      </p>
+      </div>
       <br />
-      <p>
+      <div>
         <span className="font-bold">Workshops Programme:</span>
         <ul className="list-disc list-inside">
           <li>Enquire about a private group workshops via email</li>
           <li>Contact our Education Manger via email</li>
         </ul>
-      </p>
+      </div>
     </article>
   )
 }
