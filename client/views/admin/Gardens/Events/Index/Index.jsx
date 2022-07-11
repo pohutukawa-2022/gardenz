@@ -14,8 +14,8 @@ export default function AdminEvent() {
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(async () => {
-    await getGarden(id, user)
-  }, [id])
+    user.id && (await getGarden(id, user))
+  }, [id, user])
 
   const { address, events } = garden
 
