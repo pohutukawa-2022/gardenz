@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 
 import Map from './Map'
 
-describe.skip('user location marker', () => {
+describe('user location marker', () => {
   it('displays when userCoordinates available on props', async () => {
     const userCoordinates = {
       lat: -36.86667,
@@ -17,7 +17,7 @@ describe.skip('user location marker', () => {
         userCoordinates={userCoordinates}
       />
     )
-    const marker = await screen.findByRole('img')
+    const marker = await screen.findByRole('presentation')
     expect(marker).toBeInTheDocument()
   })
   it('user location marker has a different image', async () => {
@@ -33,7 +33,7 @@ describe.skip('user location marker', () => {
         userCoordinates={userCoordinates}
       />
     )
-    const marker = await screen.findByRole('img')
+    const marker = await screen.findByAltText('Marker')
     expect(marker.src).toContain(
       'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF'
     )
@@ -46,7 +46,7 @@ describe.skip('user location marker', () => {
   })
 })
 
-describe.skip('garden location markers', () => {
+describe('garden location markers', () => {
   it('displays correct number of markers from coordinates prop', async () => {
     const coordinates = [
       {
@@ -65,10 +65,11 @@ describe.skip('garden location markers', () => {
         coordinates={coordinates}
       />
     )
-    const markers = await screen.findByRole('img')
-
+    const markers = await screen.findAllByRole('img')
+    const markersShadow = await screen.findAllByAltText('Marker')
     // there are 2 marker images per marker...
     // each marker has a marker image and the marker's shadow image
-    expect(markers).toHaveLength(4)
+    expect(markers).toHaveLength(2)
+    expect(markersShadow).toHaveLength(2)
   })
 })

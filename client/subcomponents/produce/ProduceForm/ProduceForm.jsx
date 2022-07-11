@@ -43,7 +43,7 @@ export default function ProduceForm(props) {
 
   return (
     <>
-      <div>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <Formik
           initialValues={{
@@ -69,12 +69,12 @@ export default function ProduceForm(props) {
                   type="text"
                   placeholder="produce name"
                 />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
+                {errors.name && touched.name ? <p>{errors.name}</p> : null}
                 <label htmlFor="garden" className="label">
                   Produce Family
                 </label>
                 {errors.produceType && touched.produceType ? (
-                  <div>{errors.produceType}</div>
+                  <p>{errors.produceType}</p>
                 ) : null}
                 <Field
                   id="produceType"
@@ -105,7 +105,7 @@ export default function ProduceForm(props) {
                           name="gardenIds"
                         />
                         {errors.gardenIds && touched.gardenIds ? (
-                          <div>{errors.gardenIds}</div>
+                          <p>{errors.gardenIds}</p>
                         ) : null}
                         {garden.name}
                       </li>
@@ -129,7 +129,7 @@ export default function ProduceForm(props) {
             </Form>
           )}
         </Formik>
-      </div>
+      </section>
     </>
   )
 }

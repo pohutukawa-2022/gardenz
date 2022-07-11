@@ -43,7 +43,7 @@ export default function EventForm(props) {
 
   return (
     <>
-      <div>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
           <div className="field">
@@ -136,7 +136,7 @@ export default function EventForm(props) {
             </motion.button>
           </div>
         </form>
-      </div>
+      </section>
     </>
   )
 }

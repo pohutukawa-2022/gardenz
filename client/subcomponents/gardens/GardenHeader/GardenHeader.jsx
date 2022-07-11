@@ -25,7 +25,7 @@ export default function GardenHeader() {
   const match = gardenList.find((garden) => garden.id === Number(id))
 
   dispatch(setGarden(match))
-  const { img: headerImage, name } = useSelector(
+  const { image: headerImage, name } = useSelector(
     (globalState) => globalState.garden
   )
 
