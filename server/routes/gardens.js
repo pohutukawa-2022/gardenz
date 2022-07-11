@@ -56,7 +56,8 @@ router.get('/:id', async (req, res) => {
     // Create a deep copy of the garden
     const garden = JSON.parse(JSON.stringify(foundGarden))
     const user = await getUserById(userId)
-    const isAdmin = await userHasAdminRole(user.auth0Id)
+    const isAdmin = user ? await userHasAdminRole(user.auth0Id) : false
+
     if (!isAdmin) {
       garden.events.forEach((event) => {
         event.totalVolunteers = event.volunteers.length

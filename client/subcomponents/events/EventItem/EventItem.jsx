@@ -17,7 +17,7 @@ export default function EventItem({ garden, event }) {
       <h2 className="font-bold">{title}</h2>
       <dl>
         <dt>Location</dt>
-        <dd className="font-bold my-2">{garden.address}</dd>
+        <dd className="font-bold my-2">{garden?.address}</dd>
         <dt>Date &amp; Time</dt>
         <dd className="font-bold my-2">{date}</dd>
         {remainingVolunteers > 0 ? (
