@@ -1,56 +1,17 @@
+import requestor from '../../../../../consume'
 import { dispatch } from '../../../../../store'
 import { clearWaiting, setWaiting } from '../../../../../slices/waiting'
 import { showError } from '../../../../../slices/error'
 import { setGarden } from '../../../../../slices/garden'
 
-export function getGarden() {
+export function getGarden(id, user, consume = requestor) {
   dispatch(setWaiting())
+  const headers = {
+    Accept: 'application/json',
+    userid: user.id,
+  }
 
-  return Promise.resolve({
-    body: {
-      name: 'test name',
-      description: 'description',
-      address: 'address',
-      url: 'url',
-      events: [
-        {
-          id: 1,
-          title: 'Banana forage',
-          date: '6/07/22',
-          time: '0300',
-          address: 'Banana farm',
-          volunteersNeeded: 20,
-          totalVolunteers: 15,
-          isVolunteer: null,
-          status: 'on',
-        },
-        {
-          id: 2,
-          title: 'Hammock craft',
-          address: 'hammock workshop',
-          date: '6/07/22',
-          time: '0830',
-          volunteersNeeded: 20,
-          totalVolunteers: 15,
-          isVolunteer: null,
-          status: 'on',
-        },
-        {
-          id: 3,
-          title: 'lemonade stand',
-          date: '6/07/22',
-          time: '1600',
-          address: 'Daniels lawn',
-          volunteersNeeded: 20,
-          totalVolunteers: 15,
-          isVolunteer: null,
-          status: 'on',
-        },
-      ],
-      lat: 0.5,
-      lon: 0.4,
-    },
-  })
+  return consume(`/gardens/${id}`, '', 'get', {}, headers)
     .then((res) => {
       const garden = res.body
       dispatch(
