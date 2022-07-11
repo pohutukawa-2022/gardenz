@@ -7,12 +7,6 @@ const Description = ({ name, description }) => {
         <span className="font-extrabold">{name} </span>
         {description}
       </p>
-      {/* <p>
-  Visit our site{' '}
-  <a className="underline hover:underline-offset-1" href={url}>
-    {url}
-  </a>
-</p> */}
     </article>
   )
 }

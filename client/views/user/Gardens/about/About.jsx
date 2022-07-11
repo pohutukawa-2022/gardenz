@@ -19,7 +19,6 @@ export default function About() {
 
   const { name, description, address, lat, lon, email, phone } = garden
 
-  //TODO: hardcode in the opening hours and programmes
   return (
     <>
       <section className="w-full h-96 bg-[url('/images/galleryPlaceHolder04.jpg')] bg-cover bg-center flex justify-center items-end">
@@ -36,7 +35,7 @@ export default function About() {
           <Description name={name} description={description} />
           <OpeningHours />
         </div>
-        {/* right side div */}
+        {/* Right Side Div */}
         <div className="flex flex-col mt-5">
           <MapImage lat={lat} lon={lon} name={name} address={address} />
           <FindUs name={name} address={address} email={email} phone={phone} />
