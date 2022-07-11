@@ -1,23 +1,36 @@
 const fs = require('fs').promises
 const path = require('path')
-
+async function imageConverter(imageName) {
+  const filename = path.join(__dirname, 'images', `${imageName}.jpeg`)
+  try {
+    return await fs.readFile(filename, 'base64')
+  } catch {
+    ;(err) => console.error(err.message)
+  }
+}
 exports.seed = async function (knex) {
-  const filename = path.join(__dirname, 'images', '1.png')
-  // const image1 = await fs.readFile(filename, 'binary')
-  const image = await fs.readFile(filename, 'binary')
-  // console.log(image)
-  const buffer = Buffer.from(image)
-
   await knex('gallery').del()
   await knex('gallery').insert([
     {
       id: 1,
-      name: 'image 1',
-      mimetype: 'png',
+      name: 'image1',
+      mimetype: 'jpeg',
       garden_id: 1,
-      image: buffer,
+      image: await imageConverter('image1'),
     },
-    // { id: 2, name: 'image 2', mimetype: 'jpeg', garden_id: 3 },
-    // { id: 3, name: 'image 3', mimetype: 'jpeg', garden_id: 2 },
+    {
+      id: 2,
+      name: 'image2',
+      mimetype: 'jpeg',
+      garden_id: 3,
+      image: await imageConverter('image2'),
+    },
+    {
+      id: 3,
+      name: 'image3',
+      mimetype: 'jpeg',
+      garden_id: 2,
+      image: await imageConverter('image3'),
+    },
   ])
 }
