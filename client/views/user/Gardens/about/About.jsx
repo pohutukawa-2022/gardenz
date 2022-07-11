@@ -13,7 +13,7 @@ export default function About() {
   const location = useSelector((globalState) => globalState.location)
 
   useEffect(() => {
-    user.id && getGarden(id, user)
+    getGarden(id, user)
   }, [id, user])
 
   const { name, description, address, url, events, lat, lon } = garden
