@@ -21,24 +21,24 @@ describe('user location marker', () => {
     console.log(marker, 'THIS IS MARKER')
     expect(marker).toBeInTheDocument()
   })
-  // it('user location marker has a different image', async () => {
-  //   const userCoordinates = {
-  //     lat: -36.86667,
-  //     lon: 174.76667,
-  //   }
-  //   render(
-  //     <Map
-  //       addresses={[]}
-  //       coordinates={[]}
-  //       names={[]}
-  //       userCoordinates={userCoordinates}
-  //     />
-  //   )
-  //   const marker = await screen.findByRole('img')
-  //   expect(marker.src).toContain(
-  //     'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF'
-  //   )
-  // })
+  it('user location marker has a different image', async () => {
+    const userCoordinates = {
+      lat: -36.86667,
+      lon: 174.76667,
+    }
+    render(
+      <Map
+        addresses={[]}
+        coordinates={[]}
+        names={[]}
+        userCoordinates={userCoordinates}
+      />
+    )
+    const marker = await screen.findByAltText('Marker')
+    expect(marker.src).toContain(
+      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF'
+    )
+  })
 
   it('does not display when userCoordinates not provided', () => {
     render(<Map addresses={[]} coordinates={[]} names={[]} />)
