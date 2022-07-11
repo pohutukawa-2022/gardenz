@@ -62,7 +62,7 @@ export default function Register() {
       <h2 className="text-2xl">Register to view garden events</h2>
       <section>
         <form onSubmit={formik.handleSubmit} className="w-full">
-          <div className="flex flex-col w-full my-5">
+          <section className="flex flex-col w-full my-5">
             <label htmlFor="firstName" className="text-gray-500 mb-2">
               First Name
             </label>
@@ -74,8 +74,8 @@ export default function Register() {
               value={formik.values.firstName}
               className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             />
-          </div>
-          <div className="flex flex-col w-full my-5">
+          </section>
+          <section className="flex flex-col w-full my-5">
             <label htmlFor="lastName" className="text-gray-500 mb-2">
               Last Name
             </label>
@@ -87,8 +87,8 @@ export default function Register() {
               value={formik.values.lastName}
               className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             />
-          </div>
-          <div className="flex flex-col w-full my-5">
+          </section>
+          <section className="flex flex-col w-full my-5">
             <label htmlFor="garden" className="text-gray-500 mb-2">
               My Garden
             </label>
@@ -109,8 +109,8 @@ export default function Register() {
                 )
               })}
             </select>
-          </div>
-          <div id="button" className="flex flex-col w-full my-5">
+          </section>
+          <section id="button" className="flex flex-col w-full my-5">
             <button
               type="submit"
               className="w-full py-4 bg-darkGreen rounded-lg text-white"
@@ -118,7 +118,7 @@ export default function Register() {
             >
               Register
             </button>
-          </div>
+          </section>
         </form>
       </section>
     </>

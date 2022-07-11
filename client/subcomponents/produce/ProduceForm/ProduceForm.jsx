@@ -30,7 +30,7 @@ export default function ProduceForm({
         >
           {({ errors, touched }) => (
             <Form className="form-content">
-              <div className="field">
+              <section className="field">
                 <label htmlFor="name" className="label">
                   Produce Name
                 </label>
@@ -41,12 +41,14 @@ export default function ProduceForm({
                   type="text"
                   placeholder="produce name"
                 />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
+                {errors.name && touched.name ? (
+                  <section>{errors.name}</section>
+                ) : null}
                 <label htmlFor="garden" className="label">
                   Produce Family
                 </label>
                 {errors.produceType && touched.produceType ? (
-                  <div>{errors.produceType}</div>
+                  <section>{errors.produceType}</section>
                 ) : null}
                 <Field
                   id="produceType"
@@ -64,7 +66,7 @@ export default function ProduceForm({
                     </select>
                   )}
                 </Field>
-              </div>
+              </section>
 
               <ul>
                 {gardens?.length ? (
@@ -77,7 +79,7 @@ export default function ProduceForm({
                           name="gardenIds"
                         />
                         {errors.gardenIds && touched.gardenIds ? (
-                          <div>{errors.gardenIds}</div>
+                          <section>{errors.gardenIds}</section>
                         ) : null}
                         {garden.name}
                       </li>
@@ -88,7 +90,7 @@ export default function ProduceForm({
                 )}
               </ul>
 
-              <div className="button-group">
+              <section className="button-group">
                 <motion.button
                   className="submit form-box"
                   type="submit"
@@ -97,7 +99,7 @@ export default function ProduceForm({
                 >
                   Submit
                 </motion.button>
-              </div>
+              </section>
             </Form>
           )}
         </Formik>

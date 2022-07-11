@@ -27,7 +27,7 @@ export default function Index() {
           return (
             <li key={garden.id} className="grid">
               <Link
-                to={`/gardens/${garden.id}`}
+                to={`/admin/gardens/${garden.id}/menu`}
                 className="p-6 text-center rounded-md border-2 border-blue hover:bg-blue hover:text-white transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
               >
                 <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
