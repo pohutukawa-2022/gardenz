@@ -49,7 +49,7 @@ export default function Nav() {
               'w-full lg:flex justify-between items-center lg:items-center lg:w-auto'
         }
       >
-        <div className="lg:flex text-center md:text-align">
+        <section className="lg:flex text-center md:text-align">
           <Link
             to="/"
             className="text-white hover:text-green block my-6 py-2 px-6"
@@ -83,14 +83,14 @@ export default function Nav() {
               Register
             </a>
           </IfNotAuthenticated>
-        </div>
+        </section>
       </nav>
-      <div
+      <nav
         className="lg:hidden z-90 absolute top-4 right-6 text-white text-4xl"
         onClick={toggleMenu}
       >
         {open ? <IoClose /> : <GiHamburgerMenu />}
-      </div>
+      </nav>
     </>
   )
 }
