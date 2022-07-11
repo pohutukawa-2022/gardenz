@@ -52,9 +52,7 @@ router.get('/:id', async (req, res) => {
   const userId = Number(req.headers.userid)
   const id = Number(req.params.id)
   try {
-    const foundGarden = await db.getGardenById(id)
-    // Create a deep copy of the garden
-    const garden = JSON.parse(JSON.stringify(foundGarden))
+    const garden = await db.getGardenById(id)
     const user = await getUserById(userId)
     const isAdmin = user ? await userHasAdminRole(user.auth0Id) : false
 
