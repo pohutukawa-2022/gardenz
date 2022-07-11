@@ -13,15 +13,6 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }))
 
-// const { id } = jest.mock('react-router-dom', () => {
-//   return {
-//     useParams: () => '1',
-//   }
-// })
-// const id = jest.mock('react-router', () => ({
-//   useParams: jest.fn().mockReturnValue('1'),
-// }))
-
 describe('edit button', () => {
   it('has "Edit Event" name from props', () => {
     render(<EditButton />)
