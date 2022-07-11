@@ -38,7 +38,7 @@ export default function GardenForm(props) {
       <main>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
-          <section className="field">
+          <div className="field">
             <label htmlFor="name" className="label">
               Garden name
             </label>
@@ -86,9 +86,9 @@ export default function GardenForm(props) {
               onChange={formik.handleChange}
               value={formik.values.address}
             />
-          </section>
+          </div>
 
-          <section className="button-group">
+          <div className="button-group">
             {props.action === 'Update Garden' ? (
               <motion.button
                 className="submit form-box"
@@ -108,7 +108,7 @@ export default function GardenForm(props) {
             >
               Submit
             </motion.button>
-          </section>
+          </div>
         </form>
       </main>
     </>
