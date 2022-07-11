@@ -1,18 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import EditButton from '../../Buttons/EditButton'
-export default function EventItem({ event }) {
-  const {
-    id,
-    title,
-    date,
-    address,
-    volunteersNeeded,
-    totalVolunteers,
-    isVolunteer,
-    status,
-    time,
-  } = event
+import EditButton from '../../events/EventButtons/EditButton'
 
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
@@ -48,11 +36,7 @@ export default function EventItem({ event }) {
         )}
       </dl>
       <p>Event is {status}!</p>
-      <EditButton
-        eventId={id}
-        volunteering={isVolunteering}
-        setVolunteering={setIsVolunteering}
-      />
+      <EditButton eventId={id} />
     </article>
   )
 }
