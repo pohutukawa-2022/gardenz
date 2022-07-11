@@ -1,12 +1,15 @@
 import React from 'react'
 
 import AdminEventItem from '../EventItem/AdminEventItem'
+import AddButton from '../../events/EventButtons/AddButton'
 
 export default function AdminEvents({ address, events }) {
   return (
     <main className="container mx-auto">
-      <h1 className="font-sans text-2xl">Upcoming Events:</h1>
-      <button> Add Event </button>
+      <section className="container flex gap-4">
+        <h2 className="font-sans text-2xl">Upcoming Events:</h2>
+        <AddButton />
+      </section>
 
       {events.length === 0 ? (
         <p>Sorry no events found, please come back later! </p>
