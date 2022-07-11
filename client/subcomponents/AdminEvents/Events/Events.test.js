@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../test-utils'
 
-import Events from './Events'
+import AdminEvents from './Events'
 
 describe('events list', () => {
   it('displays correct number of events from props', () => {
@@ -23,7 +23,7 @@ describe('events list', () => {
         description: 'Help get out the lovely corns in the ground!.',
       },
     ]
-    renderWithRedux(<Events events={events} />)
+    renderWithRedux(<AdminEvents events={events} />)
     const eventItems = screen.getAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(2)
     expect(events[0].title).toMatch('Weeding worker Bee')
@@ -40,7 +40,7 @@ describe('no event message', () => {
   it('displays correct message', () => {
     const events = []
 
-    renderWithRedux(<Events events={events} />)
+    renderWithRedux(<AdminEvents events={events} />)
     const eventItems = screen.queryAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(0)
   })
@@ -49,7 +49,7 @@ describe('no event message', () => {
 describe('display no-event message', () => {
   it('displays correct message', () => {
     const events = []
-    renderWithRedux(<Events events={events} />)
+    renderWithRedux(<AdminEvents events={events} />)
     const eventItems = screen.getByText(
       'Sorry no events found, please come back later!'
     )
