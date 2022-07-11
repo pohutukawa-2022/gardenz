@@ -9,8 +9,6 @@ export default function EventItem({ garden, event, user }) {
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
 
-  console.log('Event Item', user)
-
   useEffect(() => {
     setIsVolunteering(isVolunteer)
   }, [isVolunteer])
@@ -29,6 +27,7 @@ export default function EventItem({ garden, event, user }) {
             <dd className="font-bold my-2">
               {remainingVolunteers} of {volunteersNeeded}
             </dd>
+            garden={garden}
           </>
         ) : (
           <p>
