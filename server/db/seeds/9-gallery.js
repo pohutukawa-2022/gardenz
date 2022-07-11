@@ -4,9 +4,8 @@ async function imageConverter(imageName) {
   const filename = path.join(__dirname, 'images', `${imageName}.jpeg`)
   try {
     return await fs.readFile(filename, 'base64')
-  } catch (_) {
-    // console.error(error.message, 'Error from gallery seed file')
-    return
+  } catch (error) {
+    throw 'Error from gallery seed file'
   }
 }
 exports.seed = async function (knex) {
