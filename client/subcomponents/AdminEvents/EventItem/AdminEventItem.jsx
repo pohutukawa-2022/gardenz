@@ -41,8 +41,8 @@ export default function EventItem({ event }) {
           </>
         ) : (
           <p>
-            No more volunteers needed, but we can always use more hands!
-            (Currently {additionalVolunteers} extra volunteer
+            No more volunteers needed (Currently {additionalVolunteers} extra
+            volunteer
             {additionalVolunteers !== 1 ? 's' : ''})
           </p>
         )}
