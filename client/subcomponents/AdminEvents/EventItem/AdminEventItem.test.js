@@ -1,27 +1,7 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-
 import { renderWithRouter } from '../../../test-utils'
-
 import EventItem from './AdminEventItem'
-
-describe('Volunteer button', () => {
-  it('displays for a member', () => {
-    renderWithRouter(
-      <EventItem isAdmin={false} event={{ isVolunteer: false }} />
-    )
-    const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
-    expect(volunteerButton).toHaveTextContent('Volunteer')
-  })
-
-  it('does not display for an admin', () => {
-    renderWithRouter(
-      <EventItem isAdmin={false} event={{ isVolunteer: true }} />
-    )
-    const volunteerButton = screen.queryByRole('link', { name: 'Volunteer' })
-    expect(volunteerButton).toBeNull()
-  })
-})
 
 describe('Displays Event Status', () => {
   it('displays active for an active event', () => {
@@ -32,6 +12,28 @@ describe('Displays Event Status', () => {
   it('displays cancelled for a cancelled event', () => {
     renderWithRouter(<EventItem event={{ status: 'Cancelled' }} />)
     const listItem = screen.getByText('Event is Cancelled!')
+    expect(listItem).toBeVisible()
+  })
+  it('displays the title for the event', () => {
+    renderWithRouter(<EventItem event={{ title: 'Banana forage' }} />)
+    const listItem = screen.getByText('Banana forage')
+    expect(listItem).toBeVisible()
+  })
+  it('displays the date and time for the event', () => {
+    renderWithRouter(<EventItem event={{ date: '6/07/22', time: '0830' }} />)
+    const listItem = screen.getByText('6/07/22 at 0830')
+    expect(listItem).toBeVisible()
+  })
+  it('displays the number of volunteers for the event', () => {
+    renderWithRouter(
+      <EventItem event={{ volunteersNeeded: 20, totalVolunteers: 15 }} />
+    )
+    const listItem = screen.getByText('5 of 20')
+    expect(listItem).toBeVisible()
+  })
+  it('displays the address for the event', () => {
+    renderWithRouter(<EventItem event={{ address: 'Daniels backyard' }} />)
+    const listItem = screen.getByText('Daniels backyard')
     expect(listItem).toBeVisible()
   })
 })

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
 import EditButton from '../../Buttons/EditButton'
-export default function EventItem({ address, event }) {
+export default function EventItem({ event }) {
   const {
     id,
     title,
     date,
+    address,
     volunteersNeeded,
     totalVolunteers,
     isVolunteer,
     status,
+    time,
   } = event
 
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
@@ -25,8 +27,11 @@ export default function EventItem({ address, event }) {
       <h2 className="font-bold">{title}</h2>
       <dl>
         <dt className="font-bold my-2">Date &amp; Time</dt>
+        <dd>
+          {date} at {time}
+        </dd>
+        <dt className="font-bold my-2">Address</dt>
         <dt>{address}</dt>
-        <dd>{date}</dd>
         {remainingVolunteers > 0 ? (
           <>
             <dt className="font-bold my-2">Volunteers needed</dt>
