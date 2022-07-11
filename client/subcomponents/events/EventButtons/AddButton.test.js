@@ -11,8 +11,8 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }))
 
-describe('add button', () => {
-  it('has "Add Event" name from props', () => {
+describe('Add button', () => {
+  it('button has displays Add Event as text content', () => {
     render(<AddButton />)
     const addButton = screen.getByRole('button')
     expect(addButton).toHaveTextContent('Add Event')
