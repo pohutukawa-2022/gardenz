@@ -7,7 +7,7 @@ export default function UserNav() {
   return (
     <>
       <nav>
-        <div className="lg:flex flex-row text-center md:text-align bg-lightGreen">
+        <nav className="lg:flex flex-row text-center md:text-align bg-lightGreen">
           <NavLink
             to={`/gardens/${id}/about`}
             className={({ isActive }) =>
@@ -56,7 +56,7 @@ export default function UserNav() {
           >
             Shop
           </NavLink>
-        </div>
+        </nav>
       </nav>
     </>
   )
