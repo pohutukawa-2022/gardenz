@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import EditButton from '../../events/EventButtons/EditButton'
 
-  const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
+export default function EventItem({ address, event }) {
+  const { id, title, date, volunteersNeeded, totalVolunteers, status, time } =
+    event
+
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
-
-  useEffect(() => {
-    setIsVolunteering(isVolunteer)
-  }, [isVolunteer])
 
   return (
     <article className="p-6 rounded-md border-2 border-blue">
