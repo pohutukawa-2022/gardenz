@@ -24,6 +24,7 @@ import { cacheUser } from './auth-utils'
 import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
+import GardenHeader from './subcomponents/gardens/GardenHeader/GardenHeader'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -54,13 +55,16 @@ export default function App() {
       </IsAdmin>
       <IsUser key="user">
         <Routes>
+          {/* <Route path="/gardens/:id/header" element={<GardenHeader />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route path="/gardens/:id/news" element={<News />} />
-          <Route path="/gardens/:id/about" element={<About />} />
-          <Route path="/gardens/:id/events" element={<GardenEvents />} />
-          <Route path="/gardens/:id/shop" element={<Shop />} />
-          <Route path="/gardens/:id/gallery" element={<Gallery />} />
+          <Route path="/gardens/:id" element={<GardenHeader />}>
+            <Route path="news" element={<News />} />
+            <Route path="about" element={<About />} />
+            <Route path="events" element={<GardenEvents />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="gallery" element={<Gallery />} />
+          </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

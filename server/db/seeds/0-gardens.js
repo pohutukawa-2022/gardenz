@@ -12,6 +12,7 @@ exports.seed = (knex) => {
           lat: -36.85137418793577,
           lon: 174.73319270646485,
           url: 'http://www.kelmarnagardens.nz/',
+          img: '/images/kelmarnaGardens.jpg',
         },
         {
           id: 2,
@@ -22,6 +23,7 @@ exports.seed = (knex) => {
           lat: -36.86983345249252,
           lon: 174.74701843955708,
           url: 'https://www.facebook.com/KCOnz',
+          img: '/images/kingslandCommunityOrchard.jpg',
         },
         {
           id: 3,
@@ -32,6 +34,7 @@ exports.seed = (knex) => {
           lat: -36.82514374209753,
           lon: 174.80311208557973,
           url: 'https://sites.google.com/site/communitygardendevonportnz/home',
+          img: '/images/devonportCommunityGarden.jpg',
         },
         {
           id: 4,
@@ -42,6 +45,7 @@ exports.seed = (knex) => {
           lat: -36.896282,
           lon: 174.722987,
           url: 'https://sites.google.com/site/communitygardendevonportnz/home',
+          img: '/images/owairakaCommunityGarden.jpg',
         },
         {
           id: 5,
@@ -53,6 +57,7 @@ exports.seed = (knex) => {
           lat: -36.977468,
           lon: 174.793402,
           url: 'https://aucklandteachinggardens.co.nz/',
+          img: '/images/aucklandTeachingGardens.jpg',
         },
       ])
     })
