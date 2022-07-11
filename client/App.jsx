@@ -55,7 +55,15 @@ export default function App() {
             }
           />
           <Route path="/admin/gardens/:id/menu" element={<Menu />} />
-          <Route path="/admin/gardens/:id/events" element={<AdminEvents />} />
+          <Route
+            path="/admin/gardens/:id/events"
+            element={
+              <>
+                <AdminNav />
+                <AdminEvents />
+              </>
+            }
+          />
           <Route
             path="/admin/events/:id"
             element={
