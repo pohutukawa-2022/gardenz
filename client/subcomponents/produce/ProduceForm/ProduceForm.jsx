@@ -58,7 +58,7 @@ export default function ProduceForm(props) {
         >
           {({ errors, touched }) => (
             <Form className="form-content">
-              <section className="field">
+              <div className="field">
                 <label htmlFor="name" className="label">
                   Produce Name
                 </label>
@@ -69,14 +69,12 @@ export default function ProduceForm(props) {
                   type="text"
                   placeholder="produce name"
                 />
-                {errors.name && touched.name ? (
-                  <section>{errors.name}</section>
-                ) : null}
+                {errors.name && touched.name ? <p>{errors.name}</p> : null}
                 <label htmlFor="garden" className="label">
                   Produce Family
                 </label>
                 {errors.produceType && touched.produceType ? (
-                  <section>{errors.produceType}</section>
+                  <p>{errors.produceType}</p>
                 ) : null}
                 <Field
                   id="produceType"
@@ -94,7 +92,7 @@ export default function ProduceForm(props) {
                     </select>
                   )}
                 </Field>
-              </section>
+              </div>
 
               <ul role="gardenList">
                 {gardens?.length ? (
@@ -107,7 +105,7 @@ export default function ProduceForm(props) {
                           name="gardenIds"
                         />
                         {errors.gardenIds && touched.gardenIds ? (
-                          <section>{errors.gardenIds}</section>
+                          <p>{errors.gardenIds}</p>
                         ) : null}
                         {garden.name}
                       </li>
@@ -118,7 +116,7 @@ export default function ProduceForm(props) {
                 )}
               </ul>
 
-              <section className="button-group">
+              <div className="button-group">
                 <motion.button
                   className="submit form-box"
                   type="submit"
@@ -127,7 +125,7 @@ export default function ProduceForm(props) {
                 >
                   Submit
                 </motion.button>
-              </section>
+              </div>
             </Form>
           )}
         </Formik>
