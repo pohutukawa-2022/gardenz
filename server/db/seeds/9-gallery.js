@@ -5,7 +5,7 @@ async function imageConverter(imageName) {
   try {
     return await fs.readFile(filename, 'base64')
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message, 'Error from gallery seed file')
   }
 }
 exports.seed = async function (knex) {
