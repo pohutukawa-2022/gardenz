@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom'
 import AdminEvents from '../../../../../subcomponents/AdminEvents/Events/Events'
 import { getGarden } from './indexHelper'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
-import AdminNav from '../../../../../subcomponents/adminNav/AdminNav'
 
 export default function AdminEvent() {
   const { id } = useParams()
@@ -22,7 +21,6 @@ export default function AdminEvent() {
 
   return (
     <>
-      <AdminNav />
       <section>
         <article className="container flex">
           <h2 className="font-sans text-black text-4xl font-bold py-6"></h2>
