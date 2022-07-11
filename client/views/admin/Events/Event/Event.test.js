@@ -1,8 +1,5 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import requestor from '../../../../consume'
-import { dispatch } from '../../../../store'
-import { setWaiting, clearWaiting } from '../../../../slices/waiting'
+import { screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../../test-utils'
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
@@ -38,17 +35,18 @@ describe('List of signed up volunteers', () => {
   })
 })
 
-test('has correct edit button', () => {
-  getEvent.mockImplementation((id, user, consume = requestor) => {
-    dispatch(setWaiting())
-    return consume(`/events/${id}`).then(() => {
-      dispatch(clearWaiting())
-
-      return null
+test('has correct edit button', async () => {
+  getEvent.mockImplementation(() => {
+    return Promise.resolve({
+      volunteers: 10,
+      extraVolunteers: [],
     })
   })
 
   renderWithRedux(<Event />)
-  const buttons = screen.getAllByRole('button')
-  expect(buttons[1]).toHaveTextContent('Edit Event')
+
+  await waitFor(() => {
+    const buttons = screen.getAllByRole('button')
+    expect(buttons[1]).toHaveTextContent('Edit Event')
+  })
 })
