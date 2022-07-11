@@ -19,7 +19,7 @@ import AddNews from './views/admin/News/AddNews/AddNews'
 import Volunteers from './views/admin/Volunteers/Volunteers'
 import AddProduce from './views/admin/produce/AddProduce'
 import Orders from './views/admin/Gardens/orders/Orders.jsx'
-import IsUser from './subcomponents/IsUser.jsx/IsUser'
+import IsUser from './subcomponents/IsUser/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
 import AdminEvent from './views/admin/Gardens/Events/Index/Index'
@@ -27,7 +27,8 @@ import UserNav from './subcomponents/userNav/UserNav'
 import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
-import AdminGarden from './views/admin/Gardens/Index/Index'
+import AdminGardens from './views/admin/Gardens/Index/Index'
+import Menu from './views/admin/Gardens/Menu/Menu'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -42,13 +43,62 @@ export default function App() {
       <Header />
       <IsAdmin key="admin">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<AdminGardens />} />
+          <Route path="/admin/gardens/add" element={<AddGarden />} />
+          <Route path="/gardens/:id/news/add" element={<AddNews />} />
+          <Route path="/admin/gardens/:id/menu" element={<Menu />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
-            path="/admin/gardens/:id"
+            path="/admin/events/:id"
             element={
               <>
                 <AdminNav />
-                <AdminGarden />
+                <Event />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/add"
+            element={
+              <>
+                <AdminNav />
+                <AddEvent />
+              </>
+            }
+          />
+          <Route
+            path="/admin/events/:id/edit"
+            element={
+              <>
+                <AdminNav />
+                <EditEvent />
+              </>
+            }
+          />
+          <Route
+            path="/events/:id/volunteers"
+            element={
+              <>
+                <AdminNav />
+                <Volunteers />
+              </>
+            }
+          />
+          <Route
+            path="/produce/add"
+            element={
+              <>
+                <AdminNav />
+                <AddProduce />
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/orders"
+            element={
+              <>
+                <AdminNav />
+                <Orders />
               </>
             }
           />
@@ -60,7 +110,6 @@ export default function App() {
           <Route path="/admin/events/:id/edit" element={<EditEvent />} />
           <Route path="/events/:id/volunteers" element={<Volunteers />} />
           <Route path="/produce/add" element={<AddProduce />} />
-          <Route path="*" element={<p>this page doesnt exist</p>} />
           <Route path="/admin/gardens/:id/events" element={<AdminEvent />} />
           <Route path="/admin/gardens/:id/orders" element={<Orders />} />
           <Route path="*" element={<PageNotFound />} />

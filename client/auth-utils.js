@@ -2,6 +2,7 @@ import consume from './consume'
 import { dispatch } from './store'
 import { showError } from './slices/error'
 import { setUser } from './slices/user'
+import { clearWaiting, setWaiting } from './slices/waiting'
 
 const emptyUser = {
   id: null,
@@ -14,6 +15,7 @@ function saveUser(user = emptyUser) {
 }
 
 export async function cacheUser(isAuthenticated, getAccessTokenSilently, user) {
+  dispatch(setWaiting())
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
@@ -26,6 +28,8 @@ export async function cacheUser(isAuthenticated, getAccessTokenSilently, user) {
   } else {
     saveUser()
   }
+
+  dispatch(clearWaiting())
 }
 
 export function getLoginFn(useAuth0) {
