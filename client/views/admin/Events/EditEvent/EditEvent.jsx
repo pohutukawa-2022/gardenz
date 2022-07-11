@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux'
 import { getEvent } from '../../Events/Event/eventHelper'
 import { containerVariants } from '../../../animationVariants'
 import { motion } from 'framer-motion'
-// we want to be linking the edit buttons to this form.
 
 export default function EditEvent() {
   const [event, setEvent] = useState(null)
