@@ -1,11 +1,13 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { waitFor } from '@testing-library/dom'
+import { screen } from '@testing-library/react'
+import requestor from '../../../../consume'
+import { dispatch } from '../../../../store'
+import { setWaiting, clearWaiting } from '../../../../slices/waiting'
 
 import { renderWithRedux } from '../../../../test-utils'
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
-import AddButton from '../../../../subcomponents/events/EventButtons/AddButton'
+import Event from './Event'
+import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -36,25 +38,17 @@ describe('List of signed up volunteers', () => {
   })
 })
 
-const mockedUsedNavigate = jest.fn()
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}))
+test('has correct edit button', () => {
+  getEvent.mockImplementation((id, user, consume = requestor) => {
+    dispatch(setWaiting())
+    return consume(`/events/${id}`).then(() => {
+      dispatch(clearWaiting())
 
-describe('add button', () => {
-  it('has "Add Event" name from props', () => {
-    render(<AddButton />)
-    const addButton = screen.getByRole('button')
-    expect(addButton).toHaveTextContent('Add Event')
-  })
-  it('redirects to /admin/events/add on click', async () => {
-    render(<AddButton />)
-    const addButton = screen.getByRole('button')
-    userEvent.click(addButton)
-
-    await waitFor(() => {
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/admin/events/add')
+      return null
     })
   })
+
+  renderWithRedux(<Event />)
+  const buttons = screen.getAllByRole('button')
+  expect(buttons[1]).toHaveTextContent('Edit Event')
 })

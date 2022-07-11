@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 
 import { getEvent } from './eventHelper'
 
-import AddButton from '../../../../subcomponents/events/EventButtons/AddButton'
 import EditButton from '../../../../subcomponents/events/EventButtons/EditButton'
 
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
@@ -40,7 +39,6 @@ export default function Event() {
         <RockUpVolunteerList extraVolunteers={event.extraVolunteers} />
         <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={id} />
       </section>
-      <AddButton />
       <section>
         <EditButton />
       </section>
