@@ -2,21 +2,22 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import Map from '../../../../subcomponents/Map/Map'
-import Events from '../../../../subcomponents/events/Events/Events'
 import { getGarden } from './aboutHelper'
+import OpeningHours from './OpeningHours'
+import Description from './Description'
+import FindUs from './FindUs'
+import MapImage from './MapImage'
 
 export default function About() {
   const { id } = useParams()
   const garden = useSelector((globalState) => globalState.garden)
   const user = useSelector((globalState) => globalState.user)
-  const location = useSelector((globalState) => globalState.location)
 
   useEffect(() => {
     getGarden(id, user)
   }, [id, user])
 
-  const { name, description, address, url, events, lat, lon } = garden
+  const { name, description, address, lat, lon, email, phone } = garden
 
   return (
     <>
@@ -27,29 +28,18 @@ export default function About() {
           </h2>
         </article>
       </section>
+
       <main className="container lg:flex mx-auto mt-5">
-        <article className="lg:w-1/2">
-          <p>{description}</p>
-          <p>
-            Visit our site{' '}
-            <a className="underline hover:underline-offset-1" href={url}>
-              {url}
-            </a>
-          </p>
-          <Events garden={garden} events={events} />
-        </article>
-        <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
-          {lat && lon ? (
-            <>
-              <Map
-                userCoordinates={location}
-                coordinates={[{ lat: lat, lon: lon }]}
-                addresses={[address]}
-                names={[name]}
-              />
-            </>
-          ) : null}
-        </article>
+        {/* Left Side Div */}
+        <div className="container md:flex flex-col my-6 mx-10 mr-20">
+          <Description name={name} description={description} />
+          <OpeningHours />
+        </div>
+        {/* Right Side Div */}
+        <div className="flex flex-col mt-5">
+          <MapImage lat={lat} lon={lon} name={name} address={address} />
+          <FindUs name={name} address={address} email={email} phone={phone} />
+        </div>
       </main>
     </>
   )

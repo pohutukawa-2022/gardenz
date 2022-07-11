@@ -23,6 +23,8 @@ export function getGarden(id, user, consume = requestor) {
           events: garden.events,
           lat: garden.lat,
           lon: garden.lon,
+          phone: garden.phone,
+          email: garden.email,
         })
       )
       dispatch(clearWaiting())
