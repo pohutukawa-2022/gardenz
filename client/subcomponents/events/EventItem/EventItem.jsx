@@ -44,7 +44,7 @@ export default function EventItem({ garden, event, user }) {
         />
       </Conditional>
       <Conditional condition={!user.id}>
-        <button className="w-full block mt-5 p-3 text-center rounded-md text-white bg-gray-300">
+        <button className="w-full block mt-5 p-3 text-center rounded-md text-white bg-gray-300 cursor-default">
           Please sign in to volunteer
         </button>
       </Conditional>
