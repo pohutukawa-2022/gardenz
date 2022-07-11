@@ -37,6 +37,28 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
+router.get('/:gardenid/photos', (req, res) => {
+  const galleryId = req.params.gardenid
+  db.getImages(galleryId)
+    .then((gallery) => {
+      res.send(
+        `<img src= "data:image/png; base64,${gallery[0].image.toString(
+          'base64'
+        )}" />`
+      )
+
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve gallery images',
+        },
+      })
+    })
+})
+
 // POST /api/v1/gallery/1
 router.post('/:gardenId', upload.single('image'), async (req, res) => {
   const image = {
