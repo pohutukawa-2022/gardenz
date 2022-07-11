@@ -14,7 +14,7 @@ export default function About() {
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
-    user.id && getGarden(id, user)
+    getGarden(id, user)
   }, [id, user])
 
   const { name, description, address, lat, lon, email, phone } = garden

@@ -2,7 +2,7 @@ import React from 'react'
 
 const FindUs = ({ name, address, email, phone }) => {
   return (
-    <article className="rounded-md shadow-lg p-6 mt-5">
+    <article className="rounded-lg shadow-lg p-6">
       <h4 className="underline font-bold"> FIND US</h4>
       <p>
         {name} is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

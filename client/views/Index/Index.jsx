@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main className="container flex mx-auto">
-      <section className="w:full md:w-1/2 md:mt-5 px-5 lg:px-20 py-5 lg:py-24 rounded-l-md bg-slate-100">
+      <section className="w:full md:mt-5 px-5 lg:px-20 py-5 lg:py-24 rounded-l-md bg-slate-100">
         <h1 className="text-5xl leading-tight font-serif">
           Empowering{' '}
           <span className="w-full block text-blue">Community Gardens</span> in
@@ -55,8 +55,9 @@ export default function Home() {
           Get Started
         </Link>
       </section>
+
       <img
-        className="hidden md:block w-1/2 mt-5 rounded-r-md"
+        className="hidden xl:block w-1/2 mt-5 rounded-r-md"
         src="/images/comGardenPlant.png"
       />
     </main>

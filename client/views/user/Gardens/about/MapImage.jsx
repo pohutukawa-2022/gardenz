@@ -3,7 +3,7 @@ import Map from '../../../../subcomponents/Map/Map'
 
 const MapImage = ({ lat, lon, name, address }) => {
   return (
-    <article className=" lg:w-full h-96 my-5 lg:my-0">
+    <article className=" lg:w-full h-96 my-5 mb-10">
       {lat && lon ? (
         <>
           <Map

@@ -2,7 +2,7 @@ import React from 'react'
 
 function OpeningHours() {
   return (
-    <article className="lg:w-full rounded-md shadow-lg p-6 pb-14 mt-5">
+    <article className="lg:w-full rounded-lg shadow-lg p-6 pb-14 mt-5">
       <h4 className="underline font-bold"> OPENING HOURS & PROGRAMMES</h4>
       <br />
       <div>
