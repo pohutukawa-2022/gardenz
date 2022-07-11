@@ -28,7 +28,7 @@ export default function NewsForm(props) {
 
   return (
     <>
-      <main>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
           <div className="field">
@@ -80,7 +80,7 @@ export default function NewsForm(props) {
             </motion.button>
           </div>
         </form>
-      </main>
+      </section>
     </>
   )
 }
