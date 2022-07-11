@@ -27,7 +27,6 @@ export default function EventItem({ garden, event, user }) {
             <dd className="font-bold my-2">
               {remainingVolunteers} of {volunteersNeeded}
             </dd>
-            garden={garden}
           </>
         ) : (
           <p>
