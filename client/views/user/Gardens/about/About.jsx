@@ -36,7 +36,7 @@ export default function About() {
               {url}
             </a>
           </p>
-          <Events garden={garden} events={events} />
+          <Events garden={garden} events={events} user={user} />
         </article>
         <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
           {lat && lon ? (

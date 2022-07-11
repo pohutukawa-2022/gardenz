@@ -12,8 +12,10 @@ export default function GardenEvents() {
   const user = useSelector((globalState) => globalState.user)
   const { name, events } = garden
 
+  console.log('GardenEvents', user)
+
   useEffect(() => {
-    user.id && getGarden(id, user)
+    getGarden(id, user)
   }, [id, user])
 
   return (
@@ -27,7 +29,7 @@ export default function GardenEvents() {
       </section>
       <main className="container lg:flex mx-auto mt-5">
         <article className="lg:w-1/2">
-          <Events garden={garden} events={events} />
+          <Events garden={garden} events={events} user={user} />
         </article>
       </main>
     </>
