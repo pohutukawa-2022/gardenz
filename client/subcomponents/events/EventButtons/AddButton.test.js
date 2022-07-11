@@ -17,6 +17,7 @@ describe('Add button', () => {
     const addButton = screen.getByRole('button')
     expect(addButton).toHaveTextContent('Add Event')
   })
+
   it('redirects to /admin/events/add on click', async () => {
     render(<AddButton />)
     const addButton = screen.getByRole('button')
