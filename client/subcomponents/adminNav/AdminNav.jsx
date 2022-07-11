@@ -10,22 +10,22 @@ function AdminNav() {
         <nav className=" py-2 text-center bg-orange">
           <ul className="lg:flex justify-between md:text-align text-white ">
             <li className="pl-4">
-              <Link to={`/product/add`}>Update Produce List</Link>
+              <Link to={`/admin/produce/add`}>Update Produce List</Link>
             </li>
             <li>
-              <Link to={`/admin/events/${id}`}> Add/Edit Events </Link>
+              <Link to={`/admin/gardens/${id}/events`}> Add/Edit Events </Link>
             </li>
             <li>
-              <Link to={`/gardens/${id}/news/add`}>Post News </Link>
+              <Link to={`/admin/gardens/${id}/news/add`}>Post News </Link>
             </li>
             <li>
-              <Link to={`/events/${id}/volunteers`}>Update Gallery </Link>
+              <Link to={`/admin/gardens/${id}/gallery`}>Update Gallery </Link>
             </li>
             <li>
-              <Link to={`/events/${id}/volunteers`}>Manage Order </Link>
+              <Link to={`/admin/gardens/${id}/orders`}>Manage Order </Link>
             </li>
             <li className="pr-4">
-              <Link to={`/admin/gardens`}>Change Garden </Link>
+              <Link to={`/`}>Change Garden </Link>
             </li>
           </ul>
         </nav>
