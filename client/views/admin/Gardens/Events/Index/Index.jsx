@@ -8,6 +8,7 @@ import AdminEvents from '../../../../../subcomponents/AdminEvents/Events/Events'
 import { getGarden } from './indexHelper'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
 import AdminNav from '../../../../../subcomponents/adminNav/AdminNav'
+
 export default function AdminEvent() {
   const { id } = useParams()
   const garden = useSelector((globalState) => globalState.garden)
