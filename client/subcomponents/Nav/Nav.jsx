@@ -85,12 +85,12 @@ export default function Nav() {
           </IfNotAuthenticated>
         </div>
       </nav>
-      <nav
+      <div
         className="lg:hidden z-90 absolute top-4 right-6 text-white text-4xl"
         onClick={toggleMenu}
       >
         {open ? <IoClose /> : <GiHamburgerMenu />}
-      </nav>
+      </div>
     </>
   )
 }
