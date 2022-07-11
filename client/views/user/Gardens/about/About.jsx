@@ -12,13 +12,12 @@ export default function About() {
   const { id } = useParams()
   const garden = useSelector((globalState) => globalState.garden)
   const user = useSelector((globalState) => globalState.user)
-  const location = useSelector((globalState) => globalState.location)
 
   useEffect(() => {
     user.id && getGarden(id, user)
   }, [id, user])
 
-  const { name, description, address, url, lat, lon, email, phone } = garden
+  const { name, description, address, lat, lon, email, phone } = garden
 
   //TODO: hardcode in the opening hours and programmes
   return (
