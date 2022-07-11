@@ -7,7 +7,7 @@ export default function AdminEvents({ address, events }) {
   return (
     <main className="container mx-auto">
       <section className="container flex gap-4">
-        <h2 className="font-sans text-2xl">Upcoming Events:</h2>
+        <h3 className="font-sans text-2xl">Upcoming Events:</h3>
         <AddButton />
       </section>
 
