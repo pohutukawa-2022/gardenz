@@ -1,7 +1,6 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { waitFor } from '@testing-library/dom'
 
 import AddButton from './AddButton'
 
@@ -23,8 +22,6 @@ describe('Add button', () => {
     const addButton = screen.getByRole('button')
     userEvent.click(addButton)
 
-    await waitFor(() => {
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/admin/events/add')
-    })
+    expect(mockedUsedNavigate).toHaveBeenCalledWith('/admin/events/add')
   })
 })
