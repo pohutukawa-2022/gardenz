@@ -20,7 +20,7 @@ export default function ProduceForm({
   return (
     <>
       <section>
-        <h2 className="form-title">{props.action}</h2>
+        <h2 className="form-title">{action}</h2>
         <Formik
           initialValues={initialFormData}
           validationSchema={eventSchema}
