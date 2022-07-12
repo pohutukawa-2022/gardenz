@@ -25,6 +25,7 @@ export function getGarden(id, user, consume = requestor) {
           lon: garden.lon,
           phone: garden.phone,
           email: garden.email,
+          image: garden.image,
         })
       )
       dispatch(clearWaiting())
