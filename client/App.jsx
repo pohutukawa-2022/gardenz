@@ -22,7 +22,7 @@ import Orders from './views/admin/Gardens/orders/Orders.jsx'
 import IsUser from './subcomponents/IsUser/IsUser'
 import IsAdmin from './subcomponents/IsAdmin/IsAdmin'
 import { cacheUser } from './auth-utils'
-import AdminEvent from './views/admin/Gardens/Events/Index/Index'
+import AdminEvents from './views/admin/Gardens/Events/Index/Index'
 import UserNav from './subcomponents/userNav/UserNav'
 import GardenEvents from './views/user/Gardens/Events/GardenEvents'
 import Shop from './views/user/Gardens/Shop/Shop'
@@ -45,9 +45,25 @@ export default function App() {
         <Routes>
           <Route path="/" element={<AdminGardens />} />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
-          <Route path="/gardens/:id/news/add" element={<AddNews />} />
+          <Route
+            path="/admin/gardens/:id/news/add"
+            element={
+              <>
+                <AdminNav />
+                <AddNews />
+              </>
+            }
+          />
           <Route path="/admin/gardens/:id/menu" element={<Menu />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/admin/gardens/:id/events"
+            element={
+              <>
+                <AdminNav />
+                <AdminEvents />
+              </>
+            }
+          />
           <Route
             path="/admin/events/:id"
             element={
@@ -76,7 +92,7 @@ export default function App() {
             }
           />
           <Route
-            path="/events/:id/volunteers"
+            path="/admin/events/:id/volunteers"
             element={
               <>
                 <AdminNav />
@@ -85,11 +101,29 @@ export default function App() {
             }
           />
           <Route
-            path="/produce/add"
+            path="/admin/produce/add"
             element={
               <>
                 <AdminNav />
                 <AddProduce />
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/gallery"
+            element={
+              <>
+                <AdminNav />
+                <p>gallery placeholder</p>
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/news"
+            element={
+              <>
+                <AdminNav />
+                <p>news should be displayed and edited here</p>
               </>
             }
           />
@@ -102,16 +136,7 @@ export default function App() {
               </>
             }
           />
-          <Route path="/admin/gardens/add" element={<AddGarden />} />
-          <Route path="/gardens/:id/news/add" element={<AddNews />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/events/:id" element={<Event />} />
-          <Route path="/admin/events/add" element={<AddEvent />} />
-          <Route path="/admin/events/:id/edit" element={<EditEvent />} />
-          <Route path="/events/:id/volunteers" element={<Volunteers />} />
-          <Route path="/produce/add" element={<AddProduce />} />
-          <Route path="/admin/gardens/:id/events" element={<AdminEvent />} />
-          <Route path="/admin/gardens/:id/orders" element={<Orders />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </IsAdmin>
@@ -123,7 +148,8 @@ export default function App() {
             path="/gardens/:id/news"
             element={
               <>
-                <UserNav /> <News />
+                <UserNav />
+                <News />
               </>
             }
           />
