@@ -1,7 +1,6 @@
 import React from 'react'
 import ProduceForm from './ProduceForm.jsx'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
 describe('ProduceForm', () => {
   it('renders dropdown options correctly', () => {

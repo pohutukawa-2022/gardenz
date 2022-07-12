@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { addProduce, getProduceTypes } from './AddProduceHelper'
+import { getProduceTypes } from './AddProduceHelper'
 import { motion } from 'framer-motion'
 import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
 import { showError } from '../../../slices/error'
@@ -10,7 +9,6 @@ import ProduceForm from '../../../subcomponents/produce/ProduceForm/ProduceForm'
 import { addEventVariants } from '../../animationVariants'
 
 export default function AddProduce() {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [gardens, setGardens] = useState([])
   const [produceTypes, setProduceTypes] = useState([])

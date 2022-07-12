@@ -19,7 +19,7 @@ export default function ProduceForm({
 }) {
   return (
     <>
-      <main>
+      <div>
         <h2 className="form-title">{action}</h2>
         <Formik
           initialValues={initialFormData}
@@ -103,7 +103,7 @@ export default function ProduceForm({
             </Form>
           )}
         </Formik>
-      </main>
+      </div>
     </>
   )
 }
