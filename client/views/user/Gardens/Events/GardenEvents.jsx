@@ -25,9 +25,7 @@ export default function GardenEvents() {
         </article>
       </section>
       <main className="container lg:flex mx-auto mt-5">
-        <article className="lg:w-1/2">
-          <Events garden={garden} events={events} user={user} />
-        </article>
+        <Events garden={garden} events={events} user={user} />
       </main>
     </>
   )
