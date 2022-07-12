@@ -15,6 +15,7 @@ const userHasAdminRole = async (uid) => {
     })
     return isAdmin(body)
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error.message)
     return false
   }
