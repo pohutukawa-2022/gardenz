@@ -12,8 +12,6 @@ export default function GardenHeader() {
     user.id && (await getGarden(id, user))
   }, [id, user])
 
-  console.log(garden.image)
-
   const { image, name } = garden
 
   return (
@@ -27,13 +25,6 @@ export default function GardenHeader() {
           </h2>
         </article>
       </section>
-      {/* <figure>
-        <img
-          className="object-cover h-52 w-full"
-          src={headerImage}
-          alt={name}
-        />
-      </figure> */}
     </>
   )
 }

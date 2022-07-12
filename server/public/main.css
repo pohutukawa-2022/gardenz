@@ -707,10 +707,6 @@ video {
   height: 100%;
 }
 
-.h-52 {
-  height: 13rem;
-}
-
 .h-96 {
   height: 24rem;
 }
@@ -873,6 +869,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'\$\{image\}\'\)\] {
+  background-image: url('${image}');
+}
+
 .bg-\[url\(\'\/images\/galleryPlaceHolder04\.jpg\'\)\] {
   background-image: url('/images/galleryPlaceHolder04.jpg');
 }
@@ -883,11 +883,6 @@ video {
 
 .bg-center {
   background-position: center;
-}
-
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .p-3 {
