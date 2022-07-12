@@ -39,7 +39,8 @@ function getGardenById(id, db = connection) {
       'title',
       'date',
       'volunteers_needed as volunteersNeeded',
-      'users.id as userId'
+      'users.id as userId',
+      'image'
     )
     .then((result) => {
       const garden = result[0]
@@ -53,6 +54,7 @@ function getGardenById(id, db = connection) {
         url: garden.url,
         phone: garden.phone,
         email: garden.email,
+        image: garden.image,
 
         events: !garden.eventId
           ? []
