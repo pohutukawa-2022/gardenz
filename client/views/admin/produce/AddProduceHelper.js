@@ -19,3 +19,24 @@ export function getProduceTypes(consume = requestor) {
       dispatch(showError(error.message))
     })
 }
+
+export function addProduce(event, navigateTo, consume = requestor) {
+  const storeState = getState()
+  const { gardenId, token } = storeState.user
+  const newProduce = {
+    gardenId,
+    ...event,
+  }
+  dispatch(setWaiting())
+  return consume('/events', token, 'post', newProduce)
+    .then(() => {
+      navigateTo(`/gardens/${gardenId}`)
+      return null
+    })
+    .catch((err) => {
+      dispatch(showError(err.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
+    })
+}

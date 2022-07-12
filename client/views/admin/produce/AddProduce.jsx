@@ -1,24 +1,50 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { addProduce } from './addProduceHelper'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getProduceTypes } from './AddProduceHelper'
 import { motion } from 'framer-motion'
+import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
+import { showError } from '../../../slices/error'
 
 import ProduceForm from '../../../subcomponents/produce/ProduceForm/ProduceForm'
 import { addEventVariants } from '../../animationVariants'
 
 export default function AddProduce() {
-  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [gardens, setGardens] = useState([])
+  const [produceTypes, setProduceTypes] = useState([])
 
-  function submitEvent(event) {
-    addProduce(event)
-    navigate()
+  useEffect(() => {
+    getProduceTypes()
+      .then((types) => {
+        setProduceTypes(types)
+        return null
+      })
+      .catch((error) => {
+        dispatch(showError(error))
+      })
+    getAllGardens()
+      .then((gardens) => {
+        setGardens(gardens.map((garden) => ({ ...garden, checked: false })))
+        return null
+      })
+      .catch((error) => {
+        dispatch(showError(error))
+      })
+  }, [])
+
+  function submitProduce(produce) {
+    // TODO: add real functionality to submit button
+    // addProduce(produce)
+    // navigate()
+    alert(JSON.stringify(produce))
   }
-  const initialState = {
+
+  const initialFormData = {
     name: '',
     produceType: 0,
     gardenIds: [],
-    inSeason: false,
   }
+
   return (
     <motion.div
       variants={addEventVariants}
@@ -27,9 +53,11 @@ export default function AddProduce() {
       exit="exit"
     >
       <ProduceForm
-        formData={initialState}
-        action="Create Event"
-        submitEvent={submitEvent}
+        initialFormData={initialFormData}
+        action="Add Produce"
+        submitProduce={submitProduce}
+        gardens={gardens}
+        produceTypes={produceTypes}
       />
     </motion.div>
   )
