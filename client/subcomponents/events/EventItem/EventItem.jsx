@@ -36,14 +36,14 @@ export default function EventItem({ garden, event, user }) {
           </p>
         )}
       </dl>
-      <Conditional condition={user.id}>
+      <Conditional condition={user.token}>
         <VolunteerButton
           eventId={id}
           volunteering={isVolunteering}
           setVolunteering={setIsVolunteering}
         />
       </Conditional>
-      <Conditional condition={!user.id}>
+      <Conditional condition={!user.token}>
         <button className="w-full block mt-5 p-3 text-center rounded-md text-white bg-gray-300 cursor-default">
           Please sign in to volunteer
         </button>
