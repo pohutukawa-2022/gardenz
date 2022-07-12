@@ -12,17 +12,28 @@ export default function GardenHeader() {
     user.id && (await getGarden(id, user))
   }, [id, user])
 
-  const { image: headerImage, name } = garden
+  console.log(garden.image)
+
+  const { image, name } = garden
 
   return (
     <>
-      <figure>
+      <section
+        className={`w-full h-96 bg-[url('${image}')] bg-cover bg-center flex justify-center items-end`}
+      >
+        <article className="container flex">
+          <h2 className="font-sans text-white text-4xl font-bold py-6">
+            {name}
+          </h2>
+        </article>
+      </section>
+      {/* <figure>
         <img
           className="object-cover h-52 w-full"
           src={headerImage}
           alt={name}
         />
-      </figure>
+      </figure> */}
     </>
   )
 }
