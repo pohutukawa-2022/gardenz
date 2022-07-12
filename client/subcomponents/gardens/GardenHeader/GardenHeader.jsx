@@ -1,43 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
-import { setGarden } from '../../../slices/garden'
-import { showError } from '../../../slices/error'
+import { getGarden } from '../../../views/user/Gardens/about/aboutHelper'
 
 export default function GardenHeader() {
-  const [gardenList, setGardenList] = useState([])
   const { id } = useParams()
-  const dispatch = useDispatch()
+  const garden = useSelector((globalState) => globalState.garden)
+  const user = useSelector((globalState) => globalState.user)
 
-  useEffect(() => {
-    getAllGardens()
-      .then((gardens) => {
-        setGardenList(gardens)
-        return null
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-        return false
-      })
-  }, [])
+  useEffect(async () => {
+    user.id && (await getGarden(id, user))
+  }, [id, user])
 
-  const match = gardenList.find((garden) => garden.id === Number(id))
+  console.log(garden.image)
 
-  dispatch(setGarden(match))
-  const { image: headerImage, name } = useSelector(
-    (globalState) => globalState.garden
-  )
+  const { image, name } = garden
 
   return (
     <>
-      <figure>
+      <section
+        className={`w-full h-96 bg-[url('${image}')] bg-cover bg-center flex justify-center items-end`}
+      >
+        <article className="container flex">
+          <h2 className="font-sans text-white text-4xl font-bold py-6">
+            {name}
+          </h2>
+        </article>
+      </section>
+      {/* <figure>
         <img
           className="object-cover h-52 w-full"
           src={headerImage}
           alt={name}
         />
-      </figure>
+      </figure> */}
     </>
   )
 }
