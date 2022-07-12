@@ -8,7 +8,7 @@ function Menu() {
       <ul className="w-full grid grid-cols-2 gap-4 mt-20">
         <li className="grid">
           <Link
-            to={`/admin/gardens/${id}/produce`}
+            to={`/admin/produce/add`}
             className="p-6 text-center rounded-md border-2 border-blue hover:bg-blue hover:text-white transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
@@ -53,7 +53,7 @@ function Menu() {
         </li>{' '}
         <li className="grid">
           <Link
-            to={`/admin/gardens`}
+            to={`/`}
             className="p-6 text-center rounded-md border-2 border-blue hover:bg-blue hover:text-white transition ease-in-out hover:bg-blue hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>

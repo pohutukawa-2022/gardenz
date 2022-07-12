@@ -43,10 +43,10 @@ export default function EventForm(props) {
 
   return (
     <>
-      <main>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
-          <section className="field">
+          <div className="field">
             <label htmlFor="title" className="label">
               Event Title
             </label>
@@ -112,9 +112,9 @@ export default function EventForm(props) {
               onChange={formik.handleChange}
               value={formik.values.description}
             />
-          </section>
+          </div>
 
-          <section className="button-group">
+          <div className="button-group">
             {props.action === 'Update Event' ? (
               <motion.button
                 className="submit form-box"
@@ -134,9 +134,9 @@ export default function EventForm(props) {
             >
               Submit
             </motion.button>
-          </section>
+          </div>
         </form>
-      </main>
+      </section>
     </>
   )
 }

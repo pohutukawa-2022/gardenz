@@ -1,10 +1,10 @@
-import requestor from '../../../../consume'
-import { dispatch } from '../../../../store'
-import { clearWaiting, setWaiting } from '../../../../slices/waiting'
-import { showError } from '../../../../slices/error'
-import { setGarden } from '../../../../slices/garden'
+import requestor from '../../../../../consume'
+import { dispatch } from '../../../../../store'
+import { clearWaiting, setWaiting } from '../../../../../slices/waiting'
+import { showError } from '../../../../../slices/error'
+import { setGarden } from '../../../../../slices/garden'
 
-export function getGarden(id, user, consume = requestor) {
+export async function getGarden(id, user, consume = requestor) {
   dispatch(setWaiting())
   const headers = {
     Accept: 'application/json',
@@ -23,8 +23,6 @@ export function getGarden(id, user, consume = requestor) {
           events: garden.events,
           lat: garden.lat,
           lon: garden.lon,
-          phone: garden.phone,
-          email: garden.email,
         })
       )
       dispatch(clearWaiting())
