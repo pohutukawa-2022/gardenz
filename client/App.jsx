@@ -45,9 +45,25 @@ export default function App() {
         <Routes>
           <Route path="/" element={<AdminGardens />} />
           <Route path="/admin/gardens/add" element={<AddGarden />} />
-          <Route path="/admin/gardens/:id/news/add" element={<AddNews />} />
+          <Route
+            path="/admin/gardens/:id/news/add"
+            element={
+              <>
+                <AdminNav />
+                <AddNews />
+              </>
+            }
+          />
           <Route path="/admin/gardens/:id/menu" element={<Menu />} />
-          <Route path="/admin/gardens/:id/events" element={<AdminEvents />} />
+          <Route
+            path="/admin/gardens/:id/events"
+            element={
+              <>
+                <AdminNav />
+                <AdminEvents />
+              </>
+            }
+          />
           <Route
             path="/admin/events/:id"
             element={
@@ -90,6 +106,24 @@ export default function App() {
               <>
                 <AdminNav />
                 <AddProduce />
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/gallery"
+            element={
+              <>
+                <AdminNav />
+                <p>gallery placeholder</p>
+              </>
+            }
+          />
+          <Route
+            path="/admin/gardens/:id/news"
+            element={
+              <>
+                <AdminNav />
+                <p>news should be displayed and edited here</p>
               </>
             }
           />
