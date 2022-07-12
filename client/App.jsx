@@ -146,19 +146,55 @@ export default function App() {
           {/* <Route path="/gardens/:id/header" element={<GardenHeader />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route
-            path="/gardens/:id"
-            element={
-              <>
-                <GardenHeader /> <UserNav />
-              </>
-            }
-          >
-            <Route path="news" element={<News />} />
-            <Route path="about" element={<About />} />
-            <Route path="events" element={<GardenEvents />} />
-            <Route path="shop" element={<Shop />} />
-            <Route path="gallery" element={<Gallery />} />
+
+          <Route path="/gardens">
+            <Route path=":id">
+              <Route
+                path="news"
+                element={
+                  <>
+                    <GardenHeader /> <UserNav />
+                    <News />
+                  </>
+                }
+              />
+              <Route
+                path="about"
+                element={
+                  <>
+                    <GardenHeader /> <UserNav />
+                    <About />
+                  </>
+                }
+              />
+              <Route
+                path="events"
+                element={
+                  <>
+                    <GardenHeader /> <UserNav />
+                    <GardenEvents />
+                  </>
+                }
+              />
+              <Route
+                path="shop"
+                element={
+                  <>
+                    <GardenHeader /> <UserNav />
+                    <Shop />
+                  </>
+                }
+              />
+              <Route
+                path="gallery"
+                element={
+                  <>
+                    <GardenHeader /> <UserNav />
+                    <Gallery />
+                  </>
+                }
+              />
+            </Route>
           </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
