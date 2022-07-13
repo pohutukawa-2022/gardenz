@@ -11,8 +11,8 @@ export default function GardenEvents() {
   const user = useSelector((globalState) => globalState.user)
   const { name, events } = garden
 
-  useEffect(() => {
-    getGarden(id, user)
+  useEffect(async () => {
+    await getGarden(id, user)
   }, [id, user])
 
   return (
