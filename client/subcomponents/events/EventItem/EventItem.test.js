@@ -7,7 +7,11 @@ describe('Volunteer button', () => {
   it('displays for a member', () => {
     const garden = {}
     const event = {}
-    render(<EventItem garden={garden} event={event} />)
+    const user = {
+      token: 'dummy token',
+    }
+
+    render(<EventItem garden={garden} event={event} user={user} />)
     const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
     expect(volunteerButton).toHaveTextContent('Volunteer')
   })
