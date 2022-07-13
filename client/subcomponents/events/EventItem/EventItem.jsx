@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+import Conditional from '../../Conditional'
 
-export default function EventItem({ garden, event }) {
+export default function EventItem({ garden, event, user }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
     event
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
@@ -35,11 +36,18 @@ export default function EventItem({ garden, event }) {
           </p>
         )}
       </dl>
-      <VolunteerButton
-        eventId={id}
-        volunteering={isVolunteering}
-        setVolunteering={setIsVolunteering}
-      />
+      <Conditional condition={user.token}>
+        <VolunteerButton
+          eventId={id}
+          volunteering={isVolunteering}
+          setVolunteering={setIsVolunteering}
+        />
+      </Conditional>
+      <Conditional condition={!user.token}>
+        <button className="w-full block mt-5 p-3 text-center rounded-md text-white bg-gray-300 cursor-default">
+          Please sign in to volunteer
+        </button>
+      </Conditional>
     </article>
   )
 }
