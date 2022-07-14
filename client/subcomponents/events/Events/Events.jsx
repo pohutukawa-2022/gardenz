@@ -10,7 +10,7 @@ export default function Events({ garden, events }) {
       {events.length === 0 ? (
         <p>Sorry no events found, please come back later! </p>
       ) : (
-        <section className="w-2/3 min-w-2/3 grid grid-cols-2 gap-4 mt-5 pr-6">
+        <section className="w-full grid grid-cols-3 gap-4 mt-5 pr-6">
           {events.map((event) => (
             <EventItem key={event.id} garden={garden} event={event} />
           ))}

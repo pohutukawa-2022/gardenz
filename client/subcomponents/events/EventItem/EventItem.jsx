@@ -13,9 +13,9 @@ export default function EventItem({ garden, event }) {
   }, [isVolunteer])
 
   return (
-    <article className="p-6 rounded-md border-2 shadow-xl">
-      <h2 className="font-bold">{title}</h2>
-      <dl>
+    <article className="p-6 rounded-md border-2 shadow-xl flex flex-col justify-around">
+      <h2 className="font-bold text-center p-6 rounded-md border-2">{title}</h2>
+      <dl className="mt-6">
         <dt>Location</dt>
         <dd className="font-bold my-2">{garden?.address}</dd>
         <dt>Date &amp; Time</dt>
