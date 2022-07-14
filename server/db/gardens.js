@@ -30,7 +30,6 @@ function getGardenById(id, db = connection) {
       'address',
       'lat',
       'lon',
-      'url',
       'gardens.email as email',
       'gardens.phone as phone',
       'events.description as eventDescription',
@@ -40,7 +39,7 @@ function getGardenById(id, db = connection) {
       'date',
       'volunteers_needed as volunteersNeeded',
       'users.id as userId',
-      'image'
+      'image_header_url'
     )
     .then((result) => {
       const garden = result[0]
@@ -51,10 +50,9 @@ function getGardenById(id, db = connection) {
         description: garden.description,
         lat: garden.lat,
         lon: garden.lon,
-        url: garden.url,
         phone: garden.phone,
         email: garden.email,
-        image: garden.image,
+        imageHeaderUrl: garden.image_header_url,
 
         events: !garden.eventId
           ? []
