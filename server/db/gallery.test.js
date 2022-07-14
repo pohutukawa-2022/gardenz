@@ -34,12 +34,23 @@ describe('addImage', () => {
     const newImage = {
       name: 'image 4',
       mimetype: 'gif',
-      image: null,
+      image: 'binary here',
       garden_id: 1,
     }
-    return db.addImage(newImage, testDb).then((newImageId) => {
-      expect(newImageId[0]).toBe(4)
-      return null
-    })
+    return db
+      .addImage(newImage, testDb)
+      .then((newImageId) => {
+        return testDb('gallery').where('id', newImageId)
+      })
+      .then(([row]) => {
+        expect(row).toMatchObject({
+          id: 4,
+          name: 'image 4',
+          mimetype: 'gif',
+          image: 'binary here',
+          garden_id: 1,
+        })
+        return null
+      })
   })
 })
