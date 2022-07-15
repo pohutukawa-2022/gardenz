@@ -21,4 +21,5 @@ const slice = createSlice({
 })
 
 export const { setGarden, updateEventVols } = slice.actions
+export const selectGarden = (state) => state.garden
 export default slice.reducer
