@@ -65,8 +65,8 @@ describe('garden location markers', () => {
         coordinates={coordinates}
       />
     )
-    const markers = await screen.findAllByRole('img')
-    const markersShadow = await screen.findAllByAltText('Marker')
+    const markers = screen.getAllByRole('button', { name: 'Marker' })
+    const markersShadow = screen.getAllByAltText('Marker')
     // there are 2 marker images per marker...
     // each marker has a marker image and the marker's shadow image
     expect(markers).toHaveLength(2)
