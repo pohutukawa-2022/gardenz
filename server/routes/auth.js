@@ -8,12 +8,17 @@ const clientId = process.env.AUTH0_API_EXPLORER_CLIENTID || 'some_client_id'
 const secret = process.env.AUTH0_API_EXPLORER_SECRET || 'some_secret'
 
 const userHasAdminRole = async (uid) => {
-  const accessToken = await getAccessToken()
-  const { body } = await request(`${domain}/api/v2/users/${uid}/roles`).set({
-    authorization: `Bearer ${accessToken}`,
-  })
-
-  return isAdmin(body)
+  try {
+    const accessToken = await getAccessToken()
+    const { body } = await request(`${domain}/api/v2/users/${uid}/roles`).set({
+      authorization: `Bearer ${accessToken}`,
+    })
+    return isAdmin(body)
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error.message)
+    return false
+  }
 }
 
 const isAdmin = (roles) => {

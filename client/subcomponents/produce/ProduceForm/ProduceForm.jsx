@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import { motion } from 'framer-motion'
 import { formButtonVariants } from '../../../views/animationVariants'
-import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
-import { getProduceTypes } from './ProduceFormHelper'
-import { useDispatch } from 'react-redux'
-import { showError } from '../../../slices/error'
 
 const eventSchema = Yup.object({
   name: Yup.string().required('Required'),
@@ -14,46 +10,22 @@ const eventSchema = Yup.object({
   produceType: Yup.string().required('Required'),
 })
 
-export default function ProduceForm(props) {
-  const dispatch = useDispatch()
-  const [gardens, setGardens] = useState([])
-  const [produceTypes, setProduceTypes] = useState([])
-
-  useEffect(() => {
-    getProduceTypes()
-      .then((types) => {
-        setProduceTypes(types)
-        return null
-      })
-      .catch((error) => {
-        dispatch(showError(error))
-      })
-    getAllGardens()
-      .then((gardens) => {
-        setGardens(gardens.map((garden) => ({ ...garden, checked: false })))
-        return null
-      })
-      .catch((error) => {
-        dispatch(showError(error))
-      })
-  }, [])
-
-  const produceItem = props.formData
-  const { name, produceType, gardenIds } = produceItem
-
+export default function ProduceForm({
+  submitProduce,
+  gardens,
+  produceTypes,
+  initialFormData,
+  action,
+}) {
   return (
     <>
-      <div>
-        <h2 className="form-title">{props.action}</h2>
+      <section>
+        <h2 className="form-title">{action}</h2>
         <Formik
-          initialValues={{
-            name,
-            produceType,
-            gardenIds,
-          }}
+          initialValues={initialFormData}
           validationSchema={eventSchema}
-          onSubmit={async (values) => {
-            alert(JSON.stringify(values, null, 2))
+          onSubmit={(values) => {
+            submitProduce(values)
           }}
         >
           {({ errors, touched }) => (
@@ -69,12 +41,12 @@ export default function ProduceForm(props) {
                   type="text"
                   placeholder="produce name"
                 />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
+                {errors.name && touched.name ? <p>{errors.name}</p> : null}
                 <label htmlFor="garden" className="label">
                   Produce Family
                 </label>
                 {errors.produceType && touched.produceType ? (
-                  <div>{errors.produceType}</div>
+                  <p>{errors.produceType}</p>
                 ) : null}
                 <Field
                   id="produceType"
@@ -94,18 +66,18 @@ export default function ProduceForm(props) {
                 </Field>
               </div>
 
-              <ul role="gardenList">
+              <ul>
                 {gardens?.length ? (
                   gardens.map((garden) => {
                     return (
-                      <li key={garden.id}>
+                      <li key={garden.id} value="hello">
                         <Field
                           value={garden.id.toString()}
                           type="checkbox"
                           name="gardenIds"
                         />
                         {errors.gardenIds && touched.gardenIds ? (
-                          <div>{errors.gardenIds}</div>
+                          <p>{errors.gardenIds}</p>
                         ) : null}
                         {garden.name}
                       </li>
@@ -129,7 +101,7 @@ export default function ProduceForm(props) {
             </Form>
           )}
         </Formik>
-      </div>
+      </section>
     </>
   )
 }

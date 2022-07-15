@@ -25,22 +25,14 @@ describe('NewsList', () => {
     },
   ]
 
-  it('Print needed List of items amount', () => {
+  it('NewsList component renders fakeNews', () => {
     renderWithRedux(<NewsList news={fakeNews} />, {
       initialState: { user: { isAdmin: true } },
       initialEntries: ['/gardens/1/news'],
       route: '/gardens/:id/news',
     })
-    expect(screen.getAllByRole('listitem')).toHaveLength(6)
-  })
-
-  it('renders news data', async () => {
-    renderWithRedux(<NewsList news={fakeNews} />, {
-      initialState: { user: { isAdmin: true } },
-      initialEntries: ['/gardens/1/news'],
-      route: '/gardens/:id/news',
-    })
+    expect(screen.getAllByRole('listitem')).toHaveLength(2)
     expect(screen.getByText(/Test LastName2/)).toBeInTheDocument()
-    expect(await screen.queryByText('Lettuce Picking Season')).toBeNull()
+    expect(screen.queryByText('Lettuce Picking Season')).toBeInTheDocument()
   })
 })

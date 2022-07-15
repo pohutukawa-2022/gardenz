@@ -5,7 +5,7 @@ export default function VolunteerList({ volunteers, eventId }) {
   return (
     <>
       <h4 className="form-title">List of Volunteers</h4>
-      <div className="volunteers-list">
+      <section className="volunteers-list">
         <ul role="volunteerList">
           {volunteers?.length ? (
             volunteers.map((volunteer) => (
@@ -19,7 +19,7 @@ export default function VolunteerList({ volunteers, eventId }) {
             <p>No volunteers yet</p>
           )}
         </ul>
-      </div>
+      </section>
     </>
   )
 }
