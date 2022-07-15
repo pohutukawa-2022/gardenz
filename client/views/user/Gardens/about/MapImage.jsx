@@ -1,7 +1,7 @@
 import React from 'react'
 import Map from '../../../../subcomponents/Map/Map'
 
-const MapImage = ({ lat, lon, name, address }) => {
+const MapImage = ({ lat, lon, name, address, location }) => {
   return (
     <article className=" lg:w-full h-96 my-5 mb-10">
       {lat && lon ? (

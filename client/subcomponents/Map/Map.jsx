@@ -20,8 +20,11 @@ export default function Map({
   })
 
   const greenIcon = new LeafIcon({
-    iconUrl:
-      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF',
+    iconUrl: '/images/greenpin.png',
+  })
+
+  const blueIcon = new LeafIcon({
+    iconUrl: '/images/bluepin.png',
   })
 
   return (
@@ -38,6 +41,7 @@ export default function Map({
             key={i}
             position={[location.lat, location.lon]}
             draggable={true}
+            icon={greenIcon}
           >
             <Popup>
               <h3>{names[i]}</h3>
@@ -49,7 +53,7 @@ export default function Map({
       {userCoordinates && userCoordinates.lat && (
         <Marker
           position={[userCoordinates.lat, userCoordinates.lon]}
-          icon={greenIcon}
+          icon={blueIcon}
         >
           <Popup>
             <h3>Your Location</h3>

@@ -12,6 +12,7 @@ export default function About() {
   const { id } = useParams()
   const garden = useSelector((globalState) => globalState.garden)
   const user = useSelector((globalState) => globalState.user)
+  const location = useSelector((globalState) => globalState.location)
 
   useEffect(() => {
     getGarden(id, user)
@@ -37,7 +38,13 @@ export default function About() {
         </div>
         {/* Right Side Div */}
         <div className="flex flex-col mt-5">
-          <MapImage lat={lat} lon={lon} name={name} address={address} />
+          <MapImage
+            lat={lat}
+            lon={lon}
+            name={name}
+            address={address}
+            location={location}
+          />
           <FindUs name={name} address={address} email={email} phone={phone} />
         </div>
       </main>
