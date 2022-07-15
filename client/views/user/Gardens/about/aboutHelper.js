@@ -4,7 +4,7 @@ import { clearWaiting, setWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'
 import { setGarden } from '../../../../slices/garden'
 
-export function getGarden(id, user, consume = requestor) {
+export async function getGarden(id, user, consume = requestor) {
   dispatch(setWaiting())
   const headers = {
     Accept: 'application/json',
@@ -19,13 +19,12 @@ export function getGarden(id, user, consume = requestor) {
           name: garden.name,
           description: garden.description,
           address: garden.address,
-          url: garden.url,
+          imageHeaderUrl: garden.imageHeaderUrl,
           events: garden.events,
           lat: garden.lat,
           lon: garden.lon,
           phone: garden.phone,
           email: garden.email,
-          image: garden.image,
         })
       )
       dispatch(clearWaiting())
