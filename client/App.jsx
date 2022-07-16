@@ -142,53 +142,59 @@ export default function App() {
       </IsAdmin>
       <IsUser key="user">
         <Routes>
+          {/* <Route path="/gardens/:id/header" element={<GardenHeader />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/gardens" element={<Gardens />} />
-          <Route
-            path="/gardens/:id/news"
-            element={
-              <>
-                <UserNav />
-                <News />
-              </>
-            }
-          />
-          <Route
-            path="/gardens/:id/about"
-            element={
-              <>
-                <UserNav />
-                <About />
-              </>
-            }
-          />
-          <Route
-            path="/gardens/:id/events"
-            element={
-              <>
-                <UserNav />
-                <GardenEvents />
-              </>
-            }
-          />
-          <Route
-            path="/gardens/:id/gallery"
-            element={
-              <>
-                <UserNav />
-                <Gallery />
-              </>
-            }
-          />
-          <Route
-            path="/gardens/:id/shop"
-            element={
-              <>
-                <UserNav />
-                <Shop />
-              </>
-            }
-          />
+
+          <Route path="/gardens">
+            <Route path=":id">
+              <Route
+                path="news"
+                element={
+                  <>
+                    <UserNav />
+                    <News />
+                  </>
+                }
+              />
+              <Route
+                path="about"
+                element={
+                  <>
+                    <UserNav />
+                    <About />
+                  </>
+                }
+              />
+              <Route
+                path="events"
+                element={
+                  <>
+                    <UserNav />
+                    <GardenEvents />
+                  </>
+                }
+              />
+              <Route
+                path="shop"
+                element={
+                  <>
+                    <UserNav />
+                    <Shop />
+                  </>
+                }
+              />
+              <Route
+                path="gallery"
+                element={
+                  <>
+                    <UserNav />
+                    <Gallery />
+                  </>
+                }
+              />
+            </Route>
+          </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

@@ -1,10 +1,14 @@
 import Shop from './Shop'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import React from 'react'
 import '@testing-library/jest-dom'
 
-test('shope page should display a placeholder paragraph', () => {
-  render(<Shop />)
-  const paragraph = screen.getByText('A shop will be here')
+import { renderWithRedux } from '../../../../test-utils'
+import store from '../../../../store'
+
+test('shope page should display a placeholder paragraph', async () => {
+  renderWithRedux(<Shop />, { store, initialState: { garden: {} } })
+
+  const paragraph = await screen.findByText('A shop will be here')
   expect(paragraph).toBeInTheDocument()
 })
