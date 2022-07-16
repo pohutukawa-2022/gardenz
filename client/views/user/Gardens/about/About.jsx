@@ -24,7 +24,7 @@ export default function About() {
     <>
       <section className="w-full h-96 bg-[url('/images/galleryPlaceHolder04.jpg')] bg-cover bg-center flex justify-center items-end">
         <article className="container flex">
-          <h2 className="font-sans text-organge text-4xl font-bold py-6">
+          <h2 className="font-sans text-white text-4xl font-bold py-6">
             {name}
           </h2>
         </article>
