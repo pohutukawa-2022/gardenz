@@ -7,17 +7,19 @@ describe('Volunteer button', () => {
   it('displays for a member', () => {
     const address = 'random address'
     const event = {}
-    render(<EventItem address={address} event={event} />)
+    const user = { token: 'dummy token' }
+
+    render(<EventItem address={address} event={event} user={user} />)
     const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
     expect(volunteerButton).toHaveTextContent('Volunteer')
   })
 
   it('notifies user to sign in', () => {
-    const garden = {}
+    const address = 'cool place'
     const event = {}
-    const user = {}
+    const user = { token: null }
 
-    render(<EventItem garden={garden} event={event} user={user} />)
+    render(<EventItem address={address} event={event} user={user} />)
     const volunteerButton = screen.getByRole('button')
     expect(volunteerButton).toHaveTextContent('Please sign in to volunteer')
   })
