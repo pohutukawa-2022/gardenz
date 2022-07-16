@@ -1,25 +1,15 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 
-import { getGarden } from './aboutHelper'
 import OpeningHours from './OpeningHours'
 import Description from './Description'
 import FindUs from './FindUs'
 import MapImage from './MapImage'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
+import useGarden from '../../../../utils/useGarden'
 
 export default function About() {
-  const { id } = useParams()
-  const garden = useSelector((globalState) => globalState.garden)
-  const user = useSelector((globalState) => globalState.user)
-
-  useEffect(() => {
-    getGarden(id, user)
-  }, [id, user])
-
   const { name, description, address, lat, lon, email, phone, imageHeaderUrl } =
-    garden
+    useGarden()
 
   return (
     <>
