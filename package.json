@@ -12,7 +12,6 @@
     "build": "run-p build:client build:server",
     "build:client": "vite build",
     "build:server": "npm run db:migrate",
-    "webpack": "webpack --config client/webpack.config.js",
     "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
     "dev:server": "nodemon server/index.js",
