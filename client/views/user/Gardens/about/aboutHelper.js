@@ -8,7 +8,7 @@ export async function getGarden(id, user, consume = requestor) {
   dispatch(setWaiting())
   const headers = {
     Accept: 'application/json',
-    userid: user.id,
+    userid: user?.id,
   }
 
   return consume(`/gardens/${id}`, '', 'get', {}, headers)
