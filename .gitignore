@@ -7,3 +7,4 @@ dev.sqlite3
 .env
 tests/e2e/screenshots/
 server/public/main.css
+storybook-static
