@@ -5,9 +5,9 @@ import EventItem from './EventItem'
 
 describe('Volunteer button', () => {
   it('displays for a member', () => {
-    const garden = {}
+    const address = 'random address'
     const event = {}
-    render(<EventItem garden={garden} event={event} />)
+    render(<EventItem address={address} event={event} />)
     const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
     expect(volunteerButton).toHaveTextContent('Volunteer')
   })
