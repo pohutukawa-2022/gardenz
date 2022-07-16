@@ -10,7 +10,7 @@ export default function GardenEvents() {
   // console.log('useParams', useParams())
   const garden = useSelector((globalState) => globalState.garden)
   const user = useSelector((globalState) => globalState.user)
-  const { name, events } = garden
+  const { name, address, imageHeaderUrl, events } = garden
 
   useEffect(() => {
     user.id && getGarden(id, user)
@@ -27,7 +27,7 @@ export default function GardenEvents() {
       </section>
       <main className="container lg:flex mx-auto mt-5">
         <article className="lg:w-1/2">
-          <Events garden={garden} events={events} />
+          <Events address={address} events={events} />
         </article>
       </main>
     </>

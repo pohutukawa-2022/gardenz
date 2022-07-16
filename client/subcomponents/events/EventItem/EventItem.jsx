@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
-export default function EventItem({ garden, event }) {
+export default function EventItem({ address, event }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
     event
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
@@ -17,7 +17,7 @@ export default function EventItem({ garden, event }) {
       <h2 className="font-bold">{title}</h2>
       <dl>
         <dt>Location</dt>
-        <dd className="font-bold my-2">{garden?.address}</dd>
+        <dd className="font-bold my-2">{address}</dd>
         <dt>Date &amp; Time</dt>
         <dd className="font-bold my-2">{date}</dd>
         {remainingVolunteers > 0 ? (
