@@ -29,7 +29,6 @@ import Shop from './views/user/Gardens/Shop/Shop'
 import PageNotFound from './views/PageNotFound/PageNotFound'
 import AdminGardens from './views/admin/Gardens/Index/Index'
 import Menu from './views/admin/Gardens/Menu/Menu'
-import GardenHeader from './subcomponents/gardens/GardenHeader/GardenHeader'
 
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
@@ -153,7 +152,7 @@ export default function App() {
                 path="news"
                 element={
                   <>
-                    <GardenHeader /> <UserNav />
+                    <UserNav />
                     <News />
                   </>
                 }
@@ -162,7 +161,7 @@ export default function App() {
                 path="about"
                 element={
                   <>
-                    <GardenHeader /> <UserNav />
+                    <UserNav />
                     <About />
                   </>
                 }
@@ -171,7 +170,7 @@ export default function App() {
                 path="events"
                 element={
                   <>
-                    <GardenHeader /> <UserNav />
+                    <UserNav />
                     <GardenEvents />
                   </>
                 }
@@ -180,7 +179,7 @@ export default function App() {
                 path="shop"
                 element={
                   <>
-                    <GardenHeader /> <UserNav />
+                    <UserNav />
                     <Shop />
                   </>
                 }
@@ -189,7 +188,7 @@ export default function App() {
                 path="gallery"
                 element={
                   <>
-                    <GardenHeader /> <UserNav />
+                    <UserNav />
                     <Gallery />
                   </>
                 }
