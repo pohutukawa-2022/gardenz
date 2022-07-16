@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom'
 import { getNews } from './newsHelper'
 
 import NewsList from '../../../../subcomponents/News/NewsList'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { showError } from '../../../../slices/error'
+import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
+import { getGarden } from '../about/aboutHelper'
 
 export default function News() {
   const { id } = useParams()
   const [news, setNews] = useState([])
+  const garden = useSelector((globalState) => globalState.garden)
+  const { name, imageHeaderUrl } = garden
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,7 +24,16 @@ export default function News() {
       .catch((error) => {
         dispatch(showError(error))
       })
-  }, [])
+  }, [id])
 
-  return <NewsList news={news} />
+  useEffect(() => {
+    getGarden(id)
+  }, [id])
+
+  return (
+    <>
+      <GardenHeader name={name} url={imageHeaderUrl} />
+      <NewsList news={news} />
+    </>
+  )
 }

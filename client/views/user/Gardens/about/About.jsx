@@ -7,6 +7,7 @@ import OpeningHours from './OpeningHours'
 import Description from './Description'
 import FindUs from './FindUs'
 import MapImage from './MapImage'
+import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 
 export default function About() {
   const { id } = useParams()
@@ -17,10 +18,12 @@ export default function About() {
     getGarden(id, user)
   }, [id, user])
 
-  const { name, description, address, lat, lon, email, phone } = garden
+  const { name, description, address, lat, lon, email, phone, imageHeaderUrl } =
+    garden
 
   return (
     <>
+      <GardenHeader name={name} url={imageHeaderUrl} />
       <main className="container lg:flex mx-auto mt-5">
         {/* Left Side Div */}
         <div className="container md:flex flex-col my-6 mx-10 mr-20">

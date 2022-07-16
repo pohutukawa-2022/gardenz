@@ -1,10 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectGarden } from '../../../slices/garden'
 
-export default function GardenHeader() {
-  const { name, url } = useSelector(selectGarden)
-
+export default function GardenHeader({ name, url }) {
   return (
     <section
       className={`w-full h-48 bg-cover bg-center flex justify-center items-end`}
