@@ -16,7 +16,7 @@
     "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
     "dev:server": "nodemon server/index.js",
-    "dev:css": "tailwindcss -i client/css/main.css -o main.css --watch",
+    "dev:css": "tailwindcss -i client/css/main.css -o server/public/main.css --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
@@ -27,7 +27,9 @@
     "test:watch": "npm run test -- --watchAll",
     "lint": "eslint --ext .js,.jsx .",
     "vite:start": "vite",
-    "vite:build": "vite build"
+    "vite:build": "vite build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "eda/react",
@@ -124,14 +126,23 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-vite": "^0.1.37",
+    "@storybook/react": "^6.1.21",
+    "@storybook/testing-library": "^0.0.13",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
     "@vitejs/plugin-react": "^1.3.2",
     "@vscode/sqlite3": "^5.0.7",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
@@ -153,7 +164,7 @@
     "regenerator-runtime": "^0.13.7",
     "supertest": "^6.1.3",
     "tailwindcss": "^3.1.4",
-    "vite": "^2.9.13"
+    "vite": "^2.9.14"
   },
   "prettier": {
     "semi": false,
