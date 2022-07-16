@@ -22,7 +22,13 @@ export default function About() {
         </div>
         {/* Right Side Div */}
         <div className="flex flex-col mt-5">
-          <MapImage lat={lat} lon={lon} name={name} address={address} />
+          <MapImage
+            lat={lat}
+            lon={lon}
+            name={name}
+            address={address}
+            location={location}
+          />
           <FindUs name={name} address={address} email={email} phone={phone} />
         </div>
       </main>

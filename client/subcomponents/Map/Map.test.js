@@ -34,9 +34,7 @@ describe('user location marker', () => {
       />
     )
     const marker = await screen.findByAltText('Marker')
-    expect(marker.src).toContain(
-      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF'
-    )
+    expect(marker.src).toContain('bluepin.png')
   })
 
   it('does not display when userCoordinates not provided', () => {
@@ -65,8 +63,8 @@ describe('garden location markers', () => {
         coordinates={coordinates}
       />
     )
-    const markers = await screen.findAllByRole('img')
-    const markersShadow = await screen.findAllByAltText('Marker')
+    const markers = screen.getAllByRole('button', { name: 'Marker' })
+    const markersShadow = screen.getAllByAltText('Marker')
     // there are 2 marker images per marker...
     // each marker has a marker image and the marker's shadow image
     expect(markers).toHaveLength(2)

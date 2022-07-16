@@ -30,7 +30,7 @@ describe('events list', () => {
       address: 'la la land',
     }
 
-    renderWithRedux(<Events events={events} garden={garden} />)
+    renderWithRedux(<Events events={events} garden={garden} user={{}} />)
     const eventItems = screen.getAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(2)
     const title = screen.getByText(events[0].title)
@@ -55,7 +55,7 @@ describe('no event message', () => {
 describe('display no-event message', () => {
   it('displays correct message', () => {
     const events = []
-    renderWithRedux(<Events events={events} />)
+    renderWithRedux(<Events events={events} user={{}} />)
     const eventItems = screen.getByText(
       'Sorry no events found, please come back later!'
     )
