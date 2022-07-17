@@ -1,5 +1,3 @@
-//from user/gardens/about/about.jsx
-
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -21,11 +19,6 @@ export default function AdminEvent() {
 
   return (
     <>
-      <section>
-        <article className="container flex">
-          <h2 className="font-sans text-black text-4xl font-bold py-6"></h2>
-        </article>
-      </section>
       <main className="container lg:flex mx-auto mt-5">
         <article className="lg:w-3/4">
           <AdminEvents address={address} events={events} />
