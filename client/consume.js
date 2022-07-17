@@ -10,7 +10,7 @@ export default function consume(
   headers = { Accept: 'application/json' }
 ) {
   const payLoadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'
-  request.get().set
+
   // If token === false
   if (!token) {
     return request[method](baseUrl + endpoint)
@@ -33,13 +33,3 @@ export default function consume(
       })
   }
 }
-
-const instance = {
-  play: () => {},
-  quack: () => {},
-}
-
-instance.quack()
-
-const fn = 'quack'
-instance[fn]

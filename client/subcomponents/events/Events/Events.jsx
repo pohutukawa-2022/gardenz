@@ -2,7 +2,7 @@ import React from 'react'
 
 import EventItem from '../EventItem/EventItem'
 
-export default function Events({ garden, events, user }) {
+export default function Events({ address, events, user }) {
   return (
     <main className="container mx-auto">
       <h1 className="font-sans text-2xl font-bold">Events</h1>
@@ -14,7 +14,7 @@ export default function Events({ garden, events, user }) {
           {events.map((event) => (
             <EventItem
               key={event.id}
-              garden={garden}
+              address={address}
               event={event}
               user={user}
             />

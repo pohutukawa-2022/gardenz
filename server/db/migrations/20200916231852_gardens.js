@@ -6,7 +6,7 @@ exports.up = (knex) => {
     table.string('description', 1024)
     table.decimal('lat', 17, 14)
     table.decimal('lon', 17, 14)
-    table.string('url')
+    table.string('image_header_url')
   })
 }
 
