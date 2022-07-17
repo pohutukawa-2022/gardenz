@@ -59,6 +59,7 @@ export default function Home() {
       <img
         className="hidden xl:block w-1/2 mt-5 rounded-r-md"
         src="/images/comGardenPlant.png"
+        alt="a framer sowing garden"
       />
     </main>
   )
