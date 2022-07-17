@@ -23,7 +23,29 @@ displaysEvents.args = {
       totalVolunteers: 20,
       date: '20/07/2022',
     },
+    {
+      id: 1,
+      title: 'Where is my banana?',
+      volunteersNeeded: 5,
+      totalVolunteers: 20,
+      date: '20/07/2022',
+    },
+    {
+      id: 1,
+      title: 'Where is my banana?',
+      volunteersNeeded: 5,
+      totalVolunteers: 20,
+      date: '20/07/2022',
+    },
+    {
+      id: 1,
+      title: 'Where is my banana?',
+      volunteersNeeded: 5,
+      totalVolunteers: 20,
+      date: '20/07/2022',
+    },
   ],
+
   user: {
     token: 'dummy token',
   },
