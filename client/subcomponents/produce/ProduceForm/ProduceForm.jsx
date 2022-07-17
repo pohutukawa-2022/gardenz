@@ -1,8 +1,6 @@
 import React from 'react'
 import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { motion } from 'framer-motion'
-import { formButtonVariants } from '../../../views/animationVariants'
 
 const eventSchema = Yup.object({
   name: Yup.string().required('Required'),
@@ -89,14 +87,9 @@ export default function ProduceForm({
               </ul>
 
               <div className="button-group">
-                <motion.button
-                  className="submit form-box"
-                  type="submit"
-                  variants={formButtonVariants}
-                  whileHover="hover"
-                >
+                <button className="submit form-box" type="submit">
                   Submit
-                </motion.button>
+                </button>
               </div>
             </Form>
           )}

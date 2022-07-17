@@ -1,7 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { motion } from 'framer-motion'
 
 import { addVolunteer } from './AddVolunteerFormHelper'
 
@@ -71,14 +70,13 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
           />
         </section>
         <section className="button-group">
-          <motion.button
+          <button
             className="submit form-box"
             data-testid="submit-button"
             type="submit"
-            whileHover="hover"
           >
             Add
-          </motion.button>
+          </button>
         </section>
       </form>
     </main>

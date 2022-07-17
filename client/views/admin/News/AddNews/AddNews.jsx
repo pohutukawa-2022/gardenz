@@ -1,10 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addNews } from './addNewsHelper'
-import { motion } from 'framer-motion'
 
-import NewsForm from '../../../../subcomponents/News/NewsForm/NewsForm' //Change
-import { addEventVariants } from '../../../animationVariants'
+import { addNews } from './addNewsHelper'
+import NewsForm from '../../../../subcomponents/News/NewsForm/NewsForm'
 
 export default function AddNews() {
   const navigate = useNavigate()
@@ -19,17 +17,10 @@ export default function AddNews() {
   }
 
   return (
-    <motion.div
-      variants={addEventVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      <NewsForm
-        formData={initialState}
-        action="Create News"
-        submitNews={submitNews}
-      />
-    </motion.div>
+    <NewsForm
+      formData={initialState}
+      action="Create News"
+      submitNews={submitNews}
+    />
   )
 }

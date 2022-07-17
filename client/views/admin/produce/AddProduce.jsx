@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getProduceTypes } from './AddProduceHelper'
-import { motion } from 'framer-motion'
 import { getAllGardens } from '../../../views/user/Gardens/Index/IndexHelper'
 import { showError } from '../../../slices/error'
 
 import ProduceForm from '../../../subcomponents/produce/ProduceForm/ProduceForm'
-import { addEventVariants } from '../../animationVariants'
 
 export default function AddProduce() {
   const dispatch = useDispatch()
@@ -46,19 +44,12 @@ export default function AddProduce() {
   }
 
   return (
-    <motion.div
-      variants={addEventVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      <ProduceForm
-        initialFormData={initialFormData}
-        action="Add Produce"
-        submitProduce={submitProduce}
-        gardens={gardens}
-        produceTypes={produceTypes}
-      />
-    </motion.div>
+    <ProduceForm
+      initialFormData={initialFormData}
+      action="Add Produce"
+      submitProduce={submitProduce}
+      gardens={gardens}
+      produceTypes={produceTypes}
+    />
   )
 }

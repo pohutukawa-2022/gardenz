@@ -1,10 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addGarden } from './addGardenHelper'
-import { motion } from 'framer-motion'
 
+import { addGarden } from './addGardenHelper'
 import GardenForm from '../../../../subcomponents/gardens/GardenForm/GardenForm'
-import { addEventVariants } from '../../../animationVariants'
 
 export default function AddGarden() {
   const navigate = useNavigate()
@@ -20,17 +18,10 @@ export default function AddGarden() {
     address: '',
   }
   return (
-    <motion.div
-      variants={addEventVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      <GardenForm
-        formData={initialState}
-        action="Create Garden"
-        submitGarden={submitGarden}
-      />
-    </motion.div>
+    <GardenForm
+      formData={initialState}
+      action="Create Garden"
+      submitGarden={submitGarden}
+    />
   )
 }

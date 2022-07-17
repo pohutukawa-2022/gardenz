@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { updateEvent, cancelEvent } from './editEventHelper'
-
 import EventForm from '../../../../subcomponents/events/EventForm/EventForm'
 import { useSelector } from 'react-redux'
 import { getEvent } from '../../Events/Event/eventHelper'
-import { containerVariants } from '../../../animationVariants'
-import { motion } from 'framer-motion'
 
 export default function EditEvent() {
   const [event, setEvent] = useState(null)
@@ -32,18 +29,11 @@ export default function EditEvent() {
   }
 
   return event ? (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      <EventForm
-        formData={event}
-        action="Update Event"
-        submitEvent={submitEvent}
-        cancelSubmit={cancelSubmit}
-      />
-    </motion.div>
+    <EventForm
+      formData={event}
+      action="Update Event"
+      submitEvent={submitEvent}
+      cancelSubmit={cancelSubmit}
+    />
   ) : null
 }

@@ -1,9 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { motion } from 'framer-motion'
-
-import { formButtonVariants } from '../../../views/animationVariants'
 
 const gardenSchema = Yup.object({
   name: Yup.string().required('Required'),
@@ -90,24 +87,14 @@ export default function GardenForm(props) {
 
           <div className="button-group">
             {props.action === 'Update Garden' ? (
-              <motion.button
-                className="submit form-box"
-                onClick={handleCancel}
-                variants={formButtonVariants}
-                whileHover="hover"
-              >
+              <button className="submit form-box" onClick={handleCancel}>
                 Cancel garden
-              </motion.button>
+              </button>
             ) : null}
 
-            <motion.button
-              className="submit form-box"
-              type="submit"
-              variants={formButtonVariants}
-              whileHover="hover"
-            >
+            <button className="submit form-box" type="submit">
               Submit
-            </motion.button>
+            </button>
           </div>
         </form>
       </section>
