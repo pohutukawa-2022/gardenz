@@ -11,9 +11,9 @@ export default function Error() {
       <section className="alert-msg">
         <p>{error}</p>
       </section>
-      <a className="alert-close" onClick={hide}>
+      <button className="alert-close" onClick={hide}>
         &#10005;
-      </a>
+      </button>
     </article>
   ) : null
 }
