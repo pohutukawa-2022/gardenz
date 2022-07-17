@@ -51,7 +51,7 @@ export default function Nav() {
       >
         <div className="lg:flex text-center md:text-align">
           <Link
-            to="/gardens"
+            to="/"
             className="text-white hover:text-green block my-6 py-2 px-6"
           >
             Home
