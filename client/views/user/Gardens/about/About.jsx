@@ -5,7 +5,7 @@ import Description from './Description'
 import FindUs from './FindUs'
 import MapImage from './MapImage'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../utils/useGarden'
+import useGarden from '../../../../hooks/useGarden'
 
 export default function About() {
   const { name, description, address, lat, lon, email, phone, imageHeaderUrl } =

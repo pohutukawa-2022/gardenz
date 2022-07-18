@@ -1,6 +1,6 @@
 import React from 'react'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../utils/useGarden'
+import useGarden from '../../../../hooks/useGarden'
 
 export default function Shop() {
   const { name, imageHeaderUrl } = useGarden()

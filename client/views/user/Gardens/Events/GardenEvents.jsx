@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Events from '../../../../subcomponents/events/Events/Events'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../utils/useGarden'
+import useGarden from '../../../../hooks/useGarden'
 
 export default function GardenEvents() {
   const user = useSelector((globalState) => globalState.user)

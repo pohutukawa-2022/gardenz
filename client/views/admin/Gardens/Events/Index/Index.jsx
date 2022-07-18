@@ -1,20 +1,11 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 
 import AdminEvents from '../../../../../subcomponents/AdminEvents/Events/Events'
-import { getGarden } from './indexHelper'
+import useGarden from '../../../../../hooks/useGarden'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
 
 export default function AdminEvent() {
-  const { id } = useParams()
-  const garden = useSelector((globalState) => globalState.garden)
-  const user = useSelector((globalState) => globalState.user)
-
-  useEffect(async () => {
-    user.id && (await getGarden(id, user))
-  }, [id, user])
-
+  const garden = useGarden()
   const { address, events } = garden
 
   return (

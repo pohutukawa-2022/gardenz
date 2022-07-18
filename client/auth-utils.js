@@ -7,7 +7,6 @@ import { clearWaiting, setWaiting } from './slices/waiting'
 const emptyUser = {
   id: null,
   isAdmin: false,
-  gardenId: null,
 }
 
 function saveUser(user = emptyUser) {
@@ -20,8 +19,8 @@ export async function cacheUser(isAuthenticated, getAccessTokenSilently, user) {
     try {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
-      const { id, firstName, lastName, email, isAdmin, gardenId } = res.body
-      saveUser({ id, firstName, lastName, email, isAdmin, gardenId, token })
+      const { id, firstName, lastName, email, isAdmin } = res.body
+      saveUser({ id, firstName, lastName, email, isAdmin, token })
     } catch (err) {
       dispatch(showError('Unable to set the current user'))
     }

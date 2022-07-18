@@ -1,6 +1,5 @@
 import { toggleVolunteerStatus } from './volunteerButtonHelper'
 import { setWaiting } from '../../../slices/waiting'
-import { updateEventVols } from '../../../slices/garden'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -72,7 +71,6 @@ describe('toggleVolunteerStatus', () => {
       consume
     ).then(() => {
       expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).toHaveBeenCalledWith(updateEventVols(eventId))
       expect(setVolunteering).toHaveBeenCalledWith(true)
       return null
     })
