@@ -8,12 +8,12 @@ export default function Error() {
 
   return error ? (
     <article className="alert-container" role="alert">
-      <div className="alert-msg">
+      <section className="alert-msg">
         <p>{error}</p>
-      </div>
-      <a className="alert-close" onClick={hide}>
+      </section>
+      <button className="alert-close" onClick={hide}>
         &#10005;
-      </a>
+      </button>
     </article>
   ) : null
 }

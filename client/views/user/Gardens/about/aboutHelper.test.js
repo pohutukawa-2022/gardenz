@@ -20,9 +20,9 @@ describe('getGarden', () => {
           body: {
             name: 'test garden',
             description: 'a rad test garden',
-            url: 'cooltestgarden.com',
             events: [],
             address: 'cool place, nz',
+            imageHeaderUrl: 'url',
             lat: 123,
             lon: -123,
             fake: 'asdf',
@@ -35,7 +35,7 @@ describe('getGarden', () => {
           setGarden({
             name: 'test garden',
             description: 'a rad test garden',
-            url: 'cooltestgarden.com',
+            imageHeaderUrl: 'url',
             events: [],
             address: 'cool place, nz',
             lat: 123,

@@ -2,9 +2,6 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import moment from 'moment'
-import { motion } from 'framer-motion'
-
-import { formButtonVariants } from '../../../views/animationVariants'
 
 const eventSchema = Yup.object({
   title: Yup.string().required('Required'),
@@ -43,7 +40,7 @@ export default function EventForm(props) {
 
   return (
     <>
-      <div>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
           <div className="field">
@@ -116,27 +113,17 @@ export default function EventForm(props) {
 
           <div className="button-group">
             {props.action === 'Update Event' ? (
-              <motion.button
-                className="submit form-box"
-                onClick={handleCancel}
-                variants={formButtonVariants}
-                whileHover="hover"
-              >
+              <button className="submit form-box" onClick={handleCancel}>
                 Cancel Event
-              </motion.button>
+              </button>
             ) : null}
 
-            <motion.button
-              className="submit form-box"
-              type="submit"
-              variants={formButtonVariants}
-              whileHover="hover"
-            >
+            <button className="submit form-box" type="submit">
               Submit
-            </motion.button>
+            </button>
           </div>
         </form>
-      </div>
+      </section>
     </>
   )
 }

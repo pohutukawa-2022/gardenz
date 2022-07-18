@@ -1,10 +1,8 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { motion } from 'framer-motion'
 
 import Conditional from '../../Conditional'
-import { formButtonVariants } from '../../../views/animationVariants'
 
 const newsSchema = Yup.object({
   title: Yup.string().required('Required'),
@@ -28,7 +26,7 @@ export default function NewsForm(props) {
 
   return (
     <>
-      <div>
+      <section>
         <h2 className="form-title">{props.action}</h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
           <div className="field">
@@ -70,17 +68,12 @@ export default function NewsForm(props) {
           </div>
 
           <div className="button-group">
-            <motion.button
-              className="submit form-box"
-              type="submit"
-              variants={formButtonVariants}
-              whileHover="hover"
-            >
+            <button className="submit form-box" type="submit">
               Submit
-            </motion.button>
+            </button>
           </div>
         </form>
-      </div>
+      </section>
     </>
   )
 }
