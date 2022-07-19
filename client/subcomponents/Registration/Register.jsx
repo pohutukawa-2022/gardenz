@@ -16,7 +16,6 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  gardenId: Yup.number().required('Required'),
 })
 
 export default function Register() {
@@ -28,7 +27,6 @@ export default function Register() {
     initialValues: {
       firstName: '',
       lastName: '',
-      gardenId: '',
     },
     onSubmit: (values) => {
       registerUser(values, isAdmin, authUser, navigate)
