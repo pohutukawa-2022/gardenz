@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { clearWaiting, setWaiting, showError } from '../../slices/waiting'
 import { dispatch } from '../../store'
 import { getGarden } from './useGardenHelper'
 
-export default function useGarden() {
-  const { id } = useParams()
+export default function useGarden(gardenId) {
   const [garden, setGarden] = useState({
     name: '',
     description: '',
@@ -20,13 +18,13 @@ export default function useGarden() {
 
   useEffect(() => {
     dispatch(setWaiting())
-    getGarden(id)
-      .then((garden) => setGarden(garden))
+    getGarden(gardenId)
+      .then(setGarden)
       .then(() => dispatch(clearWaiting()))
       .catch((error) => {
         dispatch(showError(error.message))
       })
-  }, [id])
+  }, [gardenId])
 
   return garden
 }

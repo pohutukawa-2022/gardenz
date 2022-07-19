@@ -11,7 +11,7 @@ import useGarden from '../../../../hooks/useGarden'
 export default function News() {
   const { id } = useParams()
   const [news, setNews] = useState([])
-  const { name, imageHeaderUrl } = useGarden()
+  const { name, imageHeaderUrl } = useGarden(id)
   const dispatch = useDispatch()
 
   useEffect(() => {

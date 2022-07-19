@@ -1,11 +1,13 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 import AdminEvents from '../../../../../subcomponents/AdminEvents/Events/Events'
 import useGarden from '../../../../../hooks/useGarden'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
 
 export default function AdminEvent() {
-  const garden = useGarden()
+  const { id } = useParams()
+  const garden = useGarden(id)
   const { address, events } = garden
 
   return (
