@@ -12,11 +12,7 @@ export default function GardenEvents() {
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
-      <main className="container lg:flex mx-auto mt-5">
-        <article className="lg:w-1/2">
-          <Events address={address} events={events} user={user} />
-        </article>
-      </main>
+      <Events address={address} events={events} user={user} />
     </>
   )
 }
