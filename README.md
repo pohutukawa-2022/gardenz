@@ -13,7 +13,6 @@ npm run db:migrate
 npm run db:seed
 cp server/.env.example server/.env
 npm run dev
-2 Fast 2 Furious
 ```
 
 `IMPORTANT:` Please ask one of the facilitators to give the actual values that should be in the `.env` file.
