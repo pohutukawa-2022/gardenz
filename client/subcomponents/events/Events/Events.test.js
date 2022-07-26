@@ -31,7 +31,7 @@ describe('events list', () => {
     }
 
     renderWithRedux(<Events events={events} garden={garden} user={{}} />)
-    const eventItems = screen.getAllByRole('heading', { level: 2 })
+    const eventItems = screen.getAllByRole('heading', { level: 3 })
     expect(eventItems).toHaveLength(2)
     const title = screen.getByText(events[0].title)
     const date = screen.getByText(events[0].date)
@@ -47,7 +47,7 @@ describe('no event message', () => {
     const events = []
 
     renderWithRedux(<Events events={events} />)
-    const eventItems = screen.queryAllByRole('heading', { level: 2 })
+    const eventItems = screen.queryAllByRole('heading', { level: 3 })
     expect(eventItems).toHaveLength(0)
   })
 })
