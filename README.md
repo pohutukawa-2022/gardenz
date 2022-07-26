@@ -19,6 +19,15 @@ npm run dev
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
+## Tech used in this Project
+- Storybook: is a tool for UI development
+- vite: a fast bundler (bye bye webpack)
+- leaflet: component to view maps
+- visx: to plot graphs
+- formik/yup: validating forms
+- tailwindcss: utility classes for styling
+- playwright: end-to-end testing
+
 ## Testing
 
 ### Unit/Integration tests
