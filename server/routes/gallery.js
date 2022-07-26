@@ -9,13 +9,7 @@ router.get('/:gardenid', (req, res) => {
   const galleryId = req.params.gardenid
   db.getImages(galleryId)
     .then((photos) => {
-      res.json(
-        photos.map((photo) => ({
-          ...photo,
-          image: photo.image.toString('base64'),
-        }))
-      )
-      return null
+      res.json(photos)
     })
     .catch((err) => {
       log(err.message)
@@ -31,6 +25,7 @@ router.get('/:gardenid', (req, res) => {
 router.post('/:gardenId', async (req, res) => {
   const image = {
     name: req.body.name,
+    url: req.body.url,
     garden_id: req.params.gardenId,
   }
   try {
