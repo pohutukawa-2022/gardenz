@@ -14,7 +14,7 @@ export default function EventItem({ address, event, user }) {
   }, [isVolunteer])
 
   return (
-    <article className="p-6 rounded-md border-2 shadow-xl flex flex-col justify-around">
+    <article className="w-64 ml-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around">
       <h2 className="font-bold text-center p-6 rounded-md border-2">{title}</h2>
       <dl className="mt-6">
         <dt>Location</dt>
