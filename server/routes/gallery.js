@@ -1,18 +1,8 @@
-const multer = require('multer')
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/gallery')
 
 const router = express.Router()
-
-const memStorage = multer.memoryStorage({
-  destination: function (req, file, callback) {
-    callback(null, '')
-  },
-})
-const upload = multer({
-  storage: memStorage,
-})
 
 // GET /api/v1/gallery/1
 router.get('/:gardenid', (req, res) => {
@@ -38,11 +28,9 @@ router.get('/:gardenid', (req, res) => {
 })
 
 // POST /api/v1/gallery/1
-router.post('/:gardenId', upload.single('image'), async (req, res) => {
+router.post('/:gardenId', async (req, res) => {
   const image = {
     name: req.body.name,
-    mimetype: req.file.mimetype,
-    image: req.file.buffer,
     garden_id: req.params.gardenId,
   }
   try {
