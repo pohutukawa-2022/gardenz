@@ -15,14 +15,14 @@ export default function EventItem({ address, event, user }) {
 
   return (
     <article className="w-64 ml-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around">
-      <h3 className="font-bold text-center p-6 rounded-md border-2">{title}</h3>
+      <h3 className="font-bold text-center p-4 rounded-md border-2">{title}</h3>
       <dl className="mt-6">
         <dd className="my-2">{address}</dd>
         <dd className="my-2">{date}</dd>
         {remainingVolunteers > 0 ? (
           <>
             <dt>Volunteers needed</dt>
-            <dd className="my-2">
+            <dd className="my-2 text-center">
               {remainingVolunteers} of {volunteersNeeded}
             </dd>
           </>
