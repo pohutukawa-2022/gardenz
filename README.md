@@ -13,12 +13,20 @@ npm run db:migrate
 npm run db:seed
 cp server/.env.example server/.env
 npm run dev
-2 Fast 2 Furious
 ```
 
 `IMPORTANT:` Please ask one of the facilitators to give the actual values that should be in the `.env` file.
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
+
+## Tech used in this Project
+- Storybook: is a tool for UI development
+- vite: a fast bundler (bye bye webpack)
+- leaflet: component to view maps
+- visx: to plot graphs
+- formik/yup: validating forms
+- tailwindcss: utility classes for styling
+- playwright: end-to-end testing
 
 ## Testing
 
