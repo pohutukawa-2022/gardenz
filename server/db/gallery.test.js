@@ -23,7 +23,7 @@ describe('getImages', () => {
   it('should return the image name for given garden', () => {
     return db.getImages(1, testDb).then((images) => {
       expect(images[0].name).toBe('image1')
-      expect(images[0].mimetype).toBe('jpeg')
+      expect(images[0].url).toBeDefined()
       return null
     })
   })
@@ -33,8 +33,7 @@ describe('addImage', () => {
   it('should add an image to the list of images', () => {
     const newImage = {
       name: 'image 4',
-      mimetype: 'gif',
-      image: 'binary here',
+      url: 'image_url',
       garden_id: 1,
     }
     return db
@@ -46,8 +45,7 @@ describe('addImage', () => {
         expect(row).toMatchObject({
           id: 4,
           name: 'image 4',
-          mimetype: 'gif',
-          image: 'binary here',
+          url: 'image_url',
           garden_id: 1,
         })
         return null

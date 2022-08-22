@@ -5,12 +5,12 @@ import EventItem from '../EventItem/EventItem'
 export default function Events({ address, events, user }) {
   return (
     <main className="container mx-auto">
-      <h1 className="font-sans text-2xl font-bold">Events</h1>
+      <h2 className="mt-5 mb-5 font-sans text-2xl font-bold text-center md:text-left">Events</h2>
 
       {events.length === 0 ? (
         <p>Sorry no events found, please come back later! </p>
       ) : (
-        <section className="w-full grid grid-cols-3 gap-4 mt-5 pr-6">
+        <section className="flex flex-wrap">
           {events.map((event) => (
             <EventItem
               key={event.id}

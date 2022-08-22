@@ -14,8 +14,7 @@ describe('GET /api/v1/gallery/:id', () => {
         {
           id: 1,
           name: 'banana',
-          mimetype: 'mimetype',
-          image: 'theimage',
+          url: 'url',
         },
       ])
     })
@@ -26,8 +25,7 @@ describe('GET /api/v1/gallery/:id', () => {
         expect(res.body).toHaveLength(1)
         expect(res.body[0].id).toBe(1)
         expect(res.body[0].name).toBe('banana')
-        expect(res.body[0].mimetype).toBe('mimetype')
-        expect(res.body[0].image).toBe('theimage')
+        expect(res.body[0].url).toBe('url')
         return null
       })
   })
