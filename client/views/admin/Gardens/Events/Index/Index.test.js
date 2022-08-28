@@ -1,15 +1,26 @@
 import React from 'react'
 
-import { getGarden } from './indexHelper'
+import { getGarden } from '../../../../../hooks/useGarden/useGardenHelper'
 import { renderWithRedux } from '../../../../../test-utils'
 import AdminEvent from './Index'
 import { screen } from '@testing-library/react'
 
-jest.mock('./indexHelper')
+jest.mock('../../../../../hooks/useGarden/useGardenHelper')
 
 test('garden events should render correct list of events', async () => {
   getGarden.mockImplementation(() => {
-    return Promise.resolve()
+    return Promise.resolve({
+      address: 'address',
+      events: [
+        {
+          id: 1,
+          title: 'Banana forage',
+          date: '6/07/22',
+          volunteersNeeded: 20,
+          totalVolunteers: 15,
+        },
+      ],
+    })
   })
 
   renderWithRedux(<AdminEvent />, {
@@ -17,18 +28,6 @@ test('garden events should render correct list of events', async () => {
     route: '/admin/gardens/:id/events',
     initialState: {
       user: { id: 1 },
-      garden: {
-        address: 'address',
-        events: [
-          {
-            id: 1,
-            title: 'Banana forage',
-            date: '6/07/22',
-            volunteersNeeded: 20,
-            totalVolunteers: 15,
-          },
-        ],
-      },
     },
   })
 

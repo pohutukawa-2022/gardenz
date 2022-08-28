@@ -3,11 +3,11 @@ import { render, screen, waitFor } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../../test-utils'
 import About from './About'
-import { getGarden } from './aboutHelper'
+import { getGarden } from '../../../../hooks/useGarden/useGardenHelper'
 import { getProduce } from '../../../../subcomponents/produce/ProduceList/produceHelper'
 import BarGraph from '../../../../subcomponents/dataVis/BarGraph'
 
-jest.mock('./aboutHelper')
+jest.mock('../../../../hooks/useGarden/useGardenHelper')
 jest.mock('../../../../subcomponents/produce/ProduceList/produceHelper')
 
 getProduce.mockImplementation(() =>
@@ -18,19 +18,21 @@ getProduce.mockImplementation(() =>
 
 describe('Garden', () => {
   it('calls getGarden helper and displays garden data on mount', async () => {
+    getGarden.mockImplementation(() =>
+      Promise.resolve({
+        name: 'test garden',
+        description: 'an excellent test garden',
+        url: 'cooltestgarden.com',
+        events: [],
+        address: 'cool place, nz',
+        lat: 123,
+        lon: -123,
+        phone: '09 123 4567',
+        email: 'test@test.com',
+      })
+    )
     renderWithRedux(<About />, {
       initialState: {
-        garden: {
-          name: 'test garden',
-          description: 'an excellent test garden',
-          url: 'cooltestgarden.com',
-          events: [],
-          address: 'cool place, nz',
-          lat: 123,
-          lon: -123,
-          phone: '09 123 4567',
-          email: 'test@test.com',
-        },
         user: {
           id: 1,
         },

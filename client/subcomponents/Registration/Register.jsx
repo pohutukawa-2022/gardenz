@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
-import { showError } from '../../slices/error'
-import { getAllGardens } from '../../views/user/Gardens/Index/IndexHelper'
 
 import * as Yup from 'yup'
 
@@ -18,33 +16,17 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  gardenId: Yup.number().required('Required'),
 })
 
 export default function Register() {
   const authUser = useAuth0().user
   const navigate = useNavigate()
   const isAdmin = useSelector((globalState) => globalState.user?.isAdmin)
-  const [gardenList, setGardenList] = useState([])
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    getAllGardens()
-      .then((gardens) => {
-        setGardenList(gardens)
-        return null
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-        return false
-      })
-  }, [])
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
-      gardenId: '',
     },
     onSubmit: (values) => {
       registerUser(values, isAdmin, authUser, navigate)
@@ -87,28 +69,6 @@ export default function Register() {
               value={formik.values.lastName}
               className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
             />
-          </div>
-          <div className="flex flex-col w-full my-5">
-            <label htmlFor="garden" className="text-gray-500 mb-2">
-              My Garden
-            </label>
-            {showAnyErrors('garden')}
-            <select
-              name="gardenId"
-              id="garden"
-              onChange={formik.handleChange}
-              value={formik.values.gardenId}
-              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
-            >
-              <option hidden>Select from this list</option>
-              {gardenList.map((garden) => {
-                return (
-                  <option key={garden.id} value={garden.id}>
-                    {garden.name}
-                  </option>
-                )
-              })}
-            </select>
           </div>
           <div id="button" className="flex flex-col w-full my-5">
             <button

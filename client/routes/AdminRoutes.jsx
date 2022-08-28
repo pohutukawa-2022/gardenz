@@ -12,7 +12,8 @@ import Orders from '../views/admin/Gardens/orders/Orders.jsx'
 import IsAdmin from '../subcomponents/IsAdmin/IsAdmin'
 import AdminEvents from '../views/admin/Gardens/Events/Index/Index'
 import AdminGardens from '../views/admin/Gardens/Index/Index'
-import Menu from '../views/admin/Gardens/Menu/Menu'
+import GardenMenu from '../views/admin/Gardens/Menu/Menu'
+import Menu from '../views/admin/Menu/Menu'
 import { Route, Routes } from 'react-router-dom'
 import Profile from '../views/user/Profile/Profile'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
@@ -21,8 +22,10 @@ function AdminRoutes() {
   return (
     <IsAdmin key="admin">
       <Routes>
-        <Route path="/" element={<AdminGardens />} />
+        <Route path="/" element={<Menu />} />
+        <Route path="/admin/gardens" element={<AdminGardens />} />
         <Route path="/admin/gardens/add" element={<AddGarden />} />
+        <Route path="/admin/gardens/:id/menu" element={<GardenMenu />} />
         <Route
           path="/admin/gardens/:id/news/add"
           element={
@@ -32,7 +35,6 @@ function AdminRoutes() {
             </>
           }
         />
-        <Route path="/admin/gardens/:id/menu" element={<Menu />} />
         <Route
           path="/admin/gardens/:id/events"
           element={

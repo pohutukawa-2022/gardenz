@@ -1,15 +1,17 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 import OpeningHours from './OpeningHours'
 import Description from './Description'
 import FindUs from './FindUs'
 import MapImage from './MapImage'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../utils/useGarden'
+import useGarden from '../../../../hooks/useGarden'
 
 export default function About() {
+  const { id } = useParams()
   const { name, description, address, lat, lon, email, phone, imageHeaderUrl } =
-    useGarden()
+    useGarden(id)
 
   return (
     <>

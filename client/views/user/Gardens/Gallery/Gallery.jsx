@@ -1,9 +1,12 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../utils/useGarden'
+import useGarden from '../../../../hooks/useGarden'
 
 function Gallery() {
-  const { name, imageHeaderUrl } = useGarden()
+  const { id } = useParams()
+  const { name, imageHeaderUrl } = useGarden(id)
 
   return (
     <>
