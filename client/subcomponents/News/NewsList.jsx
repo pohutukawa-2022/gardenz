@@ -12,13 +12,6 @@ export default function NewsList({ news }) {
           Keeping you updated on your community garden!
         </p>
       </div>
-
-      <div className="lg:flex flex-row-reverse text-center md:text-align ">
-        <p className="mr-20 pl-10 text-darkBlue font-serif">
-          Newest drop down goes here
-        </p>
-      </div>
-
       <ul>
         {news.map((news) => (
           <li key={news.id}>
