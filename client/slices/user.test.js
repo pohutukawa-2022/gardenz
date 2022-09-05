@@ -31,14 +31,12 @@ describe('user reducer', () => {
     const oldState = {
       firstName: 'test',
       isAdmin: false,
-      gardenId: 2,
       id: 5,
     }
     const action = {
       type: clearUser.type,
     }
     const newState = userReducer(oldState, action)
-    expect(newState.gardenId).toBeNull()
     expect(newState).not.toBe(oldState)
   })
 

@@ -4,7 +4,6 @@ const emptyUser = {
   id: null,
   isAdmin: false,
   firstName: '',
-  gardenId: null,
   token: '',
 }
 
