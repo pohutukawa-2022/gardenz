@@ -36,7 +36,8 @@ exports.seed = (knex) => {
           description: ' is a small garden with BIG plans',
           lat: -36.82514374209753,
           lon: 174.80311208557973,
-          image_header_url: '',
+          image_header_url:
+            'https://ourauckland.aucklandcouncil.govt.nz/media/rxmorx50/kingsland-orchard.jpg?anchor=center&mode=crop&width=680&rnd=132925283269130000',
           email: 'hello@devenportcommunitygarden.com',
           phone: '09 123 4567',
         },
