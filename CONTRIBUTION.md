@@ -10,7 +10,7 @@ Wanna contribute and merge your work into main?  Check you have met the DoD belo
 2. The feature has been thoroughly manually tested. Ask other devs to give some fresh eyes on this as you go.
 3. Run all tests from terminal, fix any broken ones.
 > `npm test`
-4. Write or updated tests where appropriate.  Be pragmatic about adding new tests. Think; how critical is this module or function? If this function broke due to changes, how would it affect the user experience?
+4. Write or update tests where appropriate.  Be pragmatic about adding new tests. Think; how critical is this module or function? If this function broke due to changes, how would it affect the user experience?
 5. Run eslint for code analysis. Fix any issues.
 > `npm run lint`
 6. Create a PR in Github.
