@@ -1,7 +1,7 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 
-import AddEvent from './AddButton'
+import AddEvent from './AddEvent'
 import { renderWithRouter } from '../../../test-utils'
 
 const mockedUsedNavigate = jest.fn()
