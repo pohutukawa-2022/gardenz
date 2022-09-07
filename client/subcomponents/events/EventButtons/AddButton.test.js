@@ -1,6 +1,5 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen } from '@testing-library/react'
 
 import AddEvent from './AddButton'
 import { renderWithRouter } from '../../../test-utils'
