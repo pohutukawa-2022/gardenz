@@ -2,7 +2,8 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import AddButton from './AddButton'
+import AddEvent from './AddButton'
+import { renderWithRouter } from '../../../test-utils'
 
 const mockedUsedNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
@@ -12,16 +13,9 @@ jest.mock('react-router-dom', () => ({
 
 describe('Add button', () => {
   it('button has displays Add Event as text content', () => {
-    render(<AddButton />)
-    const addButton = screen.getByRole('button')
-    expect(addButton).toHaveTextContent('Add Event')
-  })
-
-  it('redirects to /admin/events/add on click', async () => {
-    render(<AddButton />)
-    const addButton = screen.getByRole('button')
-    userEvent.click(addButton)
-
-    expect(mockedUsedNavigate).toHaveBeenCalledWith('/admin/events/add')
+    renderWithRouter(<AddEvent />)
+    const addEvent = screen.getByRole('link', { name: 'Add Event' })
+    expect(addEvent).toHaveTextContent('Add Event')
+    expect(addEvent).toHaveAttribute('href', '/admin/events/add')
   })
 })
