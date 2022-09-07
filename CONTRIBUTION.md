@@ -1,8 +1,12 @@
-# Git Workflow
+## Git Workflow
 
 ![Git Workflow](./git-flow.jpg)
 
-# Tips for Code Peer Reviews
+## Definition of Done
+
+Wanna contribute and merge your work into main?  See the [Definition of Done](./docs/pull_request_template.md) template for details.  Every github PR will include the DoD template.
+
+## Tips for Code Peer Reviews
 
 Importantly, remember to give constructive feedback, eg: 
 
@@ -13,7 +17,7 @@ etc
 
 Remember, most of your team will be in walking distance!  If an in-person conversation or query would be faster, then just go talk to your fellow developer :P
 
-# Smelly Code to Look For
+## Smelly Code to Look For
 
 This is certainly not an exhaustive list, but here are some things to look out for when reviewing code.  Feel free to give your own suggestions too!
 
@@ -27,5 +31,4 @@ This is certainly not an exhaustive list, but here are some things to look out f
 8. Packages in package.json - are they correctly installed as produciton or dev dependencies?  Are any new packages actually used?
 9. Consistent use of CSS throughout, eg: classes or tailwind.
 10. Duplicated code, Don't Repeat Yourself (DRY).
-
 
