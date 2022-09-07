@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AdminEventItem from '../EventItem/AdminEventItem'
-import AddEvent from '../../events/EventButtons/AddButton'
+import AddEvent from '../../events/EventButtons/AddEvent'
 
 export default function AdminEvents({ address, events }) {
   return (

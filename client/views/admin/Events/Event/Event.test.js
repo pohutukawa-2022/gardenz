@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../../../../test-utils'
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
@@ -45,8 +45,6 @@ test('has correct edit button', async () => {
 
   renderWithRedux(<Event />)
 
-  await waitFor(() => {
-    const buttons = screen.getAllByRole('button')
-    expect(buttons[1]).toHaveTextContent('Edit Event')
-  })
+  const buttons = await screen.findAllByRole('link', { name: 'Edit Event' })
+  expect(buttons[0]).toHaveTextContent('Edit Event')
 })
