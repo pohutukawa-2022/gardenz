@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import EditButton from './EditButton'
+import EditButton from './EditEvent'
 
 const mockedUsedNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
