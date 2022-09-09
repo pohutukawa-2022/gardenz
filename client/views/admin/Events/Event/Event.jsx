@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { getEvent } from './eventHelper'
 
-import EditButton from '../../../../subcomponents/events/EventButtons/EditButton'
+import EditButton from '../../../../subcomponents/events/EventButtons/EditEvent'
 
 import VolunteerList from '../../../../subcomponents/volunteers/VolunteerList/VolunteerList'
 import AddVolunteerForm from '../../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
