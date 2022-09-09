@@ -1,5 +1,6 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
+import { renderWithRouter } from '../../../test-utils'
 import userEvent from '@testing-library/user-event'
 
 import EditButton from './EditButton'
@@ -11,19 +12,9 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('edit button', () => {
-  it('has "Edit Event" name from props', () => {
-    render(<EditButton />)
-    const addButton = screen.getByRole('button')
-    expect(addButton).toHaveTextContent('Edit Event')
-  })
-  it('redirects to /admin/events/:id/edit on click', async () => {
-    render(<EditButton eventId={1} />, {
-      initialEntries: ['/admin/events/1'],
-      route: '/admin/events/:id',
-    })
-    const editButton = screen.getByRole('button')
-    userEvent.click(editButton)
-
-    expect(mockedUsedNavigate).toHaveBeenCalledWith(`/admin/events/1/edit`)
+  it('has "Edit Event" name from props and correct href', () => {
+    renderWithRouter(<EditButton eventId={1} />)
+    const editEvent = screen.getByRole('link', { name: 'Edit Event' })
+    expect(editEvent).toHaveAttribute('href', '/admin/events/1/edit')
   })
 })
