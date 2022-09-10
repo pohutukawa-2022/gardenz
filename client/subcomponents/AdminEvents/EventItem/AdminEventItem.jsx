@@ -1,6 +1,6 @@
 import React from 'react'
 
-import EditButton from '../../events/EventButtons/EditButton'
+import EditButton from '../../events/EventButtons/EditEvent'
 
 export default function EventItem({ address, event }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, status, time } =
