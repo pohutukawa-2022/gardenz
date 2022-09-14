@@ -24,14 +24,15 @@ describe('List of signed up volunteers', () => {
     },
   ]
 
-  it('displays only for admin', () => {
+  it('displays only for admin', async () => {
     renderWithRedux(<VolunteerList volunteers={mockVolunteers} />, {
       initialState: { user: { isAdmin: true } },
     })
-    return screen.findAllByRole('listitem').then((volunteers) => {
+    await screen.findAllByRole('listitem')
+    ;(volunteers) => {
       expect(volunteers[1]).toHaveTextContent('Test User 2')
       return null
-    })
+    }
   })
 })
 
