@@ -64,18 +64,14 @@ describe('toggleVolunteerStatus', () => {
       return Promise.resolve()
     }
 
-    try {
-      await toggleVolunteerStatus(
-        eventId,
-        willVolunteer,
-        setVolunteering,
-        consume
-      )
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(setVolunteering).toHaveBeenCalledWith(true)
-    } catch {
-      return null
-    }
+    await toggleVolunteerStatus(
+      eventId,
+      willVolunteer,
+      setVolunteering,
+      consume
+    )
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(setVolunteering).toHaveBeenCalledWith(true)
   })
 
   it('dispatches error correctly and returns false when api call unsuccessful', async () => {
@@ -88,12 +84,8 @@ describe('toggleVolunteerStatus', () => {
       return Promise.reject(new Error('mock error'))
     }
 
-    try {
-      await toggleVolunteerStatus(null, null, setVolunteering, consume)
-      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-      expect(setVolunteering).not.toHaveBeenCalled()
-    } catch {
-      return null
-    }
+    await toggleVolunteerStatus(null, null, setVolunteering, consume)
+    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
+    expect(setVolunteering).not.toHaveBeenCalled()
   })
 })
