@@ -15,10 +15,10 @@ export default async function consume(
 
   if (!token) {
     try {
-      return await request[method](baseUrl + endpoint)
+      const res = await request[method](baseUrl + endpoint)
         .set(headers)
         [payLoadMethod](data)
-        .then((res) => res)
+      return res
     } catch (err) {
       const errMessage = err.response?.body?.error?.title
       throw new Error(errMessage || err.message)
@@ -37,24 +37,3 @@ export default async function consume(
     }
   }
 }
-
-//  if (!token) {
-//   return request[method](baseUrl + endpoint)
-//     .set(headers)
-//     [payLoadMethod](data)
-//     .then((res) => res)
-//     .catch((err) => {
-//       const errMessage = err.response?.body?.error?.title
-//       throw new Error(errMessage || err.message)
-//     })
-// } else {
-//   return request[method](baseUrl + endpoint)
-//     .set('authorization', `Bearer ${token}`)
-//     .set(headers)
-//     [payLoadMethod](data)
-//     .then((res) => res)
-//     .catch((err) => {
-//       const errMessage = err.response?.body?.error?.title
-//       throw new Error(errMessage || err.message)
-//     })
-// }
