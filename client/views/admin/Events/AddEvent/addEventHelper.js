@@ -10,7 +10,7 @@ export async function addEvent(event, navigateTo, consume = requestor) {
     const newEvent = {
       gardenId,
       ...event,
-    }git 
+    }
     dispatch(setWaiting())
     await consume('/events', token, 'post', newEvent)
 
