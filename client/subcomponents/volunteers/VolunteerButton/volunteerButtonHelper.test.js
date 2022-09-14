@@ -52,7 +52,7 @@ describe('toggleVolunteerStatus', () => {
     return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
   })
 
-  it('dispatches correct actions and calls setVolunteering when api call successful', () => {
+  it('dispatches correct actions and calls setVolunteering when api call successful', async () => {
     getState.mockImplementation(() => ({
       user: { id: 4, token: 'dummytoken' },
     }))
@@ -64,19 +64,21 @@ describe('toggleVolunteerStatus', () => {
       return Promise.resolve()
     }
 
-    return toggleVolunteerStatus(
-      eventId,
-      willVolunteer,
-      setVolunteering,
-      consume
-    ).then(() => {
+    try {
+      await toggleVolunteerStatus(
+        eventId,
+        willVolunteer,
+        setVolunteering,
+        consume
+      )
       expect(dispatch).toHaveBeenCalledWith(setWaiting())
       expect(setVolunteering).toHaveBeenCalledWith(true)
+    } catch {
       return null
-    })
+    }
   })
 
-  it('dispatches error correctly and returns false when api call unsuccessful', () => {
+  it('dispatches error correctly and returns false when api call unsuccessful', async () => {
     getState.mockImplementation(() => ({
       user: { id: 1, token: 'dummytoken' },
     }))
@@ -86,12 +88,12 @@ describe('toggleVolunteerStatus', () => {
       return Promise.reject(new Error('mock error'))
     }
 
-    return toggleVolunteerStatus(null, null, setVolunteering, consume).then(
-      () => {
-        expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-        expect(setVolunteering).not.toHaveBeenCalled()
-        return null
-      }
-    )
+    try {
+      await toggleVolunteerStatus(null, null, setVolunteering, consume)
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
+      expect(setVolunteering).not.toHaveBeenCalled()
+    } catch {
+      return null
+    }
   })
 })
