@@ -8,7 +8,6 @@ import EditEvent from './EditEvent'
 
 import { getEvent } from '../../Events/Event/eventHelper'
 import { updateEvent } from './editEventHelper'
-import { async } from 'regenerator-runtime'
 
 jest.mock('./editEventHelper')
 jest.mock('../../Events/Event/eventHelper')
