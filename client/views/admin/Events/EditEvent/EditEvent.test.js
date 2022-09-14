@@ -8,6 +8,7 @@ import EditEvent from './EditEvent'
 
 import { getEvent } from '../../Events/Event/eventHelper'
 import { updateEvent } from './editEventHelper'
+import { async } from 'regenerator-runtime'
 
 jest.mock('./editEventHelper')
 jest.mock('../../Events/Event/eventHelper')
@@ -71,18 +72,17 @@ describe('submit button', () => {
 })
 
 describe('event form', () => {
-  it('is rendered only when event data is available', () => {
+  it('is rendered only when event data is available', async () => {
     renderWithRedux(<EditEvent />, {
       initialEntries: ['/events/23/edit'],
       route: '/events/:id/edit',
     })
     const inputs = screen.queryByRole('textbox')
     expect(inputs).toBeNull()
-    return screen
-      .findByRole('textbox', { name: 'Event Title' })
-      .then((titleInput) => {
-        expect(titleInput).toBeInTheDocument()
-        return null
-      })
+    const titleInput = await screen.findByRole('textbox', {
+      name: 'Event Title',
+    })
+    expect(titleInput).toBeInTheDocument()
+    return null
   })
 })
