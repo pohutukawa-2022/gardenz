@@ -33,6 +33,7 @@ export default function Index() {
                 <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
                 <h2 className="font-sans text-2xl">{garden.name}</h2>
               </Link>
+              
             </li>
           )
         })}
