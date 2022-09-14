@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import Conditional from '../../Conditional'
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterShareButton,
+  TwitterIcon,
+} from 'react-share'
 
 export default function EventItem({ address, event, user }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
@@ -8,6 +14,7 @@ export default function EventItem({ address, event, user }) {
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
+  // console.log({ FacebookShareButton })
 
   useEffect(() => {
     setIsVolunteering(isVolunteer)
@@ -33,6 +40,14 @@ export default function EventItem({ address, event, user }) {
             {additionalVolunteers !== 1 ? 's' : ''})
           </p>
         )}
+        {/* share subcomponent */}
+
+        <FacebookShareButton url={'https://peing.net/ja/'}>
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+        <TwitterShareButton url={'https://peing.net/ja/'}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
       </dl>
       <Conditional condition={user.token}>
         <VolunteerButton
