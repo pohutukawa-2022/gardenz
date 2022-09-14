@@ -2,7 +2,7 @@ import request from 'superagent'
 
 const baseUrl = '/api/v1'
 
-export default function consume(
+export default async function consume(
   endpoint,
   token = '',
   method = 'get',
@@ -12,24 +12,49 @@ export default function consume(
   const payLoadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'
 
   // If token === false
+
   if (!token) {
-    return request[method](baseUrl + endpoint)
-      .set(headers)
-      [payLoadMethod](data)
-      .then((res) => res)
-      .catch((err) => {
-        const errMessage = err.response?.body?.error?.title
-        throw new Error(errMessage || err.message)
-      })
+    try {
+      return await request[method](baseUrl + endpoint)
+        .set(headers)
+        [payLoadMethod](data)
+        .then((res) => res)
+    } catch (err) {
+      const errMessage = err.response?.body?.error?.title
+      throw new Error(errMessage || err.message)
+    }
   } else {
-    return request[method](baseUrl + endpoint)
-      .set('authorization', `Bearer ${token}`)
-      .set(headers)
-      [payLoadMethod](data)
-      .then((res) => res)
-      .catch((err) => {
-        const errMessage = err.response?.body?.error?.title
-        throw new Error(errMessage || err.message)
-      })
+    try {
+      const res = await request[method](baseUrl + endpoint)
+        .set('authorization', `Bearer ${token}`)
+        .set(headers)
+        [payLoadMethod](data)
+      return res
+      // .then((res) => res)
+    } catch (err) {
+      const errMessage = err.response?.body?.error?.title
+      throw new Error(errMessage || err.message)
+    }
   }
 }
+
+//  if (!token) {
+//   return request[method](baseUrl + endpoint)
+//     .set(headers)
+//     [payLoadMethod](data)
+//     .then((res) => res)
+//     .catch((err) => {
+//       const errMessage = err.response?.body?.error?.title
+//       throw new Error(errMessage || err.message)
+//     })
+// } else {
+//   return request[method](baseUrl + endpoint)
+//     .set('authorization', `Bearer ${token}`)
+//     .set(headers)
+//     [payLoadMethod](data)
+//     .then((res) => res)
+//     .catch((err) => {
+//       const errMessage = err.response?.body?.error?.title
+//       throw new Error(errMessage || err.message)
+//     })
+// }
