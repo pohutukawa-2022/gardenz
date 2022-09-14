@@ -51,6 +51,9 @@ it('returns the chosen garden, with empty events array when no events', () => {
     expect(garden.events).toHaveLength(0)
     expect(garden.phone).toBe('09 123 4567')
     expect(garden.email).toBe('hello@devenportcommunitygarden.com')
+    expect(garden.imageHeaderUrl).toBe(
+      'https://scontent.fakl2-1.fna.fbcdn.net/v/t39.30808-6/251442854_2530316323778513_3929618774131301683_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_ohc=VyN7uvqRaMYAX-PYpcm&_nc_ht=scontent.fakl2-1.fna&oh=00_AT8KF20wE75XR7WfBY8c9DdA2L3h225osPaV_E6pfMCKog&oe=6327AFC7'
+    )
 
     return null
   })

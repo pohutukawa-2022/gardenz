@@ -37,7 +37,7 @@ exports.seed = (knex) => {
           lat: -36.82514374209753,
           lon: 174.80311208557973,
           image_header_url:
-            'https://ourauckland.aucklandcouncil.govt.nz/media/rxmorx50/kingsland-orchard.jpg?anchor=center&mode=crop&width=680&rnd=132925283269130000',
+            'https://scontent.fakl2-1.fna.fbcdn.net/v/t39.30808-6/251442854_2530316323778513_3929618774131301683_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_ohc=VyN7uvqRaMYAX-PYpcm&_nc_ht=scontent.fakl2-1.fna&oh=00_AT8KF20wE75XR7WfBY8c9DdA2L3h225osPaV_E6pfMCKog&oe=6327AFC7',
           email: 'hello@devenportcommunitygarden.com',
           phone: '09 123 4567',
         },
@@ -49,8 +49,7 @@ exports.seed = (knex) => {
             'is getting together to find ways to lead more sustainable lifestyles',
           lat: -36.896282,
           lon: 174.722987,
-          image_header_url:
-            'https://lh5.googleusercontent.com/p/AF1QipOZn56IjxPwz49Mq41TFxetLwGMcvLmOwPkvwfN=w500-k-no',
+          image_header_url: 'https://i.im.ge/2022/09/15/1lQVH6.Image.png',
           email: 'hello@owairakacommunitygarden.com',
           phone: '09 123 4567',
         },
@@ -64,7 +63,7 @@ exports.seed = (knex) => {
           lat: -36.977468,
           lon: 174.793402,
           image_header_url:
-            'https://aucklandteachinggardens.co.nz/wp-content/uploads/2020/05/us-hydroponic-tomatoes.jpg',
+            'https://scontent.fakl2-1.fna.fbcdn.net/v/t1.6435-9/122174381_810784566349086_1283344265556872366_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a26aad&_nc_ohc=v6nSafV42gQAX-mWNUa&_nc_ht=scontent.fakl2-1.fna&oh=00_AT-TzH17ED8qy4f5gvpXPuZHgjVRziuhGQkavFaQBm30Cg&oe=6346191F',
           email: 'hello@aucklandteachinggardens.co.nz',
           phone: '09 123 4567',
         },
