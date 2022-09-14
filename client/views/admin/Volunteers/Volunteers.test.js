@@ -13,6 +13,8 @@ test.todo('add test for addingVolunteers')
 describe('getVolunteerNumbers', () => {
   describe('-> GET /events/${id} api call success', () => {
     it('dispatches waiting actions correctly', () => {
+  const id = 1
+
       getState.mockImplementation(() => {
         return {
           user: {
