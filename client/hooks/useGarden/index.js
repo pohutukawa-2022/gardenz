@@ -16,21 +16,6 @@ export default function useGarden(gardenId) {
     imageHeaderUrl: '',
   })
 
-  // The OJ VERSION
-
-  //   useEffect(() => {
-  //     dispatch(setWaiting())
-  //     getGarden(gardenId)
-  //       .then(setGarden)
-  //       .then(() => dispatch(clearWaiting()))
-  //       .catch((error) => {
-  //         dispatch(showError(error.message))
-  //       })
-  //   }, [gardenId])
-
-  //   return garden
-  // }
-
   useEffect(() => {
     dispatch(setWaiting())
     try {
