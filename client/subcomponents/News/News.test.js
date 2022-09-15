@@ -12,7 +12,7 @@ describe('News', () => {
     lastName: 'LastName',
   }
 
-  it('News compnent renders fakeNews', () => {
+  it('News component renders fakeNews', () => {
     render(<News news={fakeNews} />)
     const lastName = screen.getByText(/LastName/)
     const title = screen.queryByText('Lettuce Picking Season')
