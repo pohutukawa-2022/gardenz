@@ -5,7 +5,7 @@ export default function NewsList({ news }) {
   return (
     <>
       <div className="lg: flex flex-row text-center md:text-align">
-        <h1 className=" mt-12 ml-8 pl-20 text-2xl font-serif font-bold text-darkBlue ">
+        <h1 className=" mt-12 ml-8 lg:pl-20 md:justify-center text-2xl font-serif font-bold text-darkBlue ">
           News
         </h1>
         <p className="mt-14 ml-4 text-zinc-400 font-serif">
@@ -13,7 +13,7 @@ export default function NewsList({ news }) {
         </p>
       </div>
 
-      <ul className="pl-20">
+      <ul className="lg:pl-20 md:justify-center">
         {news.map((news) => (
           <li className="inline-flex ml-8" key={news.id}>
             <News news={news} />
