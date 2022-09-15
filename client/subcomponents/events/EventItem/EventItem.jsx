@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import Conditional from '../../Conditional'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TwitterShareButton,
-  TwitterIcon,
-} from 'react-share'
+import ShareButton from '../EventShareButton/EventShareButton'
 
 export default function EventItem({ address, event, user }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
@@ -31,12 +26,8 @@ export default function EventItem({ address, event, user }) {
         <dl className="mt-6">
           <dd className="my-2">{address}</dd>
           <dd className="my-2">{date}</dd>
-          <FacebookShareButton url={`${window.location.href}#${id}`}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-          <TwitterShareButton url={`${window.location.href}#${id}`}>
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
+
+          <ShareButton id={id} />
           {remainingVolunteers > 0 ? (
             <>
               <dt>Volunteers needed</dt>
