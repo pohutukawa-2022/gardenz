@@ -17,6 +17,17 @@ export async function getProducts() {
           'https://cdn.shopify.com/s/files/1/0386/4602/2188/products/WebVersions4.jpg?v=1650839475&width=832',
         stock: 15,
       },
+      {
+        id: 2,
+        productId: 2,
+        name: 'small veggie box',
+        description:
+          'a small box filled with fresh seasonal produce grown at your local garden',
+        price: 125,
+        image:
+          'https://cdn.shopify.com/s/files/1/0386/4602/2188/products/WebVersions4.jpg?v=1650839475&width=832',
+        stock: 15,
+      },
     ]
   })
 }
