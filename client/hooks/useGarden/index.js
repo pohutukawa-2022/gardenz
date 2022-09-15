@@ -20,8 +20,8 @@ export default function useGarden(gardenId) {
     dispatch(setWaiting())
     try {
       const theGarden = async () => {
-        const gardens = await getGarden(gardenId)
-        setGarden(gardens)
+        const garden = await getGarden(gardenId)
+        setGarden(garden)
         dispatch(clearWaiting())
       }
       theGarden()
