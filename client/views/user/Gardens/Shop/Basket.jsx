@@ -1,7 +1,19 @@
 import React, { useState } from 'react'
 
-export default function Basket({ product }) {
+export default function Basket({ product, setCart }) {
   const [qty, setQty] = useState(1)
+
+  function submitHandler(evt) {
+    const order = {
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: qty,
+    }
+
+    setCart((cart) => [...cart, order])
+
+  }
 
   function qtyHandler(evt) {
     const name = evt.target.name
@@ -44,7 +56,10 @@ export default function Basket({ product }) {
         </button>
       </div>
       <div className="pt-3">
-        <button className="font-bold h-12 text-black bg-blue w-full rounded-sm">
+        <button
+          onClick={submitHandler}
+          className="font-bold h-12 text-black bg-blue w-full rounded-sm"
+        >
           add to basket
         </button>
       </div>

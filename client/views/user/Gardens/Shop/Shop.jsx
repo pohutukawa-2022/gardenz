@@ -10,18 +10,20 @@ export default function Shop() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState([])
 
   useEffect(async () => {
     const product = await getProducts()
     setProducts(product)
-  }, [])
+    console.log(cart)
+  }, [cart])
 
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
-      <div className='flex justify-start'>
+      <div className="flex justify-start">
         {products.map((product) => {
-          return (<Basket key={product.id} product={product} />)
+          return <Basket key={product.id} product={product} setCart={setCart} />
         })}
       </div>
     </>
