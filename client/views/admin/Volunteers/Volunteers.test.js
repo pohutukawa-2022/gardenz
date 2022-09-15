@@ -1,56 +1,64 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-import { renderWithRedux, renderWithRouter } from '../../../test-utils'
-//import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+import { renderWithRedux } from '../../../test-utils'
 import Volunteers from './Volunteers'
-//import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
-//import { latLng } from 'leaflet'
-//import userEvent from '@testing-library/user-event'
-//import { waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
+import { waitFor } from '@testing-library/dom'
 import { act } from 'react-dom/test-utils'
+import { addVolunteer } from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerFormHelper'
 
-// jest.mock('./Volunteers')
+jest.mock(
+  '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerFormHelper'
+)
 
 describe('form', () => {
-  it('form title is correct', () => {
+  it('form title is correct', async () => {
     act(() => {
-      renderWithRedux(<Volunteers />, {
-        initialState: { user: {} },
+      renderWithRedux(<Volunteers />)
+    })
+
+    await waitFor(() => {
+      const header = screen.getByRole('heading', {
+        name: 'Add Rock-Up Attendee',
       })
+      expect(header).toHaveTextContent('Add Rock-Up Attendee')
     })
-
-    const header = screen.getByRole('heading', {
-      name: 'Add Rock-Up Attendee',
-    })
-
-    expect(header).toHaveTextContent('Add Rock-Up Attendee')
   })
 })
 
-// describe('submit button', () => {
-//   it('has "Add" name', () => {
-//     const addButton = screen.getByRole('button')
-//     expect(addButton).toHaveTextContent('Add')
-//   })
+describe('submit button', () => {
+  it('has "Add" name', () => {
+    act(() => {
+      renderWithRedux(<Volunteers />)
+    })
 
-//   it('calls addVolunteer with event data on click', async () => {
-//     Volunteers.mockImplementation((event, navigateTo) => {
-//       expect(event.firstName).toBe('testFirstName')
-//       expect(event.lastName).toBe('testLastName')
-//       expect(typeof navigateTo).toBe('function')
-//     })
+    const addButton = screen.getByRole('button')
+    expect(addButton).toHaveTextContent('Add')
+  })
 
-//     const firstNameInput = screen.getByRole('textbox', { name: 'firstName' })
-//     const lastNameInput = screen.getByRole('textbox', { name: 'lastName' })
+  it('calls addVolunteer with event data on click', async () => {
+    act(() => {
+      renderWithRedux(<Volunteers />)
+    })
+    const firstNameInput = screen.getByRole('textbox', { name: 'firstName' })
+    const lastNameInput = screen.getByRole('textbox', { name: 'lastName' })
 
-//     const addButton = screen.getByRole('button')
+    const addButton = screen.getByRole('button')
 
-//     userEvent.type(firstNameInput, 'testFirstName')
-//     userEvent.type(lastNameInput, 'testLastName')
-//     userEvent.click(addButton)
+    userEvent.type(firstNameInput, 'testFirstName')
+    userEvent.type(lastNameInput, 'testLastName')
+    userEvent.click(addButton)
 
-//     await waitFor(() => {
-//       expect(Volunteers).toHaveBeenCalled()
-//     })
-//   })
-// })
+    addVolunteer.mockImplementation((event, navigateTo) => {
+      expect(event.firstName).toBe('testFirstName')
+      expect(event.lastName).toBe('testLastName')
+      expect(typeof navigateTo).toBe('function')
+    })
+
+    await waitFor(() => {
+      expect(firstNameInput.value).toBe('testFirstName')
+      expect(lastNameInput.value).toBe('testLastName')
+      expect(addVolunteer).toHaveBeenCalled()
+    })
+  })
+})

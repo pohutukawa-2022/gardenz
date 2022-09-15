@@ -72,7 +72,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/events/:id/volunteers"
+          path="/admin/gardens/:id/volunteers"
           element={
             <>
               <AdminNav />
