@@ -51,7 +51,6 @@ it('returns the chosen garden, with empty events array when no events', () => {
     expect(garden.events).toHaveLength(0)
     expect(garden.phone).toBe('09 123 4567')
     expect(garden.email).toBe('hello@devenportcommunitygarden.com')
-
     return null
   })
 })

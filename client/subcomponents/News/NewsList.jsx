@@ -12,27 +12,15 @@ export default function NewsList({ news }) {
           Keeping you updated on your community garden!
         </p>
       </div>
-      <ul>
-        {news.map((news) => (
-          <li key={news.id}>
-            <News news={news} />
-          </li>
-        ))}
-      </ul>
+    
+          <ul>
+            {news.map((news) => (
+              <li key={news.id}>
+                <News news={news} />
+              </li>
+            ))}
+          </ul>
+      
     </>
   )
 }
-
-// position: absolute;
-// left: 9.24%;
-// right: 57.92%;
-// top: 34.79%;
-// bottom: 62.87%;
-
-// font-family: 'Roboto';
-// font-style: normal;
-// font-weight: 700;
-// font-size: 24px;
-// line-height: 28px;
-
-// color: #172450;
