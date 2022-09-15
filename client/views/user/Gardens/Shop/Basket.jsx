@@ -1,25 +1,33 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 
 export default function Basket({ product, setCart }) {
   const [qty, setQty] = useState(1)
+  const [stock, setStock] = useState(product.stock)
 
-  function submitHandler(evt) {
+  function submitHandler() {
+    setStock(stock - qty)
     const order = {
       productId: product.id,
       name: product.name,
       price: product.price,
       quantity: qty,
     }
-
+    
+    
     setCart((cart) => [...cart, order])
-
   }
+  useEffect(() => {
+    console.log(stock);
+  }, [stock])
+
+
+
 
   function qtyHandler(evt) {
     const name = evt.target.name
-    console.log(name)
 
-    if (name === 'increment' && qty < product.stock) {
+    if (name === 'increment' && qty < stock) {
       setQty(qty + 1)
     }
     if (name === 'decrement' && qty > 1) {
@@ -57,7 +65,7 @@ export default function Basket({ product, setCart }) {
       </div>
       <div className="pt-3">
         <button
-          onClick={submitHandler}
+          onClick={(stock > 0) ? submitHandler : null}
           className="font-bold h-12 text-black bg-blue w-full rounded-sm"
         >
           add to basket

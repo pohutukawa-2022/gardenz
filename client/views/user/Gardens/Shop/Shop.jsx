@@ -15,7 +15,6 @@ export default function Shop() {
   useEffect(async () => {
     const product = await getProducts()
     setProducts(product)
-    console.log(cart)
   }, [cart])
 
   return (
