@@ -12,6 +12,7 @@ import Orders from '../views/admin/Gardens/orders/Orders.jsx'
 import IsAdmin from '../subcomponents/IsAdmin/IsAdmin'
 import AdminEvents from '../views/admin/Gardens/Events/Index/Index'
 import AdminGardens from '../views/admin/Gardens/Index/Index'
+import AdminGallery from '../views/admin/Gardens/Gallery/AdminGallery'
 import GardenMenu from '../views/admin/Gardens/Menu/Menu'
 import Menu from '../views/admin/Menu/Menu'
 import { Route, Routes } from 'react-router-dom'
@@ -94,7 +95,7 @@ function AdminRoutes() {
           element={
             <>
               <AdminNav />
-              <p>gallery placeholder</p>
+              <AdminGallery />
             </>
           }
         />

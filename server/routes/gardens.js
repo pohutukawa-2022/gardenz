@@ -5,6 +5,7 @@ const log = require('../logger')
 const db = require('../db/gardens')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
+const { getImages } = require('../db/gallery')
 
 const router = express.Router()
 
@@ -46,6 +47,28 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
         },
       })
     })
+})
+
+// GET for the admin gallery
+router.get('/:id/gallery', async (req, res) => {
+  console.log('Hitting OUR gallery')
+  const userId = Number(req.headers.userid)
+  const id = Number(req.params.id)
+  try {
+    const images = await getImages(id)
+    console.log(images)
+    //const user = await getUserById(userId)
+    //const isAdmin = user ? await userHasAdminRole(user.auth0Id) : false
+
+    return res.json(images)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve garden',
+      },
+    })
+  }
 })
 
 router.get('/:id', async (req, res) => {
