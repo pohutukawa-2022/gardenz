@@ -22,27 +22,26 @@ export default function News({ news }) {
 
   return (
     <article>
-      <div className="inline-block">
+      <div>
         <div className="box-border relative h-432 w-343 mt-6 border-3 rounded-3xl drop-shadow-md p-3 max-w-sm bg-white  border border-black-200 ">
-
-            {/* TEXT AND BUTTON ABOVE IMAGE */}
-            <div className="flex flex">
-              <div className="text-white fixed top-4 text-center text-xl rounded-full box-border border border-orange bg-orange border-2 w-10 h-10 r-3">
-                {news.firstName[0]}
-              </div>
-              <div className="">
-                <h2 className="font-sans p-1 text-lg ml-12 -mb-3">
-                  {news.title}
-                </h2>
-                <p className="p-1 text-sm ml-12 text-gray-500 ">{`${createDate} ${getDay},${createTime}`}</p>
-              </div>
-
-              <div>
-                <button className="absolute top-4 text-xl right-4 text-gray-500 hover:text-gray-800 background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
-                  <i className="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-              </div>
+          {/* TEXT AND BUTTON ABOVE IMAGE */}
+          <div className="flex flex">
+            <div className="text-white fixed top-4 text-center text-2xl rounded-full box-border border border-orange bg-orange border-2 w-10 h-10 r-3">
+              {news.firstName[0]}
             </div>
+            <div className="">
+              <h2 className="font-sans p-1 text-lg ml-12 -mb-3">
+                {news.title}
+              </h2>
+              <p className="p-1 text-sm ml-12 text-gray-500 ">{`${createDate} ${getDay},${createTime}`}</p>
+            </div>
+
+            <div>
+              <button className="absolute top-4 text-xl right-4 text-gray-500 hover:text-gray-800 background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+                <i className="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+            </div>
+          </div>
 
           {/* IMAGE */}
           <div className="object-cover">

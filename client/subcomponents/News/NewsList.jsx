@@ -12,15 +12,14 @@ export default function NewsList({ news }) {
           Keeping you updated on your community garden!
         </p>
       </div>
-    
-          <ul>
-            {news.map((news) => (
-              <li key={news.id}>
-                <News news={news} />
-              </li>
-            ))}
-          </ul>
-      
+
+      <ul className="pl-20">
+        {news.map((news) => (
+          <li className="inline-flex ml-8" key={news.id}>
+            <News news={news} />
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
