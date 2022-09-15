@@ -39,7 +39,7 @@ export default function EventForm(props) {
   }
 
   return (
-    <div className="flex flex-row  my-5 justify-center">
+    <div className="flex flex-row my-20 justify-center">
       <section className="w-1/4">
         <form onSubmit={formik.handleSubmit}>
           <h2 className="text-2xl">{props.action}</h2>
@@ -51,7 +51,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.title}</p>
             ) : null}
             <input
-              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              className="text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="title"
               name="title"
               type="text"
@@ -69,7 +69,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.date}</p>
             ) : null}
             <input
-              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              className="text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="date"
               name="date"
               type="date"
@@ -89,7 +89,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.volunteersNeeded}</p>
             ) : null}
             <input
-              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              className="text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="volunteersNeeded"
               name="volunteersNeeded"
               type="number"
@@ -108,33 +108,33 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.description}</p>
             ) : null}
             <textarea
-              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              className="resize-none text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="description"
               name="description"
               placeholder="event description"
               onChange={formik.handleChange}
               value={formik.values.description}
+              rows={6}
             />
           </div>
 
-          <div id="button" className="flex flex-col  my-5">
+          <div id="button" className="flex flex-col  my-10">
+            <button
+              className=" py-4 bg-darkGreen
+                rounded-lg text-white"
+              type="submit"
+            >
+              Submit
+            </button>
             {props.action === 'Update Event' ? (
               <button
                 className="py-4 bg-orange
-                rounded-lg text-white my-5"
+                rounded-lg text-white  my-5"
                 onClick={handleCancel}
               >
                 Cancel Event
               </button>
             ) : null}
-
-            <button
-              className=" py-4 bg-orange
-                rounded-lg text-white my-5"
-              type="submit"
-            >
-              Submit
-            </button>
           </div>
         </form>
       </section>
