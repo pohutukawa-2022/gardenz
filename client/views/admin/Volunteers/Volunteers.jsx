@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getVolunteers } from './volunteersHelper'
-import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import RockupVolunteers from '../../../subcomponents/volunteers/RockupVolunteers/RockupVolunteers'
 
 export default function Volunteers() {
   const { id } = useParams()
@@ -23,14 +23,10 @@ export default function Volunteers() {
   }
 
   return (
-    <>
-      <section>
-        <VolunteerList volunteers={volunteers} eventId={id} />
-        <AddVolunteerForm
-          id={id}
-          addExtraVolunteer={addExtraVolunteerHandler}
-        />
-      </section>
-    </>
+    <RockupVolunteers
+      id={id}
+      volunteers={volunteers}
+      addExtraVolunteer={addExtraVolunteerHandler}
+    />
   )
 }
