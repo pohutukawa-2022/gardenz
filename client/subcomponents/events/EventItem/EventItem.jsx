@@ -27,7 +27,7 @@ export default function EventItem({ address, event, user }) {
           <dd className="my-2">{address}</dd>
           <dd className="my-2">{date}</dd>
 
-          <ShareButton id={id} />
+          <ShareButton id={id} href={window.location.href} />
           {remainingVolunteers > 0 ? (
             <>
               <dt>Volunteers needed</dt>
