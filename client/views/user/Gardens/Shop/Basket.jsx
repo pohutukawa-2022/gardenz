@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function Basket({product}) {
-  console.log(product);
+  const [ qty, setQty ] = useState(1)
+
+  function qtyHandler(evt) {
+    const name = evt.target.name
+    console.log(name);
+    (name === 'increment') ? setQty(qty+1) : setQty(qty-1)
+  }
 
   return (
     <div className="w-72 border-solid border-2 rounded-3xl px-12 py-10">
@@ -15,11 +21,19 @@ export default function Basket({product}) {
       <h5>{`$${product.price}`}</h5>
     </div>
     <div className="flex justify-evenly pt-3">
-      <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+      <button 
+        name='decrement'
+        onClick={qtyHandler}
+
+        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
         -
       </button>
-      <p>{product.stock}</p>
-      <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+      <p>{qty}</p>
+      <button 
+        name='increment'
+        onClick={qtyHandler}
+
+        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
         +
       </button>
     </div>
