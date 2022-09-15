@@ -39,11 +39,11 @@ export default function EventForm(props) {
   }
 
   return (
-    <>
-      <section>
-        <h2 className="form-title">{props.action}</h2>
-        <form className="form-content" onSubmit={formik.handleSubmit}>
-          <div className="field">
+    <div className="flex flex-row  my-5 justify-center">
+      <section className="w-1/4">
+        <form onSubmit={formik.handleSubmit}>
+          <h2 className="text-2xl">{props.action}</h2>
+          <div className="flex flex-col my-5">
             <label htmlFor="title" className="label">
               Event Title
             </label>
@@ -51,7 +51,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.title}</p>
             ) : null}
             <input
-              className="form-box"
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="title"
               name="title"
               type="text"
@@ -59,7 +59,9 @@ export default function EventForm(props) {
               onChange={formik.handleChange}
               value={formik.values.title}
             />
+          </div>
 
+          <div className="flex flex-col  my-5">
             <label htmlFor="date" className="label">
               Date
             </label>
@@ -67,7 +69,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.date}</p>
             ) : null}
             <input
-              className="form-box"
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="date"
               name="date"
               type="date"
@@ -76,7 +78,9 @@ export default function EventForm(props) {
               onChange={formik.handleChange}
               value={formik.values.date}
             />
+          </div>
 
+          <div className="flex flex-col  my-5">
             <label htmlFor="volunteersNeeded" className="label">
               Volunteers Needed
             </label>
@@ -85,7 +89,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.volunteersNeeded}</p>
             ) : null}
             <input
-              className="form-box"
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="volunteersNeeded"
               name="volunteersNeeded"
               type="number"
@@ -94,7 +98,9 @@ export default function EventForm(props) {
               onChange={formik.handleChange}
               value={formik.values.volunteersNeeded}
             />
+          </div>
 
+          <div className="flex flex-col  my-5">
             <label htmlFor="description" className="label">
               Description
             </label>
@@ -102,7 +108,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.description}</p>
             ) : null}
             <textarea
-              className="description-box"
+              className="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
               id="description"
               name="description"
               placeholder="event description"
@@ -111,19 +117,27 @@ export default function EventForm(props) {
             />
           </div>
 
-          <div className="button-group">
+          <div id="button" className="flex flex-col  my-5">
             {props.action === 'Update Event' ? (
-              <button className="submit form-box" onClick={handleCancel}>
+              <button
+                className="py-4 bg-orange
+                rounded-lg text-white my-5"
+                onClick={handleCancel}
+              >
                 Cancel Event
               </button>
             ) : null}
 
-            <button className="submit form-box" type="submit">
+            <button
+              className=" py-4 bg-orange
+                rounded-lg text-white my-5"
+              type="submit"
+            >
               Submit
             </button>
           </div>
         </form>
       </section>
-    </>
+    </div>
   )
 }

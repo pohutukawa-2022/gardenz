@@ -15,6 +15,7 @@ export default function EditEvent() {
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     getEvent(id, user).then((eventData) => {
+      console.log(eventData)
       setEvent(eventData)
       return null
     })
@@ -29,11 +30,14 @@ export default function EditEvent() {
   }
 
   return event ? (
-    <EventForm
-      formData={event}
-      action="Update Event"
-      submitEvent={submitEvent}
-      cancelSubmit={cancelSubmit}
-    />
+  
+
+      <EventForm
+        formData={event}
+        action="Update Event"
+        submitEvent={submitEvent}
+        cancelSubmit={cancelSubmit}
+      />
+  
   ) : null
 }
