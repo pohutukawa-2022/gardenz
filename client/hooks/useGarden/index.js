@@ -16,15 +16,34 @@ export default function useGarden(gardenId) {
     imageHeaderUrl: '',
   })
 
+  // The OJ VERSION
+
+  //   useEffect(() => {
+  //     dispatch(setWaiting())
+  //     getGarden(gardenId)
+  //       .then(setGarden)
+  //       .then(() => dispatch(clearWaiting()))
+  //       .catch((error) => {
+  //         dispatch(showError(error.message))
+  //       })
+  //   }, [gardenId])
+
+  //   return garden
+  // }
+
   useEffect(() => {
     dispatch(setWaiting())
-    getGarden(gardenId)
-      .then(setGarden)
-      .then(() => dispatch(clearWaiting()))
-      .catch((error) => {
-        dispatch(showError(error.message))
-      })
+    try {
+      const theGarden = async () => {
+        const gardens = await getGarden(gardenId)
+        setGarden(gardens)
+        dispatch(clearWaiting())
+      }
+      theGarden()
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
+    return () => {}
   }, [gardenId])
-
   return garden
 }
