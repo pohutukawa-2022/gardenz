@@ -28,11 +28,9 @@ describe('addEvent', () => {
       expect(newEvent.title).toBe('test event')
       return Promise.resolve()
     }
-    return await addEvent((event, navigateTo, consume) => {
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
-      return null
-    })
+    await addEvent(event, navigateTo, consume)
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+    expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
   })
 
   it('dispatches error on POST /events rejection', async () => {
@@ -43,10 +41,8 @@ describe('addEvent', () => {
     function consume() {
       return Promise.reject(new Error('mock error'))
     }
-    return await addEvent(({}, navigateTo, consume) => {
-      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-      expect(navigateTo).not.toHaveBeenCalled()
-      return null
-    })
+    await addEvent({}, navigateTo, consume)
+    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
+    expect(navigateTo).not.toHaveBeenCalled()
   })
 })
