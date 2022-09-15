@@ -11,8 +11,6 @@ export default async function consume(
 ) {
   const payLoadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'
 
-  // If token === false
-
   if (!token) {
     try {
       const res = await request[method](baseUrl + endpoint)
@@ -30,31 +28,9 @@ export default async function consume(
         .set(headers)
         [payLoadMethod](data)
       return res
-      // .then((res) => res)
     } catch (err) {
       const errMessage = err.response?.body?.error?.title
       throw new Error(errMessage || err.message)
     }
   }
 }
-
-//  if (!token) {
-//    return request[method](baseUrl + endpoint)
-//      .set(headers)
-//      [payLoadMethod](data)
-//      .then((res) => res)
-//      .catch((err) => {
-//        const errMessage = err.response?.body?.error?.title
-//        throw new Error(errMessage || err.message)
-//      })
-//   } else {
-//    return request[method](baseUrl + endpoint)
-//      .set('authorization', `Bearer ${token}`)
-//      .set(headers)
-//      [payLoadMethod](data)
-//      .then((res) => res)
-//      .catch((err) => {
-//        const errMessage = err.response?.body?.error?.title
-//        throw new Error(errMessage || err.message)
-//      })
-//   }
