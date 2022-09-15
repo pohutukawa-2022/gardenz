@@ -1,44 +1,56 @@
-import { getVolunteers } from './volunteersHelper'
-import { clearWaiting, setWaiting } from '../../../slices/waiting'
-import { dispatch, getState } from '../../../store'
+import React from 'react'
+import { screen } from '@testing-library/react'
+import { renderWithRedux, renderWithRouter } from '../../../test-utils'
+//import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+import Volunteers from './Volunteers'
+//import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+//import { latLng } from 'leaflet'
+//import userEvent from '@testing-library/user-event'
+//import { waitFor } from '@testing-library/dom'
+import { act } from 'react-dom/test-utils'
 
-jest.mock('../../../store')
+// jest.mock('./Volunteers')
 
-afterEach(() => {
-  return jest.resetAllMocks()
-})
-
-test.todo('add test for addingVolunteers')
-
-describe('getVolunteerNumbers', () => {
-  describe('-> GET /events/${id} api call success', () => {
-    it('dispatches waiting actions correctly', () => {
-  const id = 1
-
-      getState.mockImplementation(() => {
-        return {
-          user: {
-            token: '',
-          },
-        }
-      })
-      function consume() {
-        return Promise.resolve()
-      }
-
-      return getVolunteers(consume).then(() => {
-        expect(dispatch).toHaveBeenCalledWith(setWaiting())
-        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-        return null
+describe('form', () => {
+  it('form title is correct', () => {
+    act(() => {
+      renderWithRedux(<Volunteers />, {
+        initialState: { user: {} },
       })
     })
+
+    const header = screen.getByRole('heading', {
+      name: 'Add Rock-Up Attendee',
+    })
+
+    expect(header).toHaveTextContent('Add Rock-Up Attendee')
   })
 })
 
-// To Test
-/**
- * 1.1) Function gets the correct number of volunteers by garden ID
- *
- * 2.1) Test that the form handler work, number of volunteer increases by 1
- * 2.2) Only signed in user can add as a volunteer
- */
+// describe('submit button', () => {
+//   it('has "Add" name', () => {
+//     const addButton = screen.getByRole('button')
+//     expect(addButton).toHaveTextContent('Add')
+//   })
+
+//   it('calls addVolunteer with event data on click', async () => {
+//     Volunteers.mockImplementation((event, navigateTo) => {
+//       expect(event.firstName).toBe('testFirstName')
+//       expect(event.lastName).toBe('testLastName')
+//       expect(typeof navigateTo).toBe('function')
+//     })
+
+//     const firstNameInput = screen.getByRole('textbox', { name: 'firstName' })
+//     const lastNameInput = screen.getByRole('textbox', { name: 'lastName' })
+
+//     const addButton = screen.getByRole('button')
+
+//     userEvent.type(firstNameInput, 'testFirstName')
+//     userEvent.type(lastNameInput, 'testLastName')
+//     userEvent.click(addButton)
+
+//     await waitFor(() => {
+//       expect(Volunteers).toHaveBeenCalled()
+//     })
+//   })
+// })

@@ -25,6 +25,7 @@ export default function Volunteers() {
   return (
     <>
       <section>
+        <h2>hello</h2>
         <VolunteerList volunteers={volunteers} eventId={id} />
         <AddVolunteerForm
           id={id}
