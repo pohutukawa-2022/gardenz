@@ -51,15 +51,9 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
 
 // GET for the admin gallery
 router.get('/:id/gallery', async (req, res) => {
-  console.log('Hitting OUR gallery')
-  const userId = Number(req.headers.userid)
   const id = Number(req.params.id)
   try {
     const images = await getImages(id)
-    console.log(images)
-    //const user = await getUserById(userId)
-    //const isAdmin = user ? await userHasAdminRole(user.auth0Id) : false
-
     return res.json(images)
   } catch (err) {
     log(err.message)

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { getGalleryById } from './AdminGalleryHelper'
 import { showError } from '../../../../slices/error'
-import AdminGalleryImage from './AdminGalleryImage'
+import AdminGalleryImage from './AdminGalleryImage.jsx'
 
 function AdminGallery() {
   const { id } = useParams()
@@ -25,10 +25,27 @@ function AdminGallery() {
 
   return (
     <>
-      <h1>We are here!!!!</h1>
+      <div className="flex m-5">
+        <h1 className="text-2xl leading-tight font-serif ">We are here!!!!</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="orange"
+          className="w-6 h-6 mt-1 ml-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+
       {imageList.map((image) => (
-        //console.log(image)
-        <AdminGalleryImage key={image.url} image={image} />
+      
+        <AdminGalleryImage key={image.id} image={image} />
       ))}
     </>
     // <section className="container flex mx-auto">
