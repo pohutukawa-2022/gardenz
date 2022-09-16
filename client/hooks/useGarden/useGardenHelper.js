@@ -1,5 +1,9 @@
 import consume from '../../consume'
 
+import { dispatch } from '../../store'
+
+import { showError } from '../../slices/error'
+
 export async function getGarden(id) {
   const headers = {
     Accept: 'application/json',
@@ -19,7 +23,6 @@ export async function getGarden(id) {
       email: garden.email,
     }
   } catch (err) {
-    console.error(err.message)
+    dispatch(showError(err.message))
   }
 }
-
