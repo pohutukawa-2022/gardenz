@@ -379,3 +379,23 @@ You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRv
 
 
 
+# Retro
+
+## Day 2
+| 🎉Celebrations🎉                             | 🔧Improvements🔧                    | ⚡Actions⚡                                  |   |   |   |   |   |
+|----------------------------------------------|-------------------------------------|--------------------------------------------|---|---|---|---|---|
+| students learned new libraries               | learning to love testing (all)      | getting an example for testing with Act()  |   |   |   |   |   |
+| learned async/await                          | improve figma flow between slides   | more fun!!                                 |   |   |   |   |   |
+| students are getting better at testing       | reading and researchig new packages | testing cheat sheet                        |   |   |   |   |   |
+| googling and unblocking themselves           | Testing with Act()                  |                                            |   |   |   |   |   |
+| learning light gallery                       |                                     |                                            |   |   |   |   |   |
+| writing new tickets                          |                                     |                                            |   |   |   |   |   |
+| wrote a storybook that involves react router |                                     |                                            |   |   |   |   |   |
+| less redux                                   |                                     |                                            |   |   |   |   |   |
+| troubleshooting (killing servers)            |                                     |                                            |   |   |   |   |   |
+| peer reviewing                               |                                     |                                            |   |   |   |   |   |
+| testing stateful components                  |                                     |                                            |   |   |   |   |   |
+| gitting good with git                        |                                     |                                            |   |   |   |   |   |
+|                                              |                                     |                                            |   |   |   |   |   |
+
+## Day 3
