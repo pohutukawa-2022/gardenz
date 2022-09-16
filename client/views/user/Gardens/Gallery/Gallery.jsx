@@ -50,10 +50,10 @@ function Gallery() {
             <a
               key={image}
               href={image}
-              style={{ minWidth: '360px' }}
-              className="inline-block w-1/5 m-2 min-w-fit"
+              // style={{ minWidth: '360px' }}
+              className="inline-block w-1/5 m-2 min-w-[360px]"
             >
-              <img key={image} alt="from Garden" src={image} />
+              <img key={image} alt="garden" src={image} />
             </a>
           )
         })}
