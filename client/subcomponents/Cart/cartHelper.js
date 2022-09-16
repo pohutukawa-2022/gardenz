@@ -27,15 +27,14 @@ const fakeCart = [
 
 export async function fetchProduce() {
   const [fakeCart, setFakeCart] = useState([])
+  // const cartItems = await getProduce() ---------- (Bring this back before final commit)
+  const cartItems = Promise.resolve(fakeCart) // ----------- (this is a dummy function to fetch the dummy data - for the sake of testing / writing the cart code)
   dispatch(setWaiting())
   useEffect(() => {
     ;async () => {
       try {
         dispatch(clearWaiting())
-        await getProduce()
-        ;(cart) => {
-          setFakeCart(cart)
-        }
+        setFakeCart(cartItems)
       } catch (error) {
         dispatch(showError(error.message))
       }
