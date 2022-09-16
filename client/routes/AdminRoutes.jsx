@@ -17,12 +17,19 @@ import Menu from '../views/admin/Menu/Menu'
 import { Route, Routes } from 'react-router-dom'
 import Profile from '../views/user/Profile/Profile'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
-
+import EditGallery from '../views/admin/Gardens/Gallery/EditGallery'
 function AdminRoutes() {
   return (
     <IsAdmin key="admin">
       <Routes>
-        <Route path="/" element={<Menu />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Menu />
+            </>
+          }
+        />
         <Route path="/admin/gardens" element={<AdminGardens />} />
         <Route path="/admin/gardens/add" element={<AddGarden />} />
         <Route path="/admin/gardens/:id/menu" element={<GardenMenu />} />
@@ -95,6 +102,16 @@ function AdminRoutes() {
             <>
               <AdminNav />
               <p>gallery placeholder</p>
+              <EditGallery />
+            </>
+          }
+        />
+        <Route
+          path="/admin/gardens/:id/photos/:imageid/edit"
+          element={
+            <>
+              <AdminNav />
+              <EditGallery />
             </>
           }
         />
