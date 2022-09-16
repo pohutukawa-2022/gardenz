@@ -1,4 +1,4 @@
-import requestor from '../../../../consume'
+// import requestor from '../../../../consume'
 import { dispatch } from '../../../../store'
 import { clearWaiting, setWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'

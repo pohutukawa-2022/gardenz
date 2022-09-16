@@ -4,7 +4,7 @@ import { getProducts } from './shopHelper.js'
 
 import useGarden from '../../../../hooks/useGarden'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import Basket from './Basket.jsx'
+import ProductList from './ProductList.jsx'
 
 export default function Shop() {
   const { id } = useParams()
@@ -22,7 +22,10 @@ export default function Shop() {
       <GardenHeader name={name} url={imageHeaderUrl} />
       <div className="flex justify-start">
         {products.map((product) => {
-          return <Basket key={product.id} product={product} setCart={setCart} />
+          return <ProductList 
+            key={product.id} 
+            product={product} 
+            setCart={setCart} />
         })}
       </div>
     </>

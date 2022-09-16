@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
-export default function Basket({ product, setCart }) {
+export default function ProductList({ product, setCart }) {
   const [qty, setQty] = useState(1)
   const [stock, setStock] = useState(product.stock)
 
@@ -13,16 +13,12 @@ export default function Basket({ product, setCart }) {
       price: product.price,
       quantity: qty,
     }
-    
-    
+
     setCart((cart) => [...cart, order])
   }
-  useEffect(() => {
-    console.log(stock);
-  }, [stock])
-
-
-
+  // useEffect(() => {
+  //   console.log(stock);
+  // }, [stock])
 
   function qtyHandler(evt) {
     const name = evt.target.name
@@ -54,7 +50,9 @@ export default function Basket({ product, setCart }) {
         >
           -
         </button>
-        <p className="flex items-center">{qty}</p>
+        <h5 name="quantity" className="flex items-center">
+          {qty}
+        </h5>
         <button
           name="increment"
           onClick={qtyHandler}
@@ -65,7 +63,7 @@ export default function Basket({ product, setCart }) {
       </div>
       <div className="pt-3">
         <button
-          onClick={(stock > 0) ? submitHandler : null}
+          onClick={stock > 0 ? submitHandler : null}
           className="font-bold h-12 text-black bg-blue w-full rounded-sm"
         >
           add to basket
