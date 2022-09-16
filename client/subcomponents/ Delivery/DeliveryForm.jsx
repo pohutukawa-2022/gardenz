@@ -14,13 +14,13 @@ function DeliveryForm() {
 
   return (
     <>
-      <div className="p">
+      <div className="field">
         <h1 className="font-bold">Delivery Address</h1>
-        <form>
+        <form className="form-content">
           <label>
             Number and Street:
             <input
-              className="rounded border-2 border-teal-400"
+              className="rounded border-2 border-blue"
               type="text"
               name="street"
               onChange={handleFormChange}
@@ -30,7 +30,7 @@ function DeliveryForm() {
           <label>
             Suburb:
             <input
-              className="rounded border-2 border-{rgb(153 221 204)}-400}"
+              className="rounded border-2 border-blue"
               type="text"
               name="street"
               onChange={handleFormChange}
@@ -40,6 +40,7 @@ function DeliveryForm() {
           <label>
             City:
             <input
+              className="rounded border-2 border-blue"
               type="text"
               name="street"
               onChange={handleFormChange}
@@ -49,6 +50,7 @@ function DeliveryForm() {
           <label>
             Postal Code:
             <input
+              className="rounded border-2 border-blue"
               type="text"
               name="street"
               onChange={handleFormChange}
@@ -58,6 +60,7 @@ function DeliveryForm() {
           <label>
             Delivery instructions:
             <input
+              className="rounded border-2 border-blue"
               type="text"
               name="street"
               onChange={handleFormChange}
