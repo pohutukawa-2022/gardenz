@@ -13,11 +13,10 @@ export default function EditEvent() {
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       const eventData = await getEvent(id, user)
       setEvent(eventData)
     })()
-    return null
   }, [])
 
   function submitEvent(form) {

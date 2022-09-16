@@ -26,7 +26,6 @@ describe('getEvent', () => {
     expect(event.title).toBe('test event')
     expect(event.volunteersNeeded).toBe(14)
     expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-    return null
   })
   it('dispatches error on GET /events/:id api call rejection', async () => {
     function consume() {
@@ -34,7 +33,6 @@ describe('getEvent', () => {
     }
     await getEvent(999, consume)
     expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-    return null
   })
 })
 
@@ -62,7 +60,6 @@ describe('updateEvent', () => {
     await updateEvent('1', event, navigateTo, consume)
     expect(dispatch).toHaveBeenCalledWith(clearWaiting())
     expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
-    return null
   })
   it('dispatches error on PATCH /events/id api call rejection', async () => {
     const navigateTo = jest.fn()
@@ -72,6 +69,5 @@ describe('updateEvent', () => {
     await updateEvent(999, {}, navigateTo, consume)
     expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
     expect(navigateTo).not.toHaveBeenCalled()
-    return null
   })
 })
