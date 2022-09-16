@@ -2,5 +2,5 @@ import React from 'react'
 // import { useNavigate } from 'react-router-dom'
 
 export default function Orders() {
-  return <p>this is a test placeholder</p>
+  return <p>orders page</p>
 }
