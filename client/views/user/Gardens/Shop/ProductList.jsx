@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-// import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function ProductList({ product, setCart }) {
+export default function ProductList({ product, setCart, cb }) {
   const [qty, setQty] = useState(1)
   const [stock, setStock] = useState(product.stock)
 
@@ -15,6 +14,7 @@ export default function ProductList({ product, setCart }) {
     }
 
     setCart((cart) => [...cart, order])
+    cb()
   }
   // useEffect(() => {
   //   console.log(stock);

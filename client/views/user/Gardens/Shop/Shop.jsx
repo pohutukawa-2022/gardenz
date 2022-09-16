@@ -15,17 +15,23 @@ export default function Shop() {
   useEffect(async () => {
     const product = await getProducts()
     setProducts(product)
+    // console.log(cart);
   }, [cart])
+
+const cb = () => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+    const localstore = localStorage.getItem('cart')
+    console.log(localstore)
+  }
 
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
       <div className="flex justify-start">
         {products.map((product) => {
-          return <ProductList 
-            key={product.id} 
-            product={product} 
-            setCart={setCart} />
+          return (
+            <ProductList cb={cb} key={product.id} product={product} setCart={setCart} />
+          )
         })}
       </div>
     </>
