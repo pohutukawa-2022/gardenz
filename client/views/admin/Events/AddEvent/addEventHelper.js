@@ -16,7 +16,6 @@ export async function addEvent(event, navigateTo, consume = requestor) {
 
     navigateTo(`/gardens/${gardenId}`)
   } catch (err) {
-    console.log('there is error: ')
     dispatch(showError(err.message))
   } finally {
     dispatch(clearWaiting())
