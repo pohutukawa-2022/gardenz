@@ -9,7 +9,7 @@ export async function toggleVolunteerStatus(
   setVolunteering,
   consume = requestor
 ) {
-  try {
+  
     const storeState = getState()
     const { id, token } = storeState.user
     if (!id) {
@@ -18,7 +18,7 @@ export async function toggleVolunteerStatus(
       dispatch(setWaiting())
       const routeMethod = willVolunteer ? 'post' : 'delete'
       const userData = { userId: id, eventId }
-
+      try {
       await consume('/volunteers', token, routeMethod, userData)
       setVolunteering(willVolunteer)
       dispatch(clearWaiting())
@@ -26,4 +26,5 @@ export async function toggleVolunteerStatus(
   } catch (error) {
     dispatch(showError(error.message))
   }
+  
 }
