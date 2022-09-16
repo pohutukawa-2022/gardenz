@@ -7,11 +7,16 @@ import GardenGalleryForm from '../../../../subcomponents/gardens/GardenGalleryFo
 export default function EditGallery() {
   const { id } = useParams()
 
+  function submitEvent(form) {
+    console.log(form)
+  }
+
   return (
     <GardenGalleryForm
       title="test title"
       description="description"
       urlPath="urlPath"
+      submitEvent={submitEvent}
     />
   )
 }

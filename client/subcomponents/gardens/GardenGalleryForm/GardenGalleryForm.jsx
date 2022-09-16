@@ -12,6 +12,7 @@ const gallerySchema = Yup.object({
 export default function GardenGalleryForm(props) {
   const galleryData = props
   const { title, description, urlPath } = galleryData
+  
 
   const formik = useFormik({
     initialValues: {
@@ -24,6 +25,7 @@ export default function GardenGalleryForm(props) {
         ...values,
       })
     },
+
     validationSchema: gallerySchema,
   })
 
@@ -33,7 +35,6 @@ export default function GardenGalleryForm(props) {
         <form onSubmit={formik.handleSubmit}>
           <h2 className="text-2xl">Add To Your Gallery</h2>
 
-          {/* PHOTO TITLE SECTION */}
           <div className="flex flex-col my-5">
             <label htmlFor="title" className="label">
               Photo Title
@@ -53,7 +54,6 @@ export default function GardenGalleryForm(props) {
             />
           </div>
 
-          {/* PHOTO DESCRIPTION SECTION */}
           <div className="flex flex-col my-5">
             <label htmlFor="description" className="label">
               Description
@@ -73,7 +73,6 @@ export default function GardenGalleryForm(props) {
             />
           </div>
 
-          {/* PHOTO URL PATH SECTION */}
           <div className="flex flex-col my-5">
             <label htmlFor="urlPath" className="label">
               URL Path
@@ -92,8 +91,6 @@ export default function GardenGalleryForm(props) {
               value={formik.values.urlPath}
             />
           </div>
-
-          {/* BUTTONS  */}
 
           <div id="button" className="flex flex-row  my-10">
             <button
