@@ -37,10 +37,9 @@ describe('Testing AddVolunteerFormHelper', () => {
       })
     })
 
-    return addVolunteer(mockVolunteer, mockAdd, mockConsume).then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(2)
-      return null
-    })
+    await addVolunteer(mockVolunteer, mockAdd, mockConsume)
+    expect(dispatch).toHaveBeenCalledTimes(2)
+    return null
   })
 
   it('Should dispatch error action when api fails', async () => {
