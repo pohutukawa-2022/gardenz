@@ -31,3 +31,20 @@ router.get('/', (req, res) => {
       })
     })
 })
+
+// POST /api/v1/orders
+
+router.post('/', (req, res) => {
+  const order = req.body
+
+  db.addOrder(order)
+
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).json({ message: 'Cannot add order :(' })
+    })
+})
