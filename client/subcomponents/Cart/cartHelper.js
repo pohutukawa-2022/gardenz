@@ -1,7 +1,7 @@
 import { getProduce } from '../produce/ProduceList/produceHelper'
-import requestor from '../../../consume'
-import { setWaiting, clearWaiting } from '../../../slices/waiting'
-import { showError } from '../../../slices/error'
+// import requestor from '../../consume'
+import { setWaiting, clearWaiting } from '../../slices/waiting'
+import { showError } from '../../slices/error'
 import { useEffect, useState } from 'react'
 import { dispatch } from '../../store'
 
@@ -15,6 +15,7 @@ const fakeCart = [
     quantity: 1,
   },
 ]
+
 //fakeCart will be called order: its values will be: product.id, product.name, product.price, qty
 
 // make function fetchProduce
@@ -31,10 +32,19 @@ export async function fetchProduce() {
     ;async () => {
       try {
         dispatch(clearWaiting())
-        await getProduce() 
+        await getProduce()
+        ;(cart) => {
+          setFakeCart(cart)
+        }
       } catch (error) {
         dispatch(showError(error.message))
       }
     }
   }, [])
 }
+
+// const cartItems = await getProduce()
+// setFakeCart(cartItems)
+
+// const cartItems = Promise.resolve(fakeCart)
+// setFakeCart(cartItems)
