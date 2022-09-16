@@ -18,13 +18,8 @@ function Delivery() {
   }
 
   return (
-    // <>
-    //   <button onClick={() => handleChange()}>Click</button>
-    //   <br />
-    //   {form ? <DeliveryForm /> : 'pick up form yet to be built '}
-    // </>
     <>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 font-sans">
         <input
           onClick={() => handleChange()}
           id="default-radio-1"
@@ -37,12 +32,12 @@ function Delivery() {
         />
         <label
           htmlFor="default-radio-1"
-          className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="font-bold ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
         >
           Delivery
         </label>
       </div>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 font-sans">
         <input
           onClick={() => handleChange2()}
           id="default-radio-1"
@@ -55,7 +50,7 @@ function Delivery() {
         />
         <label
           htmlFor="default-radio-1"
-          className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="font-bold ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
         >
           Pick up
         </label>

@@ -14,9 +14,9 @@ function DeliveryForm() {
 
   return (
     <>
-      <div className="field">
+      <div className="p-32 shadow-lg m-20 border-4  ">
         <h1 className="font-bold">Delivery Address</h1>
-        <form className="form-content">
+        <form className="form-content ">
           <label>
             Number and Street:
             <input
