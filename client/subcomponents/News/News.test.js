@@ -14,9 +14,9 @@ describe('News', () => {
 
   it('News component renders fakeNews', () => {
     render(<News news={fakeNews} />)
-    const lastName = screen.getByText(/LastName/)
+    const firstName = screen.getByText(/F/)
     const title = screen.queryByText('Lettuce Picking Season')
-    expect(lastName).toBeInTheDocument()
+    expect(firstName).toBeInTheDocument()
     expect(title).toBeInTheDocument()
   })
 })

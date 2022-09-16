@@ -27,9 +27,10 @@ export default function News({ news }) {
           {/* TEXT AND BUTTON ABOVE IMAGE */}
           <div className="flex flex">
             <div className="text-white fixed top-4 text-center text-2xl rounded-full box-border border border-orange bg-orange border-2 w-10 h-10 r-3">
-              {news.firstName[0]}
+              <p> {news.firstName[0]} </p>
             </div>
-            <div className="">
+            
+            <div>
               <h2 className="font-sans p-1 text-lg ml-12 -mb-3">
                 {news.title}
               </h2>
@@ -37,7 +38,10 @@ export default function News({ news }) {
             </div>
 
             <div>
-              <button className="absolute top-4 text-xl right-4 text-gray-500 hover:text-gray-800 background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+              <button className="absolute top-4 text-xl right-4 text-gray-500 hover:text-gray-800 background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                type="button"
+                aria-label="ellipsisButton"
+                >
                 <i className="fa-solid fa-ellipsis-vertical"></i>
               </button>
             </div>
@@ -59,19 +63,23 @@ export default function News({ news }) {
           <button
             className="text-gray-500 text-xl background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 hover:text-red"
             type="button"
+            aria-label="likeButton"
+
           >
-            {' '}
             <i className="fas fa-heart"></i>
           </button>
+
           <button
             className="text-gray-500 text-xl background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 hover:text-blue"
             type="button"
+            aria-label="shareButton"
           >
             <i className="fa-solid fa-share-nodes"></i>
           </button>
           <button
             className="absolute bottom-3 text-base right-1 text-gray-500 background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 hover:text-gray-700"
             type="button"
+            aria-label="chevronDownButton"
           >
             <i className="fa-solid fa-chevron-down"></i>
           </button>
