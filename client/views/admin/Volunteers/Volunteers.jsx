@@ -24,7 +24,7 @@ export default function Volunteers() {
 
   return (
     <RockupVolunteers
-      id={id}
+      eventId={id}
       volunteers={volunteers}
       addExtraVolunteer={addExtraVolunteerHandler}
     />

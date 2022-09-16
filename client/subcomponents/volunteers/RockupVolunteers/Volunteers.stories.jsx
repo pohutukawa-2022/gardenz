@@ -30,7 +30,7 @@ const Template = (args) => <RockupVolunteers {...args} />
 export const displaysEvent = Template.bind({})
 displaysEvent.storyName = 'Form and list'
 displaysEvent.args = {
-  id: 1,
+  eventId: 1,
   volunteers: [
     {
       userId: 1,
