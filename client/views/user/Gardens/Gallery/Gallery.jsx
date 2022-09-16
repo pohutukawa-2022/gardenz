@@ -19,26 +19,30 @@ function Gallery() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
 
+  const images = [
+    'https://thumbs.dreamstime.com/z/people-garden-7368492.jpg',
+    'https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    'https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    'https://thumbs.dreamstime.com/z/gardening-people-concept-happy-senior-woman-lawn-rake-working-summer-garden-senior-woman-lawn-rake-working-120566241.jpg',
+  ]
+
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
-      <div className="flex">
-        <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
-          <a href="https://thumbs.dreamstime.com/z/people-garden-7368492.jpg">
-            <img
-              alt="img1"
-              src="https://thumbs.dreamstime.com/z/people-garden-7368492.jpg"
-            />
-          </a>
-          <a href="https://thumbs.dreamstime.com/z/gardening-people-concept-happy-senior-woman-lawn-rake-working-summer-garden-senior-woman-lawn-rake-working-120566241.jpg">
-            <img
-              alt="img2"
-              src="https://thumbs.dreamstime.com/z/gardening-people-concept-happy-senior-woman-lawn-rake-working-summer-garden-senior-woman-lawn-rake-working-120566241.jpg"
-            />
-          </a>
-          ...
-        </LightGallery>
-      </div>
+      <LightGallery
+        speed={500}
+        plugins={[lgThumbnail, lgZoom]}
+        elementClassNames="flex justify-center align-middle"
+      >
+        {images.map((image) => {
+          return (
+            <a key={image} href={image} className="inline-block w-1/5 m-5">
+              <img key={image} alt="from Garden" src={image} />
+            </a>
+          )
+        })}
+        ...
+      </LightGallery>
     </>
   )
 }
