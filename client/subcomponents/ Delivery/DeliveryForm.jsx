@@ -14,56 +14,58 @@ function DeliveryForm() {
 
   return (
     <>
-      <h1>
-        <strong>Delivery Address</strong>
-      </h1>
-      <form>
-        <label>
-          Number and Street:
-          <input
-            type="text"
-            name="street"
-            onChange={handleFormChange}
-            value={form.street}
-          />
-        </label>
-        <label>
-          Suburb:
-          <input
-            type="text"
-            name="street"
-            onChange={handleFormChange}
-            value={form.street}
-          />
-        </label>
-        <label>
-          City:
-          <input
-            type="text"
-            name="street"
-            onChange={handleFormChange}
-            value={form.street}
-          />
-        </label>
-        <label>
-          Postal Code:
-          <input
-            type="text"
-            name="street"
-            onChange={handleFormChange}
-            value={form.street}
-          />
-        </label>
-        <label>
-          Delivery instructions:
-          <input
-            type="text"
-            name="street"
-            onChange={handleFormChange}
-            value={form.street}
-          />
-        </label>
-      </form>
+      <div className="p">
+        <h1 className="font-bold">Delivery Address</h1>
+        <form>
+          <label>
+            Number and Street:
+            <input
+              className="rounded border-2 border-teal-400"
+              type="text"
+              name="street"
+              onChange={handleFormChange}
+              value={form.street}
+            />
+          </label>
+          <label>
+            Suburb:
+            <input
+              className="rounded border-2 border-{rgb(153 221 204)}-400}"
+              type="text"
+              name="street"
+              onChange={handleFormChange}
+              value={form.street}
+            />
+          </label>
+          <label>
+            City:
+            <input
+              type="text"
+              name="street"
+              onChange={handleFormChange}
+              value={form.street}
+            />
+          </label>
+          <label>
+            Postal Code:
+            <input
+              type="text"
+              name="street"
+              onChange={handleFormChange}
+              value={form.street}
+            />
+          </label>
+          <label>
+            Delivery instructions:
+            <input
+              type="text"
+              name="street"
+              onChange={handleFormChange}
+              value={form.street}
+            />
+          </label>
+        </form>
+      </div>
     </>
   )
 }

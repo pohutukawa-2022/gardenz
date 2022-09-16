@@ -11,7 +11,12 @@ function Delivery() {
   return (
     <>
       <button onClick={() => handleChange()}>Click</button>
-      {form ? <DeliveryForm /> : 'pickup form'}
+      <br />
+      {form ? (
+        <DeliveryForm />
+      ) : (
+        'Please come to the garden for pick up, we are open every Tuesday. Tel: 1234567 '
+      )}
     </>
   )
 }
