@@ -20,7 +20,9 @@ describe('Volunteer button', () => {
     const user = { token: null }
 
     render(<EventItem address={address} event={event} user={user} />)
-    const volunteerButton = screen.getByRole('button')
+    const volunteerButton = screen.getByRole('button', {
+      name: 'Please sign in to volunteer',
+    })
     expect(volunteerButton).toHaveTextContent('Please sign in to volunteer')
   })
 })
