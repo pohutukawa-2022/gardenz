@@ -19,15 +19,12 @@ export default function Event() {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    ;async () => {
-      await getEvent(id, user)
-      ;(event) => {
-        setEvent(event)
-        return null
-      }
-    },
-      [user, id]
-  })
+    const fetchEvent = (async () => {
+      const event = await getEvent(id, user)
+      setEvent(event)
+    })()
+    fetchEvent()
+  }, [user, id])
 
   function addExtraVolunteer(newVolunteer) {
     setEvent({
