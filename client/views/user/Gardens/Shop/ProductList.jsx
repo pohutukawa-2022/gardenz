@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import {
+  setLocalStorage,
+  getLocalStorage,
+} from '../../../../localStorage-utils.js'
 
-export default function ProductList({ product, setCart, cb }) {
+export default function ProductList({ product }) {
   const [qty, setQty] = useState(1)
   const [stock, setStock] = useState(product.stock)
 
@@ -13,12 +17,18 @@ export default function ProductList({ product, setCart, cb }) {
       quantity: qty,
     }
 
-    setCart((cart) => [...cart, order])
-    cb()
+    let cart = []
+    if (getLocalStorage('cart') === null) {
+      setLocalStorage('cart', [])
+    } else {
+      cart = JSON.parse(getLocalStorage('cart'))
+    }
+    cart.push(order)
+    setLocalStorage('cart', JSON.stringify(cart))
+    JSON.parse(getLocalStorage('cart'))
+
   }
-  // useEffect(() => {
-  //   console.log(stock);
-  // }, [stock])
+
 
   function qtyHandler(evt) {
     const name = evt.target.name
