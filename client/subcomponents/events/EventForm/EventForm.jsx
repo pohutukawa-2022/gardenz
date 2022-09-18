@@ -120,7 +120,7 @@ export default function EventForm(props) {
 
           <div id="button" className="flex flex-col  my-10">
             <button
-              className=" py-4 bg-darkGreen
+              className=" py-4 bg-lightGreen
                 rounded-lg text-white"
               type="submit"
             >
