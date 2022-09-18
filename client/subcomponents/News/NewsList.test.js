@@ -30,9 +30,9 @@ describe('NewsList', () => {
       initialState: { user: { isAdmin: true } },
       initialEntries: ['/gardens/1/news'],
       route: '/gardens/:id/news',
-    })
+    })    
     expect(screen.getAllByRole('listitem')).toHaveLength(2)
-    expect(screen.getByText(/Test LastName2/)).toBeInTheDocument()
+    expect(screen.queryByText('cat jumping')).toBeInTheDocument()
     expect(screen.queryByText('Lettuce Picking Season')).toBeInTheDocument()
   })
 })
