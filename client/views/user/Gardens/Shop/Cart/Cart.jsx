@@ -1,22 +1,22 @@
 import CartItem from '../../../../../subcomponents/Cart/CartItem'
 import React, { useEffect, useState } from 'react'
-import GardenHeader from '../../../../../subcomponents/gardens/GardenHeader/GardenHeader'
+// import GardenHeader from '../../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 
 export default function Cart() {
   // const { name, imageHeaderUrl } = banner
-  try {
-    const [cart, setCart] = useState([])
-    useEffect(() => {
-      const cartItems = localStorage.getItem('cart')
-      setCart(cartItems)
-    }, [])
-  } catch (error) {
-    console.error(error.message)
-  }
+  const [cart, setCart] = useState([])
+  const cartDummy = { name: 'frey', quantity: 2, price: '$40' }
+
+  localStorage.setItem('cart', JSON.stringify(cartDummy))
+  useEffect(() => {
+    const cartItems = localStorage.getItem('cart')
+    setCart(JSON.parse(cartItems))
+  }, [])
+
   return (
     <>
       {/* <GardenHeader name={name} url={imageHeaderUrl} /> */}
-      <CartItem cart={Cart} />
+      <CartItem cart={cart} />
     </>
   )
 }

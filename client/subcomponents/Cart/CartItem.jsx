@@ -3,11 +3,13 @@ import React from 'react'
 function CartItem(props) {
   const { name, quantity, price } = props.cart
   return (
-    <tr>
-      <td>{name}</td>
-      <td>{quantity}</td>
-      <td>{price}</td>
-    </tr>
+    <table>
+      <thead>
+        <tbody>{name}</tbody>
+        <tbody>{quantity}</tbody>
+        <tbody>{price}</tbody>
+      </thead>
+    </table>
   )
 }
 
