@@ -9,6 +9,7 @@ import GardenEvents from '../views/user/Gardens/Events/GardenEvents'
 import Gallery from '../views/user/Gardens/Gallery/Gallery'
 import GardensList from '../views/user/Gardens/Index/Index'
 import News from '../views/user/Gardens/News/News'
+import Cart from '../views/user/Gardens/Shop/Cart/Cart'
 import Shop from '../views/user/Gardens/Shop/Shop'
 import Profile from '../views/user/Profile/Profile'
 
@@ -60,6 +61,15 @@ function UserRoutes() {
             <>
               <UserNav />
               <Shop />
+            </>
+          }
+        />
+        <Route
+          path="/gardens/:id/shop/cart"
+          element={
+            <>
+              <UserNav />
+              <Cart />
             </>
           }
         />
