@@ -1,28 +1,33 @@
-import React from 'react'
-import { confirmAlert } from 'react-confirm-alert' // Import
-import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import React, { useState, useEffect, useRef } from 'react'
+import { deleteImgById } from './AdminGalleryHelper'
 
 export default function AdminGalleryImage(props) {
+  console.log('id of the image', props)
+  // useEffect(() => {
+  //   document.addEventListener('click', handleClickOutside, true)
+  // }, [])
+
+  // const refOne = useRef(null)
+  // function handleClickOutside(e) {
+  //   console.log(e.target)
+  //   console.log(refOne.current)
+  //   if (!refOne.current.contains(e.target)) {
+  //     console.log('outside')
+  //   } else {
+  //     console.log('inside')
+  //   }
+  // }
+  const [isClicked, setIsClicked] = useState(false)
+
   function handleClickDelete() {
-    confirmAlert({
-      customUI: ({ onClose }) => {
-        return (
-          <div className="custom-ui">
-            <h1>Are you sure?</h1>
-            <p>You want to delete this file?</p>
-            <button onClick={onClose}>No</button>
-            <button
-              onClick={() => {
-                this.handleClickDelete()
-                onClose()
-              }}
-            >
-              Yes, Delete it!
-            </button>
-          </div>
-        )
-      },
-    })
+    setIsClicked(!isClicked)
+  }
+  function handleNoDelete() {
+    setIsClicked(!isClicked)
+  }
+  function handleConfirmDelete() {
+    console.log('id of the image', props.image.id)
+    deleteImgById(props.image.id)
   }
   return (
     <>
@@ -85,17 +90,28 @@ export default function AdminGalleryImage(props) {
             />
           </svg>
         </div>
-        <div className="pt-16 align-middle text-center inline-block bg-slate-200 opacity-90 absolute left-0 z-1  w-full h-full">
-          <p className="text-black font-medium opacity-100">Delete?</p>
-          <div className="flex justify-center mt-1 ">
-            <button className="mr-2 opacity-100  block mt-0 p-2 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300">
-              Yes
-            </button>
-            <button className="mr-2 opacity-100  block mt-0 p-2 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300">
-              No
-            </button>
+        {isClicked && (
+          <div
+            // ref={refOne}
+            className="ease-in pt-16 align-middle text-center inline-block bg-slate-200 opacity-90 absolute left-0 z-1  w-full h-full"
+          >
+            <p className="text-black font-medium opacity-100">Delete?</p>
+            <div className="flex justify-center mt-1 ">
+              <button
+                onClick={handleConfirmDelete}
+                className="mr-2 opacity-100  block mt-0 p-2 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300"
+              >
+                Yes
+              </button>
+              <button
+                onClick={handleNoDelete}
+                className="mr-2 opacity-100  block mt-0 p-2 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300"
+              >
+                No
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   )
