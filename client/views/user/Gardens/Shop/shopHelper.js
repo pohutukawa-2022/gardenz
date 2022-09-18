@@ -1,4 +1,4 @@
-// import requestor from '../../../../consume'
+import requestor from '../../../../consume'
 import { dispatch } from '../../../../store'
 import { clearWaiting, setWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'
@@ -32,18 +32,20 @@ export async function getProducts() {
   })
 }
 
-export function getShopProducts(id, consume = requestor) {
-  dispatch(setWaiting())
+//Note: For future use to pull from database
 
-  return consume(`/shop/${id}`)
-    .then((res) => {
-      dispatch(clearWaiting())
-      return res.body.gardens
-    })
-    .catch((err) => {
-      dispatch(showError(err))
-    })
-    .finally(() => {
-      dispatch(clearWaiting())
-    })
-}
+// export function getShopProducts(id, consume = requestor) {
+//   dispatch(setWaiting())
+
+//   return consume(`/shop/${id}`)
+//     .then((res) => {
+//       dispatch(clearWaiting())
+//       return res.body.gardens
+//     })
+//     .catch((err) => {
+//       dispatch(showError(err))
+//     })
+//     .finally(() => {
+//       dispatch(clearWaiting())
+//     })
+// }
