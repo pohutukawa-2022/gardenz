@@ -10,11 +10,11 @@ export default function ProduceList({ gardenid }) {
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     try {
-      const theProduce = async () => {
+      const getTheProduce = async () => {
         const produce = await getProduce(gardenid)
         setProduce(produce)
       }
-      theProduce()
+      getTheProduce()
     } catch (error) {
       dispatch(showError(error.message))
     }
