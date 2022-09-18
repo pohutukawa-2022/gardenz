@@ -1,12 +1,13 @@
 import React from 'react'
 
 import { getNews } from './newsHelper'
+import { getGarden } from '../../../../hooks/useGarden/useGardenHelper'
 import { renderWithRedux } from '../../../../test-utils'
 import News from './News'
 import { waitFor, screen } from '@testing-library/react'
 
 jest.mock('./newsHelper')
-
+jest.mock('../../../../hooks/useGarden/useGardenHelper')
 describe('List of news', () => {
   const fakeNews = [
     {
@@ -31,8 +32,11 @@ describe('List of news', () => {
     },
   ]
 
+  const fakeGarden = { name: 'FakeGarden', imageHeaderUrl: '' }
+
   it('props send correct data', async () => {
     getNews.mockImplementation(() => Promise.resolve(fakeNews))
+    getGarden.mockImplementation(() => Promise.resolve(fakeGarden))
 
     renderWithRedux(<News />, {
       initialState: { user: { isAdmin: true } },
