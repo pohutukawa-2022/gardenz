@@ -345,6 +345,25 @@ Request:
 ```
 
 Response (201)
+
+## Local Storage
+
+The schema for storing an order in `localStorage`.
+
+```json
+{
+  "order": { 
+  "cart": [{ "productId": 1, "quantity": 1, "price": 3.5 }] },
+  "delivery": {
+    "street": "street",
+    "suburb": "suburb",
+    "city": "city",
+    "postalCode": 1234,
+    "instructions": "instructions"
+  }
+}
+```
+
 ## Database schema (proposal)
 
 ![Gardenz Entity Relationship Diagram](docs/erd.png)
@@ -379,3 +398,38 @@ You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRv
 
 
 
+# Retro
+
+## Day 2
+
+| 🎉Celebrations🎉                             | 🔧Improvements🔧                    | ⚡Actions⚡                                  |   |   |   |   |   |
+|----------------------------------------------|-------------------------------------|--------------------------------------------|---|---|---|---|---|
+| students learned new libraries               | learning to love testing (all)      | getting an example for testing with Act()  |   |   |   |   |   |
+| learned async/await                          | improve figma flow between slides   | more fun!!                                 |   |   |   |   |   |
+| students are getting better at testing       | reading and researchig new packages | testing cheat sheet                        |   |   |   |   |   |
+| googling and unblocking themselves           | Testing with Act()                  |                                            |   |   |   |   |   |
+| learning light gallery                       |                                     |                                            |   |   |   |   |   |
+| writing new tickets                          |                                     |                                            |   |   |   |   |   |
+| wrote a storybook that involves react router |                                     |                                            |   |   |   |   |   |
+| less redux                                   |                                     |                                            |   |   |   |   |   |
+| troubleshooting (killing servers)            |                                     |                                            |   |   |   |   |   |
+| peer reviewing                               |                                     |                                            |   |   |   |   |   |
+| testing stateful components                  |                                     |                                            |   |   |   |   |   |
+| gitting good with git                        |                                     |                                            |   |   |   |   |   |
+|                                              |                                     |                                            |   |   |   |   |   |
+
+## Day 3
+
+| 🎉Celebrations🎉                                            | 🔧Improvements🔧                  | ⚡Actions⚡               |
+|-------------------------------------------------------------|-----------------------------------|-------------------------|
+| ahmad felt like he's developer again                        | figma wireframes are not to scale | timeboxing more         |
+| learned about localStorage                                  | planning how to use local storage | share food              |
+| had a useful discussion meeting 3 pairs and facilitorators  | remembering to run all tests      | more company role play  |
+| learning tailwind                                           |                                   | play music              |
+| successfully styling gallery                                |                                   |                         |
+| PRs merged                                                  |                                   |                         |
+| learned figma                                               |                                   |                         |
+| unblocked blocked (Karl)                                    |                                   |                         |
+| learned that making changes can affect other's tests        |                                   |                         |
+| started to love testing                                     |                                   |                         |
+| hacky sack breaks                                           |                                   |                         |

@@ -34,7 +34,10 @@
     "extends": "eda/react",
     "ignorePatterns": [
       "bundle.js"
-    ]
+    ],
+    "rules": {
+        "no-console": "error"
+    }
   },
   "babel": {
     "presets": [
