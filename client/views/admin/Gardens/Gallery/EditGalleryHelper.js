@@ -14,18 +14,18 @@ export function updateGalleryImage(
   const { token } = storeState.user
 
   const galleryImageToUpdate = {
-    id: Number(updatedImage.id),
+    gardenId: Number(updatedImage.gardenId),
     ...updatedImage,
   }
   dispatch(setWaiting())
   return consume(
-    `/gallery/${galleryImageToUpdate.id}`,
+    `/gallery/${galleryImageToUpdate.gardenId}`,
     token,
     'patch',
     galleryImageToUpdate
   )
     .then(() => {
-      navigateTo(`/gallery`)
+      navigateTo(`/gallery/${galleryImageToUpdate.gardenId}`)
       return null
     })
     .catch((err) => {

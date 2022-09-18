@@ -10,7 +10,8 @@ export default function EditGallery() {
   const navigate = useNavigate()
 
   function submitEvent(form) {
-    updateGalleryImage({ id, ...form }, navigate)
+    form.id = 1
+    updateGalleryImage({ gardenId: id, ...form }, navigate)
   }
 
   return (
