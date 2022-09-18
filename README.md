@@ -345,6 +345,25 @@ Request:
 ```
 
 Response (201)
+
+## Local Storage
+
+The schema for storing an order in `localStorage`.
+
+```json
+{
+  "order": { 
+  "cart": [{ "productId": 1, "quantity": 1, "price": 3.5 }] },
+  "delivery": {
+    "street": "street",
+    "suburb": "suburb",
+    "city": "city",
+    "postalCode": 1234,
+    "instructions": "instructions"
+  }
+}
+```
+
 ## Database schema (proposal)
 
 ![Gardenz Entity Relationship Diagram](docs/erd.png)
