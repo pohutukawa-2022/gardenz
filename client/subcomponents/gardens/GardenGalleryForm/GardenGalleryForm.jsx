@@ -5,11 +5,11 @@ import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
 
 const gallerySchema = Yup.object({
-  title: Yup.string().required('Required'),
+  name: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  urlPath: Yup.string()
+  url: Yup.string()
     .matches(
-      /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
+      /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm,
       'Enter correct url!'
     )
     .required('Required'),
@@ -17,13 +17,13 @@ const gallerySchema = Yup.object({
 
 export default function GardenGalleryForm(props) {
   const galleryData = props
-  const { title, description, urlPath } = galleryData
+  const { name, description, url } = galleryData
 
   const formik = useFormik({
     initialValues: {
-      title,
+      name,
       description,
-      urlPath,
+      url,
     },
     onSubmit: (values) => {
       props.submitEvent({
@@ -41,21 +41,21 @@ export default function GardenGalleryForm(props) {
           <h2 className="text-2xl">Add To Your Gallery</h2>
 
           <div className="flex flex-col my-5">
-            <label htmlFor="title" className="label">
-              Photo Title
+            <label htmlFor="name" className="label">
+              Photo name
             </label>
-            {formik.errors.title && formik.touched.title ? (
-              <p className="inputError">{formik.errors.title}</p>
+            {formik.errors.name && formik.touched.name ? (
+              <p className="inputError">{formik.errors.name}</p>
             ) : null}
 
             <input
               className="text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
-              id="title"
-              name="title"
+              id="name"
+              name="name"
               type="text"
-              placeholder="photo title"
+              placeholder="photo name"
               onChange={formik.handleChange}
-              value={formik.values.title}
+              value={formik.values.name}
             />
           </div>
 
@@ -79,23 +79,23 @@ export default function GardenGalleryForm(props) {
           </div>
 
           <div className="flex flex-col my-5">
-            <label htmlFor="urlPath" className="label">
+            <label htmlFor="url" className="label">
               URL Path
             </label>
-            {formik.errors.urlPath && formik.touched.urlPath ? (
+            {formik.errors.url && formik.touched.url ? (
               <p style={{ color: 'red' }} className="inputError">
-                {formik.errors.urlPath}
+                {formik.errors.url}
               </p>
             ) : null}
 
             <input
               className="text-gray-400 appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
-              id="urlPath"
-              name="urlPath"
+              id="url"
+              name="url"
               type="text"
               placeholder="photo url path"
               onChange={formik.handleChange}
-              value={formik.values.urlPath}
+              value={formik.values.url}
             />
           </div>
 

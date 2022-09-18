@@ -9,7 +9,18 @@ const addImage = (newImage, db = connection) => {
   return db('gallery').insert({ name, url, garden_id })
 }
 
+const updateImage = (updatedImage, db = connection) => {
+  const { id, name, url, garden_id, description } = updatedImage
+  return db('gallery').where({ id: id }).update({
+    name,
+    url,
+    garden_id,
+    description,
+  })
+}
+
 module.exports = {
   getImages,
   addImage,
+  updateImage,
 }

@@ -41,4 +41,27 @@ router.post('/:gardenId', async (req, res) => {
   }
 })
 
+// PATCH /api/v1/gallery/:gardenId
+
+router.patch('/:gardenId', async (req, res) => {
+  const updatedImage = {
+    name: req.body.name,
+    url: req.body.url,
+    description: req.body.description,
+    id: req.body.id,
+    garden_id: req.params.gardenId,
+  }
+  try {
+    await db.updateImage(updatedImage)
+    res.sendStatus(201)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to update gallery image',
+      },
+    })
+  }
+})
+
 module.exports = router
