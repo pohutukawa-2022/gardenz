@@ -9,22 +9,20 @@ export async function toggleVolunteerStatus(
   setVolunteering,
   consume = requestor
 ) {
-  
-    const storeState = getState()
-    const { id, token } = storeState.user
-    if (!id) {
-      dispatch(showError('Please register or sign in to volunteer.'))
-    } else {
-      dispatch(setWaiting())
-      const routeMethod = willVolunteer ? 'post' : 'delete'
-      const userData = { userId: id, eventId }
-      try {
+  const storeState = getState()
+  const { id, token } = storeState.user
+  if (!id) {
+    dispatch(showError('Please register or sign in to volunteer.'))
+  } else {
+    dispatch(setWaiting())
+    const routeMethod = willVolunteer ? 'post' : 'delete'
+    const userData = { userId: id, eventId }
+    try {
       await consume('/volunteers', token, routeMethod, userData)
       setVolunteering(willVolunteer)
       dispatch(clearWaiting())
+    } catch (error) {
+      dispatch(showError(error.message))
     }
-  } catch (error) {
-    dispatch(showError(error.message))
   }
-  
 }
