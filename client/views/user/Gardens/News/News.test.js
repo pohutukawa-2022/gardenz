@@ -48,14 +48,15 @@ describe('List of news', () => {
     const title = await screen.getByRole('heading', { name: 'test title1' })
     const image = await screen.getAllByRole('img')[0]
     const button = await screen.getAllByLabelText('share button')[0]
-    const date = screen.getAllByText(/September 19,2022/)[0]
-  
+    const date = await screen.getAllByText(/September 19,2022/)[0]
 
     expect(title.textContent).toMatch('test title1')
-    expect(image).toHaveAttribute('src', 'https://intermountainhealthcare.org/-/media/images/modules/blog/posts/2019/04/prepare-for-your-summer-garden-now.jpg?mw=1600')
+    expect(image).toHaveAttribute(
+      'src',
+      'https://intermountainhealthcare.org/-/media/images/modules/blog/posts/2019/04/prepare-for-your-summer-garden-now.jpg?mw=1600'
+    )
     expect(image).toHaveAttribute('alt', 'gardening')
     expect(button).toBeVisible(true)
     expect(date).toBeInTheDocument()
-
   })
 })
