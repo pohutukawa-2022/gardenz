@@ -67,12 +67,12 @@ router.get('/:id/gallery', async (req, res) => {
 
 // DELETE image for the admin gallery
 router.delete('/:id/gallery', async (req, res) => {
-  const gardenId = Number(req.params.id)
-  const test = req.body
-  console.log('BODY', test)
-  const imageId = 5
+  //const gardenId = Number(req.params.id)
+  const imgId = req.body.imgId
+  // console.log('BODY', test)
+  //const imageId = 5
   try {
-    const images = await deleteImage(gardenId, imageId)
+    await deleteImage(imgId)
     return null
   } catch (err) {
     log(err.message)

@@ -23,7 +23,7 @@ function AdminGallery() {
         return false
       })
   }, [])
-  console.log('list of the images ', imageList)
+  console.log("list of the images ", imageList)
   return (
     <>
       <div className="flex m-5">

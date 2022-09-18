@@ -1,7 +1,9 @@
 const connection = require('./connection')
 
 const getImages = (gardenId, db = connection) => {
-  return db('gallery').where('garden_id', gardenId).select('name', 'url', 'id')
+  return db('gallery')
+    .where('garden_id', gardenId)
+    .select('name', 'url', 'id', 'garden_id')
 }
 
 const addImage = (newImage, db = connection) => {

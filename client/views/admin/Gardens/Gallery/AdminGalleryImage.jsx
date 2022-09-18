@@ -1,33 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react'
+// import { useNavigate } from 'react-router-dom'
+import { dispatch } from '../../../../store'
+import { showError, clearWaiting } from '../../../../slices/waiting'
 import { deleteImgById } from './AdminGalleryHelper'
 
 export default function AdminGalleryImage(props) {
-  console.log('id of the image', props)
-  // useEffect(() => {
-  //   document.addEventListener('click', handleClickOutside, true)
-  // }, [])
-
-  // const refOne = useRef(null)
-  // function handleClickOutside(e) {
-  //   console.log(e.target)
-  //   console.log(refOne.current)
-  //   if (!refOne.current.contains(e.target)) {
-  //     console.log('outside')
-  //   } else {
-  //     console.log('inside')
-  //   }
-  // }
   const [isClicked, setIsClicked] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
+
+  useEffect(async () => {
+    try {
+      await deleteImgById(props.image.id)
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
+  }, [confirmDelete])
 
   function handleClickDelete() {
     setIsClicked(!isClicked)
   }
+
   function handleNoDelete() {
     setIsClicked(!isClicked)
   }
+
   function handleConfirmDelete() {
-    console.log('id of the image', props.image.id)
-    deleteImgById(props.image.id)
+    setConfirmDelete(true)
   }
   return (
     <>
