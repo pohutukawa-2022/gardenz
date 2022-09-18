@@ -1,6 +1,7 @@
 exports.up = (knex) => {
   return knex.schema.createTable('orders', (table) => {
-    table.increments('id')
+    table.increments('id').primary()
+    table.integer('gardens_id').references('gardens.id')
     table.date('created_at')
     table.string('status')
   })

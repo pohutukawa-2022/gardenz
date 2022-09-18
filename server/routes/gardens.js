@@ -78,3 +78,24 @@ router.get('/:id', async (req, res) => {
     })
   }
 })
+
+router.get('/:id/orders' async (req, res) => {
+  const GardenId = Number(req.params.id)
+
+  try {
+
+const 
+
+
+  }
+
+
+
+
+
+
+
+
+
+})
+
