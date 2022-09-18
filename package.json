@@ -61,6 +61,9 @@
     }
   ],
   "jest": {
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/client/css/__mocks__/styleMock.js"
+    },
     "verbose": true,
     "projects": [
       {
