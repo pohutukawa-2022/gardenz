@@ -2,17 +2,22 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 //import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 const gallerySchema = Yup.object({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  urlPath: Yup.string().required('Required'),
+  urlPath: Yup.string()
+    .matches(
+      /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
+      'Enter correct url!'
+    )
+    .required('Required'),
 })
 
 export default function GardenGalleryForm(props) {
   const galleryData = props
   const { title, description, urlPath } = galleryData
-  
 
   const formik = useFormik({
     initialValues: {
@@ -58,8 +63,8 @@ export default function GardenGalleryForm(props) {
             <label htmlFor="description" className="label">
               Description
             </label>
-            {formik.errors.title && formik.touched.title ? (
-              <p className="inputError">{formik.errors.title}</p>
+            {formik.errors.description && formik.touched.description ? (
+              <p className="inputError">{formik.errors.description}</p>
             ) : null}
 
             <input
@@ -77,8 +82,10 @@ export default function GardenGalleryForm(props) {
             <label htmlFor="urlPath" className="label">
               URL Path
             </label>
-            {formik.errors.title && formik.touched.title ? (
-              <p className="inputError">{formik.errors.title}</p>
+            {formik.errors.urlPath && formik.touched.urlPath ? (
+              <p style={{ color: 'red' }} className="inputError">
+                {formik.errors.urlPath}
+              </p>
             ) : null}
 
             <input
@@ -103,9 +110,10 @@ export default function GardenGalleryForm(props) {
             <button
               className="w-full py-4 bg-orange
                 rounded-lg text-white mx-2"
-              type="submit"
             >
-              Back to Gallery
+              <Link to={`/admin/gardens/${props.id}/gallery`}>
+                Back to Gallery
+              </Link>
             </button>
           </div>
         </form>

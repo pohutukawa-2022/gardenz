@@ -16,6 +16,7 @@ export default function EditGallery() {
       title="test title"
       description="description"
       urlPath="urlPath"
+      id={id}
       submitEvent={submitEvent}
     />
   )
