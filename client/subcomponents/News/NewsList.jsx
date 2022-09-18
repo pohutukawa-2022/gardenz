@@ -13,9 +13,16 @@ export default function NewsList({ news }) {
         </p>
       </div>
 
-      <ul className="lg:pl-20 md:justify-center">
+      <ul
+        className="lg:pl-20 md:justify-center"
+        aria-label="container positioning"
+      >
         {news.map((news) => (
-          <li className="inline-flex ml-8" key={news.id}>
+          <li
+            className="inline-flex ml-8"
+            key={news.id}
+            aria-label="news content"
+          >
             <News news={news} />
           </li>
         ))}

@@ -45,19 +45,17 @@ describe('List of news', () => {
     })
 
     // TODO: assert that NewsList component is rendered
-    return screen.findAllByRole('listitem').then((listItems) => {
-      expect(listItems).toHaveLength(2)
+    const title = await screen.getByRole('heading', { name: 'test title1' })
+    const image = await screen.getAllByRole('img')[0]
+    const button = await screen.getAllByLabelText('share button')[0]
+    const date = screen.getAllByText(/September 19,2022/)[0]
+  
 
-      expect(listItems[0].textContent).toMatch('test title1')
-      expect(listItems[0].textContent).toMatch('test1 firstName')
-      expect(listItems[0].textContent).toMatch('test1 lastName')
-      expect(listItems[0].textContent).toMatch('test1 content')
-      expect(listItems[1].textContent).toMatch('test title2')
-      expect(listItems[1].textContent).toMatch('test2 firstName')
-      expect(listItems[1].textContent).toMatch('test2 lastName')
-      expect(listItems[1].textContent).toMatch('test2 content')
+    expect(title.textContent).toMatch('test title1')
+    expect(image).toHaveAttribute('src', 'https://intermountainhealthcare.org/-/media/images/modules/blog/posts/2019/04/prepare-for-your-summer-garden-now.jpg?mw=1600')
+    expect(image).toHaveAttribute('alt', 'gardening')
+    expect(button).toBeVisible(true)
+    expect(date).toBeInTheDocument()
 
-      return null
-    })
   })
 })
