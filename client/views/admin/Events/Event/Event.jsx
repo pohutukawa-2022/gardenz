@@ -19,10 +19,10 @@ export default function Event() {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    const fetchEvent = (async () => {
+    const fetchEvent = async () => {
       const event = await getEvent(id, user)
       setEvent(event)
-    })()
+    }
     fetchEvent()
   }, [user, id])
 
