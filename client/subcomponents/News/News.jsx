@@ -29,7 +29,7 @@ export default function News({ news }) {
           {/* TEXT AND BUTTON ABOVE IMAGE */}
           <div className="flex flex">
             <div className="text-white fixed top-4 text-center text-2xl rounded-full box-border border border-orange bg-orange border-2 w-10 h-10 r-3">
-              {firstName.length > -1 ? firstLetter : 'A'}
+              {typeof firstLetter === 'string' ? firstLetter : 'A'}
             </div>
             <div className="">
               <h2 className="font-sans p-1 text-lg ml-12 -mb-3">
