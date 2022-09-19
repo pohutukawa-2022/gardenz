@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -31,6 +31,16 @@ function DeliveryForm() {
   const [day, setDay] = useState('')
   const navigate = useNavigate()
 
+  //localStorageData
+  //setting localStorage
+  const { cart, setCart } = useState([])
+  const dataRecieved = {
+    productId: 1,
+    name: 'product_name',
+    price: 'priceofProduct',
+    quantity: 'amount_bought',
+  }
+
   // const [form, setForm] = useState({
   //   street: '',
   //   suburb: '',
@@ -62,6 +72,12 @@ function DeliveryForm() {
   })
 
   console.log(formik.values)
+  //LocalStorage
+  //cart recieved
+  localStorage.setItem('cart', JSON.stringify(dataRecieved))
+
+  //formik values
+  localStorage.setItem('deliveryDetails', JSON.stringify(formik.values))
 
   // function handleFormChange(event) {
   //   setForm({

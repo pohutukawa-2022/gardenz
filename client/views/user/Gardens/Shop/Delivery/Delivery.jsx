@@ -10,20 +10,7 @@ function Delivery() {
 
   const navigate = useNavigate()
 
-  //setting localStorage
-  const { cart, setCart } = useState([])
-  const dataRecieved = {
-    productId: 1,
-    name: 'product_name',
-    price: 'priceofProduct',
-    quantity: 'amount_bought',
-  }
-
-  localStorage.setItem('cart', JSON.stringify(dataRecieved))
-  useEffect(() => {
-    const recievedItems = localStorage.getItem('cart')
-    setCart(JSON.parse(recievedItems))
-  }, [])
+  
 
   function handleCheck(event) {
     setSelected(event.target.value)
