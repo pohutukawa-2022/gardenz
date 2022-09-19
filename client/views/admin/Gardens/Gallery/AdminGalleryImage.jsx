@@ -1,20 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 // import { useNavigate } from 'react-router-dom'
 import { dispatch } from '../../../../store'
 import { showError, clearWaiting } from '../../../../slices/waiting'
 import { deleteImgById } from './AdminGalleryHelper'
 
-export default function AdminGalleryImage(props) {
+export default function AdminGalleryImage({ loadImages, image }) {
   const [isClicked, setIsClicked] = useState(false)
-  const [confirmDelete, setConfirmDelete] = useState(false)
-
-  useEffect(async () => {
-    try {
-      await deleteImgById(props.image.id)
-    } catch (error) {
-      dispatch(showError(error.message))
-    }
-  }, [confirmDelete])
 
   function handleClickDelete() {
     setIsClicked(!isClicked)
@@ -24,16 +15,22 @@ export default function AdminGalleryImage(props) {
     setIsClicked(!isClicked)
   }
 
-  function handleConfirmDelete() {
-    setConfirmDelete(true)
+  async function handleConfirmDelete() {
+    try {
+      await deleteImgById(image.id)
+      await loadImages()
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
   }
+
   return (
     <>
       <div className="inline-block relative ">
         <div className="inline-block relative z-0">
           <img
             className="m-3 object-cover h-48 w-48"
-            src={props.image.url}
+            src={image.url}
             alt="rrr"
           />
 

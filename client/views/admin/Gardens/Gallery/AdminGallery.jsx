@@ -12,18 +12,19 @@ function AdminGallery() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    loadImages()
+  }, [])
+
+  function loadImages() {
     getGalleryById(id)
       .then((images) => {
         setImageList(images)
-
-        return null
       })
       .catch((err) => {
         dispatch(showError(err.message))
         return false
       })
-  }, [])
-  console.log("list of the images ", imageList)
+  }
   return (
     <>
       <div className="flex m-5">
@@ -45,7 +46,11 @@ function AdminGallery() {
       </div>
 
       {imageList.map((image) => (
-        <AdminGalleryImage key={image.id} image={image} />
+        <AdminGalleryImage
+          loadImages={loadImages}
+          key={image.id}
+          image={image}
+        />
       ))}
     </>
     // <section className="container flex mx-auto">

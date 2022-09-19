@@ -73,7 +73,7 @@ router.delete('/:id/gallery', async (req, res) => {
   //const imageId = 5
   try {
     await deleteImage(imgId)
-    return null
+    res.sendStatus(200)
   } catch (err) {
     log(err.message)
     res.status(500).json({
