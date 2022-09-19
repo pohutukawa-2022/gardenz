@@ -25,7 +25,6 @@ const deliverySchema = Yup.object().shape({
 function DeliveryForm() {
   const navigate = useNavigate()
 
-
   //localStorageData
   //setting localStorage
   const { cart, setCart } = useState([])
@@ -101,7 +100,7 @@ function DeliveryForm() {
             >
               Number and Street
             </label>
-            {showAnyErrors('street')}
+            <div className="text-red text-xs">{showAnyErrors('street')}</div>
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
@@ -119,7 +118,7 @@ function DeliveryForm() {
             >
               Suburb
             </label>
-            {showAnyErrors('suburb')}
+            <div className="text-red text-xs">{showAnyErrors('suburb')}</div>
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
@@ -137,7 +136,7 @@ function DeliveryForm() {
             >
               City
             </label>
-            {showAnyErrors('city')}
+            <div className="text-red text-xs">{showAnyErrors('city')}</div>
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
@@ -153,6 +152,7 @@ function DeliveryForm() {
             >
               Postal Code
             </label>
+            <div className="text-red text-xs">{showAnyErrors('postcode')}</div>
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
@@ -170,7 +170,7 @@ function DeliveryForm() {
             >
               Delivery Instructions
             </label>
-            {showAnyErrors('deliveryInstructions')}
+
             <input
               className="h-full appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
