@@ -28,9 +28,9 @@ export function deleteImgById(imgId, gardenId, consume = requestor) {
   }
   dispatch(setWaiting())
   return consume(`/gardens/${gardenId}/gallery`, token, 'delete', id)
-    .then((res) => {
+    .then(() => {
       dispatch(clearWaiting())
-      return res.body
+      return null
     })
     .catch((err) => {
       dispatch(showError(err))
