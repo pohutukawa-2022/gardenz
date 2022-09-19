@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { updateOrder } from '../../views/admin/Gardens/orders/ordersHelper'
 
 export function OrderItem({ order }) {
+  const [status, setStatus] = useState(order.status)
+
   async function updateOrderStatus(newOrderStatus) {
     await updateOrder(order.id, newOrderStatus)
+    // await fetchOrdersByGarden(3)
+    setStatus(newOrderStatus)
   }
 
   return (
     <>
       <p>Order #{order.id}</p>
       <p>Order Placed: {order.createdAt}</p>
-      <p>Status: {order.status}</p>
+      <p>Status: {status}</p>
       <p>Product List</p>
 
       {order.produce.map((product) => {
