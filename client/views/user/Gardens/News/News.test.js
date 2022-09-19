@@ -52,26 +52,7 @@ describe('List of news', () => {
     const title = await screen.getByRole('heading', { name: 'test title1' })
     const image = await screen.getAllByRole('img')[0]
     const button = await screen.getAllByLabelText('share button')[0]
-    const today = new Date()
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ]
-    const getYear = today.getFullYear()
-    const getMonth = monthNames[today.getMonth()]
-    const getDay = today.getDate()
-    const createDate = getMonth + ' ' + getDay + ',' + getYear
-    const newDate = await screen.getAllByText(createDate)[0]
+    const newDate = await screen.getAllByText('February 21,2022')[0]
 
     expect(title.textContent).toMatch('test title1')
     expect(image).toHaveAttribute(

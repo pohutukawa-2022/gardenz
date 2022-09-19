@@ -1,9 +1,10 @@
 import React from 'react'
-import { getDate } from '../News/newsHelp'
+import { getDate } from './newsHelper'
 
 export default function News({ news }) {
   const firstName = news.firstName
   const firstLetter = firstName.slice(0, 1)
+  const createdDate = news.createdOn
 
   return (
     <article>
@@ -19,7 +20,7 @@ export default function News({ news }) {
                 {news.title}
               </h2>
               <p className="p-1 text-sm ml-12 -mb-3 text-gray-500 ">
-                {getDate()}
+                {getDate(createdDate)}
               </p>
             </div>
 
