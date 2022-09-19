@@ -12,10 +12,11 @@ export default function Volunteers() {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    ;async () => {
+    const fetchVolunteers = async () => {
       const volunteers = await getVolunteers(id)
       setVolunteers(volunteers)
     }
+    fetchVolunteers()
   }, [user, id])
 
   function addExtraVolunteerHandler(extraVolunteer) {

@@ -10,9 +10,8 @@ afterEach(() => {
 
 describe('getVolunteerNumbers', () => {
   describe('-> GET /events/${id} api call success', () => {
-    it('dispatches waiting actions correctly and returns correct length', () => {
-      function consume(path) {
-        expect(path).toMatch('2')
+    it('dispatches waiting actions correctly and returns correct length of Volunteers', () => {
+      function consume() {
         return Promise.resolve({
           body: {
             volunteers: [{ name: 'bob' }, { name: 'steve' }],
