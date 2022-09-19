@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DeliveryForm from '../../../../../subcomponents/Delivery/DeliveryForm'
-
+import { useNavigate } from 'react-router-dom'
 import 'react-dropdown/style.css'
 
 function Delivery() {
@@ -8,7 +8,7 @@ function Delivery() {
 
   const [selected, setSelected] = useState('checked')
 
-  const [day, setDay] = useState('')
+  const navigate = useNavigate()
 
   function handleCheck(event) {
     setSelected(event.target.value)
@@ -21,9 +21,6 @@ function Delivery() {
     return setForm(false)
   }
 
-  function handleChangeDay(event) {
-    setDay(event.target.value)
-  }
   return (
     <div>
       <div className="rounded-lg border-2 mx-80 my-20 w-full max-w-lg p-16 shadow-md">
@@ -62,18 +59,6 @@ function Delivery() {
               className="font-bold ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Pick up
-            </label>
-          </div>
-          <div className="w-1/2">
-            <label>
-              Select a delivery day
-              <select value={day} onChange={handleChangeDay}>
-                <option value="monday">Monday</option>
-                <option value="tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="thursday">Thursday</option>
-                <option value="friday">Friday</option>
-              </select>
             </label>
           </div>
         </div>

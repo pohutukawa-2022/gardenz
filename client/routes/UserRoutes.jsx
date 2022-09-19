@@ -12,7 +12,7 @@ import News from '../views/user/Gardens/News/News'
 import Shop from '../views/user/Gardens/Shop/Shop'
 import Profile from '../views/user/Profile/Profile'
 import Delivery from '../views/user/Gardens/Shop/Delivery/Delivery'
-
+import Payment from '../views/user/Gardens/Shop/Payment/Payment'
 function UserRoutes() {
   return (
     <IsUser key="user">
@@ -70,6 +70,15 @@ function UserRoutes() {
             <>
               <UserNav />
               <Delivery />
+            </>
+          }
+        />
+        <Route
+          path="/gardens/:id/shop/payment"
+          element={
+            <>
+              <UserNav />
+              <Payment />
             </>
           }
         />
