@@ -3,7 +3,7 @@ import { dispatch, getState } from '../../../store'
 import { clearWaiting, setWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
-export function toggleVolunteerStatus(
+export async function toggleVolunteerStatus(
   eventId,
   willVolunteer,
   setVolunteering,
@@ -17,16 +17,12 @@ export function toggleVolunteerStatus(
     dispatch(setWaiting())
     const routeMethod = willVolunteer ? 'post' : 'delete'
     const userData = { userId: id, eventId }
-
-    return consume('/volunteers', token, routeMethod, userData)
-      .then(() => {
-        setVolunteering(willVolunteer)
-        dispatch(clearWaiting())
-        return null
-      })
-      .catch((error) => {
-        dispatch(showError(error.message))
-        return null
-      })
+    try {
+      await consume('/volunteers', token, routeMethod, userData)
+      setVolunteering(willVolunteer)
+      dispatch(clearWaiting())
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
   }
 }
