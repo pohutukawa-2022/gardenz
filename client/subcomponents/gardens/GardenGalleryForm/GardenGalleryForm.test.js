@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import GardenGalleryForm from './GardenGalleryForm'
 import { BrowserRouter } from 'react-router-dom'
+// import { updateGalleryImage } from '../../../'
 
 describe('gallery update form', () => {
   it('updates correctly on user input', async () => {
@@ -68,34 +69,33 @@ describe('gallery update form', () => {
     expect(ele[0]).toBeInTheDocument()
   })
 
-  // it('Calls updateGalleryImage with event data on click', async () => {
-  //   const handleSubmit = jest.fn()
+  it('Calls updateGalleryImage with event data on click', async () => {
+    const handleSubmit = jest.fn()
 
-  //   render(
-  //     <BrowserRouter>
-  //       <GardenGalleryForm submitEvent={handleSubmit} />
-  //     </BrowserRouter>
-  //   )
+    render(
+      <BrowserRouter>
+        <GardenGalleryForm submitEvent={handleSubmit} />
+      </BrowserRouter>
+    )
 
-  //   const nameInput = screen.getByRole('textbox', { name: 'Photo name' })
-  //   const descriptionInput = screen.getByRole('textbox', {
-  //     name: 'Description',
-  //   })
-  //   const urlInput = screen.getByRole('textbox', { name: 'URL Path' })
-  //   const submitButton = screen.getByRole('button', { name: /submit/i })
+    const nameInput = screen.getByRole('textbox', { name: 'Photo name' })
+    const descriptionInput = screen.getByRole('textbox', {
+      name: 'Description',
+    })
+    const urlInput = screen.getByRole('textbox', { name: 'URL Path' })
+    const submitButton = screen.getByRole('button', { name: /submit/i })
 
-  //   const testName = 'hello'
-  //   const testDesc = 'testing 123'
-  //   const testUrl = 'http://hello.jpg'
-  //   // const handleSubmit = jest.fn()
+    const testName = 'hello'
+    const testDesc = 'testing 123'
+    const testUrl = 'http://hello.jpg'
 
-  //   userEvent.type(nameInput, testName)
-  //   userEvent.type(descriptionInput, testDesc)
-  //   userEvent.type(urlInput, testUrl)
-  //   userEvent.click(submitButton)
+    userEvent.type(nameInput, testName)
+    userEvent.type(descriptionInput, testDesc)
+    userEvent.type(urlInput, testUrl)
+    userEvent.click(submitButton)
 
-  //   await waitFor(() => {
-  //     expect(handleSubmit).toHaveBeenCalled()
-  //   })
-  // })
+    await waitFor(() => {
+      expect(handleSubmit).toHaveBeenCalled()
+    })
+  })
 })
