@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 import { dispatch } from '../../../../store'
-import { showError, clearWaiting } from '../../../../slices/waiting'
+import { showError } from '../../../../slices/waiting'
 import { deleteImgById } from './AdminGalleryHelper'
 
 export default function AdminGalleryImage({ loadImages, image }) {
@@ -17,7 +16,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
 
   async function handleConfirmDelete() {
     try {
-      await deleteImgById(image.id)
+      await deleteImgById(image.id, image.gardenId)
       await loadImages()
     } catch (error) {
       dispatch(showError(error.message))
@@ -29,6 +28,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
       <div className="inline-block relative ">
         <div className="inline-block relative z-0">
           <img
+            
             className="m-3 object-cover h-48 w-48"
             src={image.url}
             alt="rrr"
@@ -86,10 +86,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
           </svg>
         </div>
         {isClicked && (
-          <div
-            // ref={refOne}
-            className="ease-in pt-16 align-middle text-center inline-block bg-slate-200 opacity-90 absolute left-0 z-1  w-full h-full"
-          >
+          <div className="ease-in pt-16 align-middle text-center inline-block bg-slate-200 opacity-90 absolute left-0 z-1  w-full h-full">
             <p className="text-black font-medium opacity-100">Delete?</p>
             <div className="flex justify-center mt-1 ">
               <button

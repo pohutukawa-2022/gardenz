@@ -22,6 +22,7 @@
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "postinstall": "run-s db:migrate db:seed",
     "test": "jest --selectProjects client server",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "test:e2e": "jest --selectProjects e2e --runInBand",
     "test:watch": "npm run test -- --watchAll",
     "lint": "eslint --ext .js,.jsx .",
@@ -120,6 +121,7 @@
     "react-leaflet": "^3.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.1",
     "superagent": "^6.1.0",
     "yup": "^0.32.9"
   },

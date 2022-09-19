@@ -9,7 +9,7 @@ export function getGalleryById(id, consume = requestor) {
   return consume(`/gardens/${id}/gallery`)
     .then((res) => {
       dispatch(clearWaiting())
-      return res.body //removed .gardens
+      return res.body
     })
     .catch((err) => {
       dispatch(showError(err))
@@ -19,18 +19,17 @@ export function getGalleryById(id, consume = requestor) {
     })
 }
 
-export function deleteImgById(imgId, consume = requestor) {
+export function deleteImgById(imgId, gardenId, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
-  const test = {
+  const id = {
     imgId,
   }
-  console.log('from helper', test)
   dispatch(setWaiting())
-  return consume(`/gardens/1/gallery`, token, 'delete', test)
+  return consume(`/gardens/${gardenId}/gallery`, token, 'delete', id)
     .then((res) => {
       dispatch(clearWaiting())
-      return res.body //removed .gardens
+      return res.body
     })
     .catch((err) => {
       dispatch(showError(err))
