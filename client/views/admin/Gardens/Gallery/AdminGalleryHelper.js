@@ -9,7 +9,6 @@ export function getGalleryById(id, consume = requestor) {
   return consume(`/gardens/${id}/gallery`)
     .then((res) => {
       dispatch(clearWaiting())
-      console.log(typeof res.body)
       return res.body
     })
     .catch((err) => {

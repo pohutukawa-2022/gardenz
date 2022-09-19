@@ -1,10 +1,9 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { screen } from '@testing-library/dom'
 import { renderWithRedux } from '../../../../test-utils'
-import { userEvent } from '@storybook/testing-library'
+import userEvent from '@testing-library/user-event'
 
 import AdminGalleryImage from './AdminGalleryImage'
-import AdminGalleryHelper, { deleteImgById } from './AdminGalleryHelper'
 
 jest.mock('./AdminGalleryHelper')
 
@@ -13,10 +12,25 @@ jest.mock('./AdminGalleryHelper')
 // })
 
 describe('click on delete button', () => {
-  it('click trash button', async () => {
-    const user = userEvent.setup()
+  // it('click trash button', async () => {
+  //   const mockCallBack = jest.fn()
+  //   const mockImage = {
+  //     id: 1,
+  //     name: 'Test Picture 1',
+  //     url: 'https://www.google.com/',
+  //     garden_id: 2,
+  //   }
 
-    const mockCallBack = jest.fn()
+  //   renderWithRedux(<AdminGalleryImage image={mockImage} />)
+  //   return screen.findByTestId('button').then((button) => {
+  //     button.setAttribute('onClick', { mockCallBack })
+  //     console.log('Button found: ' + button)
+  //     userEvent.click(button)
+  //     expect(mockCallBack.mock.calls).toHaveLength(1)
+  //   })
+  // })
+
+  it('does not displays deletion confirmation dialog without clicked trash button', async () => {
     const mockImage = {
       id: 1,
       name: 'Test Picture 1',
@@ -26,24 +40,26 @@ describe('click on delete button', () => {
 
     renderWithRedux(<AdminGalleryImage image={mockImage} />)
 
-    //const button = shallow((<Button onClick={mockCallBack}>Ok!</Button>));
-    return screen.findByTestId('button').then((button) => {
-      button.setAttribute('onclick', 'mockCallBack')
-      user.click(button)
-      expect(mockCallBack.mock.calls).toHaveLength(1)
-    })
+    const confirmButtons = await screen.queryByRole('button')
+    console.log(confirmButtons)
+    expect(confirmButtons).toBeNull()
   })
 
-  // it('displays deletion confirmation dialog when clicked trash button', async () => {
-  //   // getAllGardens.mockImplementation(() => {
-  //   //   return Promise.resolve([])
-  //   // })
+  it('displays deletion confirmation dialog when clicked trash button', async () => {
+    const mockImage = {
+      id: 1,
+      name: 'Test Picture 1',
+      url: 'https://www.google.com/',
+      garden_id: 2,
+    }
 
-  //   renderWithRedux(<AdminGalleryImage />)
+    renderWithRedux(<AdminGalleryImage image={mockImage} />)
 
-  //   const list = await screen.findByRole('button')
-  //   expect(list).toBeEmptyDOMElement()
-  // })
+    const trashButtons = await screen.findByTestId('button')
+    userEvent.click(trashButtons)
+    const confirmationButtons = await screen.getAllByRole('button')
+    expect(confirmationButtons).toHaveLength(2)
+  })
 
   // it('function deleteImgById called when click on "Yes"', () => {
   //   getAllGardens.mockImplementation(() => {
