@@ -5,7 +5,7 @@ import {
 } from '../../../../localStorage-utils.js'
 
 export default function ProductList({ product }) {
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(0)
   const [stock, setStock] = useState(product.stock)
 
   function submitHandler() {
@@ -17,18 +17,20 @@ export default function ProductList({ product }) {
       quantity: qty,
     }
 
-    let cart = []
-    if (getLocalStorage('cart') === null) {
-      setLocalStorage('cart', [])
-    } else {
-      cart = JSON.parse(getLocalStorage('cart'))
-    }
-    cart.push(order)
-    setLocalStorage('cart', JSON.stringify(cart))
-    JSON.parse(getLocalStorage('cart'))
-
+    const cart = JSON.parse(getLocalStorage('cart')) || []
+    const newCart = [
+      ...cart.filter((obj) => obj.productId !== order.productId),
+      {
+        ...order,
+        quantity: cart
+          .filter((obj) => obj.productId === order.productId)
+          .map((obj) => obj.quantity)
+          .reduce((sum, value) => sum + value, order.quantity),
+      },
+    ]
+    setLocalStorage('cart', JSON.stringify(newCart))
+    setQty(0)
   }
-
 
   function qtyHandler(evt) {
     const name = evt.target.name
