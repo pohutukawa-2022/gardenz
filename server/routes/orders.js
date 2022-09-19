@@ -32,6 +32,26 @@ router.get('/', (req, res) => {
     })
 })
 
+//PATCH /api/v1/orders/:id
+
+router.patch('/:id', (req, res) => {
+  const newOrderStatus = req.body.status
+  const id = req.params.id
+  db.updateOrderStatus(id, newOrderStatus)
+    .then((order) => {
+      res.json(order)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve produce',
+        },
+      })
+    })
+})
+
 // POST /api/v1/orders
 
 router.post('/', (req, res) => {

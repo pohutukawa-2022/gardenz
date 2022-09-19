@@ -5,6 +5,11 @@ module.exports = {
   listOrders,
   addOrder,
   getOrdersByGardenId,
+  updateOrderStatus,
+}
+
+async function updateOrderStatus(orderId, newOrderStatus, db = connection) {
+  return db('orders').where('id', orderId).update({ status: newOrderStatus })
 }
 
 async function getOrdersByGardenId(gardenId, db = connection) {
