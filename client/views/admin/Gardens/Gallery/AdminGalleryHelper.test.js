@@ -9,7 +9,7 @@ afterEach(() => {
   return jest.resetAllMocks()
 })
 
-describe('getAllGardens', () => {
+describe('get images by id of the gallery', () => {
   describe('-> GET /gardens/ api call success', () => {
     it('dispatches waiting actions correctly', () => {
       function consume() {
@@ -21,64 +21,49 @@ describe('getAllGardens', () => {
         return null
       })
     })
-    it('returns correct gardens array', () => {
+
+    it('returns correct images array', () => {
       function consume() {
         return Promise.resolve({
-          body: {
-            gardens: [
-              {
-                id: 0,
-                name: 'Test Garden',
-                address: '123 Sesame St',
-                description: 'A test run garden for testing out gardening.',
-                lat: 123,
-                lon: 321,
-                url: 'https://www.testgarden.com/',
-              },
-              {
-                id: 1,
-                name: 'Test Garden 2',
-                address: '234 Sesame St',
-                description:
-                  'A second test run garden for testing out gardening.',
-                lat: 234,
-                lon: 432,
-                url: 'https://www.testgarden2.com/',
-              },
-            ],
-          },
+          body: [
+            {
+              id: 1,
+              name: 'Test Picture 1',
+              url: 'https://www.google.com/',
+              garden_id: 2,
+            },
+            {
+              id: 2,
+              name: 'Test Picture 2',
+              url: 'https://www.ggle.com/',
+              garden_id: 2,
+            },
+          ],
         })
       }
-      return getAllGardens(consume).then((gardens) => {
-        expect(gardens[0].id).toBe(0)
-        expect(gardens[0].name).toBe('Test Garden')
-        expect(gardens[0].address).toBe('123 Sesame St')
-        expect(gardens[0].description).toBe(
-          'A test run garden for testing out gardening.'
-        )
-        expect(gardens[0].lat).toBe(123)
-        expect(gardens[0].lon).toBe(321)
-        expect(gardens[0].url).toBe('https://www.testgarden.com/')
-        expect(gardens[1].id).toBe(1)
-        expect(gardens[1].name).toBe('Test Garden 2')
-        expect(gardens[1].address).toBe('234 Sesame St')
-        expect(gardens[1].description).toBe(
-          'A second test run garden for testing out gardening.'
-        )
-        expect(gardens[1].lat).toBe(234)
-        expect(gardens[1].lon).toBe(432)
-        expect(gardens[1].url).toBe('https://www.testgarden2.com/')
-        expect(gardens).toHaveLength(2)
+      return getGalleryById(2, consume).then((images) => {
+        expect(images[0].id).toBe(1)
+        expect(images[0].name).toBe('Test Picture 1')
+        expect(images[0].url).toBe('https://www.google.com/')
+        expect(images[0].garden_id).toBe(2)
+
+        expect(images[1].id).toBe(2)
+        expect(images[1].name).toBe('Test Picture 2')
+        expect(images[1].url).toBe('https://www.ggle.com/')
+        expect(images[1].garden_id).toBe(2)
+
+        expect(images).toHaveLength(2)
         return null
       })
     })
   })
+
   describe('-> on GET /gardens api call rejection', () => {
     it('dispatches error correctly', () => {
       function consume() {
         return Promise.reject('mock error')
       }
-      return getAllGardens(consume).then(() => {
+      return getGalleryById(2, consume).then(() => {
         expect(dispatch).toHaveBeenCalledWith(showError('mock error'))
         return null
       })

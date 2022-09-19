@@ -59,6 +59,7 @@ describe('getAllGardens', () => {
         expect(gardens[0].lat).toBe(123)
         expect(gardens[0].lon).toBe(321)
         expect(gardens[0].url).toBe('https://www.testgarden.com/')
+        
         expect(gardens[1].id).toBe(1)
         expect(gardens[1].name).toBe('Test Garden 2')
         expect(gardens[1].address).toBe('234 Sesame St')
