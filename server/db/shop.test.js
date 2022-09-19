@@ -20,9 +20,14 @@ afterAll(() => {
 
 describe('productsForGarden', () => {
   it('returns the products for a certain garden', () => {
-    return db.productsForGarden(1, testDb).then((shopData) => {
+    return db.getProductsByGarden(1, testDb).then((shopData) => {
       expect(shopData).toHaveLength(1)
-      expect(shopData[0].stock).toBe(175)
+      expect(shopData[0].stock).toBe(5)
+      expect(shopData[0].name).toBe("large veggie box")
+      expect(shopData[0].description).toBe("a large box filled with fresh seasonal produce grown at your local garden")
+      expect(shopData[0].price).toBe(29)
+      expect(shopData[0].image).toBe("www.linktowhereeverthisimageis.com")
+      expect(shopData[0].productId).toBe(4)
       return null
     })
   })
