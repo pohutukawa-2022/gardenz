@@ -28,7 +28,6 @@ export default function AdminGalleryImage({ loadImages, image }) {
       <div className="inline-block relative ">
         <div className="inline-block relative z-0">
           <img
-            
             className="m-3 object-cover h-48 w-48"
             src={image.url}
             alt="rrr"
@@ -41,6 +40,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
             strokeWidth={1.5}
             stroke="white"
             className="w-7 h-7 absolute top-4 right-4"
+            data-testid="button"
             onClick={handleClickDelete}
           >
             <path

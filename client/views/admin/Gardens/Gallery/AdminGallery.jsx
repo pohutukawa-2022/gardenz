@@ -28,7 +28,7 @@ function AdminGallery() {
   return (
     <>
       <div className="flex m-5">
-        <h1 className="text-2xl leading-tight font-serif ">We are here!!!!</h1>
+        <h1 className="text-2xl leading-tight font-serif ">Edit Gallery</h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
