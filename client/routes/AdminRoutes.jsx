@@ -25,9 +25,9 @@ function AdminRoutes() {
         <Route path="/" element={<Menu />} />
         <Route path="/admin/gardens" element={<AdminGardens />} />
         <Route path="/admin/gardens/add" element={<AddGarden />} />
-        <Route path="/admin/gardens/:id/menu" element={<GardenMenu />} />
+        <Route path="/admin/gardens/:gardenId/menu" element={<GardenMenu />} />
         <Route
-          path="/admin/gardens/:id/news/add"
+          path="/admin/gardens/:gardenId/news/add"
           element={
             <>
               <AdminNav />
@@ -36,7 +36,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/gardens/:id/events"
+          path="/admin/gardens/:gardenId/events"
           element={
             <>
               <AdminNav />
@@ -63,7 +63,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/events/:id/edit"
+          path="/admin/gardens/:gardenId/events/:eventId/edit"
           element={
             <>
               <AdminNav />
@@ -72,7 +72,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/events/:id/volunteers"
+          path="/admin/events/:gardenId/volunteers"
           element={
             <>
               <AdminNav />
@@ -90,7 +90,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/gardens/:id/gallery"
+          path="/admin/gardens/:gardenId/gallery"
           element={
             <>
               <AdminNav />
@@ -99,7 +99,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/gardens/:id/news"
+          path="/admin/gardens/:gardenId/news"
           element={
             <>
               <AdminNav />
@@ -108,7 +108,7 @@ function AdminRoutes() {
           }
         />
         <Route
-          path="/admin/gardens/:id/orders"
+          path="/admin/gardens/:gardenId/orders"
           element={
             <>
               <AdminNav />

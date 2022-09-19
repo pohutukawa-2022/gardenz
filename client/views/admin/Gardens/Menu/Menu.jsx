@@ -2,13 +2,13 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 function Menu() {
-  const { id } = useParams()
+  const { gardenId } = useParams()
   return (
     <section className="container flex mx-auto">
       <ul className="w-full grid grid-cols-2 gap-4 mt-20">
         <li className="grid">
           <Link
-            to={`/admin/gardens/${id}/events`}
+            to={`/admin/gardens/${gardenId}/events`}
             className="p-6 text-center rounded-md border-2 border-blue hover:text-white transition ease-in-out hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
@@ -17,7 +17,7 @@ function Menu() {
         </li>{' '}
         <li className="grid">
           <Link
-            to={`/admin/gardens/${id}/news`}
+            to={`/admin/gardens/${gardenId}/news`}
             className="p-6 text-center rounded-md border-2 border-blue hover:text-white transition ease-in-out hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
@@ -26,7 +26,7 @@ function Menu() {
         </li>{' '}
         <li className="grid">
           <Link
-            to={`/admin/gardens/${id}/gallery`}
+            to={`/admin/gardens/${gardenId}/gallery`}
             className="p-6 text-center rounded-md border-2 border-blue hover:text-white transition ease-in-out hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>
@@ -35,7 +35,7 @@ function Menu() {
         </li>{' '}
         <li className="grid">
           <Link
-            to={`/admin/gardens/${id}/orders`}
+            to={`/admin/gardens/${gardenId}/orders`}
             className="p-6 text-center rounded-md border-2 border-blue hover:text-white transition ease-in-out hover:-translate-y-1 hover:scale-100 hover:bg-blue duration-300"
           >
             <i className="fa-solid fa-seedling m-5 text-8xl text-orange"></i>

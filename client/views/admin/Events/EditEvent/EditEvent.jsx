@@ -9,22 +9,22 @@ import { getEvent } from '../../Events/Event/eventHelper'
 export default function EditEvent() {
   const [event, setEvent] = useState(null)
   const navigate = useNavigate()
-  const { id } = useParams()
+  const { eventId } = useParams()
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
-    (async () => {
-      const eventData = await getEvent(id, user)
+    ;(async () => {
+      const eventData = await getEvent(eventId, user)
       setEvent(eventData)
     })()
   }, [])
 
   function submitEvent(form) {
-    updateEvent(event.gardenId, { id, ...form }, navigate)
+    updateEvent(event.gardenId, { eventId, ...form }, navigate)
   }
 
   function cancelSubmit() {
-    cancelEvent(id, navigate(-1))
+    cancelEvent(eventId, navigate(-1))
   }
 
   return event ? (

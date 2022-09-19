@@ -6,8 +6,8 @@ import useGarden from '../../../../../hooks/useGarden'
 import BarGraph from '../../../../../subcomponents/dataVis/BarGraph'
 
 export default function AdminEvent() {
-  const { id } = useParams()
-  const garden = useGarden(id)
+  const { gardenId } = useParams()
+  const garden = useGarden(gardenId)
   const { address, events } = garden
 
   return (
