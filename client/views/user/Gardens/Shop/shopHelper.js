@@ -32,7 +32,6 @@ export async function getProducts() {
   })
 }
 
-//Note: For future use to pull from database
 
 // export function getShopProducts(id, consume = requestor) {
 //   dispatch(setWaiting())
