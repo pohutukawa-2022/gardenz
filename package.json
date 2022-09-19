@@ -64,6 +64,9 @@
     }
   ],
   "jest": {
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/client/css/__mocks__/styleMock.js"
+    },
     "verbose": true,
     "projects": [
       {
@@ -114,6 +117,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.5",
     "knex": "^1.0.3",
+    "lightgallery": "^2.6.1",
     "limiter": "^2.1.0",
     "moment": "^2.29.1",
     "pg": "^8.6.0",
