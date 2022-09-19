@@ -5,6 +5,7 @@ const log = require('../logger')
 const db = require('../db/gardens')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
+const { async } = require('regenerator-runtime')
 
 const router = express.Router()
 
@@ -78,3 +79,6 @@ router.get('/:id', async (req, res) => {
     })
   }
 })
+
+
+router.post('/:id/signup', async (req, res) => {})
