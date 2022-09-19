@@ -14,7 +14,7 @@ import AdminEvents from '../views/admin/Gardens/Events/Index/Index'
 import AdminGardens from '../views/admin/Gardens/Index/Index'
 import GardenMenu from '../views/admin/Gardens/Menu/Menu'
 import Menu from '../views/admin/Menu/Menu'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import Profile from '../views/user/Profile/Profile'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
 import EditGallery from '../views/admin/Gardens/Gallery/EditGallery'
@@ -102,12 +102,12 @@ function AdminRoutes() {
             <>
               <AdminNav />
               <p>gallery placeholder</p>
-              <EditGallery />
+              <Link to={`/admin/gardens/1/gallery/1`}>Test</Link>
             </>
           }
         />
         <Route
-          path="/admin/gardens/:id/photos/:imageid/edit"
+          path="/admin/gardens/:id/gallery/:imageId"
           element={
             <>
               <AdminNav />

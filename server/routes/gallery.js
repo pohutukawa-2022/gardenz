@@ -21,6 +21,23 @@ router.get('/:gardenid', (req, res) => {
     })
 })
 
+router.get('/:gardenId/:id', (req, res) => {
+  const gardenId = req.params.gardenId
+  const imageId = req.params.id
+  db.getImage(gardenId, imageId)
+    .then((photo) => {
+      res.json(photo)
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve gallery image',
+        },
+      })
+    })
+})
+
 // POST /api/v1/gallery/1
 router.post('/:gardenId', async (req, res) => {
   const image = {

@@ -3,18 +3,15 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import GardenGalleryForm from './GardenGalleryForm'
 import { BrowserRouter } from 'react-router-dom'
-// import { updateGalleryImage } from '../../../'
+import { updateGalleryImage } from '../../../views/admin/Gardens/Gallery/EditGalleryHelper'
+
+jest.mock('../../../views/admin/Gardens/Gallery/EditGalleryHelper')
 
 describe('gallery update form', () => {
   it('updates correctly on user input', async () => {
-    const emptyForm = {
-      name: '',
-      description: '',
-      url: '',
-    }
     render(
       <BrowserRouter>
-        <GardenGalleryForm formData={emptyForm} />
+        <GardenGalleryForm />
       </BrowserRouter>
     )
 
@@ -69,12 +66,10 @@ describe('gallery update form', () => {
     expect(ele[0]).toBeInTheDocument()
   })
 
-  it('Calls updateGalleryImage with event data on click', async () => {
-    const handleSubmit = jest.fn()
-
+  it('Calls updateGalleryImage with event data on click with valid inputs', async () => {
     render(
       <BrowserRouter>
-        <GardenGalleryForm submitEvent={handleSubmit} />
+        <GardenGalleryForm submitEvent={updateGalleryImage} />
       </BrowserRouter>
     )
 
@@ -87,7 +82,7 @@ describe('gallery update form', () => {
 
     const testName = 'hello'
     const testDesc = 'testing 123'
-    const testUrl = 'http://hello.jpg'
+    const testUrl = 'https://www.json.com/test.jpg'
 
     userEvent.type(nameInput, testName)
     userEvent.type(descriptionInput, testDesc)
@@ -95,7 +90,7 @@ describe('gallery update form', () => {
     userEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(handleSubmit).toHaveBeenCalled()
+      expect(updateGalleryImage).toHaveBeenCalled()
     })
   })
 })
