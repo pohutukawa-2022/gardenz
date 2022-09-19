@@ -1,25 +1,7 @@
 import React from 'react'
+import { getDate } from '../News/newsHelp'
 
 export default function News({ news }) {
-  const today = new Date()
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
-  const getYear = today.getFullYear()
-  const getMonth = monthNames[today.getMonth()]
-  const getDay = today.getDate()
-  const createDate = getMonth + ' ' + getDay + ',' + getYear
   const firstName = news.firstName
   const firstLetter = firstName.slice(0, 1)
 
@@ -36,7 +18,9 @@ export default function News({ news }) {
               <h2 className="font-sans p-1 text-lg ml-12 -mb-3">
                 {news.title}
               </h2>
-              <p className="p-1 text-sm ml-12 text-gray-500 ">{`${createDate}`}</p>
+              <p className="p-1 text-sm ml-12 -mb-3 text-gray-500 ">
+                {getDate()}
+              </p>
             </div>
 
             <div>
@@ -58,16 +42,16 @@ export default function News({ news }) {
             />
           </div>
 
-          <p className="p-1 mb-6 mt-2 text-sm text-gray-500 line-clamp-3">{news.content}</p>
+          <p className="p-1 mb-6 mt-2 text-sm text-gray-500 line-clamp-3">
+            {news.content}
+          </p>
 
           <button
             className="text-gray-500 text-xl background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 hover:text-red"
             type="button"
             aria-label="like button"
           >
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-              <i className="fas fa-heart"></i>
-            </a>
+            <i className="fas fa-heart"></i>
           </button>
 
           <button

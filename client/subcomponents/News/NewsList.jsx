@@ -14,7 +14,7 @@ export default function NewsList({ news }) {
       </div>
 
       <ul
-        className="lg:pl-20 md:justify-center"
+        className="lg:pl-20 md:justify-center mb-36"
         aria-label="container positioning"
       >
         {news.map((news) => (
