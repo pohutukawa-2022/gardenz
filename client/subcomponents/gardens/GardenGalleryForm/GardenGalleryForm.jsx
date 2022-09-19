@@ -55,7 +55,7 @@ export default function GardenGalleryForm(props) {
               type="text"
               placeholder="photo name"
               onChange={formik.handleChange}
-              value={formik.values.name}
+              value={formik.values.name || ''}
             />
           </div>
 
@@ -74,7 +74,7 @@ export default function GardenGalleryForm(props) {
               type="text"
               placeholder="photo description"
               onChange={formik.handleChange}
-              value={formik.values.description}
+              value={formik.values.description || ''}
             />
           </div>
 
@@ -95,15 +95,18 @@ export default function GardenGalleryForm(props) {
               type="text"
               placeholder="photo url path"
               onChange={formik.handleChange}
-              value={formik.values.url}
+              value={formik.values.url || ''}
             />
           </div>
 
-          <div id="button" className="flex flex-row  my-10">
+          <div className="flex flex-row  my-10">
             <button
               className="w-full py-4 bg-orange
                 rounded-lg text-white mx-2"
               type="submit"
+              data-testid="button"
+              label="submit-button"
+              name="submit"
             >
               Submit
             </button>

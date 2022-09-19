@@ -24,6 +24,3 @@ export default function EditGallery() {
     />
   )
 }
-
-// in the db we have
-// id, name, url, garden_id, and description
