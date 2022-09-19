@@ -4,7 +4,7 @@ import {
   getLocalStorage,
 } from '../../../../localStorage-utils.js'
 
-export default function ProductList({ product }) {
+export default function ShopItem({ product }) {
   const [qty, setQty] = useState(0)
   const [stock, setStock] = useState(product.stock)
 
@@ -38,7 +38,7 @@ export default function ProductList({ product }) {
     if (name === 'increment' && qty < stock) {
       setQty(qty + 1)
     }
-    if (name === 'decrement' && qty > 1) {
+    if (name === 'decrement' && qty > 0) {
       setQty(qty - 1)
     }
   }

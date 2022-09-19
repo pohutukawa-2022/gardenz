@@ -4,17 +4,19 @@ import { getProducts } from './shopHelper.js'
 
 import useGarden from '../../../../hooks/useGarden'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import ProductList from './ProductList'
+import ShopItem from './ShopItem'
 
 export default function Shop() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
   const [products, setProducts] = useState([])
 
-  useEffect(async () => {
-    const product = await getProducts()
-    setProducts(product)
-
+  useEffect(() => {
+    const getProduct = async () => {
+      const product = await getProducts()
+      setProducts(product)
+    }
+    getProduct()
   }, [])
 
 
@@ -24,7 +26,7 @@ export default function Shop() {
       <GardenHeader name={name} url={imageHeaderUrl} />
       <div className="flex justify-start">
         {products.map((product) => {
-          return <ProductList key={product.id} product={product} />
+          return <ShopItem key={product.id} product={product} />
         })}
       </div>
     </>
