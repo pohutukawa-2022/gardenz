@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DeliveryForm from '../../../../../subcomponents/Delivery/DeliveryForm'
 
-import 'react-dropdown/style.css'
+// import 'react-dropdown/style.css'
 
 function Delivery() {
   const [form, setForm] = useState(true)
@@ -9,6 +9,21 @@ function Delivery() {
   const [selected, setSelected] = useState('checked')
 
   const [day, setDay] = useState('')
+
+  //setting localStorage
+  // const { cart, setCart } = useState([])
+  // const dataRecieved = {
+  //   productId: 1,
+  //   name: 'product_name',
+  //   price: 'priceofProduct',
+  //   quantity: 'amount_bought',
+  // }
+
+  // localStorage.setItem('cart', JSON.stringify(dataRecieved))
+  // useEffect(() => {
+  //   const recievedItems = localStorage.getItem('cart')
+  //   setCart(JSON.parse(recievedItems))
+  // }, [])
 
   function handleCheck(event) {
     setSelected(event.target.value)
