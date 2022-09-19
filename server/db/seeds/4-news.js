@@ -1,4 +1,3 @@
-
 exports.seed = function (knex) {
   const todayDate = new Date().toLocaleDateString('en-NZ')
   const diffDate = (days) => {
@@ -28,7 +27,8 @@ exports.seed = function (knex) {
           author: 1,
           title: 'Where are my CABBAGES',
           created_on: diffDate(1),
-          content: 'We all just want cabbage soup in the end, right?',
+          content:
+            'We all just want cabbage soup in the end, right?, Cabbage is low in saturated fat and cholesterol, eat more cabbage',
         },
       ])
     })

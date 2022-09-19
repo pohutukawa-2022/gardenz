@@ -26,7 +26,7 @@ export default function News({ news }) {
   return (
     <article>
       <div>
-        <div className="box-border relative h-432 w-343 max-w-sm  mt-6 border-3 rounded-3xl drop-shadow-md p-3  bg-white  border border-black-200 ">
+        <div className="box-border relative h-432 w-343 max-w-sm  mt-6 border-3 rounded-3xl drop-shadow-md p-3  bg-white  border border-black-200">
           <div className="flex flex">
             <div className="text-white fixed top-4 text-center text-2xl rounded-full box-border border border-orange bg-orange border-2 w-10 h-10 r-3">
               {typeof firstLetter === 'string' ? firstLetter : 'A'}
@@ -58,7 +58,7 @@ export default function News({ news }) {
             />
           </div>
 
-          <p className="p-1 mb-6 mt-2 text-sm text-gray-500">{news.content}</p>
+          <p className="p-1 mb-6 mt-2 text-sm text-gray-500 line-clamp-3">{news.content}</p>
 
           <button
             className="text-gray-500 text-xl background-transparent font-bold uppercase px-1 pt-3 text-sm outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 hover:text-red"

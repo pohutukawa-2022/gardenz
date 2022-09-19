@@ -36,7 +36,7 @@
       "bundle.js"
     ],
     "rules": {
-        "no-console": "error"
+      "no-console": "error"
     }
   },
   "babel": {
@@ -97,6 +97,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.5.0",
     "@reduxjs/toolkit": "^1.8.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@visx/axis": "^2.1.1",
     "@visx/gradient": "^2.1.0",
     "@visx/group": "^2.1.0",
