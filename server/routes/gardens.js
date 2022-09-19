@@ -3,6 +3,7 @@ const jwtAuthz = require('express-jwt-authz')
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/gardens')
+const ordersDb = require('../db/orders')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
 
@@ -79,23 +80,22 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/:id/orders' async (req, res) => {
-  const GardenId = Number(req.params.id)
+// GET route for get order by garden ID
+
+router.get('/:id/orders', async (req, res) => {
+  const gardenId = Number(req.params.id)
 
   try {
-
-const 
-
-
+    await ordersDb.getOrdersByGardenId(gardenId).then((orders) => {
+      res.json(orders)
+      return null
+    })
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve orders',
+      },
+    })
   }
-
-
-
-
-
-
-
-
-
 })
-

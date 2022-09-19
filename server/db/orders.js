@@ -4,6 +4,25 @@ const { formatOrderList } = require('./formatter')
 module.exports = {
   listOrders,
   addOrder,
+  getOrdersByGardenId,
+}
+
+async function getOrdersByGardenId(gardenId, db = connection) {
+  console.log(gardenId)
+  return db('orders_produce')
+    .join('orders', 'orders_produce.order_id', 'orders.id')
+    .join('produce', 'orders_produce.produce_id', 'produce.id')
+    .where('orders.gardens_id', gardenId)
+    .select(
+      'produce.id as produceId',
+      'orders.id as orderId',
+      'quantity',
+      'created_at as createdAt',
+      'status',
+      'name',
+      'orders.gardens_id as gardenId'
+    )
+    .then(formatOrderList)
 }
 
 async function listOrders(db = connection) {
