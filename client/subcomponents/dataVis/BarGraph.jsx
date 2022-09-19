@@ -12,7 +12,7 @@ const verticalMargin = 120
 export default function BarGraph({ events }) {
   // bounds
   const clickAlert = true
-  const width = 400
+  const width = 600
   const height = 400
   const xMax = width
   const yMax = height - verticalMargin
@@ -20,7 +20,7 @@ export default function BarGraph({ events }) {
   const getSortedDates = (data) => data.sort()
   const getVolunteersNeeded = (d) => Number(d.totalVolunteers)
   const data = events
-  const margin = { top: 61, right: 0, bottom: 40, left: 0 }
+  const margin = { top: 61, right: 0, bottom: 40, left: 80 }
 
   // a parsed date is passed into this and we find the corresponding date and use that in the graph
   const formatDate = (d) => {
@@ -95,7 +95,7 @@ export default function BarGraph({ events }) {
                 y={barY}
                 width={barWidth}
                 height={barHeight}
-                fill="rgba(23, 233, 217, .5)"
+                fill="rgba(65, 166, 124, .5)"
                 onClick={() => {
                   if (clickAlert)
                     alert(
@@ -109,6 +109,10 @@ export default function BarGraph({ events }) {
           <AxisBottom
             top={yMax}
             left={margin.left}
+            label="Date"
+            labelClassName="pt-8 text-lg"
+            strokeWidth="3"
+            stroke="gray"
             scale={dateScale}
             tickFormat={formatDate}
             tickLabelProps={() => ({
@@ -118,8 +122,13 @@ export default function BarGraph({ events }) {
           />
           <AxisLeft
             scale={volunteerScale}
+            label="Volunteers"
+            labelClassName="text-lg ml-2"
+            stroke="gray"
+            strokeWidth="3"
+            hideZero="true"
             // top={margin.top}
-            left={margin.left + 20} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
+            left={margin.left} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
           />
         </Group>
       </svg>
