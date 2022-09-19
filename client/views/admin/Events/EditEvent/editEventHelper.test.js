@@ -10,7 +10,7 @@ afterEach(() => {
 })
 
 describe('getEvent', () => {
-  it('returns event, dispatches correctly on GET /events/:id api call success', () => {
+  it('returns event, dispatches correctly on GET /events/:id api call success', async () => {
     function consume(url) {
       expect(url).toBe('/events/1')
       return Promise.resolve({
@@ -22,27 +22,22 @@ describe('getEvent', () => {
         },
       })
     }
-    return getEvent(1, consume).then((event) => {
-      expect(event.title).toBe('test event')
-      expect(event.volunteersNeeded).toBe(14)
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      return null
-    })
+    const event = await getEvent(1, consume)
+    expect(event.title).toBe('test event')
+    expect(event.volunteersNeeded).toBe(14)
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
   })
-
-  it('dispatches error on GET /events/:id api call rejection', () => {
+  it('dispatches error on GET /events/:id api call rejection', async () => {
     function consume() {
       return Promise.reject(new Error('mock error'))
     }
-    return getEvent(999, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-      return null
-    })
+    await getEvent(999, consume)
+    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
   })
 })
 
 describe('updateEvent', () => {
-  it('dispatches, redirects correctly on PATCH /events/:id api call success', () => {
+  it('dispatches, redirects correctly on PATCH /events/:id api call success', async () => {
     getState.mockImplementation(() => ({
       user: { gardenId: 1, token: 'dummytoken' },
     }))
@@ -62,22 +57,17 @@ describe('updateEvent', () => {
       expect(eventToUpdate).not.toBe(event)
       return Promise.resolve()
     }
-    return updateEvent('1', event, navigateTo, consume).then(() => {
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
-      return null
-    })
+    await updateEvent('1', event, navigateTo, consume)
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+    expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
   })
-
-  it('dispatches error on PATCH /events/id api call rejection', () => {
+  it('dispatches error on PATCH /events/id api call rejection', async () => {
     const navigateTo = jest.fn()
     function consume() {
       return Promise.reject(new Error('mock error'))
     }
-    return updateEvent(999, {}, navigateTo, consume).then(() => {
-      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-      expect(navigateTo).not.toHaveBeenCalled()
-      return null
-    })
+    await updateEvent(999, {}, navigateTo, consume)
+    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
+    expect(navigateTo).not.toHaveBeenCalled()
   })
 })
