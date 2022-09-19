@@ -15,6 +15,11 @@ export default function Cart() {
 
   return (
     <>
+      <div>
+        <h1>My Basket</h1>
+        <p>Delivery or pick up available Monday to Friday</p>
+        <button>Checkout</button>
+      </div>
       {/* <GardenHeader name={name} url={imageHeaderUrl} /> */}
       <CartItem cart={cart} />
     </>
