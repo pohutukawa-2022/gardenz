@@ -6,12 +6,10 @@ import useGarden from '../../../../hooks/useGarden'
 
 import LightGallery from 'lightgallery/react'
 
-// import styles
 import 'lightgallery/css/lightgallery.css'
 import 'lightgallery/css/lg-zoom.css'
 import 'lightgallery/css/lg-thumbnail.css'
 
-// import plugins if you need
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 
@@ -50,7 +48,6 @@ function Gallery() {
             <a
               key={image}
               href={image}
-              // style={{ minWidth: '360px' }}
               className="inline-block w-1/5 m-2 min-w-[360px]"
             >
               <img key={image} alt="garden" src={image} />
