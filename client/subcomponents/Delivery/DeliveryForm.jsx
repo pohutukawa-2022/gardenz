@@ -16,11 +16,16 @@ const deliverySchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  postcode: Yup.number()
+  postcode: Yup.string()
     .required('Required')
-    .min(4, 'This must be at least 4 numbers long')
-    .max(6, 'Sorry, this must be under 6 numbers long'),
+    .min(4, 'This must be at least 4 characters long')
+    .max(6, 'Sorry, this must be under 6 characters long'),
 })
+
+function test() {
+  console.log('hit submit')
+  return null
+}
 
 function DeliveryForm() {
   const [day, setDay] = useState('')
@@ -47,11 +52,16 @@ function DeliveryForm() {
       city: '',
       postcode: '',
       deliveryInstructions: '',
-      deliveryDay: day,
+      deliveryDay: '',
     },
-    onSubmit: () => {},
-    validationSchema: deliverySchema,
+    onSubmit: () => {
+      // navigate('/gardens/:id/shop/payment')
+      test()
+    },
+    // validationSchema: deliverySchema,
   })
+
+  console.log(formik.values)
 
   // function handleFormChange(event) {
   //   setForm({
@@ -62,7 +72,7 @@ function DeliveryForm() {
 
   // function handleChangeDay(event) {
   //   setDay(event.target.value)
-  //   setForm({ ...form, deliveryDay: event.target.value })
+  //   formik.handleChange
   // }
 
   // function handleSubmit(event) {
@@ -76,7 +86,11 @@ function DeliveryForm() {
         <div className="w-1/2 m-5">
           <label>
             Select a delivery day
-            <select name="deliveryDay" value={day} onChange={handleChangeDay}>
+            <select
+              name="deliveryDay"
+              value={formik.values.deliveryDay}
+              onChange={formik.handleChange}
+            >
               <option name="deliveryDay" value="monday">
                 Monday
               </option>
@@ -101,7 +115,7 @@ function DeliveryForm() {
               type="text"
               name="street"
               onChange={formik.handleChange}
-              value={form.street}
+              value={formik.values.street}
             />
           </div>
         </div>
@@ -113,12 +127,13 @@ function DeliveryForm() {
             >
               Suburb
             </label>
+            {showAnyErrors('suburb')}
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="suburb"
-              onChange={handleFormChange}
-              value={form.suburb}
+              onChange={formik.handleChange}
+              value={formik.values.suburb}
             />
           </div>
         </div>
@@ -130,12 +145,13 @@ function DeliveryForm() {
             >
               City
             </label>
+            {showAnyErrors('city')}
             <input
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="city"
-              onChange={handleFormChange}
-              value={form.city}
+              onChange={formik.handleChange}
+              value={formik.values.city}
             />
           </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -149,8 +165,8 @@ function DeliveryForm() {
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="postcode"
-              onChange={handleFormChange}
-              value={form.postcode}
+              onChange={formik.handleChange}
+              value={formik.values.postcode}
             />
           </div>
         </div>
@@ -162,21 +178,21 @@ function DeliveryForm() {
             >
               Delivery Instructions
             </label>
+            {showAnyErrors('deliveryInstructions')}
             <input
               className="h-full appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="deliveryInstructions"
-              onChange={handleFormChange}
-              value={form.deliveryInstructions}
+              onChange={formik.handleChange}
+              value={formik.values.deliveryInstructions}
             />
           </div>
         </div>
       </form>
       <div>
         <button
-          className="mt-5 bg-orange hover:bg-blue-700 text-darkBlue font-bold py-2 px-4 rounded"
-          onClick={handleSubmit}
           type="submit"
+          className="mt-5 bg-orange hover:bg-blue-700 text-darkBlue font-bold py-2 px-4 rounded"
         >
           Check out
         </button>
