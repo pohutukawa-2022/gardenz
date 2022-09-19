@@ -4,14 +4,24 @@ function CartItem(props) {
   const { name, quantity, price } = props.cart
   return (
     <>
-      <div>
-        <ul>
-          <li>{name}</li>
-          <li>
-            {quantity} <button>decrement</button> <button>increment</button>
-          </li>
-          <li>{price}</li>
-        </ul>
+      <div className="m-8 w-72 border-solid border-2 rounded-3xl px-12 py-10">
+        <div>
+          <ul>
+            <li className="text-center pt-3 font-bold">{name}</li>
+            <li>
+              <div>
+                <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 shadow">
+                  -
+                </button>
+                {quantity}
+                <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 shadow">
+                  +
+                </button>
+              </div>
+            </li>
+            <li className="text-center pt-3 font-bold">Price: {price}</li>
+          </ul>
+        </div>
       </div>
       <div>
         <p>Shipping</p>
