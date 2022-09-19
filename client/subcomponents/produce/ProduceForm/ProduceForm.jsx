@@ -17,7 +17,7 @@ export default function ProduceForm({
 }) {
   return (
     <>
-      <section className=''>
+      <section>
         <h2 className="form-title text-center text-2xl pt-20 font-bold font-serif">{action}</h2>
         <Formik
           initialValues={initialFormData}
