@@ -22,23 +22,9 @@ const deliverySchema = Yup.object().shape({
     .max(6, 'Sorry, this must be under 6 characters long'),
 })
 
-function test() {
-  console.log('hit submit')
-  return null
-}
-
 function DeliveryForm() {
-  const [day, setDay] = useState('')
   const navigate = useNavigate()
 
-  // const [form, setForm] = useState({
-  //   street: '',
-  //   suburb: '',
-  //   city: '',
-  //   postcode: '',
-  //   deliveryInstructions: '',
-  //   deliveryDay: day,
-  // })
   function showAnyErrors(inputName) {
     return formik.errors[inputName] && formik.touched[inputName] ? (
       <p className="inputError">{formik.errors[inputName]}</p>
@@ -55,30 +41,12 @@ function DeliveryForm() {
       deliveryDay: '',
     },
     onSubmit: () => {
-      // navigate('/gardens/:id/shop/payment')
-      test()
+      navigate('/gardens/:id/shop/payment')
     },
-    // validationSchema: deliverySchema,
+    validationSchema: deliverySchema,
   })
 
   console.log(formik.values)
-
-  // function handleFormChange(event) {
-  //   setForm({
-  //     ...form,
-  //     [event.target.name]: event.target.value,
-  //   })
-  // }
-
-  // function handleChangeDay(event) {
-  //   setDay(event.target.value)
-  //   formik.handleChange
-  // }
-
-  // function handleSubmit(event) {
-  //   event.preventDefault()
-  //   navigate('/gardens/:id/shop/payment')
-  // }
 
   return (
     <>
@@ -91,9 +59,7 @@ function DeliveryForm() {
               value={formik.values.deliveryDay}
               onChange={formik.handleChange}
             >
-              <option name="deliveryDay" value="monday">
-                Monday
-              </option>
+              <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
               <option value="wednesday">Wednesday</option>
               <option value="thursday">Thursday</option>
@@ -188,15 +154,15 @@ function DeliveryForm() {
             />
           </div>
         </div>
+        <div>
+          <button
+            type="submit"
+            className="mt-5 bg-orange hover:bg-blue-700 text-darkBlue font-bold py-2 px-4 rounded"
+          >
+            Check out
+          </button>
+        </div>
       </form>
-      <div>
-        <button
-          type="submit"
-          className="mt-5 bg-orange hover:bg-blue-700 text-darkBlue font-bold py-2 px-4 rounded"
-        >
-          Check out
-        </button>
-      </div>
     </>
   )
 }
