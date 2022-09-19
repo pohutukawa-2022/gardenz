@@ -9,7 +9,7 @@ export default function Cart() {
   const { name, imageHeaderUrl } = useGarden(id)
   // const { name, imageHeaderUrl } = banner
   const [cart, setCart] = useState([])
-  const cartDummy = { name: 'Frey', quantity: 2, price: '$40' }
+  const cartDummy = { name: 'Large Mixed Box', quantity: 2, price: '$40' }
 
   localStorage.setItem('cart', JSON.stringify(cartDummy))
   useEffect(() => {
@@ -27,10 +27,10 @@ export default function Cart() {
         >
           My Basket
         </h1>
-        <p className="mt-14 ml-4 text-zinc-400 font-serif">
+        <p className="mt-14 ml-4 text-zinc-400 font-bold">
           Delivery or pick up available Monday to Friday
         </p>
-        <button >
+        <button>
           <Link to="/gardens/:id/shop/cart">Go to cart</Link>
           <Outlet />
         </button>

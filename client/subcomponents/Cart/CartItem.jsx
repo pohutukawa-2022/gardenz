@@ -1,44 +1,90 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+
 function CartItem(props) {
   const { name, quantity, price } = props.cart
   return (
-    <>
-      <article className="flex rounded-lg shadow-lg mx-72 my-10 justify-center">
-        <div>
-          <div>
-            <ul>
-              <li className="font-extrabold">{name}</li>
-              <li>
-                <div className="flex justify-between border-solid rounded border-2 m-0 p-0">
-                  <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
-                    -
-                  </button>
-                  <p>{quantity}</p>
-                  <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
-                    +
-                  </button>
-                </div>
-              </li>
-              <li className="font-extrabold">Price: {price}</li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex my-40">
-          <p className="font-extrabold">Shipping</p>
-          <p className="font-extrabold">Calculated at checkout</p>
-          <p className="font-extrabold ">Total (inc. GST)</p>
-          <p className="font-extrabold">{price}</p>
-        </div>
-        <div className="flex content-end py-64 float-right ">
-          <button className=" w-full p-3 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-green hover:-translate-y-1 hover:scale-110 hover:bg-green duration-300  ">
-            <Link to="/garden/:id/shop/delivery/:id">Checkout</Link>
-            <Outlet />
+    <section className="flex flex-col justify-around mt-10 w-4/5  mx-auto border shadow-lg rounded-lg p-10">
+      <section className="flex flex-col justify-around">
+        <section className="font-extrabold text-2xl font-sans text-darkBlue ">
+          {name}
+        </section>
+        <section className="mt-4 font-extrabold font-sans text-darkBlue">
+          Price: {price}
+        </section>
+      </section>
+      <div className="flex justify-end ">
+        <div className="flex flex-row border -mt-14">
+          <button className="text-4xl bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+            -
+          </button>
+          <p className="flex text-2xl font-bold px-12 pt-2">{quantity}</p>
+          <button className="flex text-4xl border-solid bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+            +
           </button>
         </div>
-      </article>
-    </>
+      </div>
+      <br></br>
+      <section className="flex flex-row justify-between mt-10">
+        <section className="flex flex-col">
+          <p className="font-extrabold">Shipping</p>
+          <p className="font-extrabold">Total (inc. GST)</p>
+        </section>
+        <section className="flex flex-col justify-end">
+          <p className="font-extrabold">Calculated at checkout</p>
+          <p className="font-extrabold">{price}</p>
+        </section>
+      </section>
+    </section>
   )
 }
+// vflex rounded-lg shadow-lg mx-72 my-10 justify-center
+// function CartItem(props) {
+//   const { name, quantity, price } = props.cart
+//   return (
+//     <>
+//       <article className="flex rounded-lg shadow-lg mx-72 my-10 justify-center">
+//         <div>
+//           <div>
+//             <ul>
+//               <div>
+//                 <li className="flex font-extrabold text-2xl font-sans text-darkBlue ">
+//                   {name}
+//                 </li>
+//                 <div>
+//                   <div className="flex float-right ml-72 justify-between border-solid rounded border-2 ">
+//                     <button className="text-4xl bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+//                       -
+//                     </button>
+//                     <p className="flex text-2xl font-bold px-12 pt-2">
+//                       {quantity}
+//                     </p>
+//                     <button className="flex text-4xl border-solid bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+//                       +
+//                     </button>
+//                   </div>
+//                 </div>
+//                 <li className="flex-row mt-4 font-extrabold font-sans text-darkBlue">
+//                   Price: {price}
+//                 </li>
+//               </div>
+//             </ul>
+//           </div>
+//         </div>
+//         <div className="flex my-40">
+//           <p className="font-extrabold">Shipping</p>
+//           <p className="font-extrabold">Calculated at checkout</p>
+//           <p className="font-extrabold ">Total (inc. GST)</p>
+//           <p className="font-extrabold">{price}</p>
+//         </div>
+//         <div className="flex content-end py-64 float-right ">
+//           <button className=" w-full p-3 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-green hover:-translate-y-1 hover:scale-110 hover:bg-green duration-300  ">
+//             <Link to="/garden/:id/shop/delivery/:id">Checkout</Link>
+//             <Outlet />
+//           </button>
+//         </div>
+//       </article>
+//     </>
+//   )
+// }
 
 export default CartItem
