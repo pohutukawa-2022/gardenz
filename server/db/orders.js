@@ -8,7 +8,6 @@ module.exports = {
 }
 
 async function getOrdersByGardenId(gardenId, db = connection) {
-  console.log(gardenId)
   return db('orders_produce')
     .join('orders', 'orders_produce.order_id', 'orders.id')
     .join('produce', 'orders_produce.produce_id', 'produce.id')
