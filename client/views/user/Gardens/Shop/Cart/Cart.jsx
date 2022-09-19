@@ -30,7 +30,7 @@ export default function Cart() {
         <p className="mt-14 ml-4 text-zinc-400 font-serif">
           Delivery or pick up available Monday to Friday
         </p>
-        <button>
+        <button >
           <Link to="/gardens/:id/shop/cart">Go to cart</Link>
           <Outlet />
         </button>

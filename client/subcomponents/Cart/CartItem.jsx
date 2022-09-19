@@ -4,35 +4,39 @@ function CartItem(props) {
   const { name, quantity, price } = props.cart
   return (
     <>
-      <div className="m-8 w-72 border-solid border-2 rounded-3xl px-12 py-10">
+      <article className="flex rounded-lg shadow-lg mx-72 my-10 justify-center">
         <div>
-          <ul>
-            <li className="text-center pt-3 font-bold">{name}</li>
-            <li>
-              <div>
-                <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 shadow">
-                  -
-                </button>
-                {quantity}
-                <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 shadow">
-                  +
-                </button>
-              </div>
-            </li>
-            <li className="text-center pt-3 font-bold">Price: {price}</li>
-          </ul>
+          <div>
+            <ul>
+              <li className="font-extrabold">{name}</li>
+              <li>
+                <div className="flex justify-between border-solid rounded border-2 m-0 p-0">
+                  <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+                    -
+                  </button>
+                  <p>{quantity}</p>
+                  <button className="text-2xl font-bold bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 shadow">
+                    +
+                  </button>
+                </div>
+              </li>
+              <li className="font-extrabold">Price: {price}</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div>
-        <p>Shipping</p>
-        <p>Calculated at checkout</p>
-        <p>Total (inc. GST)</p>
-        <p>{price}</p>
-        <button>
-          <Link to="/garden/:id/shop/delivery/:id">Checkout</Link>
-          <Outlet />
-        </button>
-      </div>
+        <div className="flex my-40">
+          <p className="font-extrabold">Shipping</p>
+          <p className="font-extrabold">Calculated at checkout</p>
+          <p className="font-extrabold ">Total (inc. GST)</p>
+          <p className="font-extrabold">{price}</p>
+        </div>
+        <div className="flex content-end py-64 float-right ">
+          <button className=" w-full p-3 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-green hover:-translate-y-1 hover:scale-110 hover:bg-green duration-300  ">
+            <Link to="/garden/:id/shop/delivery/:id">Checkout</Link>
+            <Outlet />
+          </button>
+        </div>
+      </article>
     </>
   )
 }
