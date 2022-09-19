@@ -11,7 +11,7 @@ const Template = (args) => <GardenHeader {...args} />
 
 export const displaysGardenHeader = Template.bind({})
 
-displaysGardenHeader.storyName = 'Displays event'
+displaysGardenHeader.storyName = 'Displays Header'
 displaysGardenHeader.args = {
   name: 'mock name',
   url: 'https://www.kelmarnagardens.nz/uploads/6/0/1/1/60114025/dji-0065_orig.jpg',
