@@ -9,8 +9,8 @@ const gallerySchema = Yup.object({
   description: Yup.string().required('Required'),
   url: Yup.string()
     .matches(
-      /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm,
-      'Enter correct url!'
+      /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gim,
+      'Not a valid image url!'
     )
     .required('Required'),
 })
