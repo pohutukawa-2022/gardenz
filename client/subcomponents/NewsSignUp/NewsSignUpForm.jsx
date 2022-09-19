@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// import { useForm } from 'react-hook-form'
 
 function DeliveryForm() {
   const [form, setForm] = useState({
@@ -11,9 +12,17 @@ function DeliveryForm() {
     setForm({ ...form, [event.target.name]: event.target.value })
   }
 
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors }
+  // } = useForm();
+  // const onSubmit = (values) => alert(JSON.stringify(values, null, 2))
+
   return (
     <>
       <form className="w-full max-w-lg">
+        <h1 className="mb-3 font-bold"> Sign Up Form </h1>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
@@ -25,9 +34,10 @@ function DeliveryForm() {
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
-              name="street"
+              name="firstName"
+              placeholder="Names"
               onChange={handleFormChange}
-              value={form.street}
+              value={form.firstName}
             />
           </div>
         </div>
@@ -42,9 +52,9 @@ function DeliveryForm() {
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
-              name="suburb"
+              name="lastName"
               onChange={handleFormChange}
-              value={form.suburb}
+              value={form.lastName}
             />
           </div>
         </div>
@@ -59,9 +69,9 @@ function DeliveryForm() {
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
-              name="deliveryInstructions"
+              name="email"
               onChange={handleFormChange}
-              value={form.deliveryInstructions}
+              value={form.email}
             />
           </div>
         </div>
@@ -69,7 +79,7 @@ function DeliveryForm() {
           <div className="w-full px-3">
             <Link
               to="/gardens"
-              className="w-full block p-3 text-center rounded-md text-white bg-darkGreen hover:bg-blue hover:bg-blue duration-300"
+              className="w-full block p-3 text-center rounded-md text-white bg-orange hover:bg-blue hover:bg-blue duration-300"
             >
               Sign Up
             </Link>
