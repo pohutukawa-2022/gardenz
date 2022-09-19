@@ -5,6 +5,7 @@ module.exports = {
   createSubscriber,
 }
 
+// delete getALlSubscribers
 function getAllSubscribers(id, db = connection) {
   return db('subscribers').select()
 }

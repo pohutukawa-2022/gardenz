@@ -5,7 +5,7 @@ const log = require('../logger')
 const db = require('../db/gardens')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
-const { async } = require('regenerator-runtime')
+const { getAllSubscribers } = require('../db/subscribers')
 
 const router = express.Router()
 
@@ -14,6 +14,24 @@ const checkAdmin = jwtAuthz(['create:garden'], {
 })
 
 module.exports = router
+
+router.get('/:id/signup', (req, res) => {
+  console.log('sign up route hit')
+  const id = Number(req.params.id)
+  getAllSubscribers(id)
+    .then((id) => {
+      res.json(id)
+      return res.json()
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve people',
+        },
+      })
+    })
+})
 
 router.get('/', (req, res) => {
   db.getGardens()
@@ -80,5 +98,4 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-
-router.post('/:id/signup', async (req, res) => {})
+// router.post('/:id/signup', async (req, res) => {})
