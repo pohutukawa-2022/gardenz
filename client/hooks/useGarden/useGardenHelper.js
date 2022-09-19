@@ -1,10 +1,15 @@
 import consume from '../../consume'
 
-export function getGarden(id) {
+import { dispatch } from '../../store'
+
+import { showError } from '../../slices/error'
+
+export async function getGarden(id) {
   const headers = {
     Accept: 'application/json',
   }
-  return consume(`/gardens/${id}`, '', 'get', {}, headers).then((res) => {
+  try {
+    const res = await consume(`/gardens/${id}`, '', 'get', {}, headers)
     const garden = res.body
     return {
       name: garden.name,
@@ -17,5 +22,7 @@ export function getGarden(id) {
       phone: garden.phone,
       email: garden.email,
     }
-  })
+  } catch (err) {
+    dispatch(showError(err.message))
+  }
 }

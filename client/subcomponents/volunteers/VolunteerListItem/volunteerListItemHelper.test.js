@@ -11,7 +11,7 @@ afterEach(() => {
 })
 
 describe('toggleAttendance', () => {
-  it('dispatches correctly and returns true on success', () => {
+  it('dispatches correctly and returns true on success', async () => {
     getState.mockImplementation(() => ({
       user: { id: 4, token: 'dummytoken' },
     }))
@@ -25,15 +25,13 @@ describe('toggleAttendance', () => {
       expect(data.hasAttended).toBeTruthy()
       return Promise.resolve()
     }
-    return toggleAttendance(volunteerData, consume).then((response) => {
-      expect(response).toBeTruthy()
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      return null
-    })
+    const response = await toggleAttendance(volunteerData, consume)
+    expect(response).toBeTruthy()
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
   })
 
-  it('dispatches correctly and returns false on API consumption failure', () => {
+  it('dispatches correctly and returns false on API consumption failure', async () => {
     getState.mockImplementation(() => ({
       user: { id: 4, token: 'dummytoken' },
     }))
@@ -45,11 +43,10 @@ describe('toggleAttendance', () => {
     function consume() {
       return Promise.reject(new Error('mock consume error'))
     }
-    return toggleAttendance(volunteerData, consume).then((response) => {
-      expect(response).toBeFalsy()
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).toHaveBeenCalledWith(showError('mock consume error'))
-      return null
-    })
+
+    const response = await toggleAttendance(volunteerData, consume)
+    expect(response).toBeFalsy()
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(dispatch).toHaveBeenCalledWith(showError('mock consume error'))
   })
 })

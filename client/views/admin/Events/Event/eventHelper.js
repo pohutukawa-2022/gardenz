@@ -3,10 +3,11 @@ import { dispatch } from '../../../../store'
 import { setWaiting, clearWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'
 
-export function getEvent(id, user, consume = requestor) {
+export async function getEvent(id, user, consume = requestor) {
   dispatch(setWaiting())
-  return consume(`/events/${id}`)
-    .then((res) => {
+  try {
+    await consume(`/events/${id}`)
+    ;async (res) => {
       dispatch(clearWaiting())
       const {
         id,
@@ -36,7 +37,7 @@ export function getEvent(id, user, consume = requestor) {
         lon,
         status,
       }
-      return user.isAdmin
+      return (await user.isAdmin)
         ? {
             ...result,
             volunteers,
@@ -46,8 +47,8 @@ export function getEvent(id, user, consume = requestor) {
             ...result,
             isVolunteer: volunteers.some((v) => v.userId === user.id),
           }
-    })
-    .catch((error) => {
-      dispatch(showError(error.message))
-    })
+    }
+  } catch (error) {
+    dispatch(showError(error.message))
+  }
 }
