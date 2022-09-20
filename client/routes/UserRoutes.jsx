@@ -12,6 +12,7 @@ import News from '../views/user/Gardens/News/News'
 import Shop from '../views/user/Gardens/Shop/Shop'
 import SignUp from '../views/user/Gardens/Signup/SignUp'
 import Profile from '../views/user/Profile/Profile'
+import Thankyou from '../subcomponents/NewsSignUp/Thankyou'
 
 function UserRoutes() {
   return (
@@ -70,6 +71,15 @@ function UserRoutes() {
             <>
               <UserNav />
               <SignUp />
+            </>
+          }
+        />
+        <Route
+          path="/gardens/:id/thankyou"
+          element={
+            <>
+              <UserNav />
+              <Thankyou />
             </>
           }
         />

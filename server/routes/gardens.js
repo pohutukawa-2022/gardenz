@@ -16,7 +16,6 @@ const checkAdmin = jwtAuthz(['create:garden'], {
 module.exports = router
 
 router.get('/:id/signup', (req, res) => {
-  console.log('sign up route hit')
   const id = Number(req.params.id)
   getAllSubscribers(id)
     .then((id) => {

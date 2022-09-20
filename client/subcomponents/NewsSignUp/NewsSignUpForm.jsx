@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { registerSignUp } from './SignUpHelper'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const signUpSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -15,7 +16,9 @@ const signUpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 })
 
-function SignUpForm() {
+export default function SignUpForm() {
+  const { id } = useParams()
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -23,8 +26,8 @@ function SignUpForm() {
       email: '',
     },
     onSubmit: (values) => {
-      console.log(values)
-      // registerSignUp(values)
+      registerSignUp(id, values)
+      navigate(`/gardens/${id}/thankyou`)
     },
     validationSchema: signUpSchema,
   })
@@ -113,4 +116,3 @@ function SignUpForm() {
     </>
   )
 }
-export default SignUpForm
