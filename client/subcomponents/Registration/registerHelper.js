@@ -11,19 +11,20 @@ export async function registerUser(
   navigateTo,
   consume = requestor
 ) {
-  const newUser = {
-    firstName: user.firstName,
-    lastName: user.lastName,
-    gardenId: user.gardenId,
-    email: authUser.email,
-    auth0Id: authUser.sub,
-  }
   const storeState = getState()
+
   const { token } = storeState.user
 
-  dispatch(setWaiting(newUser))
+  dispatch(setWaiting())
   try {
-    const res = await consume('/users', token, 'post', newUser)
+    const user1 = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      gardenId: user.gardenId,
+      email: authUser.email,
+      auth0Id: authUser.sub,
+    }
+    const res = await consume('/users', token, 'post', user1)
     const newUser = res.body
     newUser.isAdmin = isAdmin
     newUser.token = token
