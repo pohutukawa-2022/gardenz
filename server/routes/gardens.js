@@ -5,6 +5,7 @@ const log = require('../logger')
 const db = require('../db/gardens')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
+const { getImages, deleteImage } = require('../db/gallery')
 
 const router = express.Router()
 
@@ -46,6 +47,38 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
         },
       })
     })
+})
+
+// GET for the admin gallery
+router.get('/:id/gallery', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const images = await getImages(id)
+    return res.json(images)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve garden',
+      },
+    })
+  }
+})
+
+// DELETE image for the admin gallery
+router.delete('/:id/gallery', async (req, res) => {
+  const imgId = req.body.imgId
+  try {
+    await deleteImage(imgId)
+    res.sendStatus(200)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to delete picture',
+      },
+    })
+  }
 })
 
 router.get('/:id', async (req, res) => {

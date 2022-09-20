@@ -51,4 +51,24 @@ describe('addImage', () => {
         return null
       })
   })
+
+  // describe('deleteImage', () => {
+  //   it('should delete image from the db', () => {
+  //     const id=3
+
+  //     return db
+  //       .deleteImage(id, testDb)
+  //       .then((id) => {
+  //         return testDb('gallery').where('id', id)
+  //       })
+  //       .then(() => {
+  //         expect().toMatchObject({
+  //           id: 4,
+  //           name: 'image 4',
+  //           url: 'image_url',
+  //           garden_id: 1,
+  //         })
+  //         return null
+  //       })
+  //   })
 })
