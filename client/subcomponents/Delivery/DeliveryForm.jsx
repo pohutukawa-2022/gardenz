@@ -27,7 +27,7 @@ function DeliveryForm() {
 
   //localStorageData
   //setting localStorage
-  const { cart, setCart } = useState([])
+
   const dataRecieved = {
     productId: 1,
     name: 'product_name',
@@ -108,6 +108,7 @@ function DeliveryForm() {
               placeholder="street"
               onChange={formik.handleChange}
               value={formik.values.street}
+              placeholder="street"
             />
           </div>
         </div>
@@ -127,6 +128,7 @@ function DeliveryForm() {
               placeholder="suburb"
               onChange={formik.handleChange}
               value={formik.values.suburb}
+              placeholder="suburb"
             />
           </div>
         </div>
@@ -146,6 +148,7 @@ function DeliveryForm() {
               placeholder="city"
               onChange={formik.handleChange}
               value={formik.values.city}
+              placeholder="city"
             />
           </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -163,6 +166,7 @@ function DeliveryForm() {
               placeholder="postcode"
               onChange={formik.handleChange}
               value={formik.values.postcode}
+              placeholder="postcode"
             />
           </div>
         </div>
@@ -181,6 +185,7 @@ function DeliveryForm() {
               name="deliveryInstructions"
               onChange={formik.handleChange}
               value={formik.values.deliveryInstructions}
+              placeholder="deliveryInstructions"
             />
           </div>
         </div>

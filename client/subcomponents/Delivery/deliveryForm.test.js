@@ -1,7 +1,8 @@
 import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
-import { renderWithRouter } from '../../test-utils'
+
 import userEvent from '@testing-library/user-event'
+import { renderWithRouter } from '../../test-utils'
 
 import DeliveryForm from './DeliveryForm'
 // import { useNavigate } from 'react-router-dom'
@@ -24,24 +25,48 @@ describe('delivery form field', () => {
     userEvent.clear(screen.getByPlaceholderText('city'))
     userEvent.clear(screen.getByPlaceholderText('postcode'))
 
-    userEvent.click(screen.getByRole('button', { type: /submit/i }))
+  it('updates correctly on user input', async () => {
+    const emptyForm = {
+      street: '',
+      suburb: '',
+      city: '',
+      postcode: '',
+      deliveryInstructions: '',
+      deliveryDay: '',
+    }
+    renderWithRouter(<DeliveryForm formData={emptyForm} />)
 
-    const ele = await screen.findAllByText('Required')
+    const streetInput = screen.getByPlaceholderText('street')
+    const suburbInput = screen.getByPlaceholderText('suburb')
+    const cityInput = screen.getByPlaceholderText('city')
+    const postcodeInput = screen.getByPlaceholderText('postcode')
+    const deliveryInstructionsInput = screen.getByPlaceholderText(
+      'deliveryInstructions'
+    )
 
-    expect(ele).toHaveLength(4)
-    expect(ele[0]).toBeInTheDocument()
-  })
+    userEvent.type(streetInput, 'test street')
+    userEvent.type(suburbInput, 'test suburb')
+    userEvent.type(cityInput, 'test city')
+    userEvent.type(postcodeInput, '1234')
+    userEvent.type(deliveryInstructionsInput, 'test delivery instructions')
 
-
-})
-
-  // it('On Submit navigates to new page', async () => {
+    await waitFor(() => {
+      expect(streetInput).toHaveValue('test street')
+      expect(suburbInput).toHaveValue('test suburb')
+      expect(cityInput).toHaveValue('test city')
+      expect(postcodeInput).toHaveValue('1234')
+      expect(deliveryInstructionsInput).toHaveValue(
+        'test delivery instructions'
+      )
+    })
+      it('On Submit navigates to new page', async () => {
     
-  //   const mockedUsedNavigate = jest.fn()
-  //   jest.mock('react-router-dom', () => ({
-  //     ...jest.requireActual('react-router-dom'),
-  //     useNavigate: () => mockedUsedNavigate,
-  //   }))
+    const mockedUsedNavigate = jest.fn()
+    jest.mock('react-router-dom', () => ({
+      ...jest.requireActual('react-router-dom'),
+      useNavigate: () => mockedUsedNavigate,
+    }))
 
-  //   expect(mockedUsedNavigate).toHaveBeenCalled()
-  // })
+    expect(mockedUsedNavigate).toHaveBeenCalled()
+  })
+})
