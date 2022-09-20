@@ -9,10 +9,10 @@ export default function Cart() {
   const { name, imageHeaderUrl } = useGarden(id)
   // const { name, imageHeaderUrl } = banner
   const [cart, setCart] = useState([])
-  const cartDummy = { name: 'Large Mixed Box', quantity: 2, price: '$40' }
 
-  localStorage.setItem('cart', JSON.stringify(cartDummy))
   useEffect(() => {
+    const cartDummy = { name: 'Large Mixed Box', quantity: 2, price: '$40' }
+    localStorage.setItem('cart', JSON.stringify(cartDummy))
     const cartItems = localStorage.getItem('cart')
     setCart(JSON.parse(cartItems))
   }, [])
@@ -35,6 +35,7 @@ export default function Cart() {
           <Outlet />
         </button>
       </div>
+
       <CartItem cart={cart} />
     </>
   )
