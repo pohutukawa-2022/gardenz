@@ -12,7 +12,7 @@ afterEach(() => {
 })
 
 describe('list of gardens', () => {
-  it('displays information corrctly when array is empty', async () => {
+  it('displays information correctly when array is empty', async () => {
     getAllGardens.mockImplementation(() => {
       return Promise.resolve([])
     })

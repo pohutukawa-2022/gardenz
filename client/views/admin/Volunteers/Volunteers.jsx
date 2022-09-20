@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import VolunteerList from '../../../subcomponents/volunteers/VolunteerList/VolunteerList'
+
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getVolunteers } from './volunteersHelper'
-import AddVolunteerForm from '../../../subcomponents/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import RockupVolunteers from '../../../subcomponents/volunteers/RockupVolunteers/RockupVolunteers'
 
 export default function Volunteers() {
   const { id } = useParams()
@@ -12,10 +12,11 @@ export default function Volunteers() {
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getVolunteers(id).then((volunteers) => {
+    const fetchVolunteers = async () => {
+      const volunteers = await getVolunteers(id)
       setVolunteers(volunteers)
-      return null
-    })
+    }
+    fetchVolunteers()
   }, [user, id])
 
   function addExtraVolunteerHandler(extraVolunteer) {
@@ -23,14 +24,10 @@ export default function Volunteers() {
   }
 
   return (
-    <>
-      <section>
-        <VolunteerList volunteers={volunteers} eventId={id} />
-        <AddVolunteerForm
-          id={id}
-          addExtraVolunteer={addExtraVolunteerHandler}
-        />
-      </section>
-    </>
+    <RockupVolunteers
+      eventId={id}
+      volunteers={volunteers}
+      addExtraVolunteer={addExtraVolunteerHandler}
+    />
   )
 }

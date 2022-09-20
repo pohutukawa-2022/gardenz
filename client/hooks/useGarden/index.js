@@ -18,13 +18,17 @@ export default function useGarden(gardenId) {
 
   useEffect(() => {
     dispatch(setWaiting())
-    getGarden(gardenId)
-      .then(setGarden)
-      .then(() => dispatch(clearWaiting()))
-      .catch((error) => {
-        dispatch(showError(error.message))
-      })
+    try {
+      const theGarden = async () => {
+        const garden = await getGarden(gardenId)
+        setGarden(garden)
+        dispatch(clearWaiting())
+      }
+      theGarden()
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
+    return () => {}
   }, [gardenId])
-
   return garden
 }

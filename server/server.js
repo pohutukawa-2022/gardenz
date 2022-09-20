@@ -12,6 +12,7 @@ const gardenProduce = require('./routes/gardenProduce')
 const produceTypes = require('./routes/produceTypes')
 const news = require('./routes/news')
 const gallery = require('./routes/gallery')
+const shop = require('./routes/shop')
 
 const server = express()
 
@@ -20,6 +21,7 @@ module.exports = server
 server.use(express.static(path.join(__dirname, 'public')))
 server.use(express.json())
 
+server.use('/api/v1/shop', shop)
 server.use('/api/v1/gardens', gardenRoutes)
 server.use('/api/v1/events', eventRoutes)
 server.use('/api/v1/volunteers', volunteerRoutes)

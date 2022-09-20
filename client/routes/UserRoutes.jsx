@@ -11,6 +11,7 @@ import GardensList from '../views/user/Gardens/Index/Index'
 import News from '../views/user/Gardens/News/News'
 import Shop from '../views/user/Gardens/Shop/Shop'
 import Profile from '../views/user/Profile/Profile'
+import GardenHeader from '../subcomponents/gardens/GardenHeader/GardenHeader'
 
 function UserRoutes() {
   return (
@@ -22,6 +23,7 @@ function UserRoutes() {
           path="/gardens/:id/news"
           element={
             <>
+              <GardenHeader />
               <UserNav />
               <News />
             </>
@@ -31,6 +33,7 @@ function UserRoutes() {
           path="/gardens/:id/about"
           element={
             <>
+              <GardenHeader />
               <UserNav />
               <About />
             </>
@@ -40,6 +43,7 @@ function UserRoutes() {
           path="/gardens/:id/events"
           element={
             <>
+              <GardenHeader />
               <UserNav />
               <GardenEvents />
             </>
@@ -49,6 +53,7 @@ function UserRoutes() {
           path="/gardens/:id/gallery"
           element={
             <>
+              <GardenHeader />
               <UserNav />
               <Gallery />
             </>
@@ -58,6 +63,7 @@ function UserRoutes() {
           path="/gardens/:id/shop"
           element={
             <>
+              <GardenHeader />
               <UserNav />
               <Shop />
             </>
