@@ -24,13 +24,13 @@ export async function updateEvent(
   const storeState = getState()
   const { token } = storeState.user
   const eventToUpdate = {
-    id: Number(event.id),
+    id: Number(event.eventId),
     ...event,
   }
   dispatch(setWaiting())
   try {
-    await consume(`/events/${event.id}`, token, 'patch', eventToUpdate)
-    navigateTo(`/gardens/${gardenId}`)
+    await consume(`/events/${event.eventId}`, token, 'patch', eventToUpdate)
+    navigateTo(`/admin/gardens/${gardenId}/events`)
     return null
   } catch (err) {
     dispatch(showError(err.message))

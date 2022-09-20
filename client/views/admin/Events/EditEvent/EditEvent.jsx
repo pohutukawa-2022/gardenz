@@ -20,7 +20,8 @@ export default function EditEvent() {
   }, [])
 
   function submitEvent(form) {
-    updateEvent(event.gardenId, { eventId, ...form }, navigate)
+    const data = { eventId, ...form }
+    updateEvent(event.gardenId, data, navigate)
   }
 
   function cancelSubmit() {

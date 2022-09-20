@@ -42,7 +42,7 @@ describe('updateEvent', () => {
       user: { gardenId: 1, token: 'dummytoken' },
     }))
     const event = {
-      id: 1,
+      eventId: 1,
       title: 'test event',
       date: '2021-03-22',
       volunteersNeeded: 5,
@@ -59,7 +59,7 @@ describe('updateEvent', () => {
     }
     await updateEvent('1', event, navigateTo, consume)
     expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-    expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
+    expect(navigateTo).toHaveBeenCalledWith('/admin/gardens/1/events')
   })
   it('dispatches error on PATCH /events/id api call rejection', async () => {
     const navigateTo = jest.fn()
