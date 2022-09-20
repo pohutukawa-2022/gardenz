@@ -5,10 +5,10 @@ export default function NewsList({ news }) {
   return (
     <>
       <div className="lg: flex flex-row text-center md:text-align">
-        <h1 className=" mt-12 ml-8 lg:pl-20 md:justify-center text-2xl font-serif font-bold text-darkBlue ">
+        <h1 className="mt-5 mb-5 ml-10 font-sans text-2xl font-bold text-center md:text-left">
           News
         </h1>
-        <p className="mt-14 ml-4 text-zinc-400 font-serif">
+        <p className="mt-14 ml-4 text-zinc-400 font-sans">
           Keeping you updated on your community garden!
         </p>
       </div>
