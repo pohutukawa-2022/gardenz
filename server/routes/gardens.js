@@ -82,7 +82,7 @@ router.get('/:id', async (req, res) => {
 
 // GET route for get order by garden ID
 
-router.get('/:id/orders', async (req, res) => {
+router.get('/:id/orders', checkAdmin, async (req, res) => {
   const gardenId = Number(req.params.id)
 
   try {

@@ -16,7 +16,7 @@ module.exports = router
 
 // GET /api/v1/orders
 
-router.get('/', (req, res) => {
+router.get('/', checkAdmin, (req, res) => {
   db.listOrders()
     .then((orders) => {
       res.json(orders)
@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 
 //PATCH /api/v1/orders/:id
 
-router.patch('/:id', (req, res) => {
+router.patch('/:id', checkAdmin, (req, res) => {
   const newOrderStatus = req.body.status
   const id = req.params.id
   db.updateOrderStatus(id, newOrderStatus)
@@ -54,7 +54,7 @@ router.patch('/:id', (req, res) => {
 
 // POST /api/v1/orders
 
-router.post('/', (req, res) => {
+router.post('/', checkAdmin, (req, res) => {
   const order = req.body
 
   db.addOrder(order)
