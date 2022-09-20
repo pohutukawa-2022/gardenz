@@ -18,7 +18,6 @@ export default function AdminGalleryImage({ loadImages, image }) {
     try {
       await deleteImgById(image.id, image.gardenId)
       loadImages()
-      console.log('there')
     } catch (error) {
       dispatch(showError(error.message))
     }

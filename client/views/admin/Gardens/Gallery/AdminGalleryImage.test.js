@@ -41,27 +41,25 @@ describe('click on delete button', () => {
     expect(confirmationDialog).toBeTruthy()
   })
 
-  // it('function deleteImgById called when click on "Yes"', async () => {
-  //   const mockeLoadImages = jest.fn()
+  it('function deleteImgById called when click on "Yes"', async () => {
+    const mockeLoadImages = jest.fn()
+    const mockImage = {
+      id: 1,
+      name: 'Test Picture 1',
+      url: 'https://www.google.com/',
+      garden_id: 2,
+    }
 
-  //   const mockImage = {
-  //     id: 1,
-  //     name: 'Test Picture 1',
-  //     url: 'https://www.google.com/',
-  //     garden_id: 2,
-  //   }
-
-  //   renderWithRedux(
-  //     <AdminGalleryImage image={mockImage} loadImages={mockeLoadImages} />
-  //   )
-  //   const trashButtons = await screen.findByTestId('button')
-  //   userEvent.click(trashButtons)
-  //   const confirmButton = await screen.findByTestId('Yes')
-  //   userEvent.click(confirmButton)
-  //   expect(true).toBeTruthy()
-  //   expect(deleteImgById).toHaveBeenCalled()
-  //   expect(mockeLoadImages).toHaveBeenCalledTimes(1)
-  // })
+    renderWithRedux(
+      <AdminGalleryImage image={mockImage} loadImages={mockeLoadImages} />
+    )
+    const trashButtons = await screen.findByTestId('button')
+    userEvent.click(trashButtons)
+    const confirmButton = await screen.findByTestId('Yes')
+    userEvent.click(confirmButton)
+    await expect(deleteImgById).toHaveBeenCalled()
+    expect(mockeLoadImages).toHaveBeenCalled()
+  })
 
   it('confirmation dialog hidden when click on "No"', async () => {
     const mockImage = {
