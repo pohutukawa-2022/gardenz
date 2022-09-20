@@ -5,13 +5,10 @@ import { getNews } from './newsHelper'
 import NewsList from '../../../../subcomponents/News/NewsList'
 import { useDispatch } from 'react-redux'
 import { showError } from '../../../../slices/error'
-import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../hooks/useGarden'
 
 export default function News() {
   const { id } = useParams()
   const [news, setNews] = useState([])
-  const { name, imageHeaderUrl } = useGarden(id)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -27,7 +24,6 @@ export default function News() {
 
   return (
     <>
-      <GardenHeader name={name} url={imageHeaderUrl} />
       <NewsList news={news} />
     </>
   )
