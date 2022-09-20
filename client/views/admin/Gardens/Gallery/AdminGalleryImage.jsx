@@ -39,7 +39,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="white"
-            className="w-7 h-7 absolute top-4 right-4"
+            className="w-7 h-7 absolute top-4 right-4 transform hover:scale-110"
             data-testid="button"
             onClick={handleClickDelete}
           >
@@ -56,7 +56,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="white"
-            className="w-8 h-8 absolute top-4 left-4"
+            className="w-8 h-8 absolute top-4 left-4  transform hover:scale-110"
           >
             <path
               strokeLinecap="round"
@@ -76,7 +76,7 @@ export default function AdminGalleryImage({ loadImages, image }) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="white"
-            className="w-8 h-8 absolute bottom-4 right-4"
+            className="w-8 h-8 absolute bottom-4 right-4  transform hover:scale-110"
           >
             <path
               strokeLinecap="round"
