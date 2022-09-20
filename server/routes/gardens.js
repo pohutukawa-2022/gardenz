@@ -5,7 +5,7 @@ const log = require('../logger')
 const db = require('../db/gardens')
 const { userHasAdminRole, checkJwt } = require('./auth')
 const { getUserById } = require('../db/users')
-const { getAllSubscribers } = require('../db/subscribers')
+const { getAllSubscribers, createSubscriber } = require('../db/subscribers')
 
 const router = express.Router()
 
@@ -31,6 +31,20 @@ router.get('/:id/signup', (req, res) => {
         },
       })
     })
+})
+
+router.post('/:id/signup', async (req, res) => {
+  const id = Number(req.params.id)
+  const { firstName, lastName, email } = req.body
+  const subscriberData = { id, firstName, lastName, email }
+  try {
+    await createSubscriber(subscriberData)
+    res.status(201).json({ okay: 'okay' })
+    return null
+  } catch (error) {
+    log(error.message)
+    res.status(500)
+  }
 })
 
 router.get('/', (req, res) => {
@@ -97,5 +111,3 @@ router.get('/:id', async (req, res) => {
     })
   }
 })
-
-// router.post('/:id/signup', async (req, res) => {})

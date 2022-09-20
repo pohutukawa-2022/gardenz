@@ -12,8 +12,9 @@ function getAllSubscribers(id, db = connection) {
 
 function createSubscriber(subscriberData, db = connection) {
   const { id, firstName, lastName, email } = subscriberData
+  console.log(subscriberData)
   return db('subscribers').insert({
-    id,
+    garden_id: id,
     first_name: firstName,
     last_name: lastName,
     email,
