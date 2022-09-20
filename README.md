@@ -448,3 +448,12 @@ For any data visualisation including our bargraph we are using a library called.
 | learned that making changes can affect other's tests        |                                   |                         |
 | started to love testing                                     |                                   |                         |
 | hacky sack breaks                                           |                                   |                         |
+
+| 🎉Celebrations🎉                   | 🔧Improvements🔧                                                                      | ⚡Actions⚡                                  |
+|------------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------|
+| More successful testing experience | remove unused routes/components                                                       | delete crypting arrows                     |
+| merged heaps of PRs                | include a new column in the kanban board for flagging tickets that needs to be fixed  | teachers to discuss the new kanban column  |
+| Learning and styling Visx          | a better system for peer reviewing                                                    |                                            |
+| Learned how to use LocalStorage    | a better introduction for story book                                                  |                                            |
+| Learned formik                     | no cryptic arrows                                                                     |                                            |
+| writing async code in useEffect    | more meaningful naming                                                                |                                            |
