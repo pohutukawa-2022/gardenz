@@ -1,8 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-
-import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
-import useGarden from '../../../../hooks/useGarden'
 
 import LightGallery from 'lightgallery/react'
 
@@ -14,8 +10,6 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 
 function Gallery() {
-  const { id } = useParams()
-  const { name, imageHeaderUrl } = useGarden(id)
 
   const images = [
     'https://thumbs.dreamstime.com/z/people-garden-7368492.jpg',
@@ -37,7 +31,6 @@ function Gallery() {
 
   return (
     <>
-      <GardenHeader name={name} url={imageHeaderUrl} />
       <LightGallery
         speed={500}
         plugins={[lgThumbnail, lgZoom]}
