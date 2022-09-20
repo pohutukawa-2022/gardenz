@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 function CartItem(props) {
   const { name, quantity, price } = props.cart
@@ -23,16 +24,23 @@ function CartItem(props) {
           </button>
         </div>
       </div>
-      <br></br>
+      <div className="bg-zinc-400 w-200 border my-10"></div>
       <section className="flex flex-row justify-between mt-10">
         <section className="flex flex-col">
           <p className="font-extrabold">Shipping</p>
-          <p className="font-extrabold">Total (inc. GST)</p>
+          <p className="font-extrabold text-2xl">Total (inc. GST)</p>
         </section>
         <section className="flex flex-col justify-end">
           <p className="font-extrabold">Calculated at checkout</p>
-          <p className="font-extrabold">{price}</p>
+          <p className="font-extrabold text-2xl">{price}</p>
         </section>
+      </section>
+      <div className="bg-zinc-400 w-200 border my-10"></div>
+      <section className="flex flex-row justify-end">
+        <button className=" w-52  p-3 text-center rounded-md text-black bg-orange transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green duration-300  ">
+          <Link to="/garden/:id/shop/delivery/:id">Checkout</Link>
+          <Outlet />
+        </button>
       </section>
     </section>
   )
