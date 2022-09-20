@@ -399,7 +399,7 @@ You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRv
 
 ## Formik
 
-For **all** forms we usea libray called Formik and another called Yup for validation. Please read up on the docs! We use the useFormik React hook in most cases. https://formik.org/docs/api/useFormik
+For **all** forms we use a libray called Formik in conjunction with Yup for validation. Please read the docs! In most cases we would prefer you use the useFormik React hook. https://formik.org/docs/api/useFormik 
 
 ## Leaflet
 
