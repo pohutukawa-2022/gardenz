@@ -5,6 +5,7 @@ import { getGarden } from '../../../../hooks/useGarden/useGardenHelper'
 import About from './About'
 
 jest.mock('../../../../hooks/useGarden/useGardenHelper')
+
 describe('Garden', () => {
   it('calls getGarden helper and displays garden data on mount', async () => {
     getGarden.mockImplementation(() =>
