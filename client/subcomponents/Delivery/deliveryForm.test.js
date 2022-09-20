@@ -5,9 +5,8 @@ import userEvent from '@testing-library/user-event'
 import { renderWithRouter } from '../../test-utils'
 
 import DeliveryForm from './DeliveryForm'
-// import { useNavigate } from 'react-router-dom'
 
-describe('delivery form field', () => { 
+describe('delivery form field', () => {
   it('Required error on invalid input, or no input at all', async () => {
     const handleSubmit = jest.fn()
     const mockForm = {
@@ -24,6 +23,14 @@ describe('delivery form field', () => {
     userEvent.clear(screen.getByPlaceholderText('suburb'))
     userEvent.clear(screen.getByPlaceholderText('city'))
     userEvent.clear(screen.getByPlaceholderText('postcode'))
+
+    userEvent.click(screen.getByRole('button', { type: /submit/i }))
+
+    const ele = await screen.findAllByText('Required')
+
+    expect(ele).toHaveLength(4)
+    expect(ele[0]).toBeInTheDocument()
+  })
 
   it('updates correctly on user input', async () => {
     const emptyForm = {
@@ -59,8 +66,9 @@ describe('delivery form field', () => {
         'test delivery instructions'
       )
     })
-      it('On Submit navigates to new page', async () => {
-    
+  })
+
+  it('On Submit navigates to new page', async () => {
     const mockedUsedNavigate = jest.fn()
     jest.mock('react-router-dom', () => ({
       ...jest.requireActual('react-router-dom'),

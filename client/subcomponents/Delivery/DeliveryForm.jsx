@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -34,15 +34,6 @@ function DeliveryForm() {
     price: 'priceofProduct',
     quantity: 'amount_bought',
   }
-
-  // const [form, setForm] = useState({
-  //   street: '',
-  //   suburb: '',
-  //   city: '',
-  //   postcode: '',
-  //   deliveryInstructions: '',
-  //   deliveryDay: day,
-  // })
 
   function showAnyErrors(inputName) {
     return formik.errors[inputName] && formik.touched[inputName] ? (
@@ -108,7 +99,6 @@ function DeliveryForm() {
               placeholder="street"
               onChange={formik.handleChange}
               value={formik.values.street}
-              placeholder="street"
             />
           </div>
         </div>
@@ -128,7 +118,6 @@ function DeliveryForm() {
               placeholder="suburb"
               onChange={formik.handleChange}
               value={formik.values.suburb}
-              placeholder="suburb"
             />
           </div>
         </div>
@@ -148,7 +137,6 @@ function DeliveryForm() {
               placeholder="city"
               onChange={formik.handleChange}
               value={formik.values.city}
-              placeholder="city"
             />
           </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -166,7 +154,6 @@ function DeliveryForm() {
               placeholder="postcode"
               onChange={formik.handleChange}
               value={formik.values.postcode}
-              placeholder="postcode"
             />
           </div>
         </div>
