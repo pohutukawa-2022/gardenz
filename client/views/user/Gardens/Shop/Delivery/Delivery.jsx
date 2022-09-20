@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import DeliveryForm from '../../../../../subcomponents/Delivery/DeliveryForm'
-import { useNavigate } from 'react-router-dom'
+
 // import 'react-dropdown/style.css'
 
 function Delivery() {
   const [form, setForm] = useState(true)
 
   const [selected, setSelected] = useState('checked')
-
-  const navigate = useNavigate()
-
-  
 
   function handleCheck(event) {
     setSelected(event.target.value)
