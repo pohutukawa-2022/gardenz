@@ -11,7 +11,7 @@ import AddVolunteerForm from '../../../../subcomponents/volunteers/RockUpVolunte
 import RockUpVolunteerList from '../../../../subcomponents/volunteers/RockUpVolunteerList/RockUpVolunteerList'
 
 export default function Event() {
-  const { id } = useParams()
+  const { gardenId, eventId } = useParams()
 
   const [event, setEvent] = useState({})
 
@@ -20,11 +20,11 @@ export default function Event() {
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     const fetchEvent = async () => {
-      const event = await getEvent(id, user)
+      const event = await getEvent(eventId, user)
       setEvent(event)
     }
     fetchEvent()
-  }, [user, id])
+  }, [user, eventId])
 
   function addExtraVolunteer(newVolunteer) {
     setEvent({
@@ -38,10 +38,10 @@ export default function Event() {
       <section>
         <VolunteerList volunteers={event.volunteers} eventId={event.id} />
         <RockUpVolunteerList extraVolunteers={event.extraVolunteers} />
-        <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={id} />
+        <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={eventId} />
       </section>
       <section>
-        <EditButton eventId={id} />
+        <EditButton gardenId={gardenId} eventId={eventId} />
       </section>
     </>
   )

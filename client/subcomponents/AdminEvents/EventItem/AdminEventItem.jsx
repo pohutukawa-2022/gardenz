@@ -1,8 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 import EditButton from '../../events/EventButtons/EditEvent'
 
 export default function EventItem({ address, event }) {
+  const { gardenId } = useParams()
   const { id, title, date, volunteersNeeded, totalVolunteers, status, time } =
     event
 
@@ -35,7 +37,7 @@ export default function EventItem({ address, event }) {
         )}
       </dl>
       <p>Event is {status}!</p>
-      <EditButton eventId={id} />
+      <EditButton gardenId={gardenId} eventId={id} />
     </article>
   )
 }

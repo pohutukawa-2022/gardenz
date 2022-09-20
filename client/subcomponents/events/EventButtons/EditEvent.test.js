@@ -6,8 +6,8 @@ import { renderWithRouter } from '../../../test-utils'
 
 describe('edit button', () => {
   it('has "Edit Event" name from props', () => {
-    renderWithRouter(<EditButton eventId={1} />)
+    renderWithRouter(<EditButton gardenId={1} eventId={1} />)
     const addEvent = screen.getByRole('link', { name: 'Edit Event' })
-    expect(addEvent).toHaveAttribute('href', '/admin/events/1/edit')
+    expect(addEvent).toHaveAttribute('href', '/admin/gardens/1/events/1/edit')
   })
 })
