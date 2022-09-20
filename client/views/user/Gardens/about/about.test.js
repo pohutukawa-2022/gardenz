@@ -2,6 +2,7 @@ import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
 import { getGarden } from '../../../../hooks/useGarden/useGardenHelper'
 import { renderWithRedux } from '../../../../test-utils'
+
 import About from './About'
 
 jest.mock('../../../../hooks/useGarden/useGardenHelper')
