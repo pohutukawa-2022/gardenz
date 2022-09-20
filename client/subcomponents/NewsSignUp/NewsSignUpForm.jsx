@@ -37,7 +37,7 @@ function SignUpForm() {
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit} className="w-full max-w-lg">
+      <form onSubmit={formik.handleSubmit} className="w-full max-w-lg ">
         <h1 className="mb-3 font-bold"> Sign Up Form </h1>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">

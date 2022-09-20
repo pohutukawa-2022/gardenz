@@ -14,7 +14,7 @@ export default function SignUp() {
       <GardenHeader name={name} url={imageHeaderUrl} />
       <main className="container lg:flex mx-auto mt-5">
         {/* Left Side Div */}
-        <div className="container md:flex flex-col my-6 mx-10 mr-20">
+        <div className="container md:flex flex-col my-6 mx-10 mr-20 place-items-center">
           {/* <Description name={name} description={description} /> */}
           <NewsSignUpForm />
         </div>
