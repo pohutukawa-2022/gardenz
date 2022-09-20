@@ -1,10 +1,11 @@
 import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
-import { renderWithRedux } from '../../../../test-utils'
 import { getGarden } from '../../../../hooks/useGarden/useGardenHelper'
+import { renderWithRedux } from '../../../../test-utils'
 import About from './About'
 
 jest.mock('../../../../hooks/useGarden/useGardenHelper')
+
 describe('Garden', () => {
   it('calls getGarden helper and displays garden data on mount', async () => {
     getGarden.mockImplementation(() =>
