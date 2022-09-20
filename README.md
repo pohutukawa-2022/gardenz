@@ -415,7 +415,7 @@ For any data visualisation including our bargraph we are using a library called.
 
 # Retro
 
-## Day 2
+## Day 1
 
 | 🎉Celebrations🎉                             | 🔧Improvements🔧                    | ⚡Actions⚡                                  |   |   |   |   |   |
 |----------------------------------------------|-------------------------------------|--------------------------------------------|---|---|---|---|---|
@@ -433,7 +433,7 @@ For any data visualisation including our bargraph we are using a library called.
 | gitting good with git                        |                                     |                                            |   |   |   |   |   |
 |                                              |                                     |                                            |   |   |   |   |   |
 
-## Day 3
+## Day 2
 
 | 🎉Celebrations🎉                                            | 🔧Improvements🔧                  | ⚡Actions⚡               |
 |-------------------------------------------------------------|-----------------------------------|-------------------------|
@@ -449,6 +449,8 @@ For any data visualisation including our bargraph we are using a library called.
 | started to love testing                                     |                                   |                         |
 | hacky sack breaks                                           |                                   |                         |
 
+## Day 3
+
 | 🎉Celebrations🎉                   | 🔧Improvements🔧                                                                      | ⚡Actions⚡                                  |
 |------------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------|
 | More successful testing experience | remove unused routes/components                                                       | delete crypting arrows                     |
@@ -457,3 +459,16 @@ For any data visualisation including our bargraph we are using a library called.
 | Learned how to use LocalStorage    | a better introduction for story book                                                  |                                            |
 | Learned formik                     | no cryptic arrows                                                                     |                                            |
 | writing async code in useEffect    | more meaningful naming                                                                |                                            |
+
+## Day 4
+| 🎉Celebrations🎉                           | 🔧Improvements🔧                                                  | ⚡Actions⚡                                                                                                |
+|--------------------------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| being full-stack developer                 | intro to tailwind                                                 | show how to do a peer review                                                                             |
+| learning new libraries                     | hard to navigate large codebase                                   | on-boarding students on Thursday morning for the technincal stuff (tailwind, testing, formic, storybook) |
+| seeing the big picture                     | making sure that good first issues are actually good first issues | learning vscode shortcuts                                                                                |
+| testing every new feature                  | clean-up unused files                                             | print out most used 10 vscode shortcuts                                                                  |
+| good comms                                 |                                                                   |                                                                                                          |
+| asked for help                             |                                                                   |                                                                                                          |
+| gitflow and github flow                    |                                                                   |                                                                                                          |
+| peer reviewing                             |                                                                   |                                                                                                          |
+| ability to navigate through a big codebase |
