@@ -58,6 +58,7 @@ describe('click on delete button', () => {
     const confirmButton = await screen.findByTestId('Yes')
     userEvent.click(confirmButton)
     await expect(deleteImgById).toHaveBeenCalled()
+
     expect(mockeLoadImages).toHaveBeenCalled()
   })
 
