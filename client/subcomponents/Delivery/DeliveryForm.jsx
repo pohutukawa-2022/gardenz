@@ -105,6 +105,7 @@ function DeliveryForm() {
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="street"
+              placeholder="street"
               onChange={formik.handleChange}
               value={formik.values.street}
             />
@@ -123,6 +124,7 @@ function DeliveryForm() {
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="suburb"
+              placeholder="suburb"
               onChange={formik.handleChange}
               value={formik.values.suburb}
             />
@@ -141,6 +143,7 @@ function DeliveryForm() {
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="city"
+              placeholder="city"
               onChange={formik.handleChange}
               value={formik.values.city}
             />
@@ -157,6 +160,7 @@ function DeliveryForm() {
               className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-blue rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               name="postcode"
+              placeholder="postcode"
               onChange={formik.handleChange}
               value={formik.values.postcode}
             />
