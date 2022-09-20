@@ -387,6 +387,7 @@ http://localhost:3000/api/v1/volunteer/emailsignup?token={{token}}
 
 https://gardenz-app.herokuapp.com/api/v1/volunteer/emailsignup?token={{token}}
 
+## Libraries used...
 
 ## Tailwind CSS
 
@@ -396,7 +397,21 @@ The styling throughout GardeNZ closely follows the Tailwind docs. Please refer t
 
 You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1
 
+## Formik
 
+For all forms we usea libray called Formik and another called Yup for validation. Pleas read up on the docs! We use the useFormik React hook in most cases. https://formik.org/docs/api/useFormik
+
+## Leaflet
+
+For the Map we use a library called Leaflet! Again please read up in the docs! https://leafletjs.com/
+
+## LightGallery.js
+
+For our Gallery component in the frontend we are using a library called LightGallery. Here are the docs https://www.lightgalleryjs.com/
+
+## VisX
+
+For any data visualisation including our bargraph we are using a library called. Check it out here! Visx https://airbnb.io/visx/docs
 
 # Retro
 
